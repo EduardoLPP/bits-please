@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "api/admin.js": { "includeFiles": "dist/index.html" }
+  },
+  "rewrites": [
+    { "source": "/admin", "destination": "/api/admin" },
+    { "source": "/admin/:path*", "destination": "/api/admin" },
+    { "source": "/login", "destination": "/api/login-page" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
