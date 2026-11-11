@@ -16,6 +16,7 @@ Use this guide for articles, reviews, headlines, summaries, and buying guides fo
 - Explain recommendations with specific reasons and relevant trade-offs. Do not imply a discount, scarcity, or product feature without checking it.
 - Never conceal or misrepresent a commission or other commercial relationship. For Amazon Associates, show clearly and prominently the required statement, or a permitted equivalent: “Como participante do Programa de Associados da Amazon, sou remunerado pelas compras qualificadas efetuadas”. Keep it near the relevant recommendation or CTA; a footer-only notice, tooltip, or hard-to-find policy page is not a substitute. A button may use natural product wording such as “Ver na Amazon” and should not be labeled “LINK DE AFILIADO”. Verify current terms at https://associados.amazon.com.br/help/operating/agreement.
 - Links must be provided or verified; never invent an affiliate tag, redirect, or tracking URL.
+- Every post published on the blog must include at least one verified Amazon affiliate link to a product directly useful for that post’s subject. This applies to every format, including news, reviews, esports, and culture. Research a suitable item for the specific story; do not leave out a link merely because the article is not a buying guide. Never add an unrelated product just to satisfy this rule. If no suitable product, valid affiliate link, and authorized exact product image can be verified, re-angle the story or keep the post in draft until the offer is ready.
 
 ## Pesquisa especializada obrigatória
 
@@ -43,7 +44,7 @@ Escolha pautas dentro destes eixos e deixe claro o que cada matéria entrega ao 
 
 - Em cada lote diário de sete matérias, inclua sempre pelo menos uma review de jogo e escolha a pauta nesta ordem: primeiro, um lançamento recente que seja adequado para análise; se não houver um lançamento adequado, escolha um jogo com público comprovado ou com boa vitrine editorial — por exemplo, por grande interesse de busca, presença em evento importante ou destaque atual da indústria. Não escolha títulos obscuros sem um desses sinais de relevância. Priorize um teste próprio; se ele não estiver disponível, identifique a matéria como análise editorial baseada em pesquisa, cite cobertura especializada e não invente experiência nem nota.
 
-Para pautas de compra, comparativo e review de produto, priorize a utilidade para a decisão do leitor e use imagem autorizada do produto exato junto ao botão de compra quando houver link afiliado.
+Em toda matéria, relacione a recomendação afiliada ao conteúdo e priorize a utilidade para o leitor. Em pautas de compra, comparativo e review, explique por que aquele produto se encaixa; em notícias, esports e cultura, procure um item que ajude o leitor a acompanhar, jogar ou aplicar o que a matéria discute. Nunca omita a busca por produto e link só porque o formato é noticioso. Se não houver encaixe honesto, não publique até ajustar a pauta.
 
 ## Privacidade
 

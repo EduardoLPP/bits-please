@@ -68,6 +68,17 @@ O veredito editorial é positivo para quem busca um co-op acessível e gosta de 
       license: "CC BY-SA 4.0",
       licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/"
     },
+    affiliate: "https://www.amazon.com.br/dp/B0DFQGVLYF/ref=nosim?tag=bitsplease-20",
+    productName: "SanDisk microSD Express 256 GB para Nintendo Switch 2",
+    productPitch: "Para quem pretende manter vários jogos digitais instalados, o SanDisk microSD Express de 256 GB é uma opção compatível para comparar. A Nintendo confirma suporte ao padrão Express e a cartões de até 2 TB; isso não significa que 256 GB seja o tamanho ideal para todos, então confira o espaço que sua biblioteca ocupa e a oferta disponível antes de comprar.",
+    productImage: {
+      image: "https://commons.wikimedia.org/wiki/Special:FilePath/SanDisk_microSD_EXPRESS_Card_256GB.jpg?width=1200",
+      alt: "Cartão SanDisk microSD Express de 256 GB, modelo compatível com o Nintendo Switch 2.",
+      credit: "Kyu3a · Wikimedia Commons",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:SanDisk_microSD_EXPRESS_Card_256GB.jpg",
+      license: "CC BY-SA 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
     body: `A troca de console costuma trazer uma dúvida bem prática: dá para reaproveitar o cartão microSD antigo? No Switch 2, a resposta depende do que você espera fazer. Para instalar jogos e ampliar o armazenamento de software, o aparelho aceita apenas cartões microSD Express. Um cartão comum do primeiro Switch não vira uma extensão de biblioteca só por caber no mesmo formato.
 
 Isso não torna o cartão antigo inútil. A Nintendo permite importar capturas de tela e vídeos salvos nele para o Switch 2. Depois da transferência, o cartão convencional não serve para guardar ou carregar jogos digitais nesse novo console. A diferença importa porque uma compra feita às pressas pode deixar o jogador com um cartão de alta capacidade que não atende ao uso principal.
@@ -80,6 +91,8 @@ A regra simples é esta: cartão velho para importar mídia; cartão microSD Exp
     sources: [
       { label: "Nintendo Support — compatibilidade de microSD e microSD Express", url: "https://en-americas-support.nintendo.com/app/answers/detail/a_id/68425/~/microsd-card-and-microsd-express-card-compatibility-with-nintendo-switch" },
       { label: "Nintendo UK — perguntas sobre gerenciamento de dados no Switch 2", url: "https://www.nintendo.com/en-gb/Support/Nintendo-Switch-2/Nintendo-Switch-2-Data-Management-FAQ-2842540.html" },
+      { label: "Amazon Brasil — SanDisk microSD Express 256 GB", url: "https://www.amazon.com.br/SanDisk-Cart%C3%A3o-microSD-Express-SDSQXFN-256G-GN4NN/dp/B0DFQGVLYF" },
+      { label: "Foto do produto — arquivo e licença", url: "https://commons.wikimedia.org/wiki/File:SanDisk_microSD_EXPRESS_Card_256GB.jpg" },
       { label: "Imagem da capa — arquivo e licença", url: "https://commons.wikimedia.org/wiki/File:Nintendo_Switch_2.jpg" },
       { label: "Imagem no texto — arquivo e licença", url: "https://commons.wikimedia.org/wiki/File:Nintendo_Switch_2_in_Docking_Console.jpg" }
     ]
