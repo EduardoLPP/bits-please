@@ -17,6 +17,23 @@ Use this guide for articles, reviews, headlines, summaries, and buying guides fo
 - Never conceal or misrepresent a commission or other commercial relationship. For Amazon Associates, show clearly and prominently the required statement, or a permitted equivalent: “Como participante do Programa de Associados da Amazon, sou remunerado pelas compras qualificadas efetuadas”. Keep it near the relevant recommendation or CTA; a footer-only notice, tooltip, or hard-to-find policy page is not a substitute. A button may use natural product wording such as “Ver na Amazon” and should not be labeled “LINK DE AFILIADO”. Verify current terms at https://associados.amazon.com.br/help/operating/agreement.
 - Links must be provided or verified; never invent an affiliate tag, redirect, or tracking URL.
 
+## Tipos de pauta do portal
+
+Escolha pautas dentro destes eixos e deixe claro o que cada matéria entrega ao leitor:
+
+- **Notícias e anúncios:** lançamentos, adiamentos, atualizações e anúncios confirmados por estúdios ou fabricantes.
+- **Comparativos:** consoles, jogos, placas de vídeo e acessórios, comparados no mesmo cenário e com critérios explícitos.
+- **Guias de compra:** recomendações por uso, plataforma e faixa de orçamento, com preços e disponibilidade conferidos na publicação.
+- **Reviews:** análises de jogos, consoles e periféricos; diferencie teste próprio de pesquisa editorial e nunca invente experiência.
+- **Guias e tutoriais:** configuração, armazenamento, desempenho, controles e solução de problemas comuns.
+- **Montagem e compatibilidade de PC:** combinações de componentes, requisitos, fontes, upgrades e escolhas por orçamento.
+- **Retrospectivas e indústria:** trajetória de jogos e franquias, impacto cultural e modelos de negócio, apoiados por fontes.
+- **Esports e comunidade:** calendário, resultados, equipes, formatos competitivos e contexto da cena.
+- **Cultura gamer:** adaptações, trilhas sonoras, eventos e relações entre jogos e cultura pop.
+- **Ofertas e custo-benefício:** mudanças de preço e avaliação de uma oferta, sempre com preço, loja e data verificados.
+
+Para pautas de compra, comparativo e review de produto, priorize a utilidade para a decisão do leitor e use imagem autorizada do produto exato junto ao botão de compra quando houver link afiliado.
+
 ## Privacidade
 
 - Nunca publique nem inclua dados pessoais do usuário em matérias, imagens, textos alternativos, créditos, metadados ou capturas de tela. Isso inclui nome completo, e-mail, telefone, endereço, credenciais, identificadores de conta, detalhes financeiros e qualquer informação pessoal encontrada em abas, arquivos ou ferramentas conectadas.
