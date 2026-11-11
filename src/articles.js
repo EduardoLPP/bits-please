@@ -43,10 +43,10 @@ O teste de GTA VI começa quando as primeiras partidas substituírem as teorias.
     excerpt: "A Rockstar destaca recursos do PS5 e do PS5 Pro, mas só testes comparativos poderão dizer se há vantagem de desempenho sobre o Xbox Series X.",
     date: "11 nov 2026",
     read: "8 min",
-    image: "/images/gta-vi-jason-lucia.jpg",
-    imageAlt: "Jason e Lucia em uma cena noturna de Grand Theft Auto VI.",
-    imageSource: "Rockstar Games — galeria oficial de GTA VI",
-    imageSourceUrl: "https://www.rockstargames.com/VI/media/screenshots",
+    image: "https://gmedia.playstation.com/is/image/SIEPDC/grand-theft-auto-vi-screenshot-08-en-06may25",
+    imageAlt: "Avião sobrevoando as Leonida Keys em uma captura oficial de Grand Theft Auto VI.",
+    imageSource: "PlayStation — galeria oficial de GTA VI",
+    imageSourceUrl: "https://www.playstation.com/en-us/games/grand-theft-auto-vi/",
     body: `A Rockstar diz que GTA VI joga melhor no PS5 e aponta a integração com o DualSense, o áudio Tempest 3D e os carregamentos pelo SSD. É a posição oficial da publicadora, baseada nos recursos da plataforma. Para saber se o jogo também terá vantagem de resolução ou estabilidade sobre o Xbox Series X, ainda faltam testes independentes.
 
 O lançamento está marcado para 19 de novembro de 2026 no PS5 e no Xbox Series X|S. A Rockstar afirma que o jogo foi desenvolvido para os consoles atuais e tem como alvo 30 quadros por segundo, levando as duas plataformas ao limite. Até a publicação desta matéria, não havia testes independentes lado a lado que permitissem comparar resolução, estabilidade ou tempos de carregamento entre os modelos.
