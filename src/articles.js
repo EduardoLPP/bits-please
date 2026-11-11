@@ -3,6 +3,50 @@ const gtaVIAffiliate = "https://www.amazon.com.br/dp/B0H6KT2RWH/ref=nosim?tag=bi
 
 export const initialPosts = [
   {
+    id: "review-supertuxkart-1-5",
+    category: "GAMES",
+    section: "REVIEWS",
+    tag: "SuperTuxKart · review · PC",
+    title: "Review: SuperTuxKart 1.5 ainda vale a corrida?",
+    excerpt: "A atualização deixa o kart racer mais completo e ajustável, mas parte dos serviços online está em recuperação. Esta análise é baseada em pesquisa, sem teste próprio da versão.",
+    date: "11 nov 2026",
+    read: "6 min",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/STK_track_8.png?width=1400",
+    imageAlt: "Cena de corrida de SuperTuxKart em pista sinuosa, captura de 2021 anterior à versão 1.5.",
+    imageSource: "SuperTuxKart contributors · Wikimedia Commons · captura de 2021",
+    imageSourceUrl: "https://commons.wikimedia.org/wiki/File:STK_track_8.png",
+    imageLicense: "CC BY-SA 4.0",
+    imageLicenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+    inlineImage: {
+      image: "https://commons.wikimedia.org/wiki/Special:FilePath/Storymode_in_STK.png?width=1400",
+      alt: "Tela do modo história de SuperTuxKart, captura de 2018 anterior à versão 1.5.",
+      credit: "SuperTuxKart contributors · Wikimedia Commons · modo história, captura de 2018",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Storymode_in_STK.png",
+      license: "GPL v2 ou posterior",
+      licenseUrl: "https://www.gnu.org/licenses/old-licenses/gpl-2.0.html"
+    },
+    body: `Esta é uma análise editorial baseada na documentação oficial de SuperTuxKart 1.5 e em cobertura especializada. Não fizemos um teste próprio desta versão, então não vamos fingir uma experiência de jogo nem atribuir uma nota. O que dá para avaliar com segurança é o pacote oferecido, a direção da atualização e o estado atual dos serviços.
+
+SuperTuxKart é um jogo de corrida arcade com karts, personagens próprios e modos que vão além da disputa tradicional. A campanha organiza desafios em um modo história; há também corridas individuais, campeonatos, caça aos ovos, partidas de futebol e opções para jogar só ou com outras pessoas. Essa variedade ajuda o projeto a funcionar tanto como passatempo rápido quanto como jogo de sala para reunir amigos.
+
+A versão 1.5, lançada em outubro de 2025, investiu em acabamento e ferramentas. Entraram três pistas de caça aos ovos, três arenas de futebol, novos temas de interface, favoritos para karts e pistas, ajustes de tela e melhorias visuais. A taxa de quadros pode ser configurada com mais liberdade, e o benchmark integrado permite comparar configurações no próprio computador. É uma atualização útil para quem gosta de mexer nos detalhes, embora não transforme a base das corridas.
+
+O melhor argumento do jogo continua sendo a combinação de acesso gratuito, código aberto e variedade de modos. A cobertura do lançamento destaca melhorias no renderizador Vulkan, interface e gráficos; a equipe também manteve os requisitos de hardware como uma decisão do jogador, em vez de prometer um desempenho universal. O benchmark faz sentido justamente porque a velocidade depende da máquina e das opções escolhidas.
+
+Há uma ressalva importante para quem depende de conteúdo e contas online. Em 24 de outubro de 2026, a equipe retirou o site de complementos do ar por riscos de segurança enquanto reescreve o serviço. O aviso diz que jogo solo, tela dividida e rede local continuam funcionando; complementos já aprovados ainda podem ser instalados. Em uma atualização no mesmo tópico, a equipe explicou que parte da API foi restaurada para permitir alguns downloads e partidas de contas existentes, mas cadastro e envio de novos complementos seguem indisponíveis. Portanto, o multiplayer não foi simplesmente desligado, mas os recursos comunitários estão incompletos.
+
+O veredito editorial é favorável para quem quer um kart racer gratuito, com campanha, variação de modos e possibilidade de jogar localmente. A versão 1.5 melhora o que já existia sem reinventar o jogo, e isso é suficiente para tornar a experiência mais bem cuidada. A situação dos complementos reduz o apelo para quem quer construir a diversão em torno de conteúdo online criado pela comunidade; para partidas offline e LAN, o projeto segue sendo uma opção atraente. As imagens desta matéria são capturas de versões anteriores, identificadas com seus anos, e servem para mostrar a base do jogo, não a aparência exata da 1.5.`,
+    sources: [
+      { label: "SuperTuxKart — notas oficiais da versão 1.5", url: "https://blog.supertuxkart.net/2025/10/supertuxkart-15-release.html" },
+      { label: "SuperTuxKart — página oficial do jogo, modos e licenças", url: "https://supertuxkart.itch.io/supertuxkart" },
+      { label: "SuperTuxKart — estado dos serviços de complementos, 24 out 2026", url: "https://blog.supertuxkart.net/2026/10/supertuxkart-online-has-gone-dark.html" },
+      { label: "OMG! Ubuntu — análise independente da versão 1.5", url: "https://www.omgubuntu.co.uk/2025/10/supertuxkart-1-5-released" },
+      { label: "GamingOnLinux — cobertura independente do lançamento 1.5", url: "https://www.gamingonlinux.com/2025/10/open-source-racer-supertuxkart-1-5-out-now-development-moving-onto-supertuxkart-evolution/" },
+      { label: "Imagem da capa — arquivo e licença", url: "https://commons.wikimedia.org/wiki/File:STK_track_8.png" },
+      { label: "Imagem no texto — arquivo e licença", url: "https://commons.wikimedia.org/wiki/File:Storymode_in_STK.png" }
+    ]
+  },
+  {
     id: "switch-2-microsd-express-guia",
     category: "CONSOLES",
     section: "GAMES",
