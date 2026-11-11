@@ -41,7 +41,7 @@ Escolha pautas dentro destes eixos e deixe claro o que cada matéria entrega ao 
 - **Cultura gamer:** adaptações, trilhas sonoras, eventos e relações entre jogos e cultura pop.
 - **Ofertas e custo-benefício:** mudanças de preço e avaliação de uma oferta, sempre com preço, loja e data verificados.
 
-- Em cada lote diário de sete matérias, inclua sempre pelo menos uma review de um jogo com relevância atual comprovável, como um lançamento recente, uma atualização importante ou uma franquia com público amplo. Evite jogos obscuros sem um gancho claro de interesse. Priorize um teste próprio; se ele não estiver disponível, identifique a matéria como análise editorial baseada em pesquisa, cite cobertura especializada e não invente experiência nem nota.
+- Em cada lote diário de sete matérias, inclua sempre pelo menos uma review de jogo e escolha a pauta nesta ordem: primeiro, um lançamento recente que seja adequado para análise; se não houver um lançamento adequado, escolha um jogo com público comprovado ou com boa vitrine editorial — por exemplo, por grande interesse de busca, presença em evento importante ou destaque atual da indústria. Não escolha títulos obscuros sem um desses sinais de relevância. Priorize um teste próprio; se ele não estiver disponível, identifique a matéria como análise editorial baseada em pesquisa, cite cobertura especializada e não invente experiência nem nota.
 
 Para pautas de compra, comparativo e review de produto, priorize a utilidade para a decisão do leitor e use imagem autorizada do produto exato junto ao botão de compra quando houver link afiliado.
 
