@@ -14,6 +14,7 @@ function readPosts(){
   }
   let clean=saved.filter(p=>!mockPostIds.has(p.id));
   let needsSave=false;
+  if(clean.some(p=>p.id==='review-supertuxkart-1-5')){clean=clean.filter(p=>p.id!=='review-supertuxkart-1-5');needsSave=true}
   const seeds=new Map(initialPosts.map(p=>[p.id,p]));
   if(!localStorage.getItem('bitsplease_affiliate_migration_v1')){
    clean=clean.map(p=>{const seed=seeds.get(p.id);return seed&&!p.affiliate&&seed.affiliate?{...p,affiliate:seed.affiliate,productName:seed.productName}:p});

@@ -3,47 +3,46 @@ const gtaVIAffiliate = "https://www.amazon.com.br/dp/B0H6KT2RWH/ref=nosim?tag=bi
 
 export const initialPosts = [
   {
-    id: "review-supertuxkart-1-5",
+    id: "review-minecraft-dungeons-ii-2026",
     category: "GAMES",
     section: "REVIEWS",
-    tag: "SuperTuxKart · review · PC",
-    title: "Review: SuperTuxKart 1.5 ainda vale a corrida?",
-    excerpt: "A atualização deixa o kart racer mais completo e ajustável, mas parte dos serviços online está em recuperação. Esta análise é baseada em pesquisa, sem teste próprio da versão.",
+    tag: "Minecraft Dungeons II · ARPG · co-op",
+    title: "Review: Minecraft Dungeons II encontra força no co-op, mas repete as masmorras",
+    excerpt: "A sequência amplia o mundo e as opções de equipamento, mas a avaliação da crítica se divide sobre a variedade dos combates. Esta análise é baseada em pesquisa, sem teste próprio.",
     date: "11 nov 2026",
     read: "6 min",
-    image: "https://commons.wikimedia.org/wiki/Special:FilePath/STK_track_8.png?width=1400",
-    imageAlt: "Cena de corrida de SuperTuxKart em pista sinuosa, captura de 2021 anterior à versão 1.5.",
-    imageSource: "SuperTuxKart contributors · Wikimedia Commons · captura de 2021",
-    imageSourceUrl: "https://commons.wikimedia.org/wiki/File:STK_track_8.png",
-    imageLicense: "CC BY-SA 4.0",
-    imageLicenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+    image: "https://xboxwire.thesourcemediaassets.com/sites/2/2026/09/06-8da4bf74d4fcce760202-1024x576.jpg",
+    imageAlt: "Arte oficial de Minecraft Dungeons II com personagens atravessando o mundo do jogo.",
+    imageSource: "Xbox Wire / Mojang Studios",
+    imageSourceUrl: "https://news.xbox.com/en-us/2026/09/28/how-minecraft-dungeons-iis-interconnected-world-makes-every-journey-an-adventure/",
+    imageLicense: "Used with permission from Microsoft",
+    imageLicenseUrl: "https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/permissions",
     inlineImage: {
-      image: "https://commons.wikimedia.org/wiki/Special:FilePath/Storymode_in_STK.png?width=1400",
-      alt: "Tela do modo história de SuperTuxKart, captura de 2018 anterior à versão 1.5.",
-      credit: "SuperTuxKart contributors · Wikimedia Commons · modo história, captura de 2018",
-      sourceUrl: "https://commons.wikimedia.org/wiki/File:Storymode_in_STK.png",
-      license: "GPL v2 ou posterior",
-      licenseUrl: "https://www.gnu.org/licenses/old-licenses/gpl-2.0.html"
+      image: "https://xboxwire.thesourcemediaassets.com/sites/2/2026/09/MCD2_Creator-Toolkit_Screenshot_First-Ambush_01_4K-b8393fbfc0915a250b36-1024x576.jpg",
+      alt: "Cena de combate de Minecraft Dungeons II, com aventureiros enfrentando inimigos em uma masmorra.",
+      credit: "Xbox Wire / Mojang Studios",
+      sourceUrl: "https://news.xbox.com/en-us/2026/09/28/how-minecraft-dungeons-iis-interconnected-world-makes-every-journey-an-adventure/",
+      license: "Used with permission from Microsoft",
+      licenseUrl: "https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/permissions"
     },
-    body: `Esta é uma análise editorial baseada na documentação oficial de SuperTuxKart 1.5 e em cobertura especializada. Não fizemos um teste próprio desta versão, então não vamos fingir uma experiência de jogo nem atribuir uma nota. O que dá para avaliar com segurança é o pacote oferecido, a direção da atualização e o estado atual dos serviços.
+    body: `Esta é uma análise editorial baseada em pesquisa: consultamos a descrição oficial e reviews de veículos especializados, mas não fizemos um teste próprio do jogo. Por isso, não atribuímos nota nem apresentamos a experiência de outros jornalistas como se fosse nossa.
 
-SuperTuxKart é um jogo de corrida arcade com karts, personagens próprios e modos que vão além da disputa tradicional. A campanha organiza desafios em um modo história; há também corridas individuais, campeonatos, caça aos ovos, partidas de futebol e opções para jogar só ou com outras pessoas. Essa variedade ajuda o projeto a funcionar tanto como passatempo rápido quanto como jogo de sala para reunir amigos.
+Minecraft Dungeons II é um RPG de ação com combate em tempo real, saque de equipamentos e progressão por áreas, ambientado no universo de Minecraft. A sequência troca a seleção de capítulos isolados por um mundo conectado e apresenta The Sift, uma nova dimensão ligada à aventura. A mudança dá mais espaço para explorar entre uma masmorra e outra e ajuda o jogo a parecer uma continuação com identidade própria, não apenas uma coleção de fases.
 
-A versão 1.5, lançada em outubro de 2025, investiu em acabamento e ferramentas. Entraram três pistas de caça aos ovos, três arenas de futebol, novos temas de interface, favoritos para karts e pistas, ajustes de tela e melhorias visuais. A taxa de quadros pode ser configurada com mais liberdade, e o benchmark integrado permite comparar configurações no próprio computador. É uma atualização útil para quem gosta de mexer nos detalhes, embora não transforme a base das corridas.
+O sistema de equipamento também cresceu. Além de arma de combate próximo, arma de longa distância e artefatos, a sequência acrescenta espaços separados para peças de armadura e talismãs. Isso abre mais caminhos para combinar habilidades e bônus. A contrapartida é o volume de itens: a análise da GamesRadar observa que comparar, aprimorar e encantar equipamentos pode ocupar uma parcela considerável do tempo entre as batalhas. Para quem gosta de ajustar builds, essa camada é parte do prazer; para quem quer avançar sem parar nos menus, pode quebrar o ritmo.
 
-O melhor argumento do jogo continua sendo a combinação de acesso gratuito, código aberto e variedade de modos. A cobertura do lançamento destaca melhorias no renderizador Vulkan, interface e gráficos; a equipe também manteve os requisitos de hardware como uma decisão do jogador, em vez de prometer um desempenho universal. O benchmark faz sentido justamente porque a velocidade depende da máquina e das opções escolhidas.
+O co-op é o ponto mais consistente entre as avaliações. É possível jogar em grupo localmente ou online, com até quatro pessoas, e o desenho mais acessível facilita juntar jogadores com níveis diferentes de familiaridade com RPGs de ação. A GamesRadar destaca o ciclo rápido de voltar à luta e experimentar equipamentos; a TechRadar também reconhece o co-op fluido, mesmo sendo bem mais crítica ao restante do combate.
 
-Há uma ressalva importante para quem depende de conteúdo e contas online. Em 24 de outubro de 2026, a equipe retirou o site de complementos do ar por riscos de segurança enquanto reescreve o serviço. O aviso diz que jogo solo, tela dividida e rede local continuam funcionando; complementos já aprovados ainda podem ser instalados. Em uma atualização no mesmo tópico, a equipe explicou que parte da API foi restaurada para permitir alguns downloads e partidas de contas existentes, mas cadastro e envio de novos complementos seguem indisponíveis. Portanto, o multiplayer não foi simplesmente desligado, mas os recursos comunitários estão incompletos.
+É na repetição que a sequência mais divide a crítica. A GamesRadar elogia a progressão e as possibilidades de equipamento, mas aponta bugs, repetição e excesso de saque. Já a TechRadar considera que muitos inimigos acabam se comportando de forma parecida e que a exploração não aproveita todo o potencial do mapa. A diferença de leitura faz sentido: a estrutura funciona melhor como uma aventura cooperativa leve, com sessões curtas e evolução constante, do que como um RPG de ação que surpreende a cada encontro.
 
-O veredito editorial é favorável para quem quer um kart racer gratuito, com campanha, variação de modos e possibilidade de jogar localmente. A versão 1.5 melhora o que já existia sem reinventar o jogo, e isso é suficiente para tornar a experiência mais bem cuidada. A situação dos complementos reduz o apelo para quem quer construir a diversão em torno de conteúdo online criado pela comunidade; para partidas offline e LAN, o projeto segue sendo uma opção atraente. As imagens desta matéria são capturas de versões anteriores, identificadas com seus anos, e servem para mostrar a base do jogo, não a aparência exata da 1.5.`,
+O veredito editorial é positivo para quem busca um co-op acessível e gosta de montar combinações de equipamento; o mundo conectado dá à sequência um ritmo de aventura que faltava ao formato de fases separadas. A recomendação fica mais cautelosa para quem joga sozinho e espera variedade constante de inimigos ou sistemas profundos de endgame. Minecraft Dungeons II parece mais interessante quando a equipe está reunida — e menos convincente quando a repetição do combate fica sem a conversa do grupo para acompanhá-la.`,
     sources: [
-      { label: "SuperTuxKart — notas oficiais da versão 1.5", url: "https://blog.supertuxkart.net/2025/10/supertuxkart-15-release.html" },
-      { label: "SuperTuxKart — página oficial do jogo, modos e licenças", url: "https://supertuxkart.itch.io/supertuxkart" },
-      { label: "SuperTuxKart — estado dos serviços de complementos, 24 out 2026", url: "https://blog.supertuxkart.net/2026/10/supertuxkart-online-has-gone-dark.html" },
-      { label: "OMG! Ubuntu — análise independente da versão 1.5", url: "https://www.omgubuntu.co.uk/2025/10/supertuxkart-1-5-released" },
-      { label: "GamingOnLinux — cobertura independente do lançamento 1.5", url: "https://www.gamingonlinux.com/2025/10/open-source-racer-supertuxkart-1-5-out-now-development-moving-onto-supertuxkart-evolution/" },
-      { label: "Imagem da capa — arquivo e licença", url: "https://commons.wikimedia.org/wiki/File:STK_track_8.png" },
-      { label: "Imagem no texto — arquivo e licença", url: "https://commons.wikimedia.org/wiki/File:Storymode_in_STK.png" }
+      { label: "Xbox Wire — recursos e estrutura de Minecraft Dungeons II", url: "https://news.xbox.com/en-us/2026/09/28/how-minecraft-dungeons-iis-interconnected-world-makes-every-journey-an-adventure/" },
+      { label: "Xbox Support — edições, lançamento e plataformas", url: "https://help.minecraft.net/hc/en-us/articles/48779201191437-Minecraft-Dungeons-II-Editions-Ownership-and-Purchase-Support" },
+      { label: "GamesRadar+ — review de Minecraft Dungeons II", url: "https://www.gamesradar.com/games/minecraft/minecraft-dungeons-2-review/" },
+      { label: "TechRadar — review e pontos críticos", url: "https://www.techradar.com/gaming/minecraft-dungeons-2-review" },
+      { label: "Nintendo Life — panorama das avaliações após o lançamento", url: "https://www.nintendolife.com/news/2026/10/round-up-the-reviews-for-minecraft-dungeons-ii-are-in" },
+      { label: "Microsoft — regras para uso de imagens e capturas do jogo", url: "https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/permissions" }
     ]
   },
   {
