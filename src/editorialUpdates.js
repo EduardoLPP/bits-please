@@ -9,12 +9,30 @@ export const editorialUpdates = [
     date: "11 nov 2026",
     publishedAt: "2026-11-11",
     read: "7 min",
-    image: "",
-    imageAlt: "",
-    imageSource: "",
+    image: "/images/rdr2-cover-art.webp",
+    imageAlt: "Arte promocional de Red Dead Redemption 2: Arthur Morgan em primeiro plano, o título do jogo e cavaleiros em silhueta sobre um fundo vermelho e amarelo.",
+    imageSource: "Arte enviada pelo usuário · Red Dead Redemption 2",
     imageSourceUrl: "",
     imageLicense: "",
     imageLicenseUrl: "",
+    inlineImage: {
+      image: "/images/rdr2-gang-silhouette.png",
+      alt: "Silhuetas dos integrantes da gangue Van der Linde diante de um grande sol alaranjado em arte de Red Dead Redemption 2.",
+      credit: "Imagem enviada pelo usuário · Red Dead Redemption 2",
+      sourceUrl: "",
+      license: "",
+      licenseUrl: ""
+    },
+    additionalImages: [
+      {
+        image: "/images/rdr2-arthur-portrait.png",
+        alt: "Arte de Red Dead Redemption 2 em formato vertical, com Arthur Morgan e o título do jogo.",
+        credit: "Imagem enviada pelo usuário · Red Dead Redemption 2",
+        sourceUrl: "",
+        license: "",
+        licenseUrl: ""
+      }
+    ],
     body: `Esta é uma análise editorial baseada em pesquisa, não um relato de uma sessão de jogo feita pelo Bits, Please. Consultamos a descrição da Rockstar e reviews de veículos especializados; não atribuímos nota nem fingimos uma experiência própria.
 
 Em 1899, a gangue Van der Linde tenta sobreviver enquanto o mundo que conhece desaparece. Arthur Morgan está no centro de uma história sobre lealdade, violência e a dificuldade de continuar pertencendo a um grupo quando suas escolhas já não levam a lugar nenhum. O jogo encontra sua voz quando deixa os personagens conversarem durante uma cavalgada ou quando uma tarefa pequena revela como a comunidade funciona.
@@ -30,7 +48,7 @@ Veredito editorial: Red Dead Redemption 2 continua sendo uma recomendação fort
     productName: "Red Dead Redemption 2 — edição para PlayStation 4",
     productPitch: "A oferta vinculada é da edição de PS4. A Rockstar inclui o jogo na lista de títulos compatíveis com PS5 por retrocompatibilidade; confira o vendedor, a condição e a edição que a Amazon está oferecendo no momento.",
     status: "draft",
-    draftNotes: "Faltam duas imagens de alta resolução com licença comercial confirmada e uma imagem autorizada do produto exato para acompanhar o botão da Amazon.",
+    draftNotes: "As três artes de Red Dead Redemption 2 enviadas pelo usuário foram adicionadas à matéria. Ainda faltam confirmação dos direitos de uso comercial e uma imagem autorizada da edição PS4 exata para o botão da Amazon.",
     sources: [
       { label: "Rockstar Games — Red Dead Redemption 2", url: "https://www.rockstargames.com/games/reddeadredemption2" },
       { label: "Rockstar Support — compatibilidade de jogos de PS4 no PS5", url: "https://www.rockstargames.com/newswire/article/1748koo9oo52k5/backward-compatibility-on-playstation-5-and-xbox-series-x-s" },
@@ -113,8 +131,7 @@ Esta análise não compara desempenho entre PS5, Xbox, Switch 2 e PC. A oferta i
     affiliate: "https://www.amazon.com.br/dp/B0G1MGRFYT?tag=bitsplease-20",
     productName: "Resident Evil Requiem — edição para Xbox Series X",
     productPitch: "A oferta verificada é da edição de Xbox Series X. Confira a plataforma, o vendedor e a condição antes de comprar.",
-    status: "draft",
-    draftNotes: "A review tem duas capturas distintas do jogo com licença CC BY 4.0. A oferta Amazon verificada é da edição de Xbox Series X (não PS5); falta a imagem autorizada desse produto exato para acompanhar o botão de compra.",
+    status: "published",
     sources: [
       { label: "Capcom — anúncio oficial e data de lançamento", url: "https://www.capcom.co.jp/ir/english/news/pdf/e250609.pdf" },
       { label: "PC Gamer — review de Resident Evil Requiem", url: "https://www.pcgamer.com/games/resident-evil/resident-evil-requiem-review/" },
