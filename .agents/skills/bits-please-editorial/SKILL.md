@@ -14,7 +14,8 @@ Use this guide for articles, reviews, headlines, summaries, and buying guides fo
 - Separate confirmed facts, editorial judgment, and third-party estimates. Name the source and date for statistics. Do not present estimates of sales or pre-orders as official figures, and do not infer performance or quality from market share.
 - When platforms are compared, identify the game edition, hardware, and comparison being discussed. Avoid declaring a universal winner when results depend on mode, price, library, or user needs.
 - Explain recommendations with specific reasons and relevant trade-offs. Do not imply a discount, scarcity, or product feature without checking it.
-- Keep affiliate disclosure visible near affiliate calls to action. Links must be provided or verified; never invent an affiliate tag, redirect, or tracking URL.
+- Never conceal or misrepresent a commission or other commercial relationship. For Amazon Associates, show clearly and prominently the required statement, or a permitted equivalent: “Como participante do Programa de Associados da Amazon, sou remunerado pelas compras qualificadas efetuadas”. Keep it near the relevant recommendation or CTA; a footer-only notice, tooltip, or hard-to-find policy page is not a substitute. A button may use natural product wording such as “Ver na Amazon” and should not be labeled “LINK DE AFILIADO”. Verify current terms at https://associados.amazon.com.br/help/operating/agreement.
+- Links must be provided or verified; never invent an affiliate tag, redirect, or tracking URL.
 
 ## Privacidade
 
