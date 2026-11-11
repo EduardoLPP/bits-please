@@ -109,17 +109,17 @@ O ritmo concentrado ajuda. A crítica do PC Gamer descreve uma campanha curta, e
 
 A conclusão editorial é que Requiem vale a atenção de quem gosta dos dois lados de Resident Evil: salas que pedem cuidado e sequências em que o jogador finalmente vira a ameaça. A campanha não esconde que está equilibrando estilos muito diferentes. Quando a tensão de Grace e a confiança de Leon se alternam no momento certo, o jogo encontra seu melhor ritmo; quando o tom se desloca para a ação grandiosa, parte do terror perde espaço.
 
-Esta análise não compara desempenho entre PS5, Xbox, Switch 2 e PC. A oferta indicada é a edição de PS5; confira a plataforma e as condições da Amazon antes da compra.`,
+Esta análise não compara desempenho entre PS5, Xbox, Switch 2 e PC. A oferta indicada é a edição de Xbox Series X; confira a plataforma e as condições da Amazon antes da compra.`,
     affiliate: "https://www.amazon.com.br/dp/B0G1MGRFYT?tag=bitsplease-20",
-    productName: "Resident Evil Requiem — edição para PlayStation 5",
-    productPitch: "O link aponta para a edição de PS5. A imagem do produto exato ainda depende de um recurso autorizado do programa Amazon Associates; a arte do jogo não será usada como se fosse uma foto da caixa.",
+    productName: "Resident Evil Requiem — edição para Xbox Series X",
+    productPitch: "A oferta verificada é da edição de Xbox Series X. Confira a plataforma, o vendedor e a condição antes de comprar.",
     status: "draft",
-    draftNotes: "A review tem duas capturas distintas do jogo com licença CC BY 4.0 e o ASIN Amazon foi verificado. Falta a imagem autorizada da edição PS5 para acompanhar o botão de compra.",
+    draftNotes: "A review tem duas capturas distintas do jogo com licença CC BY 4.0. A oferta Amazon verificada é da edição de Xbox Series X (não PS5); falta a imagem autorizada desse produto exato para acompanhar o botão de compra.",
     sources: [
       { label: "Capcom — anúncio oficial e data de lançamento", url: "https://www.capcom.co.jp/ir/english/news/pdf/e250609.pdf" },
       { label: "PC Gamer — review de Resident Evil Requiem", url: "https://www.pcgamer.com/games/resident-evil/resident-evil-requiem-review/" },
       { label: "VGC — review e contraste entre Grace e Leon", url: "https://www.videogameschronicle.com/review/resident-evil-requiem-review/" },
-      { label: "Amazon Brasil — edição PS5, ASIN B0G1MGRFYT", url: "https://www.amazon.com.br/Capcom-Resident-Evil-Requiem/dp/B0G1MGRFYT" },
+      { label: "Amazon Brasil — edição Xbox Series X, ASIN B0G1MGRFYT", url: "https://www.amazon.com.br/Capcom-Resident-Evil-Requiem/dp/B0G1MGRFYT" },
       { label: "Imagem de capa — arquivo e licença CC BY 4.0", url: "https://commons.wikimedia.org/wiki/File:Resident_Evil_Requiem_graphics.jpg" },
       { label: "Segunda imagem — arquivo e licença CC BY 4.0", url: "https://commons.wikimedia.org/wiki/File:Resident_Evil_Requiem_gameplay.jpg" }
     ]

@@ -59,6 +59,14 @@ function readPosts(){
    if(switchSeed){clean=clean.map(p=>p.id===switchSeed.id?{...p,affiliate:p.affiliate||switchSeed.affiliate,productName:p.productName||switchSeed.productName,productPitch:p.productPitch||switchSeed.productPitch,productImage:p.productImage||switchSeed.productImage,sources:[...(p.sources||[]),...switchSeed.sources.filter(s=>!(p.sources||[]).some(old=>old.url===s.url))]}:p);needsSave=true}
    localStorage.setItem('bitsplease_switch_affiliate_product_image_v1','1');
   }
+  if(!localStorage.getItem('bitsplease_requiem_xbox_offer_v1')){
+   const requiemSeed=editorialUpdates.find(p=>p.id==='review-resident-evil-requiem-2026');
+   if(requiemSeed){
+    clean=clean.map(p=>p.id!==requiemSeed.id?p:{...p,affiliate:requiemSeed.affiliate,productName:requiemSeed.productName,productPitch:requiemSeed.productPitch,productImage:undefined,body:(p.body||'').replace('A oferta indicada é a edição de PS5;','A oferta indicada é a edição de Xbox Series X;'),draftNotes:requiemSeed.draftNotes,sources:[...(p.sources||[]).filter(s=>!s.url.includes('B0G1MGRFYT')),...requiemSeed.sources.filter(s=>s.url.includes('B0G1MGRFYT'))]});
+    needsSave=true;
+   }
+   localStorage.setItem('bitsplease_requiem_xbox_offer_v1','1');
+  }
   clean=clean.map(p=>{const seed=seeds.get(p.id);if(!seed?.relevanceDate)return p;const newerDay=!p.relevanceDate||seed.relevanceDate>p.relevanceDate;const newerAssessment=seed.relevanceDate===p.relevanceDate&&seed.relevanceUpdatedAt&&(!p.relevanceUpdatedAt||seed.relevanceUpdatedAt>p.relevanceUpdatedAt);if(!newerDay&&!newerAssessment)return p;needsSave=true;return {...p,relevanceDate:seed.relevanceDate,relevanceScore:seed.relevanceScore,relevanceReason:seed.relevanceReason,relevanceSignals:seed.relevanceSignals,relevanceUpdatedAt:seed.relevanceUpdatedAt}});
   const ids=new Set(clean.map(p=>p.id));
   const posts=[...allEditorialPosts.filter(p=>!ids.has(p.id)),...clean].map(preparePublicationStatus);
