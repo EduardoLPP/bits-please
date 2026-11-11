@@ -35,42 +35,46 @@ O teste de GTA VI começa quando as primeiras partidas substituírem as teorias.
     ]
   },
   {
-    id: "gta-v-ps5-pre-vendas",
+    id: "gta-vi-ps5-pre-vendas",
     category: "CONSOLES",
     section: "GAMES",
-    tag: "PS5 · Xbox · GTA",
-    title: "PS5 é o melhor console para GTA V? Desempenho e pré-vendas em perspectiva",
-    excerpt: "O PS5 roda muito bem GTA V, mas a comparação técnica com o Series X é equilibrada. Já a vantagem nas pré-vendas de GTA VI vem de uma estimativa, não de um placar oficial.",
+    tag: "PS5 · Xbox · GTA VI",
+    title: "PS5 é o melhor console para jogar GTA VI? O que já sabemos",
+    excerpt: "A Rockstar destaca recursos do PS5 e do PS5 Pro, mas só testes comparativos poderão dizer se há vantagem de desempenho sobre o Xbox Series X.",
     date: "11 nov 2026",
     read: "8 min",
-    image: "/images/gta-v-shot-skydiving.jpg",
-    imageAlt: "Captura oficial de Grand Theft Auto V com um personagem saltando de paraquedas.",
-    imageSource: "Rockstar Games — galeria oficial de capturas de GTA V",
-    imageSourceUrl: "https://www.rockstargames.com/br/newswire/article/ak14o88385oa78/sunsets-seas-skies-and-so-on.html",
-    body: `A resposta curta é que o PS5 está entre as melhores formas de jogar GTA V em console. A resposta mais precisa é que ele não tem uma vitória definitiva sobre o Xbox Series X em todos os modos. E as porcentagens de pré-venda que circulam por aí são de GTA VI, não servem para medir o desempenho de GTA V.
+    image: "/images/gta-vi-jason-lucia.jpg",
+    imageAlt: "Jason e Lucia em uma cena noturna de Grand Theft Auto VI.",
+    imageSource: "Rockstar Games — galeria oficial de GTA VI",
+    imageSourceUrl: "https://www.rockstargames.com/VI/media/screenshots",
+    body: `A Rockstar diz que GTA VI joga melhor no PS5 e aponta a integração com o DualSense, o áudio Tempest 3D e os carregamentos pelo SSD. É a posição oficial da publicadora, baseada nos recursos da plataforma. Para saber se o jogo também terá vantagem de resolução ou estabilidade sobre o Xbox Series X, ainda faltam testes independentes.
 
-Na versão nativa para PS5, GTA V oferece modo Fidelidade, com alvo de 4K e 30 quadros por segundo, e opções de Desempenho que priorizam 60 fps, incluindo uma com efeitos de ray tracing. O Xbox Series X oferece opções equivalentes. Nas análises lado a lado da Digital Foundry, diferenças de imagem e fluidez são pequenas e dependem da cena e do modo escolhido; não há motivo técnico para tratar o Series X como uma versão ruim.
+O lançamento está marcado para 19 de novembro de 2026 no PS5 e no Xbox Series X|S. A Rockstar afirma que o jogo foi desenvolvido para os consoles atuais e tem como alvo 30 quadros por segundo, levando as duas plataformas ao limite. Até a publicação desta matéria, não havia testes independentes lado a lado que permitissem comparar resolução, estabilidade ou tempos de carregamento entre os modelos.
 
-O Xbox Series S fica abaixo dos dois modelos mais potentes: reduz resolução e não oferece o mesmo modo de ray tracing. Para quem já tem um PS5, a versão de nova geração de GTA V é uma ótima escolha, especialmente no modo Desempenho RT. Para quem compara PS5 e Series X, biblioteca, controle, serviços e preço pesam mais que uma diferença visual que varia de situação para situação.
+No PS5, os gatilhos adaptáveis e a resposta tátil do DualSense reagem às ações do jogo; o controle também pode reproduzir sons, enquanto o áudio 3D ajuda a posicionar os sons do mundo. A Rockstar ainda cita tempos de carregamento melhores. Esses são motivos legítimos para preferir a versão de PlayStation se você valoriza a integração com o controle e o ecossistema da Sony. São recursos de experiência, não uma prova de superioridade em desempenho bruto.
 
-Sobre a pré-venda: o número recente mais divulgado pela imprensa, atribuído à Sensor Tower e referente ao retrato de 3 de novembro, divide as pré-vendas digitais estimadas de GTA VI em 74% no PlayStation 5 e 26% no Xbox Series X|S. É uma estimativa de mercado, não uma divulgação oficial da Rockstar ou da Take-Two; a empresa confirmou apenas que as pré-vendas estão muito acima de suas expectativas iniciais.
+O PS5 Pro tem o diferencial visual mais claro anunciado até agora: PSSR e sombras com ray tracing, recursos que a Rockstar identifica como exclusivos desse modelo. Ainda assim, isso não significa que todos precisem comprar um Pro. O PS5 padrão também recebe os recursos do DualSense e do áudio espacial. Do lado Xbox, a Microsoft descreve o Series X como sua melhor experiência nativa para o jogo, enquanto o Series S é a opção mais acessível; no streaming em nuvem, são usadas as configurações gráficas do Series S.
 
-Essa divisão descreve compras registradas pelo levantamento e pode mudar até o lançamento. Ela não inclui um teste de desempenho, não mostra qual versão de GTA V roda melhor e não representa necessariamente todas as vendas físicas. Popularidade de uma plataforma e desempenho técnico são perguntas diferentes.`,
-    affiliate: gtaVAffiliate,
-    productName: "GTA V para PS5",
+As pré-vendas ajudam a medir a procura, não a qualidade técnica. Uma estimativa da Sensor Tower, repercutida em 10 de novembro pela GamesRadar, atribuiu cerca de 75% das pré-vendas ao PS5 e 25% ao Xbox Series X|S. Sony e Microsoft confirmaram que GTA VI bateu recordes em suas próprias lojas, mas não divulgaram um total oficial nem essa divisão por console. Portanto, trate o gráfico abaixo como estimativa de mercado, não como um placar oficial.
+
+Então, qual escolher? Se você quer os recursos de controle e áudio promovidos pela Rockstar, o PS5 é a aposta mais direta; se também pretende aproveitar PSSR e ray tracing anunciado, o PS5 Pro é o modelo com extras visuais exclusivos. Para quem já tem um Xbox Series X, ainda não há teste que justifique comprar outro console apenas esperando mais quadros por segundo. A comparação de desempenho só ficará clara quando análises independentes puderem medir as versões em condições equivalentes.`,
+    affiliate: gtaVIAffiliate,
+    productName: "GTA VI para PS5",
     preorderSplit: {
-      date: "Estimativa publicada em 4 nov 2026 · retrato de 3 nov",
+      date: "Estimativa divulgada em 10 nov 2026",
       items: [
-        { label: "PlayStation 5", value: 74, color: "pink" },
-        { label: "Xbox Series X|S", value: 26, color: "blue" }
+        { label: "PlayStation 5", value: 75, color: "pink" },
+        { label: "Xbox Series X|S", value: 25, color: "blue" }
       ],
-      note: "GTA VI · pré-vendas digitais estimadas pela Sensor Tower; não são números oficiais da publicadora."
+      note: "GTA VI · estimativa da Sensor Tower repercutida pela GamesRadar; Sony, Microsoft e Rockstar não divulgaram essa divisão oficial."
     },
     sources: [
-      { label: "Digital Foundry — comparação de GTA V entre PS5 e Xbox Series X", url: "https://www.youtube.com/watch?v=mZ2lOMQTOYc" },
-      { label: "Rockstar Support — atualização de GTA V para PS5 e Xbox Series X|S", url: "https://support.rockstargames.com/articles/2QvvMwjSkR16Oeg10qj4B0/free-grand-theft-auto-v-upgrade-to-playstation-5-or-xbox-series-x-or-s" },
-      { label: "GamesRadar — estimativa da Sensor Tower para pré-vendas de GTA VI", url: "https://www.gamesradar.com/games/grand-theft-auto/gta-6-pre-orders-have-already-made-over-usd730m-in-revenue-analysts-estimate-and-74-percent-of-them-are-on-ps5/" },
-      { label: "Take-Two — comunicado sobre pré-vendas de GTA VI", url: "https://www.take2games.com/ir/news/take-two-interactive-software-inc-reports-results-fiscal-4" }
+      { label: "Rockstar Games — pré-carregamento, recursos de console e alvo de 30 fps", url: "https://www.rockstargames.com/newswire/article/89834o94713o21/pre-load-grand-theft-auto-vi-now" },
+      { label: "PlayStation Blog — recursos de GTA VI no PS5 e PS5 Pro", url: "https://blog.playstation.com/2026/11/10/pre-load-grand-theft-auto-vi-on-ps5-starting-today/" },
+      { label: "Xbox Wire — experiência nativa no Series X|S e streaming", url: "https://news.xbox.com/en-us/2026/11/10/grand-theft-auto-6-comes-to-xbox-cloud-gaming-november-19/" },
+      { label: "Take-Two — plataformas, lançamento e comentário sobre pré-vendas", url: "https://www.take2games.com/ir/news/take-two-interactive-software-inc-reports-results-fiscal-4" },
+      { label: "GamesRadar — estimativa da Sensor Tower para pré-vendas", url: "https://www.gamesradar.com/games/grand-theft-auto/gta-6-is-officially-the-most-pre-ordered-game-in-playstation-and-xbox-store-history-sony-and-microsoft-confirm/" },
+      { label: "Sensor Tower — rastreador de vendas estimadas", url: "https://sensortower.com/grand-theft-auto-VI/sales-tracker" }
     ]
   },
   {
