@@ -11,7 +11,10 @@ export const initialPosts = [
     excerpt: "Com lançamento marcado para 19 de novembro, a expectativa nasce do peso de GTA V — mas a nova Vice City ainda precisa provar seu próprio ritmo.",
     date: "11 nov 2026",
     read: "7 min",
-    image: "https://images.unsplash.com/photo-1533929736458-ca588d08c8be?auto=format&fit=crop&w=1400&q=85",
+    image: "/images/gta-vi-jason-lucia.jpg",
+    imageAlt: "Jason e Lucia em uma captura oficial de Grand Theft Auto VI.",
+    imageSource: "Rockstar Games — galeria oficial de GTA VI",
+    imageSourceUrl: "https://www.rockstargames.com/VI/media/screenshots",
     body: `Faltam poucos dias para GTA VI chegar ao PlayStation 5 e ao Xbox Series X|S. Depois de anos em que cada trailer alimentou teorias e comparações, a conversa está prestes a mudar: em 19 de novembro, o público poderá avaliar o jogo que existe, não apenas imaginar o que ele pode ser.
 
 Essa expectativa tem uma base concreta. GTA V se tornou um lançamento raro pela escala e pela permanência: continua sendo vendido, recebeu versões em três gerações de consoles e mantém GTA Online ativo. A Take-Two informou nesta semana que o jogo se aproxima de 235 milhões de unidades vendidas no mundo. Isso explica parte do tamanho do evento, mas não garante que a sequência vá agradar pelo mesmo motivo.
@@ -40,7 +43,10 @@ O teste de GTA VI começa quando as primeiras partidas substituírem as teorias.
     excerpt: "O PS5 roda muito bem GTA V, mas a comparação técnica com o Series X é equilibrada. Já a vantagem nas pré-vendas de GTA VI vem de uma estimativa, não de um placar oficial.",
     date: "11 nov 2026",
     read: "8 min",
-    image: "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?auto=format&fit=crop&w=1400&q=85",
+    image: "/images/gta-v-shot-skydiving.jpg",
+    imageAlt: "Captura oficial de Grand Theft Auto V com um personagem saltando de paraquedas.",
+    imageSource: "Rockstar Games — galeria oficial de capturas de GTA V",
+    imageSourceUrl: "https://www.rockstargames.com/br/newswire/article/ak14o88385oa78/sunsets-seas-skies-and-so-on.html",
     body: `A resposta curta é que o PS5 está entre as melhores formas de jogar GTA V em console. A resposta mais precisa é que ele não tem uma vitória definitiva sobre o Xbox Series X em todos os modos. E as porcentagens de pré-venda que circulam por aí são de GTA VI, não servem para medir o desempenho de GTA V.
 
 Na versão nativa para PS5, GTA V oferece modo Fidelidade, com alvo de 4K e 30 quadros por segundo, e opções de Desempenho que priorizam 60 fps, incluindo uma com efeitos de ray tracing. O Xbox Series X oferece opções equivalentes. Nas análises lado a lado da Digital Foundry, diferenças de imagem e fluidez são pequenas e dependem da cena e do modo escolhido; não há motivo técnico para tratar o Series X como uma versão ruim.
@@ -76,7 +82,10 @@ Essa divisão descreve compras registradas pelo levantamento e pode mudar até o
     excerpt: "Vendas duradouras, relançamentos e um mundo online em constante mudança ajudam a explicar por que Los Santos continua no centro da conversa.",
     date: "11 nov 2026",
     read: "7 min",
-    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1400&q=85",
+    image: "/images/gta-v-cover-art.jpg",
+    imageAlt: "Arte oficial de Grand Theft Auto V com personagens e cenas do jogo ao redor do logotipo.",
+    imageSource: "Rockstar Games — downloads oficiais de GTA V",
+    imageSourceUrl: "https://www.rockstargames.com/downloads?collection=3&series=5481",
     body: `Grand Theft Auto V saiu em 2013 para PlayStation 3 e Xbox 360. Depois chegou ao PS4 e Xbox One, ao PC e, mais tarde, ao PS5 e Xbox Series X|S. A Take-Two descreve essa trajetória como um lançamento em três gerações de consoles — uma vida comercial que poucos jogos conseguem sustentar.
 
 O dado mais recente da empresa ajuda a dimensionar o caso: GTA V se aproxima de 235 milhões de unidades vendidas no mundo. O número não explica sozinho por que as pessoas continuam comprando, mas mostra que o jogo encontrou públicos novos mesmo depois do pico de lançamento.
@@ -105,7 +114,10 @@ Se você ainda não conhece Los Santos, a versão disponível depende da platafo
     excerpt: "A campanha continua forte pela cidade, pelo elenco e pelo ritmo entre os protagonistas; algumas missões lineares lembram a idade do jogo.",
     date: "11 nov 2026",
     read: "8 min",
-    image: "https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1400&q=85",
+    image: "/images/gta-v-shot-coastal.jpg",
+    imageAlt: "Captura oficial de GTA V mostrando o píer de Los Santos durante uma tempestade.",
+    imageSource: "Rockstar Games — galeria oficial de capturas de GTA V",
+    imageSourceUrl: "https://www.rockstargames.com/br/newswire/article/ak14o88385oa78/sunsets-seas-skies-and-so-on.html",
     body: `Esta é uma análise retrospectiva da campanha e do desenho de GTA V, não um teste de desempenho feito agora em um console específico. A distinção importa: a avaliação do jogo pode ser a mesma, mas resolução, taxa de quadros, preço e conteúdo variam conforme a edição.
 
 O maior acerto está no elenco. Michael, Franklin e Trevor dão ritmos e interesses diferentes à história, e a troca entre eles permite que a campanha saia de uma situação e caia em outra sem depender de um único herói. As missões de preparação e os golpes são bons exemplos de como o jogo usa esse trio para alternar planejamento, ação e improviso.
