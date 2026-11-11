@@ -17,6 +17,15 @@ Use this guide for articles, reviews, headlines, summaries, and buying guides fo
 - Never conceal or misrepresent a commission or other commercial relationship. For Amazon Associates, show clearly and prominently the required statement, or a permitted equivalent: “Como participante do Programa de Associados da Amazon, sou remunerado pelas compras qualificadas efetuadas”. Keep it near the relevant recommendation or CTA; a footer-only notice, tooltip, or hard-to-find policy page is not a substitute. A button may use natural product wording such as “Ver na Amazon” and should not be labeled “LINK DE AFILIADO”. Verify current terms at https://associados.amazon.com.br/help/operating/agreement.
 - Links must be provided or verified; never invent an affiliate tag, redirect, or tracking URL.
 
+## Pesquisa especializada obrigatória
+
+- Antes de redigir cada pauta, pesquise a pergunta específica em profundidade. Não escreva a partir de conhecimento geral, manchetes, resumos automáticos ou trechos de resultado de busca.
+- Abra e leia as fontes que sustentam os fatos centrais. Comece por fontes primárias — estúdio, publicadora, fabricante, suporte oficial, documentação, dados ou comunicados — e complemente com cobertura independente especializada, sobretudo para comparativos, testes e análise de mercado.
+- Confirme os dados importantes em pelo menos duas fontes confiáveis quando houver fontes independentes disponíveis. Para informações que só a empresa pode confirmar, use a fonte oficial e deixe clara qualquer lacuna.
+- Verifique datas, versão do jogo, edição, modelo de hardware, região, método de teste e período dos números. Pesquise termos técnicos específicos da pauta em vez de confiar em afirmações genéricas.
+- Mantenha uma lista de fontes diretas e associada às afirmações relevantes da matéria. Diferencie dado confirmado, estimativa de terceiros e interpretação editorial; não invente referências nem complete lacunas por suposição.
+- Se a pesquisa não permitir uma conclusão firme, escreva o que se sabe e o que falta confirmar. Não transforme rumores, previsões ou material promocional em resultado independente.
+
 ## Tipos de pauta do portal
 
 Escolha pautas dentro destes eixos e deixe claro o que cada matéria entrega ao leitor:
