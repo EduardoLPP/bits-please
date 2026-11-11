@@ -10,6 +10,11 @@ export const initialPosts = [
     title: "Review: Minecraft Dungeons II encontra força no co-op, mas repete as masmorras",
     excerpt: "A sequência amplia o mundo e as opções de equipamento, mas a avaliação da crítica se divide sobre a variedade dos combates. Esta análise é baseada em pesquisa, sem teste próprio.",
     date: "11 nov 2026",
+    relevanceDate: "2026-11-11",
+    relevanceScore: 77,
+    relevanceReason: "Review recente de uma sequência lançada no último mês; oferece variedade editorial diante da concentração de notícias sobre GTA VI.",
+    relevanceSignals: [{"label":"Xbox Support: edições e suporte de Minecraft Dungeons II","url":"https://help.minecraft.net/hc/en-us/articles/48779201191437-Minecraft-Dungeons-II-Editions-Ownership-and-Purchase-Support"},{"label":"GamesRadar+: review de Minecraft Dungeons II","url":"https://www.gamesradar.com/games/minecraft/minecraft-dungeons-2-review/"}],
+    relevanceUpdatedAt: "2026-11-11T07:00:00-03:00",
     read: "6 min",
     image: "https://xboxwire.thesourcemediaassets.com/sites/2/2026/09/06-8da4bf74d4fcce760202-1024x576.jpg",
     imageAlt: "Arte oficial de Minecraft Dungeons II com personagens atravessando o mundo do jogo.",
@@ -129,7 +134,13 @@ O resfriamento é requisito, não acessório decorativo. A Sony pede uma estrutu
 Depois de instalar, o console solicita a formatação inicial do drive, que apaga os dados que estiverem nele. Só então o SSD pode ser escolhido como destino de instalação e usado para jogar. Já um disco USB externo resolve outro problema: guarda jogos de PS5, mas é preciso copiá-los de volta para o armazenamento interno ou M.2 para jogar; títulos de PS4 podem ser executados do USB.
 
 Antes do checkout, confira interface, capacidade, comprimento e medidas do dissipador na ficha técnica do modelo exato. Guarde também a embalagem e a nota. A Sony não garante todo SSD de terceiros que pareça cumprir os números da tabela; em caso de dúvida, confirme a compatibilidade com o fabricante do drive.`,
+    affiliate: "https://www.amazon.com.br/dp/B0B7CPSN2K?tag=bitsplease-20",
+    productName: "WD_BLACK SN850X NVMe M.2 de 1 TB com dissipador",
+    productPitch: "Exemplo de SSD PCIe 4.0 com dissipador listado para PS5. Antes de comprar, confirme o espaço interno disponível, a exigência de dissipador e a versão atual do console; compatibilidade não substitui a comparação de capacidade e preço.",
+    status: "draft",
+    draftNotes: "Link verificado na Amazon Brasil. Falta imagem autorizada do produto exato para exibir junto ao botão de compra.",
     sources: [
+      { label: "Amazon Brasil — oferta do produto recomendado", url: "https://www.amazon.com.br/dp/B0B7CPSN2K" },
       { label: "PlayStation Support — instalação e requisitos de SSD M.2 no PS5", url: "https://www.playstation.com/en-us/support/hardware/ps5-install-m2-ssd/" },
       { label: "PlayStation — opções de armazenamento para PS5 e PS4", url: "https://www.playstation.com/en-us/accessories/storage-solutions/" },
       { label: "Imagem da capa — arquivo e licença", url: "https://commons.wikimedia.org/wiki/File:Playstation_5.jpg" },
@@ -207,7 +218,13 @@ VRR — taxa de atualização variável — tenta sincronizar a atualização do
 Tempo de resposta e input lag são métricas diferentes. O primeiro descreve a rapidez com que os pixels mudam de estado; o segundo, o intervalo entre um comando e a imagem começar a refletir esse comando. Um monitor pode anunciar “1 ms” sem que isso conte a história toda sobre borrão, overshoot ou atraso medido em condições reais.
 
 Antes de comprar, defina a resolução e a faixa de FPS que seu equipamento sustenta nos jogos que você joga. Depois compare a compatibilidade de VRR na conexão que vai usar, a qualidade do painel e medições independentes de input lag e resposta. O melhor monitor é o que combina com o seu cenário; o maior número isolado não decide isso.`,
+    affiliate: "https://www.amazon.com.br/dp/B0FGDK8DJM?tag=bitsplease-20",
+    productName: "Monitor AOC AGON Q27G4F, 27 pol., QHD, 180 Hz",
+    productPitch: "Um exemplo concreto de monitor QHD com VRR e taxa de atualização alta ajuda a comparar Hz, resolução e sincronização adaptativa. O melhor ajuste depende da placa de vídeo e dos jogos que você pretende rodar.",
+    status: "draft",
+    draftNotes: "Link verificado na Amazon Brasil. Falta imagem autorizada do produto exato para exibir junto ao botão de compra.",
     sources: [
+      { label: "Amazon Brasil — oferta do produto recomendado", url: "https://www.amazon.com.br/dp/B0FGDK8DJM" },
       { label: "RTINGS — o que a taxa de atualização muda em um monitor", url: "https://www.rtings.com/monitor/learn/monitor-refresh-rate-does-it-matter" },
       { label: "RTINGS — metodologia de teste de taxa de atualização e VRR", url: "https://www.rtings.com/monitor/tests/motion/refresh-rate" },
       { label: "VESA — especificação de certificação Adaptive-Sync", url: "https://vesa.org/wp-content/uploads/2022/05/Adaptive-Sync-Display-CTS-r1.0.pdf" },
@@ -247,7 +264,13 @@ Isso não significa gastar tudo na placa de vídeo e escolher qualquer processad
 Um roteiro mais sólido é: escolha os jogos que importam, fixe a resolução e a qualidade visual que pretende usar, defina uma meta realista de FPS e compare testes dessas condições. Confira também memória compatível, placa-mãe, fonte e espaço no gabinete. Uma configuração não é equilibrada só porque dois componentes têm preços parecidos; ela é equilibrada quando entrega o uso planejado sem sacrificar peças essenciais.
 
 Se já tem um PC, meça antes de trocar peças: observe uso de CPU e GPU, temperaturas, estabilidade dos quadros e comportamento em mais de um jogo. Se a GPU fica constantemente no limite e a taxa de quadros não chega ao alvo, ela pode ser o primeiro upgrade. Se a GPU fica ociosa enquanto poucos núcleos do processador estão saturados, investigue a CPU e o próprio jogo. O gargalo é um diagnóstico do cenário, não uma etiqueta permanente do computador.`,
+    affiliate: "https://www.amazon.com.br/dp/B0DYPGW2KB?tag=bitsplease-20",
+    productName: "ASUS TUF Gaming GeForce RTX 5070 OC, 12 GB",
+    productPitch: "Uma placa de vídeo é só uma parte do equilíbrio do PC: confira também processador, fonte, espaço do gabinete e resolução do monitor. Esta oferta é um exemplo de componente para comparar, não uma recomendação universal.",
+    status: "draft",
+    draftNotes: "Link verificado na Amazon Brasil. Falta imagem autorizada do produto exato para exibir junto ao botão de compra.",
     sources: [
+      { label: "Amazon Brasil — oferta do produto recomendado", url: "https://www.amazon.com.br/dp/B0DYPGW2KB" },
       { label: "Intel — como escolher um PC gamer pré-montado", url: "https://www.intel.com/content/www/us/en/gaming/resources/how-to-choose-prebuilt-gaming-pc.html" },
       { label: "Intel — como escolher componentes e montar um PC gamer", url: "https://www.intel.com/content/www/us/en/gaming/resources/how-to-build-a-gaming-pc.html" },
       { label: "Tom's Hardware — testes de upgrade de CPU e GPU em 16 combinações", url: "https://www.tomshardware.com/pc-components/gpus/cpu-vs-gpu-upgrade-benchmarks-testing" },
@@ -327,7 +350,13 @@ Preservar um videogame como objeto de história exige mais do que conseguir inic
 Isso não torna a retrocompatibilidade pouco importante. Pelo contrário: ela reduz atrito para quem quer revisitar uma coleção e ajuda a levar obras antigas a novas telas. O limite está em confundir acesso oferecido por uma plataforma com uma garantia de conservação permanente. Quando um serviço fecha, um disco falha ou uma licença muda, a experiência pode depender de condições que não estão nas mãos do jogador.
 
 Ao comprar uma coleção digital ou física, confira a lista oficial do console e as limitações daquele jogo. Para preservar seu próprio acervo, mantenha mídia e hardware em condições adequadas e não trate uma lista de retrocompatibilidade como arquivo completo da história dos games. Jogar de novo é parte da preservação cultural, mas não é todo o trabalho.`,
+    affiliate: "https://www.amazon.com.br/dp/B0CSPNDPKG?tag=bitsplease-20",
+    productName: "PlayStation 5 Slim com unidade de disco",
+    productPitch: "Para quem quer acessar jogos físicos de PS4 compatíveis, esta edição com leitor evita a limitação dos modelos digitais. A Sony mantém uma lista de compatibilidade; jogos e acessórios antigos podem ter exceções.",
+    status: "draft",
+    draftNotes: "Link verificado na Amazon Brasil. Falta imagem autorizada do produto exato para exibir junto ao botão de compra.",
     sources: [
+      { label: "Amazon Brasil — oferta do produto recomendado", url: "https://www.amazon.com.br/dp/B0CSPNDPKG" },
       { label: "Xbox — catálogo e limites de retrocompatibilidade", url: "https://www.xbox.com/en-us/games/backward-compatibility" },
       { label: "Nintendo Support — jogar títulos de Switch no Switch 2", url: "https://en-americas-support.nintendo.com/app/answers/detail/a_id/68409/~/can-i-play-nintendo-switch-games-on-nintendo-switch-2" },
       { label: "Library of Congress — formatos recomendados para software e videogames", url: "https://www.loc.gov/preservation/resources/rfs/software-videogames.html" },
@@ -343,6 +372,11 @@ Ao comprar uma coleção digital ou física, confira a lista oficial do console 
     title: "GTA VI chega à reta final carregando mais do que nostalgia",
     excerpt: "Com lançamento marcado para 19 de novembro, a expectativa nasce do peso de GTA V — mas a nova Vice City ainda precisa provar seu próprio ritmo.",
     date: "11 nov 2026",
+    relevanceDate: "2026-11-11",
+    relevanceScore: 91,
+    relevanceReason: "A uma semana do lançamento, a data confirmada e o recorde recente de pré-vendas mantêm a pauta entre as conversas mais atuais.",
+    relevanceSignals: [{"label":"Rockstar Games: data de lançamento, 19 nov 2026","url":"https://www.rockstargames.com/VI"},{"label":"PlayStation Blog: recorde de pré-vendas, 10 nov 2026","url":"https://blog.playstation.com/2026/11/10/pre-load-grand-theft-auto-vi-on-ps5-starting-today/"}],
+    relevanceUpdatedAt: "2026-11-11T07:00:00-03:00",
     read: "7 min",
     image: "/images/gta-vi-jason-lucia.jpg",
     imageAlt: "Jason e Lucia em uma captura oficial de Grand Theft Auto VI.",
@@ -375,6 +409,11 @@ O teste de GTA VI começa quando as primeiras partidas substituírem as teorias.
     title: "PS5 é o melhor console para jogar GTA VI? O que já sabemos",
     excerpt: "A Rockstar destaca recursos do PS5 e do PS5 Pro, mas só testes comparativos poderão dizer se há vantagem de desempenho sobre o Xbox Series X.",
     date: "11 nov 2026",
+    relevanceDate: "2026-11-11",
+    relevanceScore: 99,
+    relevanceReason: "A PlayStation confirmou que GTA VI é o jogo mais pré-encomendado da história da PlayStation Store; o lançamento está marcado para 19 de novembro.",
+    relevanceSignals: [{"label":"PlayStation Blog: recorde de pré-vendas e pré-carregamento, 10 nov 2026","url":"https://blog.playstation.com/2026/11/10/pre-load-grand-theft-auto-vi-on-ps5-starting-today/"},{"label":"Rockstar Games: data e plataformas","url":"https://www.rockstargames.com/VI"}],
+    relevanceUpdatedAt: "2026-11-11T07:00:00-03:00",
     read: "8 min",
     image: "https://gmedia.playstation.com/is/image/SIEPDC/grand-theft-auto-vi-screenshot-08-en-06may25",
     imageAlt: "Avião sobrevoando as Leonida Keys em uma captura oficial de Grand Theft Auto VI.",
