@@ -1,5 +1,5 @@
-const gtaVAffiliate = "";
-const gtaVIAffiliate = "";
+const gtaVAffiliate = "https://www.amazon.com.br/dp/B0B12DV64Y/ref=nosim?tag=bitsplease-20";
+const gtaVIAffiliate = "https://www.amazon.com.br/dp/B0H6KT2RWH/ref=nosim?tag=bitsplease-20";
 
 export const initialPosts = [
   {
@@ -24,7 +24,7 @@ Também vale separar a compra da ansiedade. O lançamento inicial está confirma
 
 O teste de GTA VI começa quando as primeiras partidas substituírem as teorias. Até lá, a expectativa é justificável — e a cautela também. Se decidir fazer a pré-compra, confira a edição, o preço e as condições da loja da sua plataforma.`,
     affiliate: gtaVIAffiliate,
-    productName: "GTA VI",
+    productName: "GTA VI para PS5",
     sources: [
       { label: "Rockstar Games — página oficial de GTA VI", url: "https://www.rockstargames.com/VI" },
       { label: "Take-Two — resultados do segundo trimestre fiscal de 2027", url: "https://www.take2games.com/ir/news/take-two-interactive-software-inc-reports-results-fiscal-4" },
@@ -50,7 +50,8 @@ O Xbox Series S fica abaixo dos dois modelos mais potentes: reduz resolução e 
 Sobre a pré-venda: o número recente mais divulgado pela imprensa, atribuído à Sensor Tower e referente ao retrato de 3 de novembro, divide as pré-vendas digitais estimadas de GTA VI em 74% no PlayStation 5 e 26% no Xbox Series X|S. É uma estimativa de mercado, não uma divulgação oficial da Rockstar ou da Take-Two; a empresa confirmou apenas que as pré-vendas estão muito acima de suas expectativas iniciais.
 
 Essa divisão descreve compras registradas pelo levantamento e pode mudar até o lançamento. Ela não inclui um teste de desempenho, não mostra qual versão de GTA V roda melhor e não representa necessariamente todas as vendas físicas. Popularidade de uma plataforma e desempenho técnico são perguntas diferentes.`,
-    affiliate: "",
+    affiliate: gtaVAffiliate,
+    productName: "GTA V para PS5",
     preorderSplit: {
       date: "Estimativa publicada em 4 nov 2026 · retrato de 3 nov",
       items: [
@@ -88,7 +89,7 @@ Na história dos games, GTA V é relevante menos por uma fórmula secreta do que
 
 Se você ainda não conhece Los Santos, a versão disponível depende da plataforma que usa. Confira a edição e os requisitos antes de comprar.`,
     affiliate: gtaVAffiliate,
-    productName: "GTA V",
+    productName: "GTA V para PS5",
     sources: [
       { label: "Take-Two — apresentação institucional de novembro de 2026", url: "https://ir.take2games.com/static-files/a45ff316-72c4-4255-b123-aace2e41ad1a" },
       { label: "Rockstar Games — Grand Theft Auto V", url: "https://www.rockstargames.com/gta-v" },
@@ -119,7 +120,7 @@ Veredito: GTA V ainda vale a pena para quem quer uma campanha de mundo aberto co
 
 Antes da compra, confira se a edição corresponde à plataforma desejada e se você já tem uma versão anterior.`,
     affiliate: gtaVAffiliate,
-    productName: "GTA V",
+    productName: "GTA V para PS5",
     sources: [
       { label: "Rockstar Games — Grand Theft Auto V", url: "https://www.rockstargames.com/gta-v" },
       { label: "Digital Foundry — comparação técnica das versões de console", url: "https://www.youtube.com/watch?v=mZ2lOMQTOYc" },
