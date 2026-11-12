@@ -84,6 +84,11 @@ function readPosts(){
    if(rdr2Seed){clean=clean.map(p=>p.id!==rdr2Seed.id?p:{...p,image:rdr2Seed.image,imageAlt:rdr2Seed.imageAlt,imageSource:rdr2Seed.imageSource,imageSourceUrl:rdr2Seed.imageSourceUrl,imageLicense:'',imageLicenseUrl:'',inlineImage:rdr2Seed.inlineImage,additionalImages:rdr2Seed.additionalImages,draftNotes:rdr2Seed.draftNotes});needsSave=true}
    localStorage.setItem('bitsplease_rdr2_user_images_v1','1');
   }
+  if(!localStorage.getItem('bitsplease_sonic_pico_park_supplied_images_v1')){
+   const sonicSeed=seeds.get('sonic-pico-park-cooperativo-plataformas');
+   if(sonicSeed){clean=clean.map(p=>p.id!==sonicSeed.id?p:{...p,image:sonicSeed.image,imageAlt:sonicSeed.imageAlt,imageSource:sonicSeed.imageSource,imageSourceUrl:sonicSeed.imageSourceUrl,imageLicense:sonicSeed.imageLicense,imageLicenseUrl:sonicSeed.imageLicenseUrl,inlineImage:sonicSeed.inlineImage,imageResearch:sonicSeed.imageResearch,draftNotes:sonicSeed.draftNotes});needsSave=true}
+   localStorage.setItem('bitsplease_sonic_pico_park_supplied_images_v1','1');
+  }
   if(!localStorage.getItem('bitsplease_metaphor_supplied_images_v1')){
    const metaphorSeed=seeds.get('review-metaphor-refantazio-pesquisa-2026');
    if(metaphorSeed){clean=clean.map(p=>p.id!==metaphorSeed.id?p:{...p,image:metaphorSeed.image,imageAlt:metaphorSeed.imageAlt,imageSource:metaphorSeed.imageSource,imageSourceUrl:metaphorSeed.imageSourceUrl,imageLicense:metaphorSeed.imageLicense,imageLicenseUrl:metaphorSeed.imageLicenseUrl,inlineImage:metaphorSeed.inlineImage,imageResearch:metaphorSeed.imageResearch,draftNotes:metaphorSeed.draftNotes});needsSave=true}

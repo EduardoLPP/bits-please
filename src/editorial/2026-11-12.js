@@ -104,6 +104,22 @@ Nosso veredito editorial favorece quem gosta de experimentar equipes e aceita de
     id: 'sonic-pico-park-cooperativo-plataformas', title: 'Sonic Pico Park troca a corrida solitária por trabalho em equipe',
     excerpt: 'A colaboração tem data de 12 de novembro e partidas para duas a oito pessoas. A proposta é um puzzle cooperativo, com plataformas que precisam ser conferidas antes de reunir o grupo.',
     tag: 'Sonic Pico Park · cooperação', reach: 18, reliability: 13, usefulness: 7,
+    media: {
+      image: '/images/sonic-pico-park-cover.jpg',
+      imageAlt: 'Knuckles, Tails e Sonic em pixel art sobre uma plataforma azul de Sonic Pico Park.',
+      imageSource: 'Sega / PICO PARK · imagem fornecida para edição',
+      imageSourceUrl: '',
+      imageLicense: '',
+      imageLicenseUrl: '',
+      inlineImage: {
+        image: '/images/sonic-pico-park-gameplay.png',
+        alt: 'Captura de Sonic Pico Park com Tails sobre Sonic durante um salto entre plataformas azuis e um quadro de referência no canto superior esquerdo.',
+        credit: 'Sega / PICO PARK · captura fornecida para edição',
+        sourceUrl: '',
+        license: '',
+        licenseUrl: '',
+      },
+    },
     reason: 'Calendário oficial e entrevista com os responsáveis confirmam o projeto; nenhuma publicação de hoje foi validada integralmente.',
     body: `Sonic Pico Park junta os personagens da Sega à estrutura de puzzles cooperativos de PICO PARK. O site oficial informa lançamento em 12 de novembro de 2026 e suporte a duas a oito pessoas. A proposta pede que o grupo resolva obstáculos junto, em vez de tratar a velocidade individual como objetivo principal.
 
