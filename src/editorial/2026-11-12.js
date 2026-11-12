@@ -287,6 +287,20 @@ O tema afeta o custo de usar a nuvem, mas comprar um controle novo não altera a
     id: 'escape-academy-2-coop-sem-cronometro', title: 'Escape Academy 2: cooperação e modo sem cronômetro abrem caminhos para os puzzles',
     excerpt: 'O campus vira parte da exploração, e o cronômetro é opcional. A proposta favorece jogar no próprio ritmo, embora a análise de PS5 aponte problemas fora das salas.',
     section: 'GAMES', tag: 'Escape Academy 2 · puzzle · co-op', reach: 11, reliability: 14, usefulness: 8,
+    media: {
+      image: '/images/escape-academy-2-cover.jpg',
+      imageAlt: 'Arte de Escape Academy 2: Back 2 School com dois estudantes de uniforme vermelho, uma chave dourada e os prédios da academia ao fundo.',
+      imageSource: 'Coin Crew Games / iam8bit Presents · arte fornecida para edição',
+      imageSourceUrl: '',
+      imageLicense: '',
+      imageLicenseUrl: '',
+      pendingInlineImage: {
+        file: 'editorial-assets/escape-academy-2/courtyard-unverified.webp',
+        description: 'Pátio escuro com fonte central, estátuas e edifícios de colunas. Arquivo fornecido para conferência; correspondência com Escape Academy 2 não confirmada.',
+        status: 'subject-origin-and-commercial-permission-unverified',
+      },
+    },
+    visualNotes: 'Capa recebida, identificada como arte de Escape Academy 2 e inserida. O segundo arquivo foi preservado em editorial-assets para revisão, sem usá-lo como captura do jogo: correspondência e origem não confirmadas. Falta uma segunda imagem verificada para o corpo, além da origem/autorização comercial da capa e da oferta Amazon pertinente com destino e tag conferidos.',
     reason: 'Lançamento de 5/11, ficha da publicadora e teste de PS5 permitem discutir recursos e ressalvas; sem sinal novo do dia.',
     body: `Escape Academy 2: Back 2 School amplia a escola de enigmas com um campus explorável e uma opção que muda a relação com os desafios: o cronômetro pode ser desligado. A página da iam8bit Presents confirma lançamento em 5 de novembro de 2026 e modos de cooperação online e local em tela dividida.
 
@@ -305,6 +319,22 @@ Para jogar em dupla, combine primeiro a modalidade: dividir a mesma tela é dife
     id: 'skyrim-15-anos-creation-bundle-edicoes', title: 'Skyrim aos 15 anos: o novo bundle de Creations não é a Anniversary Edition',
     excerpt: 'A celebração reúne cinco conteúdos de criadores. O nome parecido exige cuidado para entender o que a compra da edição anterior realmente inclui.',
     section: 'CULTURA POP', tag: 'Skyrim · 15 anos · Creations', reach: 19, reliability: 11, usefulness: 8,
+    media: {
+      image: '/images/skyrim-dragonborn-cover.jpg',
+      imageAlt: 'Arte de The Elder Scrolls V: Skyrim com Dragonborn usando capacete com chifres, armas nas mãos e o título do jogo.',
+      imageSource: 'Bethesda · arte fornecida para edição',
+      imageSourceUrl: '',
+      imageLicense: '',
+      imageLicenseUrl: '',
+      inlineImage: {
+        image: '/images/skyrim-dragon-flight.webp',
+        alt: 'Dragão escuro de Skyrim com as asas abertas sobre uma paisagem de montanhas nevadas.',
+        credit: 'Bethesda · imagem fornecida para edição',
+        sourceUrl: '',
+        license: '',
+        licenseUrl: '',
+      },
+    },
     reason: 'Bethesda publicou a celebração em 11/11; não atribuímos a ela data de hoje nem audiência ou vendas não apuradas.',
     body: `A Bethesda marcou os 15 anos de Skyrim com um Anniversary Creation Bundle, anunciado em 11 de novembro de 2026. O pacote reúne cinco Creations e foi apresentado para Xbox, PC e PlayStation. O nome lembra uma edição já conhecida do jogo, mas a semelhança não autoriza concluir que se trata da mesma compra.
 
@@ -317,6 +347,6 @@ A Anniversary Edition é outro produto. Na página oficial, ela aparece como uma
 Para quem volta a um save antigo, a precaução prática é conferir os requisitos de cada conteúdo e manter uma cópia de segurança antes de alterar a instalação. Não há nesta matéria uma lista testada de combinações seguras. A celebração oferece um motivo para revisitar o mundo; a escolha de conteúdo precisa continuar baseada em compatibilidade, interesse e descrição da oferta, sem confundir nomes parecidos com direitos de acesso.`,
     sources: [source('Bethesda — bundle de 15 anos, 11/11/2026', links.skyrim), source('Bethesda — conteúdo da Anniversary Edition', links.skyrimEdition)],
     imageQuery: 'Skyrim Anniversary Creation Bundle 2026 official screenshots', imageSources: [links.skyrim, links.skyrimEdition], product: 'Skyrim Anniversary Edition na plataforma pertinente; não inclui automaticamente o novo bundle de Creations',
-    blockers: ['Não encontrada confirmação independente especializada integral do pacote; apuração atual é oficial. Busca visual retornou embalagens antigas que não representam as cinco Creations de 2026.'],
+    blockers: ['Não encontrada confirmação independente especializada integral do pacote; apuração atual é oficial. As imagens fornecidas mostram Skyrim e não representam especificamente as cinco Creations do bundle de 2026.'],
   }),
 ];
