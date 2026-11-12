@@ -84,6 +84,15 @@ function readPosts(){
    if(rdr2Seed){clean=clean.map(p=>p.id!==rdr2Seed.id?p:{...p,image:rdr2Seed.image,imageAlt:rdr2Seed.imageAlt,imageSource:rdr2Seed.imageSource,imageSourceUrl:rdr2Seed.imageSourceUrl,imageLicense:'',imageLicenseUrl:'',inlineImage:rdr2Seed.inlineImage,additionalImages:rdr2Seed.additionalImages,draftNotes:rdr2Seed.draftNotes});needsSave=true}
    localStorage.setItem('bitsplease_rdr2_user_images_v1','1');
   }
+  for(const id of ['warhammer-survivors-primeiros-passos-gitz','football-manager-27-patch-lancamento-proximas-correcoes']){
+   const key=`bitsplease_supplied_images_${id}_v1`,seed=seeds.get(id);
+   if(seed&&!localStorage.getItem(key)){
+    const fields=['image','imageAlt','imageSource','imageSourceUrl','imageLicense','imageLicenseUrl','inlineImage','imageResearch','draftNotes'];
+    const update=Object.fromEntries(fields.filter(field=>seed[field]!==undefined).map(field=>[field,seed[field]]));
+    clean=clean.map(p=>p.id===id?{...p,...update}:p);needsSave=true;
+    localStorage.setItem(key,'1');
+   }
+  }
   if(!localStorage.getItem('bitsplease_sonic_pico_park_supplied_images_v1')){
    const sonicSeed=seeds.get('sonic-pico-park-cooperativo-plataformas');
    if(sonicSeed){clean=clean.map(p=>p.id!==sonicSeed.id?p:{...p,image:sonicSeed.image,imageAlt:sonicSeed.imageAlt,imageSource:sonicSeed.imageSource,imageSourceUrl:sonicSeed.imageSourceUrl,imageLicense:sonicSeed.imageLicense,imageLicenseUrl:sonicSeed.imageLicenseUrl,inlineImage:sonicSeed.inlineImage,imageResearch:sonicSeed.imageResearch,draftNotes:sonicSeed.draftNotes});needsSave=true}

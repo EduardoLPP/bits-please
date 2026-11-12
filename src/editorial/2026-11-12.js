@@ -27,7 +27,7 @@ const links = {
   gamepass: 'https://news.xbox.com/en-us/2026/11/03/xbox-game-pass-november-2026-wave-1/',
 };
 
-function draft({ id, title, excerpt, section = 'NOTÍCIAS', tag, body, sources, reach, reliability, usefulness, reason, imageQuery, imageSources, product, media, blockers = [] }) {
+function draft({ id, title, excerpt, section = 'NOTÍCIAS', tag, body, sources, reach, reliability, usefulness, reason, imageQuery, imageSources, product, media, visualNotes, blockers = [] }) {
   const relevanceBreakdown = { timeliness: 0, publicInterest: 0, reach, sourceReliability: reliability, brazilUtility: usefulness };
   return {
     id, title, excerpt, category: 'GAMES', section, tag,
@@ -37,8 +37,8 @@ function draft({ id, title, excerpt, section = 'NOTÍCIAS', tag, body, sources, 
     relevanceBreakdown, relevanceScore: Object.values(relevanceBreakdown).reduce((sum, value) => sum + value, 0),
     relevanceReason: `${reason} Avaliação provisória: nenhum sinal publicado em 12/11 com data e conteúdo integral confirmados nesta apuração; atualidade e interesse público do dia receberam zero. Não elegível como destaque diário enquanto permanecer em rascunho.`,
     relevanceSignals: sources.slice(0, 2).map(item => ({ ...item, sameDayVerified: false })),
-    draftNotes: [media ? 'Capa e segunda imagem fornecidas para edição foram inseridas e conferidas visualmente como imagens do jogo. Faltam páginas de origem e autorização de uso comercial dessas imagens; oferta Amazon pertinente e destino com a tag bitsplease-20 conferidos.' : 'Faltam capa e segunda imagem distintas com correspondência visual e autorização comercial verificadas; oferta Amazon pertinente e destino com a tag bitsplease-20 conferidos.', ...blockers, 'Foto de produto é opcional e não bloqueia publicação.'].join(' '),
-    imageResearch: { query: imageQuery, checkedAt: assessedAt, sources: imageSources, status: media ? 'visual-match-confirmed-commercial-permission-pending' : 'pending-commercial-permission-and-visual-verification' },
+    draftNotes: [visualNotes || (media ? 'Capa e segunda imagem fornecidas para edição foram inseridas e conferidas visualmente como imagens do jogo. Faltam páginas de origem e autorização de uso comercial dessas imagens; oferta Amazon pertinente e destino com a tag bitsplease-20 conferidos.' : 'Faltam capa e segunda imagem distintas com correspondência visual e autorização comercial verificadas; oferta Amazon pertinente e destino com a tag bitsplease-20 conferidos.'), ...blockers, 'Foto de produto é opcional e não bloqueia publicação.'].join(' '),
+    imageResearch: { query: imageQuery, checkedAt: assessedAt, sources: imageSources, status: media?.image && media?.inlineImage ? 'visual-match-confirmed-commercial-permission-pending' : media ? 'partial-visual-match-confirmed-commercial-permission-pending' : 'pending-commercial-permission-and-visual-verification' },
     affiliateResearch: { product, status: 'unverified-do-not-publish', tag: 'bitsplease-20', checkedAt: assessedAt },
   };
 }
@@ -138,6 +138,22 @@ Para leitores brasileiros, a decisão prática começa pelo tamanho do grupo, pe
     id: 'warhammer-survivors-primeiros-passos-gitz', title: 'Warhammer Survivors: por que conhecer os inimigos importa',
     excerpt: 'O lançamento une os universos de Warhammer ao formato de sobrevivência em hordas. As dicas do estúdio mostram ameaças com movimentos e prioridades diferentes.',
     section: 'GAMES', tag: 'Warhammer Survivors · guia de entrada', reach: 16, reliability: 13, usefulness: 7,
+    media: {
+      image: '/images/warhammer-survivors-cover.avif',
+      imageAlt: 'Arte de Warhammer Survivors com o título ao centro e guerreiros dos universos Warhammer 40.000 e Age of Sigmar enfrentando criaturas.',
+      imageSource: 'Auroch Digital / Games Workshop · arte fornecida para edição',
+      imageSourceUrl: '',
+      imageLicense: '',
+      imageLicenseUrl: '',
+      inlineImage: {
+        image: '/images/warhammer-survivors-horde.jpg',
+        alt: 'Captura de Warhammer Survivors em pixel art com dois soldados cercados por uma horda de criaturas sobre terreno marrom e estruturas orgânicas roxas.',
+        credit: 'Auroch Digital / Games Workshop · captura fornecida para edição',
+        sourceUrl: '',
+        license: '',
+        licenseUrl: '',
+      },
+    },
     reason: 'Estúdio confirmou lançamento em 10/11 e publicou dicas; relato independente descreve experiência, mas não é sinal novo de hoje.',
     body: `Warhammer Survivors já foi apresentado como disponível no Xbox Series X|S e no Game Pass em um texto de 10 de novembro assinado por uma designer da Auroch Digital no Xbox Wire. A parceria com a poncle leva o formato de sobrevivência em hordas aos universos de Warhammer 40.000 e Age of Sigmar. Os dois cenários fazem parte da proposta, e isso ajuda a explicar a variedade de criaturas mostradas na divulgação.
 
@@ -150,12 +166,23 @@ A T3 publicou um relato próprio de contato com o jogo e destacou o apelo das se
 Antes de instalar, confira a ficha da versão e a elegibilidade do plano de assinatura utilizado. Ter acesso pelo serviço é diferente de adquirir uma licença permanente. Para um eventual acessório recomendado, o encaixe honesto seria um controle compatível com a plataforma em que você pretende jogar; não há motivo para comprar um periférico apenas por causa do lançamento.`,
     sources: [source('Auroch Digital no Xbox Wire — lançamento e inimigos', links.warhammer), source('T3 — relato de experiência do autor', links.warhammerReview)],
     imageQuery: 'Warhammer Survivors official screenshots', imageSources: [links.warhammer, 'https://store.steampowered.com/app/3669620/Warhammer_Survivors/'], product: 'Controle Xbox compatível para a edição de console ou PC',
-    blockers: ['Capturas encontradas em busca incluem versão pré-alpha; não apresentá-las como estado atual. Microsoft não concede direitos sobre imagens de terceiros.'],
+    blockers: ['A captura enviada não identifica build ou plataforma; não apresentá-la como prova do estado atual ou como imagem dos Gloomspite Gitz. Microsoft não concede direitos sobre imagens de terceiros.'],
   }),
   draft({
     id: 'football-manager-27-patch-lancamento-proximas-correcoes', title: 'Football Manager 27: o que o patch de lançamento corrige e o que ficou para depois',
     excerpt: 'A Sports Interactive separa ajustes já anunciados de mudanças ainda em testes. A distinção evita tratar promessa de atualização como problema resolvido.',
     tag: 'Football Manager 27 · atualizações', reach: 16, reliability: 14, usefulness: 9,
+    media: {
+      inlineImage: {
+        image: '/images/football-manager-27-match-stats.png',
+        alt: 'Interface de partida de Football Manager fornecida para a pauta de FM27, com formações, mapa de calor, estatísticas e placar de Leyton Orient e Wimbledon.',
+        credit: 'Sports Interactive / Sega · captura fornecida para edição',
+        sourceUrl: '',
+        license: '',
+        licenseUrl: '',
+      },
+    },
+    visualNotes: 'Captura de estatísticas recebida e inserida no corpo. A capa de FM27 foi vista na conversa, mas o arquivo não foi encontrado no caminho fornecido; falta copiar a capa. Também faltam páginas de origem, autorização comercial e oferta Amazon pertinente com destino e tag verificados.',
     reason: 'Notas oficiais e entrevista técnica ajudam a orientar a decisão; não foi confirmada atualização publicada no dia 12.',
     body: `Football Manager 27 chegou ao calendário de novembro com uma lista de correções de lançamento e um segundo conjunto de melhorias ainda em desenvolvimento. A Sports Interactive marcou a estreia geral para 10 de novembro. Para quem decide quando começar uma carreira, vale separar o que consta no patch inicial do que continua como previsão.
 
@@ -168,7 +195,7 @@ A entrevista da FourFourTwo com um desenvolvedor detalha a intenção dos novos 
 Antes de decidir atualizar ou iniciar um save, confira a versão instalada, faça uma cópia de segurança da carreira e leia a orientação específica da Sports Interactive. O texto não garante compatibilidade irrestrita de saves nem que todas as mudanças sejam aplicadas a partidas antigas. E a janela de teste gratuito anterior ao lançamento não deve ser anunciada como oferta ativa em 12 de novembro.`,
     sources: [source('Sports Interactive — notas e planos de atualização', links.fmPatch), source('Football Manager — data de lançamento', links.fm), source('FourFourTwo — entrevista sobre tática', links.fmInterview)],
     imageQuery: 'Football Manager 27 official screenshots', imageSources: [links.fm, links.fmPatch], product: 'Mouse compatível com o computador para navegação na interface; evitar atribuir recursos exclusivos de FM27 ao acessório',
-    blockers: ['Falta acompanhar teste independente do patch e confirmar versão atual. Imagem encontrada na busca tem caminho datado de 2025; conferir versão antes de usar.'],
+    blockers: ['Falta acompanhar teste independente do patch e confirmar versão atual. A captura enviada não identifica versão/patch e não comprova as correções discutidas.'],
   }),
   draft({
     id: 'thronefall-craaghelm-expansao-jogo-base', title: 'Thronefall e Craaghelm: a estreia nos consoles não torna o DLC parte da assinatura',
