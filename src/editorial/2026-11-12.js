@@ -43,6 +43,15 @@ function draft({ id, title, excerpt, section = 'NOTÍCIAS', tag, body, sources, 
   };
 }
 
+const publishedOnUserRequest = new Set([
+  'review-metaphor-refantazio-pesquisa-2026',
+  'sonic-pico-park-cooperativo-plataformas',
+  'warhammer-survivors-primeiros-passos-gitz',
+  'thronefall-craaghelm-expansao-jogo-base',
+  'xbox-cloud-gaming-limites-brasil-assinantes',
+  'skyrim-15-anos-creation-bundle-edicoes',
+]);
+
 export const dailyPosts20261112 = [
   draft({
     id: 'pikmin-4-switch-2-dandori-academy-lancamento',
@@ -349,4 +358,22 @@ Para quem volta a um save antigo, a precaução prática é conferir os requisit
     imageQuery: 'Skyrim Anniversary Creation Bundle 2026 official screenshots', imageSources: [links.skyrim, links.skyrimEdition], product: 'Skyrim Anniversary Edition na plataforma pertinente; não inclui automaticamente o novo bundle de Creations',
     blockers: ['Não encontrada confirmação independente especializada integral do pacote; apuração atual é oficial. As imagens fornecidas mostram Skyrim e não representam especificamente as cinco Creations do bundle de 2026.'],
   }),
-];
+].map(post => {
+  const approvedIds = publishedOnUserRequest;
+  if (!approvedIds.has(post.id)) return post;
+  const { draftNotes, ...article } = post;
+  return {
+    ...article,
+    status: 'published',
+    publishedAt: assessedAt,
+    publicationApproval: {
+      mode: 'direct-user-publication',
+      approvedAt: assessedAt,
+      coverImage: post.image,
+      bodyImage: post.inlineImage.image,
+      imageRightsUnverified: true,
+      affiliateOfferUnverified: true,
+    },
+    editorialPendingNotes: draftNotes,
+  };
+});
