@@ -253,6 +253,22 @@ Para decidir se vale assinar ou comprar uma mídia física, comece pelo jogo que
     id: 'xbox-cloud-gaming-limites-brasil-assinantes', title: 'Xbox Cloud Gaming: os limites anunciados exigem atenção à conta e à região',
     excerpt: 'O anúncio prevê franquias de horas, mas há relatos de condições preservadas para assinantes existentes no Brasil. Confira a regra da sua conta antes de mudar o plano.',
     tag: 'Xbox Cloud Gaming · Brasil · assinatura', reach: 18, reliability: 12, usefulness: 10,
+    media: {
+      image: '/images/xbox-cloud-gaming-cover.webp',
+      imageAlt: 'Símbolo branco do Xbox dentro de uma nuvem sobre fundo verde, com o texto Cloud Gaming.',
+      imageSource: 'Imagem fornecida para edição · marca Game Rant visível; autoria não confirmada',
+      imageSourceUrl: '',
+      imageLicense: '',
+      imageLicenseUrl: '',
+      inlineImage: {
+        image: '/images/xbox-cloud-gaming-tv-console.jpg',
+        alt: 'Montagem sobre Xbox Cloud Gaming com uma TV LG exibindo jogos, o símbolo Xbox, um console branco e um controle.',
+        credit: 'Montagem fornecida para edição · autoria não confirmada',
+        sourceUrl: '',
+        license: '',
+        licenseUrl: '',
+      },
+    },
     reason: 'Mudança prevista para novembro tem utilidade local; exceções foram reportadas, mas falta confirmação oficial atualizada específica do Brasil.',
     body: `O anúncio de mudanças no Xbox Cloud Gaming prevê limites mensais de horas a partir de novembro. No texto de 3 de setembro, a Microsoft listou 15 horas para Ultimate, dez para Premium e cinco para Essential, com possibilidade de comprar tempo adicional. A própria empresa ressalvou que disponibilidade e condições podem variar por mercado.
 
@@ -265,7 +281,7 @@ A orientação prática é abrir os detalhes da assinatura e o suporte oficial a
 O tema afeta o custo de usar a nuvem, mas comprar um controle novo não altera a franquia de horas. Uma eventual recomendação de periférico só faz sentido por compatibilidade com o aparelho utilizado. Não há teste de latência nesta matéria, e nenhum número de qualidade da conexão foi medido pelo Bits, Please.`,
     sources: [source('Xbox Wire — anúncio e ressalva de mercado', links.cloud), source('Pure Xbox — relatos sobre assinantes existentes', links.cloudReport)],
     imageQuery: 'Xbox cloud gaming hours November 2026 official', imageSources: [links.cloud, 'https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/permissions'], product: 'Controle Xbox compatível com o dispositivo de streaming; não oferece horas adicionais',
-    blockers: ['Confirmação oficial atualizada da regra brasileira e preços locais pendente. Não usar capturas de conta privada nem tratar relatos como garantia contratual.'],
+    blockers: ['Confirmação oficial atualizada da regra brasileira e preços locais pendente. Não usar capturas de conta privada nem tratar relatos como garantia contratual. As duas imagens fornecidas são ilustrações do serviço, não comprovação dos limites, catálogo ou compatibilidade atual de modelos de TV e console. Preservada a marca visível no arquivo de capa; autoria e licença ainda precisam de confirmação.'],
   }),
   draft({
     id: 'escape-academy-2-coop-sem-cronometro', title: 'Escape Academy 2: cooperação e modo sem cronômetro abrem caminhos para os puzzles',
