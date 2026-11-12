@@ -84,6 +84,11 @@ function readPosts(){
    if(rdr2Seed){clean=clean.map(p=>p.id!==rdr2Seed.id?p:{...p,image:rdr2Seed.image,imageAlt:rdr2Seed.imageAlt,imageSource:rdr2Seed.imageSource,imageSourceUrl:rdr2Seed.imageSourceUrl,imageLicense:'',imageLicenseUrl:'',inlineImage:rdr2Seed.inlineImage,additionalImages:rdr2Seed.additionalImages,draftNotes:rdr2Seed.draftNotes});needsSave=true}
    localStorage.setItem('bitsplease_rdr2_user_images_v1','1');
   }
+  if(!localStorage.getItem('bitsplease_metaphor_supplied_images_v1')){
+   const metaphorSeed=seeds.get('review-metaphor-refantazio-pesquisa-2026');
+   if(metaphorSeed){clean=clean.map(p=>p.id!==metaphorSeed.id?p:{...p,image:metaphorSeed.image,imageAlt:metaphorSeed.imageAlt,imageSource:metaphorSeed.imageSource,imageSourceUrl:metaphorSeed.imageSourceUrl,imageLicense:metaphorSeed.imageLicense,imageLicenseUrl:metaphorSeed.imageLicenseUrl,inlineImage:metaphorSeed.inlineImage,imageResearch:metaphorSeed.imageResearch,draftNotes:metaphorSeed.draftNotes});needsSave=true}
+   localStorage.setItem('bitsplease_metaphor_supplied_images_v1','1');
+  }
   clean=clean.map(p=>{const seed=seeds.get(p.id);if(!seed?.relevanceDate)return p;const newerDay=!p.relevanceDate||seed.relevanceDate>p.relevanceDate;const newerAssessment=seed.relevanceDate===p.relevanceDate&&seed.relevanceUpdatedAt&&(!p.relevanceUpdatedAt||seed.relevanceUpdatedAt>p.relevanceUpdatedAt);if(!newerDay&&!newerAssessment)return p;needsSave=true;return {...p,relevanceDate:seed.relevanceDate,relevanceScore:seed.relevanceScore,relevanceReason:seed.relevanceReason,relevanceSignals:seed.relevanceSignals,relevanceUpdatedAt:seed.relevanceUpdatedAt}});
   const ids=new Set(clean.map(p=>p.id));
   const posts=[...allEditorialPosts.filter(p=>!ids.has(p.id)),...clean].map(preparePublicationStatus);

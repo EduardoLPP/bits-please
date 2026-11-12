@@ -27,17 +27,18 @@ const links = {
   gamepass: 'https://news.xbox.com/en-us/2026/11/03/xbox-game-pass-november-2026-wave-1/',
 };
 
-function draft({ id, title, excerpt, section = 'NOTÍCIAS', tag, body, sources, reach, reliability, usefulness, reason, imageQuery, imageSources, product, blockers = [] }) {
+function draft({ id, title, excerpt, section = 'NOTÍCIAS', tag, body, sources, reach, reliability, usefulness, reason, imageQuery, imageSources, product, media, blockers = [] }) {
   const relevanceBreakdown = { timeliness: 0, publicInterest: 0, reach, sourceReliability: reliability, brazilUtility: usefulness };
   return {
     id, title, excerpt, category: 'GAMES', section, tag,
     date: '12 nov 2026', status: 'draft', read: `${Math.max(3, Math.ceil(body.split(/\s+/).length / 180))} min`,
+    ...media,
     body, sources, relevanceDate: '2026-11-12', relevanceUpdatedAt: assessedAt,
     relevanceBreakdown, relevanceScore: Object.values(relevanceBreakdown).reduce((sum, value) => sum + value, 0),
     relevanceReason: `${reason} Avaliação provisória: nenhum sinal publicado em 12/11 com data e conteúdo integral confirmados nesta apuração; atualidade e interesse público do dia receberam zero. Não elegível como destaque diário enquanto permanecer em rascunho.`,
     relevanceSignals: sources.slice(0, 2).map(item => ({ ...item, sameDayVerified: false })),
-    draftNotes: ['Faltam capa e segunda imagem distintas com correspondência visual e autorização comercial verificadas; oferta Amazon pertinente e destino com a tag bitsplease-20 conferidos.', ...blockers, 'Foto de produto é opcional e não bloqueia publicação.'].join(' '),
-    imageResearch: { query: imageQuery, checkedAt: assessedAt, sources: imageSources, status: 'pending-commercial-permission-and-visual-verification' },
+    draftNotes: [media ? 'Capa e segunda imagem fornecidas para edição foram inseridas e conferidas visualmente como imagens do jogo. Faltam páginas de origem e autorização de uso comercial dessas imagens; oferta Amazon pertinente e destino com a tag bitsplease-20 conferidos.' : 'Faltam capa e segunda imagem distintas com correspondência visual e autorização comercial verificadas; oferta Amazon pertinente e destino com a tag bitsplease-20 conferidos.', ...blockers, 'Foto de produto é opcional e não bloqueia publicação.'].join(' '),
+    imageResearch: { query: imageQuery, checkedAt: assessedAt, sources: imageSources, status: media ? 'visual-match-confirmed-commercial-permission-pending' : 'pending-commercial-permission-and-visual-verification' },
     affiliateResearch: { product, status: 'unverified-do-not-publish', tag: 'bitsplease-20', checkedAt: assessedAt },
   };
 }
@@ -67,6 +68,22 @@ Nossa leitura editorial é que a Academy merece mais atenção de quem gosta de 
     title: 'Review: Metaphor transforma a formação do grupo em estratégia',
     excerpt: 'O RPG da Atlus combina vínculos, disputa política e liberdade para montar equipes. Análise baseada em pesquisa das versões anteriores, sem teste do port para Switch 2 e sem nota.',
     section: 'REVIEWS', tag: 'Metaphor: ReFantazio · análise baseada em pesquisa', reach: 18, reliability: 14, usefulness: 8,
+    media: {
+      image: '/images/metaphor-refantazio-party.jpg',
+      imageAlt: 'Protagonista de Metaphor: ReFantazio ao centro, acompanhado por Strohl, Gallica e Hulkenberg em uma cena de animação.',
+      imageSource: 'Atlus / Sega · imagem fornecida para edição',
+      imageSourceUrl: '',
+      imageLicense: '',
+      imageLicenseUrl: '',
+      inlineImage: {
+        image: '/images/metaphor-refantazio-key-art.webp',
+        alt: 'Arte vertical de Metaphor: ReFantazio com o título do jogo, o protagonista e seus aliados diante de uma multidão e de um veículo fantástico.',
+        credit: 'Atlus / Sega · imagem fornecida para edição',
+        sourceUrl: '',
+        license: '',
+        licenseUrl: '',
+      },
+    },
     reason: 'Port para Switch 2 datado de 12/11 no site oficial; análise de PC de 2024 sustenta a discussão de design, sem validar o desempenho do port.',
     body: `Esta review é uma análise editorial baseada em pesquisa, sem teste próprio e sem nota. O lançamento de Metaphor: ReFantazio no Switch 2, datado de 12 de novembro de 2026 pela Atlus, oferece o gancho para revisitar o RPG. A avaliação de design considera o material oficial e a review de PC publicada pela PC Gamer em 7 de outubro de 2024. Não é uma avaliação técnica da nova conversão.
 
