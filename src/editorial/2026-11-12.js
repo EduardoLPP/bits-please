@@ -1,6 +1,7 @@
 // Lote pesquisado em 12/11. Rascunhos: não há duas imagens licenciadas
 // e ofertas Amazon verificadas. Não promover ao carrossel por data de lançamento.
 const assessedAt = '2026-11-12T07:43:00-03:00';
+const publicationApprovedAt = '2026-11-12T09:19:00-03:00';
 const source = (label, url) => ({ label, url });
 const links = {
   pikmin: 'https://www.nintendo.com/us/whatsnew/nintendo-declares-november-1-pikmin-day-in-recognition-of-all-things-pikmin/',
@@ -365,10 +366,10 @@ Para quem volta a um save antigo, a precaução prática é conferir os requisit
   return {
     ...article,
     status: 'published',
-    publishedAt: assessedAt,
+    publishedAt: publicationApprovedAt,
     publicationApproval: {
       mode: 'direct-user-publication',
-      approvedAt: assessedAt,
+      approvedAt: publicationApprovedAt,
       coverImage: post.image,
       bodyImage: post.inlineImage.image,
       imageRightsUnverified: true,
