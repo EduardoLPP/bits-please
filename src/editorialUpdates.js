@@ -1,4 +1,7 @@
+import { dailyPosts20261112 } from './editorial/2026-11-12.js';
+
 export const editorialUpdates = [
+  ...dailyPosts20261112,
   {
     id: "review-red-dead-redemption-2-2026",
     category: "GAMES",
