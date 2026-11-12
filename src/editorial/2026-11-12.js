@@ -201,6 +201,22 @@ Antes de decidir atualizar ou iniciar um save, confira a versão instalada, faç
     id: 'thronefall-craaghelm-expansao-jogo-base', title: 'Thronefall e Craaghelm: a estreia nos consoles não torna o DLC parte da assinatura',
     excerpt: 'A expansão acrescenta mapas e unidades, mas exige o jogo base. Confira separadamente o acesso a Thronefall e a compra do conteúdo adicional.',
     tag: 'Thronefall · Craaghelm · DLC', reach: 12, reliability: 12, usefulness: 9,
+    media: {
+      image: '/images/thronefall-cover.jpg',
+      imageAlt: 'Arte de Thronefall com o título sobre um cenário amarelo, um cavaleiro e fortificações azuis entre montanhas.',
+      imageSource: 'GrizzlyGames / Mythwright · arte fornecida para edição',
+      imageSourceUrl: '',
+      imageLicense: '',
+      imageLicenseUrl: '',
+      inlineImage: {
+        image: '/images/thronefall-craaghelm-scene.jpg',
+        alt: 'Cena fornecida para Craaghelm com fortificações em tons de azul e cobre, trilhos e pequenas unidades vistas de cima.',
+        credit: 'GrizzlyGames / Mythwright · imagem fornecida para edição',
+        sourceUrl: '',
+        license: '',
+        licenseUrl: '',
+      },
+    },
     reason: 'Comunicado e ficha do DLC confirmam escopo e dependência; cobertura de hoje encontrada na busca não pôde ser lida integralmente.',
     body: `Thronefall ganhou uma nova etapa com Craaghelm e a chegada ao PlayStation 5 e ao Xbox Series X|S. O comunicado da Mythwright marcou os lançamentos para 11 de novembro de 2026. Há duas decisões de acesso envolvidas: poder jogar Thronefall e ter direito à expansão. Uma não deve ser presumida a partir da outra.
 
