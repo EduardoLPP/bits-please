@@ -24,17 +24,17 @@ const links = {
   vindictus: 'https://blog.playstation.com/2026/11/12/vindictus-defying-fate-comes-to-ps5-next-year/',
   vindictusReport: 'https://www.gematsu.com/2026/11/vindictus-defying-fate-confirmed-for-ps5-cinematic-trailer-teaser',
 };
-function draft({ id, title, excerpt, section = 'NOTÍCIAS', tag, body, sources, scores, reason, signals = [], imageQuery, imageSources, product, affiliateQuery, blockers = [] }) {
+function draft({ id, title, excerpt, section = 'NOTÍCIAS', tag, body, sources, scores, reason, signals = [], imageQuery, imageSources, product, affiliateQuery, blockers = [], media, draftNotes, imageResearchOverride }) {
   const relevanceBreakdown = Object.fromEntries(['timeliness', 'publicInterest', 'reach', 'sourceReliability', 'brazilUtility'].map((key, i) => [key, scores[i]]));
   return {
-    id, title, excerpt, section, category: 'GAMES', tag, body, sources,
+    id, title, excerpt, section, category: 'GAMES', tag, body, sources, ...media,
     date: '13 nov 2026', status: 'draft', read: `${Math.max(2, Math.ceil(body.split(/\s+/).length / 180))} min`,
     relevanceDate: '2026-11-13', relevanceUpdatedAt: assessedAt, relevanceBreakdown,
     relevanceScore: scores.reduce((a, b) => a + b, 0), relevanceReason: reason,
     relevanceSignals: signals.length ? signals : sources.map(item => ({ ...item, sameDayVerified: false })),
-    imageResearch: { query: imageQuery, checkedAt: assessedAt, sources: imageSources, status: 'searched-not-cleared', notes: 'Busca de imagens executada. Resultados e galerias não equivalem a licença comercial. Nenhum par de arquivos foi aprovado visualmente e licenciado para esta matéria.' },
+    imageResearch: imageResearchOverride || { query: imageQuery, checkedAt: assessedAt, sources: imageSources, status: 'searched-not-cleared', notes: 'Busca de imagens executada. Resultados e galerias não equivalem a licença comercial. Nenhum par de arquivos foi aprovado visualmente e licenciado para esta matéria.' },
     affiliateResearch: { product, query: affiliateQuery, checkedAt: assessedAt, tag: 'bitsplease-20', status: 'destination-unverified', notes: 'Busca executada; não houve confirmação de destino Amazon Brasil para produto exato e pertinente. Resultados intermediários e ofertas estrangeiras não foram convertidos em CTA. Foto do produto é opcional.' },
-    draftNotes: ['Faltam duas imagens distintas com correspondência visual, origem, crédito e licença comercial confirmados, e uma oferta Amazon pertinente com destino/tag conferidos.', ...blockers, 'A ausência de foto do produto não bloqueia publicação.'].join(' '),
+    draftNotes: draftNotes || ['Faltam duas imagens distintas com correspondência visual, origem, crédito e licença comercial confirmados, e uma oferta Amazon pertinente com destino/tag conferidos.', ...blockers, 'A ausência de foto do produto não bloqueia publicação.'].join(' '),
   };
 }
 export const dailyPosts20261113 = [
@@ -45,14 +45,29 @@ export const dailyPosts20261113 = [
     tag: 'Wolfenstein 3 · MachineGames', scores: [25, 21, 17, 15, 6],
     reason: 'Comunicado primário da Bethesda datado de 13/11 confirma uma sequência de franquia estabelecida, com cobertura independente do mesmo dia. Sem data, plataformas ou números de público, não recebe pontuação máxima.',
     signals: [{ ...s('Bethesda — confirmação em 13/11', links.bethesda), sameDayVerified: true, sourceDate: '2026-11-13' }, { ...s('Twisted Voxel — cobertura em 13/11', links.wolfReport), sameDayVerified: true, sourceDate: '2026-11-13' }],
+    media: {
+      image: '/images/editorial-conceitual/wolfenstein-3-cover-simple.png',
+      imageAlt: 'Silhueta conceitual simplificada de um combatente genérico diante de formas vermelhas e escuras.',
+      imageSource: 'Ilustração conceitual simplificada gerada com IA; não é captura nem arte oficial.',
+      imageSourceUrl: '', imageLicense: '', imageLicenseUrl: '',
+      inlineImage: {
+        image: '/images/wolfenstein-wordmark-user-supplied.jpg',
+        alt: 'Logotipo branco de Wolfenstein sobre fundo vermelho, imagem fornecida pelo usuário.',
+        credit: 'Imagem fornecida pelo usuário; usada com autorização expressa.',
+        sourceUrl: '', license: '', licenseUrl: '',
+      },
+    },
+    draftNotes: 'A matéria recebeu uma ilustração conceitual simplificada e o wordmark fornecido pelo usuário. Não há oferta Amazon confirmada; a publicação não inclui botão de compra.',
     body: `Wolfenstein 3 está em produção na MachineGames. A Bethesda confirmou o projeto em comunicado de 13 de novembro de 2026, depois dos anúncios do FanFest do Xbox em Seattle. Brian Bloom e Debra Wilson voltarão aos papéis de BJ Blazkowicz e Grace Walker.
 
 O anúncio resolve a dúvida sobre a continuidade da série, mas deixa as decisões de compra para depois. Na cobertura de 13 de novembro, a Twisted Voxel observa que ainda não foram apresentados data de lançamento, gameplay ou detalhes da história. O material consultado também não estabelece a lista de plataformas. Ser um projeto de um estúdio do Xbox não basta para preencher essa informação.
 
 Essa diferença entre confirmação e apresentação importa. Um nome e o retorno de atores não permitem avaliar o ritmo da campanha, o desenho dos confrontos ou a qualidade técnica. Também não dizem quanto falta para o jogo chegar. Tratar produção como sinônimo de lançamento próximo criaria uma expectativa que as fontes não sustentam.
 
-Nossa leitura editorial é que o anúncio já oferece um motivo concreto para acompanhar a franquia, sem exigir uma aposta antecipada do leitor. Quem quiser conhecer os jogos anteriores deve conferir a edição e a compatibilidade do título escolhido; ele não será uma prévia técnica de Wolfenstein 3. Para a sequência, os próximos marcos úteis são uma apresentação de jogabilidade e a confirmação de plataformas. Até lá, qualquer recomendação de hardware específico seria prematura.`,
-    sources: [s('Bethesda — anúncio e elenco', links.bethesda), s('Twisted Voxel — confirmação e lacunas', links.wolfReport)],
+Para situar a franquia, a linha moderna da MachineGames inclui Wolfenstein: The New Order (2014), a prequela The Old Blood (2015), Wolfenstein II: The New Colossus (2017) e os derivados Youngblood e Cyberpilot (2019). A série também tem entradas anteriores, como Wolfenstein 3D e Return to Castle Wolfenstein. The Old Blood saiu depois de The New Order, embora sua história venha antes; quem quiser acompanhar a linha principal pode começar por The New Order e seguir a ordem de lançamento.
+
+Nossa leitura editorial é que o anúncio já oferece um motivo concreto para acompanhar a franquia, sem exigir uma aposta antecipada do leitor. Nenhum desses jogos é uma prévia técnica de Wolfenstein 3. Para a sequência, os próximos marcos úteis são uma apresentação de jogabilidade e a confirmação de plataformas. Até lá, qualquer recomendação de hardware específico seria prematura.`,
+    sources: [s('Bethesda — anúncio e elenco', links.bethesda), s('Twisted Voxel — confirmação e lacunas', links.wolfReport), s('MachineGames — jogos e notícias da franquia', 'https://www.machinegames.com/')],
     imageQuery: 'Wolfenstein 3 MachineGames official announcement 2026', imageSources: [links.bethesda],
     product: 'Wolfenstein II: The New Colossus, apenas como jogo anterior e na edição explicitada', affiliateQuery: 'Wolfenstein II The New Colossus PS4 Amazon Brasil',
   }),
@@ -62,14 +77,16 @@ Nossa leitura editorial é que o anúncio já oferece um motivo concreto para ac
     excerpt: 'A atualização gratuita foi anunciada para o inverno do hemisfério norte. O Halo Fest terá mais detalhes em dezembro; a data de lançamento ainda não foi fixada.',
     tag: 'Halo · Firefight · cooperação', scores: [0, 0, 19, 14, 8],
     reason: 'Modo cooperativo confirmado pela Halo Studios e repercutido de forma independente. A página primária exibe data relativa e não sustenta um sinal publicado em 13/11; componentes do dia ficam zerados.',
-    body: `Halo: Campaign Evolved vai receber Firefight em uma atualização gratuita. A Halo Studios descreve um modo cooperativo de sobrevivência para quatro pessoas, com ondas de inimigos, novos mapas e armas para enfrentar os ataques em equipe.
+    body: `Halo: Campaign Evolved vai receber Firefight em uma atualização gratuita. A Halo Studios descreve um modo cooperativo de sobrevivência para quatro pessoas, com ondas de inimigos, novos mapas e armas para enfrentar os ataques em equipe. O próprio Campaign Evolved é uma releitura ampliada de Halo: Combat Evolved, de 2001, e não um capítulo isolado da série.
+
+Para conhecer outros jogos da franquia, Halo: The Master Chief Collection reúne várias campanhas anteriores, e Halo Infinite é uma entrada posterior da série. A atualização de Firefight anunciada aqui é conteúdo para Campaign Evolved; não é um novo jogo nem uma confirmação de conteúdo para esses outros títulos.
 
 A janela anunciada é o inverno do hemisfério norte. Para quem acompanha do Brasil, isso não significa o inverno brasileiro: o comunicado se refere ao calendário do estúdio nos Estados Unidos. Não foi fornecido um dia de lançamento. Os visitantes do FanFest em Seattle tiveram a primeira oportunidade de experimentar a novidade; mais informações estão previstas para o Halo Fest, em 12 e 13 de dezembro, também em Seattle.
 
 O que está em jogo aqui é ampliar as razões para voltar a Campaign Evolved. Uma campanha tem encontros com progressão definida; sobreviver a ondas oferece outro tipo de objetivo, baseado em coordenação e repetição. Essa é uma leitura da proposta anunciada, não uma avaliação de equilíbrio feita pelo Bits, Please. Ainda não testamos o modo.
 
 A notícia não confirma que jogar online será gratuito em todas as condições. Atualização sem cobrança adicional e requisitos de acesso ao multijogador são questões diferentes, que dependem da plataforma e da oferta utilizada. Antes de combinar uma sessão, vale aguardar a documentação final sobre acesso, compatibilidade entre plataformas e funcionamento das partidas. Também não há base, neste anúncio, para prometer quantidade de mapas ou desempenho. A cobertura da Twisted Voxel confirma o contexto da atualização, mas não substitui essas respostas.`,
-    sources: [s('Halo Studios — anúncio de Firefight', links.halo), s('Twisted Voxel — contexto dos anúncios', links.wolfReport)],
+    sources: [s('Halo Studios — anúncio de Firefight', links.halo), s('Halo — página oficial de Campaign Evolved', 'https://www.halowaypoint.com/halo-campaign-evolved'), s('Halo Support — jogos reunidos em The Master Chief Collection', 'https://support.halowaypoint.com/hc/en-us/articles/4401928876692-Quick-Start-Guide-for-Halo-The-Master-Chief-Collection-MCC'), s('Twisted Voxel — contexto dos anúncios', links.wolfReport)],
     imageQuery: 'Halo Campaign Evolved Firefight official screenshots', imageSources: [links.halo], product: 'Halo: Campaign Evolved na edição/plataforma correspondente', affiliateQuery: 'Halo Campaign Evolved Xbox Amazon Brasil',
   }),
   draft({
@@ -145,7 +162,7 @@ O veredito editorial favorece quem quer conhecer essa aventura com controles atu
     excerpt: 'A carta dos desenvolvedores apresenta uma história contada por múltiplas perspectivas em torno do rio Hutuo. O horário de liberação no Brasil ainda precisa ser confirmado.',
     tag: 'Where Winds Meet · Hutuo', scores: [0, 0, 14, 13, 7],
     reason: 'A carta oficial de 9/11 agenda conteúdo para hoje, mas não é publicação de hoje. Não confundir data do evento com data do sinal; componentes do dia permanecem zerados.',
-    body: `Where Winds Meet tem a abertura de Hutuo marcada para 13 de novembro de 2026. A informação está na carta da versão 2.4 publicada em 9 de novembro, que apresenta a região como a terceira de Hidden Mountain. O texto consultado não fornece um horário que permita confirmar a disponibilidade para uma conta brasileira neste momento.
+    body: `Where Winds Meet marcou a abertura de Hutuo para 13 de novembro de 2026. O aviso oficial informa uma atualização sem interrupção de serviço entre 18h e 23h no horário UTC+8, equivalente a 7h–12h de Brasília. É uma atualização ao vivo: o comunicado diz que será possível entrar no jogo, embora algumas funções e atividades possam ficar temporariamente indisponíveis. A nova região abre após essa janela.
 
 O centro do conteúdo é a campanha Hutuo River, construída por várias perspectivas. Em vez de acompanhar apenas um caminho de combate, a descrição oficial passa por pedidos de reforço, incursões para obter suprimentos e tentativas de ajudar soldados cercados. As linhas narrativas convergem na ponte de Zhongdu.
 
@@ -159,15 +176,15 @@ Para quem pretende voltar, a decisão prática é conferir as notas da atualiza�
   }),
   draft({
     id: 'marvel-rivals-temporada-11-horarios-brasil',
-    title: 'Marvel Rivals: temporada 11 tem manutenção às 6h no horário de Brasília',
-    excerpt: 'As notas da versão 20261113 anunciam Nightcrawler e uma janela estimada de duas horas. Twitch Drops começam mais tarde; o fim da manutenção não é garantido pelo relógio.',
+    title: 'Marvel Rivals: temporada 11 tem Nightcrawler; manutenção foi prevista até 8h',
+    excerpt: 'A janela estimada de manutenção passou pelo relógio, mas isso não confirma a reabertura dos servidores. Os Twitch Drops estavam previstos para começar às 9h de Brasília.',
     tag: 'Marvel Rivals · temporada 11', scores: [0, 0, 19, 15, 10],
     reason: 'Notas oficiais publicadas em 11/11 para atualização de 13/11. A conversão de horários é útil, mas não constitui um novo sinal publicado hoje; não afirmar servidores reabertos sem status ao vivo.',
-    body: `A temporada 11 de Marvel Rivals tem manutenção anunciada para 13 de novembro de 2026 às 9h UTC, o equivalente a 6h no horário de Brasília. A NetEase estima duas horas de interrupção. Isso aponta para cerca de 8h como referência de duração, sem garantir que os servidores reabram exatamente nesse horário.
+    body: `A atualização da temporada 11 foi marcada para 13 de novembro às 9h UTC, ou 6h em Brasília, com manutenção estimada em duas horas. A previsão apontava para 8h, mas o relógio não confirma que os servidores reabriram; confira o launcher ou os avisos do jogo.
 
 As notas da versão 20261113, publicadas em 11 de novembro, apresentam Nightcrawler como novo herói e o evento narrativo The Acts of Kurt Wagner. O passe The Incursion traz dez conjuntos de trajes. A chegada de um personagem e de cosméticos não deve ser confundida com uma avaliação sobre equilíbrio competitivo: o Bits, Please não testou o patch e não está recomendando uma composição de equipe.
 
-Para acompanhar recompensas, há outro horário importante. O período de Twitch Drops começa às 12h UTC de 13 de novembro, ou 9h em Brasília, e termina às 9h UTC de 11 de dezembro, ou 6h em Brasília. Confira no canal e na conta vinculada quais condições precisam ser cumpridas; apenas abrir uma transmissão não deve ser apresentado como garantia de receber todos os itens.
+Para acompanhar recompensas, há outro horário importante. Os Twitch Drops estavam previstos para começar às 12h UTC de 13 de novembro, ou 9h em Brasília, e terminar às 9h UTC de 11 de dezembro, ou 6h em Brasília. Confira no canal e na conta vinculada quais condições precisam ser cumpridas; apenas abrir uma transmissão não deve ser apresentado como garantia de receber todos os itens.
 
 A GameBeacon acompanha o calendário da temporada e distingue o conteúdo inicial do que chega nas semanas seguintes. Nossa recomendação é consultar as notas oficiais antes de gastar moeda em um pacote ou planejar uma sessão ranqueada. Download disponível, manutenção encerrada e recompensas habilitadas são etapas diferentes. Se o jogo continuar indisponível depois da estimativa, procure um aviso atualizado da operação; o relógio, sozinho, não confirma falha no seu equipamento.`,
     sources: [s('NetEase — notas oficiais e horários UTC', links.rivals), s('GameBeacon — calendário e contexto', links.rivalsReport)],
@@ -175,8 +192,8 @@ A GameBeacon acompanha o calendário da temporada e distingue o conteúdo inicia
   }),
   draft({
     id: 'once-human-temporada-5-colossus-fusos',
-    title: 'Once Human transforma música em ameaça na temporada 5; atenção ao fuso',
-    excerpt: 'Dissonant Resonance terá um confronto cooperativo para quatro jogadores. O PlayStation Blog usa 18 de novembro no Pacífico, enquanto a divulgação global cita dia 19.',
+    title: 'Once Human: temporada 5 estreia em 18 de novembro; hora no Brasil pendente',
+    excerpt: 'A Starry Studio confirma lançamento global no dia 18 e descreve uma raid cooperativa para quatro pessoas. O horário de início ainda precisa de confirmação local.',
     tag: 'Once Human · Dissonant Resonance', scores: [22, 18, 13, 14, 8],
     reason: 'Apresentação primária espanhola datada de 13/11 detalha evento próximo, com cobertura especializada anterior. A divergência de datas exige fuso e horário final, reduzindo a confiança para serviço ao leitor brasileiro.',
     signals: [{ ...s('PlayStation Blog ES — apresentação em 13/11', links.onceToday), sameDayVerified: true, sourceDate: '2026-11-13', sourceTimeZone: 'not-disclosed', note: 'Data civil exibida; horário de publicação e conversão para São Paulo não informados pela página.' }],
@@ -184,7 +201,7 @@ A GameBeacon acompanha o calendário da temporada e distingue o conteúdo inicia
 
 O mundo terá quatro zonas associadas a alegria, raiva, tristeza e medo. Inimigos deixam notas musicais, que podem ser atingidas e reunidas para purificar partituras e obter benefícios. Quando o colosso desce, abre-se caminho para um confronto cooperativo de quatro participantes. Esses são sistemas descritos pelo desenvolvedor; ainda não medimos sua clareza visual, acessibilidade ou dificuldade.
 
-A data pede cuidado. A publicação espanhola de 13 de novembro especifica 18 de novembro no horário do Pacífico, inclusive para PS5. A cobertura da Pocket Gamer sobre o anúncio anterior usa 19 de novembro. Sem um horário oficial final confirmado nesta apuração, não tratamos a diferença como adiamento nem convertemos o lançamento em uma hora exata para o Brasil. Uma atualização mundial pode atravessar datas civis diferentes.
+A data pede cuidado. O anúncio oficial em inglês confirma lançamento global em 18 de novembro para PS5. A cobertura anterior da Pocket Gamer usa 19 de novembro, mas o comunicado não informa uma hora de abertura que permita converter a data para o fuso brasileiro. Não tratamos a diferença como adiamento: confira a hora indicada no servidor antes de organizar o grupo.
 
 Nossa leitura é que a mistura de tiro, composição e cooperação oferece um gancho mais específico do que simplesmente adicionar um chefe maior. O que ainda falta saber é como as pistas sonoras serão comunicadas a diferentes jogadores e equipamentos. Um headset pode ajudar na comunicação, mas este anúncio não prova que um modelo caro seja necessário, nem substitui a verificação de recursos de acessibilidade. Antes de organizar o grupo, confira o calendário do servidor e o aviso de manutenção.`,
     sources: [s('Starry Studio / PlayStation Blog EN — sistemas', links.once), s('PlayStation Blog ES — data com fuso, 13/11', links.onceToday), s('Pocket Gamer — anúncio anterior para 19/11', links.onceReport)],
@@ -196,7 +213,9 @@ Nossa leitura é que a mistura de tiro, composição e cooperação oferece um g
     excerpt: 'Lann aposta em esquivas; Fiona, em escudo e contra-ataques. O projeto mantém uma jornada centrada no solo e prepara conteúdo multijogador separado.',
     tag: 'Vindictus: Defying Fate · PS5 · PC', scores: [0, 0, 12, 15, 6],
     reason: 'Anúncio oficial de 12/11 e confirmação da Gematsu sustentam PS5/PC em 2027. Trailer previsto para hoje não foi tratado como vídeo já lançado nem como publicação de hoje.',
-    body: `Vindictus: Defying Fate chegará ao PS5 em 2027, ao lado da versão de PC via Steam, segundo a confirmação da Nexon acompanhada pela Gematsu. A apresentação do diretor Dongseok Oh no PlayStation Blog explica a proposta de combate e de mundo, mas não fixa um dia de lançamento.
+    body: `Vindictus: Defying Fate chegará ao PS5 em 2027, ao lado da versão de PC via Steam, segundo a confirmação da Nexon acompanhada pela Gematsu. A Nexon descreve o título como uma aventura independente baseada na propriedade de Vindictus, o RPG de ação online anterior; não o apresenta como uma sequência direta. Lann e Fiona aparecem nos dois jogos, mas a ligação entre as histórias ainda não foi detalhada.
+
+A apresentação do diretor Dongseok Oh no PlayStation Blog explica a proposta de combate e de mundo, mas não fixa um dia de lançamento.
 
 O RPG de ação usa fantasia medieval inspirada na mitologia celta e coloca humanos e Fomors em conflito. Para decidir se vale acompanhar, o ponto mais concreto está nos personagens. Lann depende de esquivas e de abrir espaço para responder ao inimigo. Fiona trabalha com escudo, bloqueios e contra-ataques. São abordagens diferentes dentro da proposta, não apenas mudanças de aparência.
 
@@ -205,7 +224,7 @@ O diretor explica que as armas servem de ponto de partida para construir os her�
 Há um limite importante para quem procura uma aventura em grupo. O texto descreve a jornada como essencialmente solitária e diz que a equipe prepara conteúdo multijogador para ameaças maiores. Isso não confirma uma campanha inteira em cooperação nem o número de participantes. A Gematsu também registrou um trailer cinematográfico previsto para 13 de novembro; sem verificá-lo como lançado, não o usamos como evidência de gameplay atual.
 
 Para o Brasil, preço, idiomas e detalhes finais da versão de PS5 permanecem pontos a conferir. A página de lista de desejos não equivale a uma oferta de compra. Neste estágio, acompanhar as próximas apresentações é uma decisão mais bem sustentada do que escolher antecipadamente uma edição ou acessório para o jogo.`,
-    sources: [s('Nexon / PlayStation Blog — design e limites do multiplayer', links.vindictus), s('Gematsu — plataformas, 2027 e teaser', links.vindictusReport)],
+    sources: [s('Nexon — jogo Vindictus', 'https://vindictus.nexon.net/game/about/'), s('Nexon — Defying Fate como jogo independente da franquia', 'https://peak.nexon.com/en/post/2881'), s('Nexon / PlayStation Blog — design e limites do multiplayer', links.vindictus), s('Gematsu — plataformas, 2027 e teaser', links.vindictusReport)],
     imageQuery: 'Vindictus Defying Fate official PS5 screenshots', imageSources: [links.vindictus, links.vindictusReport], product: 'Edição de Vindictus: Defying Fate para PS5 quando houver oferta; não inventar pré-venda', affiliateQuery: 'Vindictus Defying Fate PS5 Amazon Brasil',
   }),
 ];

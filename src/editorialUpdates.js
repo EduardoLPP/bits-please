@@ -87,7 +87,7 @@ A narrativa é menos uniforme que o combate. O gancho da conspiração funciona,
 
 Há também uma diferença entre as versões e as condições de teste. As análises publicadas depois do lançamento apontam que o desempenho no PC depende da configuração, enquanto a versão de PS5 é a única opção de console no momento. Não tratamos as observações de outros veículos como benchmark nosso nem afirmamos uma vantagem de desempenho sem teste lado a lado.
 
-Veredito editorial: Phantom Blade Zero tem um argumento claro para fãs de ação técnica e wuxia: um repertório de combate variado e encontros que procuram ser memoráveis. A trama não parece tão segura quanto as lutas, e a escolha de plataforma merece atenção. A versão física de PS5 anunciada para 2027 ainda não é uma oferta de compra disponível na Amazon Brasil; por isso, esta review fica em rascunho até haver um link afiliado verificável e imagens com direitos confirmados.`,
+Veredito editorial: Phantom Blade Zero tem um argumento claro para fãs de ação técnica e wuxia: um repertório de combate variado e encontros que procuram ser memoráveis. A trama não parece tão segura quanto as lutas, e a escolha de plataforma merece atenção. A versão física de PS5 foi anunciada para 2027 e ainda não está à venda. Isso não altera a disponibilidade das versões digitais de PS5 e PC. Como não há oferta brasileira confirmada, esta matéria não inclui botão de compra.`,
     status: "draft",
     draftNotes: "Conforme combinado, fica em rascunho. Não foi localizada uma oferta de compra verificável na Amazon Brasil; a edição física foi anunciada para 2027. Também faltam duas imagens de jogo com licença comercial confirmada.",
     sources: [

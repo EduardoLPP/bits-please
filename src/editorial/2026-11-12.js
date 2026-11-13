@@ -5,6 +5,7 @@ const publicationApprovedAt = '2026-11-12T09:19:00-03:00';
 const source = (label, url) => ({ label, url });
 const links = {
   pikmin: 'https://www.nintendo.com/us/whatsnew/nintendo-declares-november-1-pikmin-day-in-recognition-of-all-things-pikmin/',
+  pikminOfficial: 'https://www.nintendo.com/my/news/article/5S711JpOsIpjyRP5hhXgpu',
   pikminReview: 'https://www.nintendolife.com/reviews/nintendo-switch-2/pikmin-4-nintendo-switch-2-edition-plus-dandori-academy',
   metaphor: 'https://asia.sega.com/metaphor/en/switch2/',
   metaphorReview: 'https://www.pcgamer.com/games/rpg/metaphor-refantazio-review/',
@@ -18,6 +19,7 @@ const links = {
   thronefall: 'https://www.gamespress.com/tr/Conquer-The-Mountain-in-Craaghelm-The-First-Expansion-for-Thronefall-C',
   thronefallStore: 'https://store.steampowered.com/app/4822240/Thronefall_Craaghelm/',
   plus: 'https://blog.playstation.com/2026/11/10/playstation-plus-game-catalog-for-november-death-stranding-2-on-the-beach-like-a-dragon-pirate-yakuza-in-hawaii-atomfall-dragon-quest-iii-hd-2d-remake-and-more/',
+  plusBr: 'https://blog.br.playstation.com/2026/11/10/novidades-de-novembro-para-o-catalogo-de-jogos-playstation-plus-death-stranding-2-on-the-beach-like-a-dragon-pirate-yakuza-in-hawaii-atomfall-dragon-quest-iii-hd-2d-remake-e-muito-mais/',
   plusReport: 'https://www.pushsquare.com/news/2026/11/10-ps-plus-extra-premium-games-for-november-2026-announced',
   cloud: 'https://news.xbox.com/en-us/2026/09/03/xbox-cloud-gaming-changes/',
   cloudReport: 'https://www.purexbox.com/news/2026/09/xbox-is-telling-some-people-they-dont-need-to-worry-about-cloud-gaming-time-limits',
@@ -36,7 +38,7 @@ function draft({ id, title, excerpt, section = 'NOTÍCIAS', tag, body, sources, 
     ...media,
     body, sources, relevanceDate: '2026-11-12', relevanceUpdatedAt: assessedAt,
     relevanceBreakdown, relevanceScore: Object.values(relevanceBreakdown).reduce((sum, value) => sum + value, 0),
-    relevanceReason: `${reason} Avaliação provisória: nenhum sinal publicado em 12/11 com data e conteúdo integral confirmados nesta apuração; atualidade e interesse público do dia receberam zero. Não elegível como destaque diário enquanto permanecer em rascunho.`,
+    relevanceReason: `${reason} Avaliação provisória: nenhum sinal publicado em 12/11 com data e conteúdo integral confirmados nesta apuração; atualidade e interesse público do dia receberam zero. Não é candidata a destaque diário nesta apuração.`,
     relevanceSignals: sources.slice(0, 2).map(item => ({ ...item, sameDayVerified: false })),
     draftNotes: [visualNotes || (media ? 'Capa e segunda imagem fornecidas para edição foram inseridas e conferidas visualmente como imagens do jogo. Faltam páginas de origem e autorização de uso comercial dessas imagens; oferta Amazon pertinente e destino com a tag bitsplease-20 conferidos.' : 'Faltam capa e segunda imagem distintas com correspondência visual e autorização comercial verificadas; oferta Amazon pertinente e destino com a tag bitsplease-20 conferidos.'), ...blockers, 'Foto de produto é opcional e não bloqueia publicação.'].join(' '),
     imageResearch: { query: imageQuery, checkedAt: assessedAt, sources: imageSources, status: media?.image && media?.inlineImage ? 'visual-match-confirmed-commercial-permission-pending' : media ? 'partial-visual-match-confirmed-commercial-permission-pending' : 'pending-commercial-permission-and-visual-verification' },
@@ -57,10 +59,10 @@ export const dailyPosts20261112 = [
   draft({
     id: 'pikmin-4-switch-2-dandori-academy-lancamento',
     title: 'Pikmin 4 no Switch 2: o que muda com Dandori Academy',
-    excerpt: 'A edição tem lançamento marcado para 12 de novembro. Os novos desafios chegam aos poucos, um detalhe importante antes de pagar pelo upgrade.',
+    excerpt: 'A edição chegou em 12 de novembro. Os novos desafios chegam aos poucos, um detalhe importante antes de pagar pelo upgrade.',
     tag: 'Pikmin 4 · Nintendo Switch 2 · upgrade', reach: 16, reliability: 14, usefulness: 9,
     reason: 'Data de lançamento confirmada em comunicado anterior da Nintendo; review independente identifica limites concretos do upgrade.',
-    body: `Pikmin 4 – Nintendo Switch 2 Edition + Dandori Academy tem lançamento marcado para 12 de novembro de 2026. Para quem já conhece a campanha, o principal motivo para olhar a nova edição é a Academy, voltada a planejar rotas e recolher tesouros com eficiência. É uma ampliação de Pikmin 4, e o pacote precisa ser avaliado pelo que acrescenta à aventura que você já tem.
+    body: `Pikmin 4 – Nintendo Switch 2 Edition + Dandori Academy chegou em 12 de novembro de 2026. Para quem já conhece a campanha, o principal motivo para olhar a nova edição é a Academy, voltada a planejar rotas e recolher tesouros com eficiência. É uma ampliação de Pikmin 4, e o pacote precisa ser avaliado pelo que acrescenta à aventura que você já tem.
 
 No comunicado de 2 de novembro, a Nintendo descreve desafios com tempo limitado, medalhas e exames nos fins de semana. A demo anunciada inclui a área inicial Sun-Speckled Terrace e duas fases da Academy. Esse é um caminho útil para descobrir se a busca por rotas melhores combina com o seu jeito de jogar antes de decidir pela compra.
 
@@ -68,8 +70,8 @@ A ressalva está na distribuição do conteúdo. Na avaliação da versão europ
 
 O veículo também relata imagem em 4K no modo TV, ausência de opção a 60 fps e falta de controle por mouse. São observações do teste europeu publicado pelo site, não medições feitas pelo Bits, Please. A nova função de comandos de voz para Oatchi pode ser simpática, mas a mesma avaliação descreve reconhecimento inconsistente; idioma e ambiente precisam ser considerados antes de tratá-la como motivo central de compra.
 
-Nossa leitura editorial é que a Academy merece mais atenção de quem gosta de repetir desafios para melhorar resultados. Quem busca apenas uma campanha inédita deve ajustar a expectativa. Para o Brasil, ainda é necessário conferir preço, pacote de upgrade e idiomas na eShop da conta utilizada: os valores citados em reviews estrangeiras não confirmam a oferta brasileira.`,
-    sources: [source('Nintendo — comunicado de 2/11 e demo', links.pikmin), source('Nintendo Life — teste da edição europeia', links.pikminReview)],
+Nossa leitura editorial é que a Academy merece mais atenção de quem gosta de repetir desafios para melhorar resultados. Quem busca apenas uma campanha inédita deve ajustar a expectativa. A página oficial lista português do Brasil entre os idiomas suportados. Para o Brasil, ainda é necessário conferir preço e pacote de upgrade na eShop da conta utilizada: valores de lojas estrangeiras não confirmam a oferta local.`,
+    sources: [source('Nintendo — anúncio e demo de Pikmin Day', links.pikmin), source('Nintendo — lista oficial de estágios e lançamento', links.pikminOfficial), source('Nintendo Life — teste da edição europeia', links.pikminReview)],
     imageQuery: 'Pikmin 4 Dandori Academy Nintendo official screenshots', imageSources: [links.pikmin, 'https://www.nintendo.co.jp/networkservice_guideline/en/index.html'], product: 'Pikmin 4 para Nintendo Switch e pacote de upgrade correspondente, sem confundir jogo base com DLC',
     blockers: ['Diretrizes gerais da Nintendo não confirmam autorização para este blog monetizado. Confirmar oferta e idiomas brasileiros.'],
   }),
@@ -202,7 +204,7 @@ A primeira atualização posterior ao lançamento estava prevista para mais adia
 
 A entrevista da FourFourTwo com um desenvolvedor detalha a intenção dos novos ajustes táticos. Ela ajuda a entender o sistema, mas o objetivo de design declarado pelo estúdio e o resultado percebido em uma carreira longa são evidências diferentes. Ainda falta um acompanhamento independente adequado para concluir sobre os efeitos do patch no equilíbrio.
 
-Antes de decidir atualizar ou iniciar um save, confira a versão instalada, faça uma cópia de segurança da carreira e leia a orientação específica da Sports Interactive. O texto não garante compatibilidade irrestrita de saves nem que todas as mudanças sejam aplicadas a partidas antigas. E a janela de teste gratuito anterior ao lançamento não deve ser anunciada como oferta ativa em 12 de novembro.`,
+Antes de decidir atualizar ou iniciar um save, confira a versão instalada, faça uma cópia de segurança da carreira e leia a orientação específica da Sports Interactive. O texto não garante compatibilidade irrestrita de saves nem que todas as mudanças sejam aplicadas a partidas antigas. A janela de acesso antecipado gratuito terminou em 3 de novembro e não está mais ativa.`,
     sources: [source('Sports Interactive — notas e planos de atualização', links.fmPatch), source('Football Manager — data de lançamento', links.fm), source('FourFourTwo — entrevista sobre tática', links.fmInterview)],
     imageQuery: 'Football Manager 27 official screenshots', imageSources: [links.fm, links.fmPatch], product: 'Mouse compatível com o computador para navegação na interface; evitar atribuir recursos exclusivos de FM27 ao acessório',
     blockers: ['Falta acompanhar teste independente do patch e confirmar versão atual. A captura enviada não identifica versão/patch e não comprova as correções discutidas.'],
@@ -246,16 +248,16 @@ O anúncio também cita Switch, mas calendário global de divulgação e disponi
     excerpt: 'Death Stranding 2 lidera o anúncio internacional, mas parte do catálogo tem entrada escalonada. O calendário estrangeiro não confirma sozinho as datas brasileiras.',
     tag: 'PlayStation Plus · catálogo · região', reach: 20, reliability: 14, usefulness: 10,
     reason: 'Calendário oficial de 10/11 e checagem da Push Square identificam exceções regionais; não há novo anúncio de hoje confirmado.',
-    body: `A Sony anunciou o catálogo de novembro do PlayStation Plus com Death Stranding 2: On the Beach entre os principais títulos. O post internacional de 10 de novembro aponta 17 de novembro como data geral, mas traz exceções. Anotar uma única data para toda a lista pode fazer o leitor procurar um jogo antes de ele aparecer na sua região.
+    body: `O post brasileiro de 10 de novembro confirma a seleção do catálogo Extra e Deluxe, mas orienta conferir na PlayStation Store o dia de lançamento na própria região. O anúncio internacional aponta 17 de novembro como data geral e lista algumas exceções específicas para Estados Unidos, Reino Unido e Japão. Anotar essas datas para a conta brasileira pode levar o leitor a procurar um jogo antes de ele aparecer.
 
 No anúncio, Death Stranding 2 está identificado para PS5. Like a Dragon: Pirate Yakuza in Hawaii aparece para PS5 e PS4, com observação de entrada em 24 de novembro nos Estados Unidos, Reino Unido e Japão. Há ainda uma diferença de um dia para Hell Let Loose entre os mercados citados. Esses recortes fazem parte da informação e precisam acompanhar a data.
 
-A Push Square também organiza a lista por etapas e explicita os países aos quais o cronograma se refere. A cobertura reforça que a distribuição não é uniforme, mas não serve como confirmação adicional do calendário brasileiro. Antes de apresentar todas essas datas como válidas aqui, é necessário conferir a publicação local ou a ficha do jogo na conta brasileira.
+O próprio PS Blog Brasil confirma que o catálogo e os títulos Deluxe podem variar por região e recomenda consultar a loja local. A Push Square também organiza a lista internacional por etapas, mas não substitui a confirmação da conta brasileira. Antes de anotar uma data, confira a ficha do jogo na PlayStation Store do país da conta.
 
 Outro cuidado é o plano. Catálogo de jogos e seleção mensal são benefícios diferentes; a presença em uma notícia sobre Extra ou Premium não significa resgate para todos os assinantes. O nome Premium no anúncio estrangeiro também não deve ser transplantado para uma oferta brasileira sem verificar quais benefícios estão disponíveis no país.
 
 Para decidir se vale assinar ou comprar uma mídia física, comece pelo jogo que pretende jogar, pelo console e pelo período de acesso desejado. A assinatura dá acesso sob suas condições e enquanto o título estiver disponível. Uma recomendação de compra precisa explicar essa diferença, sem apresentar o catálogo como propriedade permanente nem sugerir que o preço de um controle faça parte da mensalidade.`,
-    sources: [source('PlayStation Blog — anúncio internacional e exceções', links.plus), source('Push Square — calendário por mercados', links.plusReport)],
+    sources: [source('PlayStation Blog Brasil — catálogo de novembro e aviso regional', links.plusBr), source('PlayStation Blog — anúncio internacional e exceções', links.plus), source('Push Square — calendário por mercados', links.plusReport)],
     imageQuery: 'PlayStation Plus November 2026 Death Stranding 2 official', imageSources: [links.plus], product: 'Death Stranding 2: On the Beach em mídia física para PS5, como alternativa à assinatura e apenas para console com leitor',
     blockers: ['Confirmar calendário brasileiro antes da publicação. Busca visual trouxe banners de teste de 2025: rejeitados por não corresponderem ao catálogo de novembro de 2026.'],
   }),

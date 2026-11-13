@@ -2,11 +2,14 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { initialPosts, mockPostIds } from '../src/articles.js';
 import { editorialUpdates } from '../src/editorialUpdates.js';
+import { applyPublicationMedia } from '../src/editorial/publicationMedia.js';
 
 const siteUrl = (process.env.SITE_URL || 'https://bits-please.vercel.app').replace(/\/$/, '');
 const distDir = resolve('dist');
 const template = await readFile(resolve(distDir, 'index.html'), 'utf8');
-const allPosts = [...editorialUpdates, ...initialPosts];
+const legacyPostIds = new Set(initialPosts.map(post => post.id));
+const allPosts = applyPublicationMedia([...editorialUpdates, ...initialPosts])
+  .map(post => legacyPostIds.has(post.id) ? { ...post, status: 'published' } : post);
 const categories = [
   ['noticias', 'NOTÍCIAS', 'Notícias de games, consoles e PC gamer: lançamentos, atualizações e bastidores.'],
   ['reviews', 'REVIEWS', 'Reviews de jogos com contexto, fontes e impressões editoriais.'],
