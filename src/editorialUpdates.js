@@ -1,6 +1,8 @@
 import { dailyPosts20261112 } from './editorial/2026-11-12.js';
+import { dailyPosts20261113 } from './editorial/2026-11-13.js';
 
 export const editorialUpdates = [
+  ...dailyPosts20261113,
   ...dailyPosts20261112,
   {
     id: "review-red-dead-redemption-2-2026",
