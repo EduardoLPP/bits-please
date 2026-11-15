@@ -1,7 +1,9 @@
 import { dailyPosts20261112 } from './editorial/2026-11-12.js';
 import { dailyPosts20261113 } from './editorial/2026-11-13.js';
+import { dailyPosts20261115 } from './editorial/2026-11-15.js';
 
 export const editorialUpdates = [
+  ...dailyPosts20261115,
   ...dailyPosts20261113,
   ...dailyPosts20261112,
   {
