@@ -3,18 +3,46 @@ const checkedAt = '2026-11-15T15:42:00-03:00';
 const source = (label, url) => ({ label, url });
 const xbox = 'https://news.xbox.com/en-us/2026/11/03/xbox-game-pass-november-2026-wave-1/';
 const rules = 'https://www.xbox.com/en-us/developers/rules';
+const imageTerms = 'https://openai.com/policies/terms-of-use/';
+const imageBase = '/images/editorial-conceitual/';
+const visualPairs = {
+  'review-modern-warfare-4-pesquisa-2026': ['modern-warfare-4-cover.jpg', 'Ilustração conceitual de uma operação militar moderna em cenário urbano, sem representar uma captura do jogo.', 'modern-warfare-4-body.jpg', 'Ilustração conceitual de uma equipe avançando por uma área de combate contemporânea.'],
+  'game-pass-essential-oito-classicos-novembro-15': ['game-pass-essential-cover.jpg', 'Ilustração conceitual de jogos clássicos reunidos em um serviço de assinatura.', 'game-pass-essential-body.jpg', 'Controle e formas geométricas evocam um catálogo de jogos de diferentes épocas.'],
+  'fable-deepwood-gameplay-limites-previa': ['fable-deepwood-cover.jpg', 'Ilustração conceitual de uma floresta de fantasia com um aventureiro, sem reproduzir uma cena de Fable.', 'fable-deepwood-body.jpg', 'Ilustração conceitual de exploração e magia em uma floresta fantástica.'],
+  'path-of-exile-3300b-hotfix-recoup': ['path-of-exile-3300b-cover.jpg', 'Ilustração conceitual de combate em um cenário sombrio de fantasia, relacionada a Path of Exile.', 'path-of-exile-3300b-body.jpg', 'Gema e efeitos de energia em uma composição de fantasia sombria.'],
+  'marathon-symbiosis-expedition-semana-gratuita': ['marathon-symbiosis-cover.jpg', 'Ilustração conceitual de exploradores de ficção científica em um ambiente hostil.', 'marathon-symbiosis-body.jpg', 'Equipe de exploradores futuristas diante de uma ameaça alienígena.'],
+  'game-awards-2026-indicados-calendario': ['game-awards-2026-cover.jpg', 'Ilustração conceitual de uma cerimônia de premiação de jogos, sem reproduzir o troféu oficial.', 'game-awards-2026-body.jpg', 'Palco e plateia em uma cerimônia fictícia de premiação de jogos.'],
+  'worlds-2026-blg-gen-g-titulo': ['worlds-2026-blg-cover.jpg', 'Ilustração conceitual de uma final de esports em arena, sem representar jogadores ou equipes reais.', 'worlds-2026-blg-body.jpg', 'Troféu conceitual em um palco de esports após uma final.'],
+  'dragon-quest-rpg-mobile-beta-2027': ['dragon-quest-rpg-cover.jpg', 'Ilustração conceitual de uma aventura de RPG para celular em uma ilha fantástica.', 'dragon-quest-rpg-body.jpg', 'Grupo genérico de aventureiros diante de uma árvore fantástica em uma ilha.'],
+  'valhalla-new-game-plus-ps5-pro-2026': ['valhalla-new-game-plus-cover.jpg', 'Ilustração conceitual de um guerreiro nórdico em uma paisagem fria, sem representar uma captura de Valhalla.', 'valhalla-new-game-plus-body.jpg', 'Aldeia nórdica e navio em uma paisagem de inverno, em arte conceitual.'],
+  'arc-raiders-frozen-trail-17-milhoes-contexto': ['arc-raiders-frozen-trail-cover.jpg', 'Ilustração conceitual de uma incursão em ruínas cobertas de neve, relacionada a ARC Raiders.', 'arc-raiders-frozen-trail-body.jpg', 'Máquina gigantesca em um posto avançado congelado, em uma cena conceitual de ficção científica.'],
+};
 function draft({ scores, imageQuery, imageSources, imageNotes, product, affiliateQuery, reason, ...post }) {
+  const visual = visualPairs[post.id];
+  const conceptCredit = 'Ilustração conceitual original gerada por IA com OpenAI ImageGen; não é captura de jogo nem arte oficial.';
+  const conceptLicense = 'Output gerado conforme os Termos de Uso da OpenAI; titularidade sujeita à lei aplicável.';
   return {
-    ...post, category: 'GAMES', section: post.section || 'NOTÍCIAS', status: 'draft',
+    ...post,
+    ...(visual ? {
+      image: `${imageBase}${visual[0]}`, imageAlt: visual[1], imageSource: conceptCredit, imageSourceUrl: imageTerms,
+      imageLicense: conceptLicense, imageLicenseUrl: imageTerms,
+      inlineImage: { image: `${imageBase}${visual[2]}`, alt: visual[3], credit: conceptCredit, sourceUrl: imageTerms, license: conceptLicense, licenseUrl: imageTerms },
+    } : {}),
+    category: 'GAMES', section: post.section || 'NOTÍCIAS', status: 'draft',
     date: '15 nov 2026', read: `${Math.max(2, Math.ceil(post.body.split(/\s+/).length / 180))} min`,
     relevanceDate: '2026-11-15', relevanceUpdatedAt: checkedAt,
     relevanceScore: scores.reduce((sum, score) => sum + score, 0),
     relevanceBreakdown: Object.fromEntries(['timeliness', 'publicInterest', 'reach', 'sourceReliability', 'brazilUtility'].map((key, index) => [key, scores[index]])),
     relevanceReason: reason,
     relevanceSignals: post.sources.map(item => ({ ...item, sameDayVerified: false })),
-    imageResearch: { query: imageQuery, checkedAt, status: 'searched-not-cleared', sources: imageSources, notes: imageNotes },
+    imageResearch: {
+      query: imageQuery, checkedAt, status: 'generated-contextual-ai-concept-reviewed',
+      sources: [...imageSources.map(url => source('Referência visual consultada; não usada na arte gerada', url)), source('Termos de Uso OpenAI — titularidade de outputs conforme lei aplicável', imageTerms)],
+      assets: visual ? [`${imageBase}${visual[0]}`, `${imageBase}${visual[2]}`] : [],
+      notes: `${imageNotes} Duas ilustrações conceituais originais foram geradas para esta pauta e revisadas quanto à correspondência com o assunto e à diferença de composição. Ambas estão identificadas como IA; não simulam capturas nem artes oficiais.`,
+    },
     affiliateResearch: { product, query: affiliateQuery, tag: 'bitsplease-20', checkedAt, status: 'destination-unverified', notes: 'Busca realizada; destino Amazon Brasil e pertinência da oferta exata não confirmados. Não inserir CTA a partir de intermediário ou oferta estrangeira. Foto do produto é opcional.' },
-    draftNotes: `Faltam duas imagens reais distintas com correspondência visual, crédito, origem e licença comercial verificados, além de oferta Amazon pertinente com destino/tag conferidos. ${post.draftNotes || ''} Não foi confirmado sinal publicado em 15/11 no fuso de São Paulo; os dois componentes diários da pontuação ficam zerados. A foto do produto é opcional.`,
+    draftNotes: `Capa e imagem interna são ilustrações conceituais originais, específicas ao tema e identificadas como IA, com crédito e referência dos termos de uso. Falta confirmar oferta Amazon pertinente, destino e tag. ${post.draftNotes || ''} Não foi confirmado sinal publicado em 15/11 no fuso de São Paulo; os dois componentes diários da pontuação ficam zerados. A foto do produto é opcional.`,
   };
 }
 export const dailyPosts20261115 = [
