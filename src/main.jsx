@@ -135,6 +135,19 @@ function readPosts(){
    localStorage.setItem('bitsplease_publish_reviewed_drafts_20261113_v1','1');
    needsSave=true;
   }
+  if(!localStorage.getItem('bitsplease_publish_daily_20261115_v1')){
+   const approvedIds=new Set(['review-modern-warfare-4-pesquisa-2026','game-pass-essential-oito-classicos-novembro-15','fable-deepwood-gameplay-limites-previa','path-of-exile-3300b-hotfix-recoup','marathon-symbiosis-expedition-semana-gratuita','game-awards-2026-indicados-calendario','worlds-2026-blg-gen-g-titulo','dragon-quest-rpg-mobile-beta-2027','valhalla-new-game-plus-ps5-pro-2026','arc-raiders-frozen-trail-17-milhoes-contexto']);
+   clean=clean.map(p=>{
+    const seed=seeds.get(p.id);
+    if(!approvedIds.has(p.id)||!seed?.publicationApproval)return p;
+    const published={...p,status:'published',date:seed.date,publishedAt:seed.publishedAt,image:seed.image,imageAlt:seed.imageAlt,imageSource:seed.imageSource,imageSourceUrl:seed.imageSourceUrl,imageLicense:seed.imageLicense,imageLicenseUrl:seed.imageLicenseUrl,inlineImage:seed.inlineImage,imageResearch:seed.imageResearch,affiliateResearch:seed.affiliateResearch,publicationApproval:seed.publicationApproval,editorialPendingNotes:seed.editorialPendingNotes};
+    delete published.draftNotes;
+    needsSave=true;
+    return published;
+   });
+   localStorage.setItem('bitsplease_publish_daily_20261115_v1','1');
+   needsSave=true;
+  }
   const ids=new Set(clean.map(p=>p.id));
   const posts=[...allEditorialPosts.filter(p=>!ids.has(p.id)),...clean].map(preparePublicationStatus);
   if(needsSave)localStorage.setItem('orbita_posts',JSON.stringify(posts));

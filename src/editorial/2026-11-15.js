@@ -28,8 +28,17 @@ function draft({ scores, imageQuery, imageSources, imageNotes, product, affiliat
       imageLicense: conceptLicense, imageLicenseUrl: imageTerms,
       inlineImage: { image: `${imageBase}${visual[2]}`, alt: visual[3], credit: conceptCredit, sourceUrl: imageTerms, license: conceptLicense, licenseUrl: imageTerms },
     } : {}),
-    category: 'GAMES', section: post.section || 'NOTÍCIAS', status: 'draft',
-    date: '15 nov 2026', read: `${Math.max(2, Math.ceil(post.body.split(/\s+/).length / 180))} min`,
+    category: 'GAMES', section: post.section || 'NOTÍCIAS', status: visual ? 'published' : 'draft',
+    date: '15 nov 2026', publishedAt: visual ? '2026-11-15' : undefined,
+    publicationApproval: visual ? {
+      mode: 'direct-user-publication', explicitUserAuthorization: true, authorizationDate: '2026-11-15',
+      authorizationBasis: 'Autorização direta do usuário em 15/11/2026: “faz publicação”. Aprovação limitada a esta matéria e às imagens identificadas abaixo.',
+      coverImage: `${imageBase}${visual[0]}`, bodyImage: `${imageBase}${visual[2]}`,
+      imageRightsUnverified: true, affiliateOfferUnverified: true,
+    } : undefined,
+    editorialPendingNotes: visual ? 'Publicada por autorização direta do usuário em 15/11/2026. A oferta Amazon pertinente e seu destino com a tag do portal não foram confirmados; nenhum produto ou CTA afiliado foi incluído. As ilustrações conceituais geradas por IA estão identificadas nas legendas.' : undefined,
+    draftNotes: visual ? undefined : post.draftNotes,
+    read: `${Math.max(2, Math.ceil(post.body.split(/\s+/).length / 180))} min`,
     relevanceDate: '2026-11-15', relevanceUpdatedAt: checkedAt,
     relevanceScore: scores.reduce((sum, score) => sum + score, 0),
     relevanceBreakdown: Object.fromEntries(['timeliness', 'publicInterest', 'reach', 'sourceReliability', 'brazilUtility'].map((key, index) => [key, scores[index]])),
@@ -42,7 +51,7 @@ function draft({ scores, imageQuery, imageSources, imageNotes, product, affiliat
       notes: `${imageNotes} Duas ilustrações conceituais originais foram geradas para esta pauta e revisadas quanto à correspondência com o assunto e à diferença de composição. Ambas estão identificadas como IA; não simulam capturas nem artes oficiais.`,
     },
     affiliateResearch: { product, query: affiliateQuery, tag: 'bitsplease-20', checkedAt, status: 'destination-unverified', notes: 'Busca realizada; destino Amazon Brasil e pertinência da oferta exata não confirmados. Não inserir CTA a partir de intermediário ou oferta estrangeira. Foto do produto é opcional.' },
-    draftNotes: `Capa e imagem interna são ilustrações conceituais originais, específicas ao tema e identificadas como IA, com crédito e referência dos termos de uso. Falta confirmar oferta Amazon pertinente, destino e tag. ${post.draftNotes || ''} Não foi confirmado sinal publicado em 15/11 no fuso de São Paulo; os dois componentes diários da pontuação ficam zerados. A foto do produto é opcional.`,
+    draftNotes: visual ? undefined : `Capa e imagem interna são ilustrações conceituais originais, específicas ao tema e identificadas como IA, com crédito e referência dos termos de uso. Falta confirmar oferta Amazon pertinente, destino e tag. ${post.draftNotes || ''} Não foi confirmado sinal publicado em 15/11 no fuso de São Paulo; os dois componentes diários da pontuação ficam zerados. A foto do produto é opcional.`,
   };
 }
 export const dailyPosts20261115 = [
