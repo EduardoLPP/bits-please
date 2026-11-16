@@ -23,12 +23,9 @@ O dashboard do `/admin` consulta dados reais do Google Analytics 4 e do Search C
 
 1. Ative a Google Analytics Data API e a Search Console API no projeto do Google Cloud e crie uma conta de serviço. Mantenha o arquivo JSON de credenciais privado.
 2. Dê acesso de leitor ao e-mail da conta de serviço na propriedade do GA4 e no Search Console.
-3. Configure estas variáveis no Vercel, em Preview e Production, e faça um novo deploy:
-   - `GA4_PROPERTY_ID`: ID numérico da propriedade GA4.
-   - `GSC_SITE_URL`: endereço exato da propriedade verificada do Search Console, por exemplo `https://bits-please.vercel.app/`.
-   - `GOOGLE_SERVICE_ACCOUNT_JSON`: conteúdo JSON da chave privada da conta de serviço, armazenado como variável secreta.
+3. Configure `GOOGLE_SERVICE_ACCOUNT_JSON` no Vercel para Preview e Production como variável secreta e faça um novo deploy.
 
-O ID público de medição do GA4 fica em `src/analyticsConfig.js`; não é uma credencial secreta. A coleta de visualizações começa após publicar essa configuração.
+Os identificadores públicos do GA4 e do Search Console ficam em `src/analyticsConfig.js`. A coleta de visualizações começa após publicar essa configuração.
 
 Para visualizar localmente, coloque as mesmas variáveis de servidor em `.env.local`. O GA4 começa a acumular visitas após ser ativado; o painel oferece períodos de 7, 28 e 90 dias. O relatório do Search Console depende do histórico disponível nessa propriedade.
 

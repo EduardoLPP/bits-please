@@ -1,6 +1,6 @@
 import { createSign } from 'node:crypto';
 import { cookieValue, verifySession } from '../lib/auth.js';
-import { GA4_MEASUREMENT_ID } from '../src/analyticsConfig.js';
+import { GA4_MEASUREMENT_ID, GA4_PROPERTY_ID, GSC_SITE_URL } from '../src/analyticsConfig.js';
 
 const TOKEN_URL = 'https://oauth2.googleapis.com/token';
 const GA_BASE = 'https://analyticsdata.googleapis.com/v1beta';
@@ -111,7 +111,7 @@ export default async function handler(req, res) {
   const window = dateWindow(days);
   let credentials;
   try { credentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON || 'null'); } catch {}
-  const required = ['GOOGLE_SERVICE_ACCOUNT_JSON', 'GA4_PROPERTY_ID', 'GSC_SITE_URL'];
+  const required = ['GOOGLE_SERVICE_ACCOUNT_JSON'];
   const missing = required.filter(name => !process.env[name]);
   if (!credentials?.client_email || !credentials?.private_key) {
     if (!missing.includes('GOOGLE_SERVICE_ACCOUNT_JSON')) missing.unshift('GOOGLE_SERVICE_ACCOUNT_JSON');
@@ -134,8 +134,8 @@ export default async function handler(req, res) {
   catch { return json(res, 200, { configured: true, days, window, services: { ga4: { status: 'error', message: 'Não foi possível autenticar no Google. Confira as credenciais do serviço.' }, searchConsole: { status: 'error', message: 'Não foi possível autenticar no Google. Confira as credenciais do serviço.' } } }); }
 
   const [ga4, searchConsole] = await Promise.all([
-    process.env.GA4_PROPERTY_ID ? getAnalytics(token, process.env.GA4_PROPERTY_ID, window).catch(() => ({ status: 'error', message: 'Confira o ID da propriedade GA4 e dê acesso de leitor à conta de serviço.' })) : Promise.resolve({ status: 'setup', message: 'Adicione GA4_PROPERTY_ID para consultar sessões orgânicas e páginas mais vistas.' }),
-    process.env.GSC_SITE_URL ? getSearchConsole(token, process.env.GSC_SITE_URL, window).catch(() => ({ status: 'error', message: 'Confira a propriedade GSC_SITE_URL e dê acesso de leitura à conta de serviço no Search Console.' })) : Promise.resolve({ status: 'setup', message: 'Adicione GSC_SITE_URL para consultar cliques, impressões, CTR e posição no Google.' })
+    getAnalytics(token, GA4_PROPERTY_ID, window).catch(() => ({ status: 'error', message: 'Confira a propriedade do GA4 e dê acesso de leitor à conta técnica.' })),
+    getSearchConsole(token, GSC_SITE_URL, window).catch(() => ({ status: 'error', message: 'Confira o acesso de leitura da conta técnica no Search Console.' }))
   ]);
   return json(res, 200, { configured: true, days, window, trackingConfigured: Boolean(GA4_MEASUREMENT_ID), missing, services: { ga4, searchConsole } });
 }
