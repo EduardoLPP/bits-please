@@ -148,6 +148,18 @@ function readPosts(){
    localStorage.setItem('bitsplease_publish_daily_20261115_v1','1');
    needsSave=true;
   }
+  if(!localStorage.getItem('bitsplease_publish_daily_20261116_v1')){
+   const todaysSeeds=allEditorialPosts.filter(p=>p.relevanceDate==='2026-11-16');
+   const existingIds=new Set(clean.map(p=>p.id));
+   for(const seed of todaysSeeds){
+    if(existingIds.has(seed.id))continue;
+    clean.push(seed);
+    existingIds.add(seed.id);
+    needsSave=true;
+   }
+   localStorage.setItem('bitsplease_publish_daily_20261116_v1','1');
+   needsSave=true;
+  }
   const ids=new Set(clean.map(p=>p.id));
   const posts=[...allEditorialPosts.filter(p=>!ids.has(p.id)),...clean].map(preparePublicationStatus);
   if(needsSave)localStorage.setItem('orbita_posts',JSON.stringify(posts));
