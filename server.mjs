@@ -3,12 +3,13 @@ import { readFile, readFileSync, stat } from 'node:fs';
 import { extname, resolve, sep } from 'node:path';
 import { createHmac, randomBytes, timingSafeEqual } from 'node:crypto';
 import { createServer as createViteServer } from 'vite';
+import analyticsHandler from './api/analytics.js';
 
 const root = process.cwd();
 const envPath = resolve(root, '.env.local');
 try {
   for (const line of readFileSync(envPath, 'utf8').split(/\r?\n/)) {
-    const match = line.match(/^([A-Z_]+)=(.*)$/);
+    const match = line.match(/^([A-Z0-9_]+)=(.*)$/);
     if (match && !process.env[match[1]]) process.env[match[1]] = match[2];
   }
 } catch {}
@@ -68,6 +69,11 @@ const server = createServer((req, res) => {
       return res.end();
     }
     res.setHeader('cache-control', 'no-store');
+  }
+  if (url.pathname === '/api/analytics') {
+    const expiry = validSessionCookie ? sessions.get(sessionId) : undefined;
+    req.adminAuthenticated = Boolean(expiry && expiry >= Date.now());
+    return analyticsHandler(req, res);
   }
   vite.middlewares(req, res, err => {
     if (err) { res.statusCode = 500; res.end('Internal server error'); }

@@ -17,4 +17,18 @@ O painel fica em `/admin`; visitantes sem sessão são encaminhados ao login. As
 - As funções em `api/` cuidam do login e da proteção de `/admin`; `vercel.json` mantém as rotas de categoria da SPA funcionando.
 - Não envie `.env.local` ao GitHub. Ele já está no `.gitignore`.
 
+## Dashboard de audiência e SEO
+
+O dashboard do `/admin` consulta dados reais do Google Analytics 4 e do Search Console. Sem essas conexões, ele mostra que falta configuração e não preenche o painel com números fictícios.
+
+1. Ative a Google Analytics Data API e a Search Console API no projeto do Google Cloud e crie uma conta de serviço. Mantenha o arquivo JSON de credenciais privado.
+2. Dê acesso de leitor ao e-mail da conta de serviço na propriedade do GA4 e no Search Console.
+3. Configure estas variáveis no Vercel, em Preview e Production, e faça um novo deploy:
+   - `VITE_GA_MEASUREMENT_ID`: ID da Web stream do GA4, no formato `G-...`. Passa a registrar visualizações de página depois que o deploy entra no ar.
+   - `GA4_PROPERTY_ID`: ID numérico da propriedade GA4.
+   - `GSC_SITE_URL`: endereço exato da propriedade verificada do Search Console, por exemplo `https://bits-please.vercel.app/`.
+   - `GOOGLE_SERVICE_ACCOUNT_JSON`: conteúdo JSON da chave privada da conta de serviço, armazenado como variável secreta.
+
+Para visualizar localmente, coloque as mesmas variáveis em `.env.local`. O GA4 começa a acumular visitas após ser ativado; o painel oferece períodos de 7, 28 e 90 dias. O relatório do Search Console depende do histórico disponível nessa propriedade.
+
 O editor continua local ao navegador até que uma base de dados seja conectada; autenticação protege o painel, mas não sincroniza artigos entre dispositivos.
