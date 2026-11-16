@@ -1,6 +1,7 @@
 import React,{useEffect,useState}from'react';
 import{createRoot}from'react-dom/client';
 import'./style.css';
+import { GA4_MEASUREMENT_ID } from './analyticsConfig.js';
 
 import { initialPosts, mockPostIds } from './articles.js';
 import { editorialUpdates } from './editorialUpdates.js';
@@ -215,7 +216,7 @@ function App(){
  const sectionForSlug={noticias:'NOTÍCIAS',reviews:'REVIEWS',games:'GAMES',esports:'ESPORTS','cultura-pop':'CULTURA POP','pc-gamer':'PC GAMER'},slugForSection={'NOTÍCIAS':'noticias','REVIEWS':'reviews','GAMES':'games','ESPORTS':'esports','CULTURA POP':'cultura-pop','PC GAMER':'pc-gamer'};
  const categorySlug=route.startsWith('/categoria/')?decodeURIComponent(route.slice(11)):null,categoryName=categorySlug?sectionForSlug[categorySlug]:null;
  const categoryPosts=categoryName?publicPosts.filter(p=>p.section===categoryName):[];
-useEffect(()=>{const measurementId=import.meta.env.VITE_GA_MEASUREMENT_ID;if(!measurementId||route==='/admin'||route==='/login')return;window.dataLayer=window.dataLayer||[];window.gtag=window.gtag||function(){window.dataLayer.push(arguments)};if(!window.__bitsGaLoaded){const script=document.createElement('script');script.async=true;script.src=`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;document.head.appendChild(script);window.gtag('js',new Date());window.gtag('config',measurementId,{send_page_view:false});window.__bitsGaLoaded=true}const pageTitle=article?.title||categoryName||'Bits, Please';window.gtag('event','page_view',{page_title:pageTitle,page_location:window.location.href,page_path:window.location.pathname+window.location.search,send_to:measurementId})},[route,articleId,categorySlug,hash]);
+useEffect(()=>{const measurementId=GA4_MEASUREMENT_ID;if(!measurementId||route==='/admin'||route==='/login')return;window.dataLayer=window.dataLayer||[];window.gtag=window.gtag||function(){window.dataLayer.push(arguments)};if(!window.__bitsGaLoaded){const script=document.createElement('script');script.async=true;script.src=`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;document.head.appendChild(script);window.gtag('js',new Date());window.gtag('config',measurementId,{send_page_view:false});window.__bitsGaLoaded=true}const pageTitle=article?.title||categoryName||'Bits, Please';window.gtag('event','page_view',{page_title:pageTitle,page_location:window.location.href,page_path:window.location.pathname+window.location.search,send_to:measurementId})},[route,articleId,categorySlug,hash]);
  useEffect(()=>{
   const siteOrigin=(import.meta.env.VITE_SITE_URL||'https://bits-please.vercel.app').replace(/\/$/,'');
   const setMeta=(kind,key,value)=>{let element=document.head.querySelector(`meta[${kind}="${key}"]`);if(!element){element=document.createElement('meta');element.setAttribute(kind,key);document.head.appendChild(element)}element.content=value};

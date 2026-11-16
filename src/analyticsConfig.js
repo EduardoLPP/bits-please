@@ -1,0 +1,1 @@
+export const GA4_MEASUREMENT_ID = 'G-D5M18Q7VTR';
