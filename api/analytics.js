@@ -110,8 +110,22 @@ export default async function handler(req, res) {
   const window = dateWindow(days);
   let credentials;
   try { credentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON || 'null'); } catch {}
+  const required = ['GOOGLE_SERVICE_ACCOUNT_JSON', 'GA4_PROPERTY_ID', 'GSC_SITE_URL', 'VITE_GA_MEASUREMENT_ID'];
+  const missing = required.filter(name => !process.env[name]);
   if (!credentials?.client_email || !credentials?.private_key) {
-    return json(res, 200, { configured: false, days, window, required: ['GOOGLE_SERVICE_ACCOUNT_JSON', 'GA4_PROPERTY_ID', 'GSC_SITE_URL', 'VITE_GA_MEASUREMENT_ID'] });
+    if (!missing.includes('GOOGLE_SERVICE_ACCOUNT_JSON')) missing.unshift('GOOGLE_SERVICE_ACCOUNT_JSON');
+    return json(res, 200, {
+      configured: false,
+      trackingConfigured: Boolean(process.env.VITE_GA_MEASUREMENT_ID),
+      days,
+      window,
+      required,
+      missing,
+      services: {
+        ga4: { status: 'setup', message: 'O acesso de leitura do GA4 ainda não foi configurado neste site.' },
+        searchConsole: { status: 'setup', message: 'O acesso de leitura do Search Console ainda não foi configurado neste site.' }
+      }
+    });
   }
 
   let token;
@@ -122,5 +136,5 @@ export default async function handler(req, res) {
     process.env.GA4_PROPERTY_ID ? getAnalytics(token, process.env.GA4_PROPERTY_ID, window).catch(() => ({ status: 'error', message: 'Confira o ID da propriedade GA4 e dê acesso de leitor à conta de serviço.' })) : Promise.resolve({ status: 'setup', message: 'Adicione GA4_PROPERTY_ID para consultar sessões orgânicas e páginas mais vistas.' }),
     process.env.GSC_SITE_URL ? getSearchConsole(token, process.env.GSC_SITE_URL, window).catch(() => ({ status: 'error', message: 'Confira a propriedade GSC_SITE_URL e dê acesso de leitura à conta de serviço no Search Console.' })) : Promise.resolve({ status: 'setup', message: 'Adicione GSC_SITE_URL para consultar cliques, impressões, CTR e posição no Google.' })
   ]);
-  return json(res, 200, { configured: true, days, window, trackingConfigured: Boolean(process.env.VITE_GA_MEASUREMENT_ID), services: { ga4, searchConsole } });
+  return json(res, 200, { configured: true, days, window, trackingConfigured: Boolean(process.env.VITE_GA_MEASUREMENT_ID), missing, services: { ga4, searchConsole } });
 }
