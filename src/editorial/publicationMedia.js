@@ -62,10 +62,6 @@ const art = {
     cover: 'escape-academy-2-cover-simple.png', coverAlt: 'Duas silhuetas observam uma porta com formas de quebra-cabeça.',
     body: 'escape-academy-2-body-simple.png', bodyAlt: 'Dois jogadores resolvem juntos um enigma de porta e chave.',
   },
-  'review-red-dead-redemption-2-2026': {
-    cover: 'rdr2-cover-simple.png', coverAlt: 'Silhueta genérica de um viajante a cavalo em uma paisagem de fronteira.',
-    body: 'rdr2-body-simple.png', bodyAlt: 'Duas silhuetas genéricas junto a uma fogueira sob o céu noturno.',
-  },
   'review-phantom-blade-zero-2026': {
     cover: 'phantom-blade-cover-simple.png', coverAlt: 'Silhueta de um espadachim diante de uma grande forma vermelha.',
     body: 'phantom-blade-body-simple.png', bodyAlt: 'Espada e arcos de movimento em uma composição gráfica minimalista.',
@@ -117,10 +113,6 @@ export function applyPublicationMedia(posts) {
         notes: 'Formas gráficas simplificadas, silhuetas claras e paleta contida, conforme preferência do usuário. A imagem fornecida para Wolfenstein permanece identificada como tal.',
       },
       publicationApproval: approval,
-      affiliate: undefined,
-      productName: undefined,
-      productPitch: undefined,
-      productImage: undefined,
       editorialPendingNotes: 'Publicado por autorização expressa. Nenhum botão de compra foi mantido sem oferta e destino afiliado confirmados. A arte conceitual está identificada na matéria.',
       date: '13 nov 2026',
       publishedAt: '2026-11-13',

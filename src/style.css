@@ -38,3 +38,11 @@
 .lead-controls>button:disabled{opacity:.4;cursor:not-allowed;box-shadow:none}
  .tracking-warning{margin:0 0 15px;padding:11px 13px;border-left:2px solid #f0cb55;background:#1e1a10;color:#e3ce91;font:10px/1.6 'DM Mono'}
 .load-more{display:flex;align-items:center;justify-content:center;gap:16px;min-width:230px;margin:26px auto 0;padding:13px 19px;border:1px solid #ff4fd8;background:#111321;color:#ff68dc;font:700 10px 'DM Mono';letter-spacing:.8px;transition:background .2s,border-color .2s,box-shadow .2s}.load-more span{color:#4ce2ff}.load-more:hover,.load-more:focus-visible{outline:none;background:#19172a;border-color:#4ce2ff;box-shadow:0 0 14px #4ce2ff30;color:#fff}
+
+.product-pitch{font-size:14px;line-height:1.8;color:#c0c7dd;margin:31px 0 14px}
+.product-box-featured{position:relative;align-items:center;gap:20px;padding:22px;margin:15px -12px 13px;border:1px solid transparent;background:linear-gradient(#101322,#101322) padding-box,linear-gradient(110deg,#ff4fd8,#8c73ff 52%,#4ce2ff) border-box;box-shadow:0 0 24px #8847c51c,0 12px 28px #0003}
+.product-box-featured.text-only .product-details{gap:14px}
+.product-box-featured .product-details b{font:700 16px/1.35 Manrope;color:#f3f4ff}
+.product-box-featured .product-buy{min-height:48px;padding:15px 23px;font-size:12px;letter-spacing:.15px;box-shadow:0 0 20px #a644c655}
+.product-box-featured .product-buy:hover{filter:brightness(1.17);transform:translateY(-1px)}
+@media(max-width:700px){.product-box-featured{align-items:stretch;gap:14px;padding:17px;margin:15px 0}.product-box-featured.has-image{align-items:center}.product-box-featured .product-details b{font-size:14px}.product-box-featured .product-buy{min-height:46px;padding:13px 17px}.product-box-featured.text-only .product-details{width:100%}}
