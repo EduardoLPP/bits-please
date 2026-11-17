@@ -248,6 +248,19 @@ function readPosts(){
    localStorage.setItem('bitsplease_publish_daily_seo_20261117_v1','1');
    needsSave=true;
   }
+  if(!localStorage.getItem('bitsplease_publish_candy_crush_20261117_v1')){
+   const candyId='candy-crush-xbox-25-game-on-musica',seed=seeds.get(candyId);
+   if(seed?.publicationApproval){
+    const existingIndex=clean.findIndex(post=>post.id===candyId);
+    const existing=existingIndex>=0?clean[existingIndex]:seed;
+    const fields=['status','date','publishedAt','seoTitle','seoDescription','publicationApproval','image','imageAlt','imageSource','imageSourceUrl','imageLicense','imageLicenseUrl','inlineImage','imageResearch','affiliateResearch','sources'];
+    const published={...existing,...Object.fromEntries(fields.filter(field=>seed[field]!==undefined).map(field=>[field,seed[field]]))};
+    for(const field of ['affiliate','productName','productPitch','affiliateLinkType','productImage','draftNotes'])delete published[field];
+    if(existingIndex>=0)clean[existingIndex]=published;else clean.push(published);
+    needsSave=true;
+   }
+   localStorage.setItem('bitsplease_publish_candy_crush_20261117_v1','1');
+  }
   const ids=new Set(clean.map(p=>p.id));
   const posts=[...allEditorialPosts.filter(p=>!ids.has(p.id)),...clean].map(preparePublicationStatus);
   if(needsSave)localStorage.setItem('orbita_posts',JSON.stringify(posts));

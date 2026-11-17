@@ -40,6 +40,10 @@ const approvedPublicationSeo = {
     title: 'Ranger’s Path estreia no Xbox | Bits, Please',
     description: 'O jogo de guarda-florestal chega ao Xbox com Play Anywhere. Conheça as tarefas no parque e o que ainda falta verificar sobre a versão final.',
   },
+  'candy-crush-xbox-25-game-on-musica': {
+    title: 'Candy Crush: colaboração Xbox 25 anos | Bits, Please',
+    description: 'A temporada Game On celebra os 25 anos do Xbox com oito franquias e seis temas rearranjados. Veja os pins e até quando vai a ação em iOS e Android.',
+  },
 };
 function draft({ scores, reason, imageQuery, imageNotes, product, affiliateQuery, ...post }) {
   const completed = completeGeneratedMedia20261117({
