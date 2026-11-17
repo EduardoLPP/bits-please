@@ -192,6 +192,36 @@ const affiliateCatalog = {
     'ASUS ROG Xbox Ally X — PC portátil com Windows',
     'Esta busca reúne o portátil com Windows discutido no guia. Compare modelo, memória, armazenamento, vendedor e garantia com as alternativas SteamOS.'
   ),
+  'xbox-black-friday-2026-calendario-regiao': item(
+    'B08DF248LD',
+    'Controle sem fio Xbox Carbon Black para Series X|S',
+    'Acessório oficial para jogar no Xbox Series X|S, Xbox One ou PC. Esta oferta da Amazon não faz parte da campanha americana de Black Friday; confira preço, vendedor e disponibilidade no Brasil.'
+  ),
+  'ffxiv-road-evercold-30-dias-condicoes': search(
+    'Final Fantasy XIV Dawntrail',
+    'Produtos de Final Fantasy XIV na Amazon',
+    'Busca por itens de Final Fantasy XIV. Confira plataforma, edição, região e se o produto é jogo, expansão ou colecionável; esta compra não substitui nem concede a campanha gratuita de retorno.'
+  ),
+  'aphelion-game-pass-premium-17-novembro': item(
+    'B0FH1FLQQG',
+    'EA SPORTS FC 26 para Xbox Series X',
+    'Jogo pago para Xbox Series X, vendido separadamente. Não inclui Aphelion nem acesso ao Game Pass; confira a edição e a plataforma antes de comprar.'
+  ),
+  'nintendo-eshop-presentes-grupo-familiar-regiao': item(
+    'B0C8M2XYJV',
+    'Controle PowerA com fio para Nintendo Switch e Switch 2',
+    'A listagem indica compatibilidade com Nintendo Switch e Switch 2; o botão C do Switch 2 não funciona neste modelo. Confira vendedor e disponibilidade.'
+  ),
+  'guild-saga-ps5-maio-2027-combate': item(
+    'B0GL96NJL5',
+    'Controle DualSense Midnight Black para PS5',
+    'Acessório para o PS5 anunciado para Guild Saga. A oferta é do controle, não do jogo; confira compatibilidade, vendedor e disponibilidade na Amazon.'
+  ),
+  'rangers-path-xbox-17-novembro-parque': item(
+    'B08DF248LD',
+    'Controle sem fio Xbox Carbon Black para Series X|S',
+    'Acessório compatível com Xbox Series X|S. A oferta é do controle, não de Ranger’s Path; confira conexão, vendedor e disponibilidade na Amazon.'
+  ),
   'nba-2k27-vice-city-season-3-gta-beneficios': item(
     'B0HCCL1361',
     'NBA 2K27 para PlayStation 5',

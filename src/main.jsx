@@ -198,8 +198,14 @@ function readPosts(){
    localStorage.setItem('bitsplease_affiliate_catalog_cta_20261116_v1','1');
    needsSave=true;
   }
-  if(!localStorage.getItem('bitsplease_affiliate_daily_20261117_v1')){
+  if(!localStorage.getItem('bitsplease_affiliate_daily_20261117_v2')){
    const dailyAffiliateIds=new Set([
+    'xbox-black-friday-2026-calendario-regiao',
+    'ffxiv-road-evercold-30-dias-condicoes',
+    'aphelion-game-pass-premium-17-novembro',
+    'nintendo-eshop-presentes-grupo-familiar-regiao',
+    'guild-saga-ps5-maio-2027-combate',
+    'rangers-path-xbox-17-novembro-parque',
     'nba-2k27-vice-city-season-3-gta-beneficios',
     'review-star-wars-galactic-racer-pesquisa-2026',
     'outer-worlds-2-side-effects-respec-dlc',
@@ -220,7 +226,7 @@ function readPosts(){
     needsSave=true;
     return {...post,affiliate:post.affiliate||seed.affiliate,productName:seed.productName,productPitch:seed.productPitch,affiliateLinkType:seed.affiliateLinkType,affiliateResearch:seed.affiliateResearch,productImage:seed.productImage,sources:mergedSources,draftNotes};
    });
-   localStorage.setItem('bitsplease_affiliate_daily_20261117_v1','1');
+   localStorage.setItem('bitsplease_affiliate_daily_20261117_v2','1');
    needsSave=true;
   }
   clean=clean.map(post=>{const updated=completeGeneratedMedia20261117(post);if(updated!==post)needsSave=true;return updated});
