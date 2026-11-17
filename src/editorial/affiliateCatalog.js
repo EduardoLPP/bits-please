@@ -192,6 +192,21 @@ const affiliateCatalog = {
     'ASUS ROG Xbox Ally X — PC portátil com Windows',
     'Esta busca reúne o portátil com Windows discutido no guia. Compare modelo, memória, armazenamento, vendedor e garantia com as alternativas SteamOS.'
   ),
+  'nba-2k27-vice-city-season-3-gta-beneficios': item(
+    'B0HCCL1361',
+    'NBA 2K27 para PlayStation 5',
+    'Oferta da edição para PS5. Confira vendedor, versão e disponibilidade atuais; o conteúdo da temporada Vice City e os benefícios de GTA+ seguem as condições anunciadas pela 2K.'
+  ),
+  'review-star-wars-galactic-racer-pesquisa-2026': item(
+    'B0GZ5GFCDL',
+    'Star Wars: Galactic Racer — Deluxe Edition para PS5',
+    'Oferta da Deluxe Edition física para PS5. Confira quais extras estão incluídos e o vendedor; esta análise não avalia separadamente o conteúdo adicional da edição.'
+  ),
+  'outer-worlds-2-side-effects-respec-dlc': search(
+    'The Outer Worlds 2 PS5 Premium Edition DLC',
+    'The Outer Worlds 2 para PS5 — edições e DLC',
+    'Busca direcionada na Amazon. Compare plataforma, edição Premium ou upgrade e o que está incluído antes de comprar; não confirmamos estoque, preço ou uma oferta exata do DLC.'
+  ),
 };
 
 const publishWithoutProductPhoto = new Set([
@@ -222,7 +237,15 @@ export function applyAffiliateCatalog(posts) {
     const next = {
       ...post,
       ...(offer || {}),
-      ...(offer ? { affiliateResearch: { tag: affiliateTag, status: offer.affiliateLinkType === 'search' ? 'tagged-amazon-search' : 'amazon-brazil-product-link', checkedAt: '2026-11-16' } } : {}),
+      ...(offer ? { affiliateResearch: {
+        ...(post.affiliateResearch || {}),
+        tag: affiliateTag,
+        status: offer.affiliateLinkType === 'search' ? 'tagged-amazon-search' : 'amazon-brazil-product-link',
+        checkedAt: post.relevanceDate === '2026-11-17' ? '2026-11-17' : '2026-11-16',
+        notes: offer.affiliateLinkType === 'search'
+          ? 'Busca Amazon Brasil com tag do portal; resultados, edição, preço e estoque precisam ser confirmados na página da loja. Foto do produto é opcional.'
+          : 'Link direto Amazon Brasil conferido para o produto e a plataforma indicados. Preço e disponibilidade podem mudar; foto do produto é opcional.',
+      } } : {}),
       ...(sources ? { sources } : {}),
       ...(approval ? { publicationApproval: approval } : {}),
     };
@@ -234,6 +257,14 @@ export function applyAffiliateCatalog(posts) {
     if (post.id === 'review-red-dead-redemption-2-2026') {
       next.status = 'published';
       delete next.draftNotes;
+    }
+    if (offer && next.draftNotes) {
+      next.draftNotes = next.draftNotes.replace(
+        'Falta confirmar oferta Amazon pertinente e destino com a tag do portal.',
+        offer.affiliateLinkType === 'search'
+          ? 'Busca Amazon pertinente adicionada com a tag do portal; conferir edição, preço e disponibilidade.'
+          : 'Oferta Amazon pertinente adicionada com link direto e a tag do portal.'
+      );
     }
     return next;
   });

@@ -198,6 +198,31 @@ function readPosts(){
    localStorage.setItem('bitsplease_affiliate_catalog_cta_20261116_v1','1');
    needsSave=true;
   }
+  if(!localStorage.getItem('bitsplease_affiliate_daily_20261117_v1')){
+   const dailyAffiliateIds=new Set([
+    'nba-2k27-vice-city-season-3-gta-beneficios',
+    'review-star-wars-galactic-racer-pesquisa-2026',
+    'outer-worlds-2-side-effects-respec-dlc',
+   ]);
+   clean=clean.map(post=>{
+    if(!dailyAffiliateIds.has(post.id))return post;
+    const seed=seeds.get(post.id);
+    if(!seed?.affiliate||post.affiliate&&post.affiliate!==seed.affiliate)return post;
+    const productSource=(seed.sources||[]).filter(source=>source.label==='Amazon Brasil — produto recomendado');
+    const mergedSources=[...(post.sources||[]).filter(source=>source.label!=='Amazon Brasil — produto recomendado'),...productSource];
+    const draftNotes=(post.draftNotes||'').replace(
+     'Falta confirmar oferta Amazon pertinente e destino com a tag do portal.',
+     seed.affiliateLinkType==='search'
+      ? 'Busca Amazon pertinente adicionada com a tag do portal; conferir edição, preço e disponibilidade.'
+      : 'Oferta Amazon pertinente adicionada com link direto e a tag do portal.'
+    );
+    if(post.affiliate===seed.affiliate&&post.draftNotes===draftNotes&&post.productName===seed.productName&&post.affiliateResearch?.checkedAt==='2026-11-17')return post;
+    needsSave=true;
+    return {...post,affiliate:post.affiliate||seed.affiliate,productName:seed.productName,productPitch:seed.productPitch,affiliateLinkType:seed.affiliateLinkType,affiliateResearch:seed.affiliateResearch,productImage:seed.productImage,sources:mergedSources,draftNotes};
+   });
+   localStorage.setItem('bitsplease_affiliate_daily_20261117_v1','1');
+   needsSave=true;
+  }
   clean=clean.map(post=>{const updated=completeGeneratedMedia20261117(post);if(updated!==post)needsSave=true;return updated});
   const ids=new Set(clean.map(p=>p.id));
   const posts=[...allEditorialPosts.filter(p=>!ids.has(p.id)),...clean].map(preparePublicationStatus);
