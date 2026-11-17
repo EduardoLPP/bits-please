@@ -3,8 +3,46 @@ const checkedAt = '2026-11-17T07:48:00-03:00';
 const source = (label, url) => ({ label, url });
 const xboxRules = 'https://www.xbox.com/en-US/developers/rules';
 const pass = 'https://news.xbox.com/pt-br/2026/11/03/xbox-game-pass-novembro-2026-wave-1/';
+const approvedPublicationSeo = {
+  'xbox-black-friday-2026-calendario-regiao': {
+    title: 'Black Friday Xbox 2026: datas e região | Bits, Please',
+    description: 'A promoção do Xbox vai de 19 de novembro a 2 de dezembro nos EUA. Veja horários, jogos anunciados e por que os descontos não confirmam preços no Brasil.',
+  },
+  'ffxiv-road-evercold-30-dias-condicoes': {
+    title: 'FFXIV: retorno grátis por 30 dias | Bits, Please',
+    description: 'Final Fantasy XIV oferece até 30 dias de retorno a contas elegíveis. Veja requisitos, prazo da campanha e quando começa a contar o tempo de jogo.',
+  },
+  'nba-2k27-vice-city-season-3-gta-beneficios': {
+    title: 'NBA 2K27: temporada Vice City | Bits, Please',
+    description: 'A terceira temporada leva Vice City a NBA 2K27. Confira edição digital, plataformas, conteúdo anunciado e os limites do benefício GTA+.',
+  },
+  'review-star-wars-galactic-racer-pesquisa-2026': {
+    title: 'Star Wars Galactic Racer: análise | Bits, Please',
+    description: 'Review baseada em pesquisa, sem teste próprio ou nota. Veja como calor, corridas em sequência e progressão definem a proposta do jogo.',
+  },
+  'outer-worlds-2-side-effects-respec-dlc': {
+    title: 'The Outer Worlds 2: DLC e respec | Bits, Please',
+    description: 'Side Effects Guaranteed chega em 2 de dezembro; a redistribuição de atributos vem em atualização gratuita. Veja o que exige compra.',
+  },
+  'aphelion-game-pass-premium-17-novembro': {
+    title: 'Aphelion no Game Pass Premium | Bits, Please',
+    description: 'A entrada de Aphelion no plano Premium amplia o acesso; o jogo já estava no Ultimate e PC Game Pass. Confira plataformas e diferenças.',
+  },
+  'nintendo-eshop-presentes-grupo-familiar-regiao': {
+    title: 'Nintendo eShop: presentes digitais | Bits, Please',
+    description: 'A Nintendo Malásia anunciou presentes para membros de grupos familiares. Veja limites e requisitos e por que a função ainda não está confirmada no Brasil.',
+  },
+  'guild-saga-ps5-maio-2027-combate': {
+    title: 'Guild Saga no PS5 em maio de 2027 | Bits, Please',
+    description: 'O RPG tático da Ocelot combina disciplinas, clima e terreno. A janela no PS5 é maio de 2027; dia, preço e desempenho ainda não foram confirmados.',
+  },
+  'rangers-path-xbox-17-novembro-parque': {
+    title: 'Ranger’s Path estreia no Xbox | Bits, Please',
+    description: 'O jogo de guarda-florestal chega ao Xbox com Play Anywhere. Conheça as tarefas no parque e o que ainda falta verificar sobre a versão final.',
+  },
+};
 function draft({ scores, reason, imageQuery, imageNotes, product, affiliateQuery, ...post }) {
-  return completeGeneratedMedia20261117({
+  const completed = completeGeneratedMedia20261117({
     ...post, category: 'GAMES', section: post.section || 'NOTÍCIAS', status: 'draft',
     date: '17 nov 2026', read: `${Math.max(2, Math.ceil(post.body.split(/\s+/).length / 180))} min`,
     relevanceDate: '2026-11-17', relevanceUpdatedAt: checkedAt,
@@ -16,6 +54,24 @@ function draft({ scores, reason, imageQuery, imageNotes, product, affiliateQuery
     affiliateResearch: { product, query: affiliateQuery, checkedAt, tag: 'bitsplease-20', status: 'destination-unverified', notes: 'Busca individual realizada. Nenhum destino Amazon Brasil da oferta exata foi confirmado; resultados intermediários não validam ASIN, preço ou estoque. Foto de produto opcional.' },
     draftNotes: `Faltam duas imagens distintas, com correspondência e uso comercial verificados, e uma oferta Amazon pertinente com destino confirmado. Ilustrações conceituais contextualizadas de IA são alternativa autorizada, mas ainda não foram produzidas para este lote. ${post.draftNotes || ''} Sem sinal com publicação em 17/11 no fuso America/Sao_Paulo confirmado; componentes diários zerados.`,
   });
+  const seo = approvedPublicationSeo[post.id];
+  if (!seo) return completed;
+  const { draftNotes, ...ready } = completed;
+  return {
+    ...ready,
+    seoTitle: seo.title,
+    seoDescription: seo.description,
+    status: 'published',
+    publishedAt: '2026-11-17',
+    publicationApproval: {
+      mode: 'direct-user-publication',
+      explicitUserAuthorization: true,
+      authorizationDate: '2026-11-17',
+      authorizationBasis: 'O usuário autorizou a publicação destes rascunhos com os respectivos metadados SEO em 17/11/2026.',
+      coverImage: completed.image,
+      bodyImage: completed.inlineImage?.image,
+    },
+  };
 }
 
 export const dailyPosts20261117 = [

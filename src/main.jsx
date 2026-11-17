@@ -230,6 +230,24 @@ function readPosts(){
    needsSave=true;
   }
   clean=clean.map(post=>{const updated=completeGeneratedMedia20261117(post);if(updated!==post)needsSave=true;return updated});
+  if(!localStorage.getItem('bitsplease_publish_daily_seo_20261117_v1')){
+   const publishSeeds=allEditorialPosts.filter(post=>post.relevanceDate==='2026-11-17'&&post.status==='published'&&post.publicationApproval?.explicitUserAuthorization===true);
+   const existingIds=new Set(clean.map(post=>post.id));
+   for(const seed of publishSeeds){if(existingIds.has(seed.id))continue;clean.push(seed);existingIds.add(seed.id);needsSave=true}
+   const publishIds=new Set(publishSeeds.map(post=>post.id));
+   clean=clean.map(post=>{
+    if(!publishIds.has(post.id))return post;
+    const seed=seeds.get(post.id);
+    if(!seed?.publicationApproval)return post;
+    const fields=['status','date','publishedAt','seoTitle','seoDescription','publicationApproval','image','imageAlt','imageSource','imageSourceUrl','imageLicense','imageLicenseUrl','inlineImage','imageResearch','affiliate','productName','productPitch','affiliateLinkType','affiliateResearch','productImage','sources'];
+    const merged={...post,...Object.fromEntries(fields.filter(field=>seed[field]!==undefined).map(field=>[field,seed[field]]))};
+    delete merged.draftNotes;
+    needsSave=true;
+    return merged;
+   });
+   localStorage.setItem('bitsplease_publish_daily_seo_20261117_v1','1');
+   needsSave=true;
+  }
   const ids=new Set(clean.map(p=>p.id));
   const posts=[...allEditorialPosts.filter(p=>!ids.has(p.id)),...clean].map(preparePublicationStatus);
   if(needsSave)localStorage.setItem('orbita_posts',JSON.stringify(posts));
