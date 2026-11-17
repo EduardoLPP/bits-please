@@ -1,3 +1,4 @@
+import { completeGeneratedMedia20261117 } from './generatedMedia20261117.js';
 const conceptCredit = 'Ilustração conceitual simplificada gerada com ImageGen; não é captura nem arte oficial.';
 const conceptDir = '/images/editorial-conceitual/';
 
@@ -71,7 +72,7 @@ const art = {
 export function applyPublicationMedia(posts) {
   return posts.map(post => {
     const visual = art[post.id];
-    if (!visual) return post;
+    if (!visual) return completeGeneratedMedia20261117(post);
 
     const cover = `${conceptDir}${visual.cover}`;
     const body = visual.userImage ? visual.body : `${conceptDir}${visual.body}`;

@@ -1,9 +1,10 @@
+import { completeGeneratedMedia20261117 } from './generatedMedia20261117.js';
 const checkedAt = '2026-11-17T07:48:00-03:00';
 const source = (label, url) => ({ label, url });
 const xboxRules = 'https://www.xbox.com/en-US/developers/rules';
 const pass = 'https://news.xbox.com/pt-br/2026/11/03/xbox-game-pass-novembro-2026-wave-1/';
 function draft({ scores, reason, imageQuery, imageNotes, product, affiliateQuery, ...post }) {
-  return {
+  return completeGeneratedMedia20261117({
     ...post, category: 'GAMES', section: post.section || 'NOTÍCIAS', status: 'draft',
     date: '17 nov 2026', read: `${Math.max(2, Math.ceil(post.body.split(/\s+/).length / 180))} min`,
     relevanceDate: '2026-11-17', relevanceUpdatedAt: checkedAt,
@@ -14,7 +15,7 @@ function draft({ scores, reason, imageQuery, imageNotes, product, affiliateQuery
     imageResearch: { query: imageQuery, checkedAt, status: 'no-commercial-pair-verified', sources: post.sources, notes: imageNotes, assets: [] },
     affiliateResearch: { product, query: affiliateQuery, checkedAt, tag: 'bitsplease-20', status: 'destination-unverified', notes: 'Busca individual realizada. Nenhum destino Amazon Brasil da oferta exata foi confirmado; resultados intermediários não validam ASIN, preço ou estoque. Foto de produto opcional.' },
     draftNotes: `Faltam duas imagens distintas, com correspondência e uso comercial verificados, e uma oferta Amazon pertinente com destino confirmado. Ilustrações conceituais contextualizadas de IA são alternativa autorizada, mas ainda não foram produzidas para este lote. ${post.draftNotes || ''} Sem sinal com publicação em 17/11 no fuso America/Sao_Paulo confirmado; componentes diários zerados.`,
-  };
+  });
 }
 
 export const dailyPosts20261117 = [
