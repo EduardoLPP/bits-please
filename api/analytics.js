@@ -64,14 +64,17 @@ function gaMetrics(report) {
 async function getAnalytics(token, propertyId, window) {
   const base = `${GA_BASE}/properties/${encodeURIComponent(propertyId)}:runReport`;
   const period = { dateRanges: [window] };
-  const [organicReport, dailyReport, articleReport] = await Promise.all([
-    googlePost(base, token, { ...period, dimensions: [{ name: 'sessionDefaultChannelGroup' }], metrics: [{ name: 'sessions' }, { name: 'screenPageViews' }, { name: 'totalUsers' }, { name: 'engagedSessions' }, { name: 'engagementRate' }], dimensionFilter: { filter: { fieldName: 'sessionDefaultChannelGroup', stringFilter: { matchType: 'EXACT', value: 'Organic Search' } } } }),
+  const metrics = [{ name: 'sessions' }, { name: 'screenPageViews' }, { name: 'totalUsers' }, { name: 'engagedSessions' }, { name: 'engagementRate' }];
+  const [overallReport, organicReport, dailyReport, articleReport] = await Promise.all([
+    googlePost(base, token, { ...period, metrics }),
+    googlePost(base, token, { ...period, dimensions: [{ name: 'sessionDefaultChannelGroup' }], metrics, dimensionFilter: { filter: { fieldName: 'sessionDefaultChannelGroup', stringFilter: { matchType: 'EXACT', value: 'Organic Search' } } } }),
     googlePost(base, token, { ...period, dimensions: [{ name: 'date' }], metrics: [{ name: 'sessions' }], dimensionFilter: { filter: { fieldName: 'sessionDefaultChannelGroup', stringFilter: { matchType: 'EXACT', value: 'Organic Search' } } }, orderBys: [{ dimension: { dimensionName: 'date' } }] }),
     googlePost(base, token, { ...period, dimensions: [{ name: 'pagePathPlusQueryString' }, { name: 'pageTitle' }], metrics: [{ name: 'screenPageViews' }, { name: 'sessions' }, { name: 'activeUsers' }], dimensionFilter: { filter: { fieldName: 'pagePath', stringFilter: { matchType: 'BEGINS_WITH', value: '/artigo/' } } }, orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }], limit: 10 })
   ]);
   return {
     status: 'connected',
-    summary: gaMetrics(organicReport),
+    summary: gaMetrics(overallReport),
+    organic: gaMetrics(organicReport),
     daily: (dailyReport.rows || []).map(row => ({ date: row.dimensionValues[0].value, sessions: Number(row.metricValues[0].value) })),
     topArticles: (articleReport.rows || []).map(row => ({ path: row.dimensionValues[0].value, title: row.dimensionValues[1].value, views: Number(row.metricValues[0].value), sessions: Number(row.metricValues[1].value), users: Number(row.metricValues[2].value) }))
   };
