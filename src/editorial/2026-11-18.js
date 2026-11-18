@@ -1,13 +1,20 @@
-const checkedAt = '2026-11-18T07:34:56-03:00';
+const checkedAt = '2026-11-18T08:18:07-03:00';
 const terms = 'https://openai.com/policies/terms-of-use/';
 const credit = 'Ilustração conceitual original gerada por IA com OpenAI ImageGen; não é captura de jogo nem arte oficial.';
 const license = 'Output gerado conforme os Termos de Uso da OpenAI; titularidade sujeita à lei aplicável.';
 const source = (label, url) => ({ label, url });
-function draft({ visual, alts, scores, product, query, ...post }) {
+const amazonSearch = query => `https://www.amazon.com.br/s?k=${encodeURIComponent(query)}&tag=bitsplease-20`;
+function draft({ visual, alts, scores, product, query, offer, ...post }) {
   const image = `/images/editorial-conceitual/2026-11-18/${visual}-cover.jpg`;
   const bodyImage = `/images/editorial-conceitual/2026-11-18/${visual}-body.jpg`;
+  const affiliate = offer ? amazonSearch(offer.query) : undefined;
+  const sources = offer
+    ? [...post.sources, source('Amazon Brasil — produto recomendado', affiliate), ...(offer.source ? [offer.source] : [])]
+    : post.sources;
   return {
     ...post, category: 'GAMES', section: post.section || 'NOTÍCIAS', status: 'draft',
+    ...(offer ? { affiliate, productName: offer.productName, productPitch: offer.productPitch, affiliateLinkType: 'search' } : {}),
+    sources,
     date: '18 nov 2026', read: `${Math.max(2, Math.ceil(post.body.split(/\s+/).length / 180))} min`,
     relevanceDate: '2026-11-18', relevanceUpdatedAt: checkedAt,
     relevanceScore: scores.reduce((a, b) => a + b, 0),
@@ -17,8 +24,18 @@ function draft({ visual, alts, scores, product, query, ...post }) {
     image, imageAlt: alts[0], imageSource: credit, imageSourceUrl: terms, imageLicense: license, imageLicenseUrl: terms,
     inlineImage: { image: bodyImage, alt: alts[1], credit, sourceUrl: terms, license, licenseUrl: terms },
     imageResearch: { query: `${post.tag} official press screenshots commercial use`, checkedAt, status: 'generated-contextual-ai-reviewed', generator: 'OpenAI ImageGen', sources: post.sources, assets: [image, bodyImage], notes: 'Busca individual sem par real com permissão comercial confirmado. Duas composições originais contextualizadas; prompts e revisão no relatório de 18/11.' },
-    affiliateResearch: { product, query, tag: 'bitsplease-20', checkedAt, status: 'destination-unverified', notes: 'Busca realizada; destino exato Amazon Brasil não confirmado. Sem CTA nem preço presumido. Foto de produto é opcional.' },
-    draftNotes: 'Duas artes conceituais de IA identificadas. Falta oferta Amazon pertinente com destino verificado. ' + (post.draftNotes || ''),
+    affiliateResearch: {
+      product: offer?.productName || product,
+      query: offer?.query || query,
+      tag: 'bitsplease-20', checkedAt,
+      status: offer ? 'tagged-amazon-search' : 'destination-unverified',
+      notes: offer
+        ? 'Busca Amazon Brasil com tag do portal; confirme plataforma, edição, preço e disponibilidade na página da loja. Nenhuma foto de produto foi adicionada.'
+        : 'Busca realizada; destino exato Amazon Brasil não confirmado. Sem CTA nem preço presumido. Foto de produto é opcional.',
+    },
+    draftNotes: 'Duas artes conceituais de IA identificadas. ' + (offer
+      ? 'Busca Amazon pertinente adicionada com tag do portal; conferir edição e disponibilidade.'
+      : 'Falta oferta Amazon pertinente com destino verificado.') + ' ' + (post.draftNotes || ''),
   };
 }
 
@@ -48,6 +65,10 @@ Para quem já comprou o acesso antecipado no PC, a FAQ oficial confirma que não
     scores: [0, 0, 19, 14, 10], relevanceReason: 'Calendário oficial de 17/11 tem utilidade direta para assinantes e cobertura especializada localizada.',
     alts: ['Rato aventureiro em floresta sueca junto de calendário, em ilustração de IA inspirada na proposta de Hela.', 'Biblioteca com três portões e chaves diferentes, caixas e caminhão representam planos e saída de jogos, em arte de IA.'],
     product: 'Assinatura Game Pass com plano, duração e região Brasil confirmados', query: 'site:amazon.com.br Xbox Game Pass Ultimate código Brasil',
+    offer: {
+      query: 'console Xbox Series X Amazon Brasil', productName: 'Console Xbox Series X',
+      productPitch: 'Um Xbox Series X permite acessar jogos do catálogo Game Pass anunciados para console, com uma assinatura elegível. Catálogo, plano e disponibilidade variam por região; confira as condições do jogo e da assinatura antes de comprar.',
+    },
     body: `A segunda leva de novembro do Game Pass, anunciada no Xbox Wire em 17 de novembro, inclui jogos até 1º de dezembro. A informação mais útil não é a quantidade de nomes: é a distinção entre os planos e entre uma estreia e a ampliação de acesso a um jogo já disponível.
 
 High on Life 2, Call of the Elder Gods e Roadside Research têm entrada no Premium marcada para 18 de novembro, somando-se ao acesso de Ultimate e PC Game Pass. Roadside Research continua identificado como Game Preview. A inclusão na assinatura não encerra esse estágio de desenvolvimento nem funciona como garantia de uma versão final.
@@ -67,6 +88,10 @@ O comunicado é um calendário, não uma verificação do catálogo brasileiro e
     scores: [0, 0, 17, 14, 7], relevanceReason: 'Revelação oficial em evento, confirmada por Gematsu, amplia contexto de franquia conhecida; anúncio é de 15/11.',
     alts: ['Robô original com escova desgasta uma estátua enquanto limpa a praça, em conceito de IA sobre a pauta de Cleanser Man.', 'Mesa de desenhos de robôs e maquete de reciclagem representa concurso de fãs, em arte de IA.'],
     product: 'Mega Man 11 como antecedente da série, com plataforma e edição verificadas', query: 'site:amazon.com.br Mega Man 11 PS4',
+    offer: {
+      query: 'console Xbox Series X Amazon Brasil', productName: 'Console Xbox Series X',
+      productPitch: 'Mega Man: Dual Override foi anunciado para Xbox Series X|S. Esta busca leva a um console da família compatível; o jogo não vem incluído e o anúncio ainda não confirma preço ou data exata.',
+    },
     body: `A Capcom revelou Cleanser Man como vencedor do concurso de criação de chefes de Mega Man: Dual Override. O comunicado distribuído em 15 de novembro situa a apresentação no painel da empresa na TwitchCon de San Diego; Gematsu também registrou a revelação. O personagem será um dos Robot Masters enfrentados no novo jogo.
 
 A ideia parte de uma contradição simples. Cleanser Man é obcecado por limpeza, mas sua intervenção causa danos a monumentos e obras de arte. Ao ser tratado como ameaça, toma uma instalação de processamento de resíduos e passa a poluir o ambiente. Essa é a descrição oficial do personagem, não um resumo de uma fase que tenhamos jogado.
@@ -85,6 +110,11 @@ Ainda é cedo para dizer como o chefe vai funcionar em combate ou medir dificuld
     scores: [0, 0, 11, 14, 7], relevanceReason: 'Atualização gratuita confirmada pelo estúdio e Gematsu; escopo menor que grandes franquias, sem presumir alcance por buscas.',
     alts: ['Escudo incandescente numa arena de plataformas, em conceito de IA inspirado no anúncio de Burnette.', 'Oito placas de torneio, medalha em brasa e bandeira representam atualização e temporada de Rivals, em arte de IA.'],
     product: 'Quadrinho Tales of Aether indicado pelo estúdio, com volume correto confirmado', query: 'site:amazon.com.br Tales of Aether Burnette',
+    offer: {
+      query: 'Steam Deck OLED console portátil Amazon Brasil', productName: 'Steam Deck OLED — portátil para jogos Steam',
+      productPitch: 'Rivals of Aether II está disponível no Steam e aparece como Steam Deck Verified. Esta busca é pelo portátil compatível com a versão Steam; o jogo é vendido separadamente. Confirme modelo, armazenamento e vendedor.',
+      source: source('SteamDB — status Steam Deck Verified', 'https://steamdb.info/app/2217000/config/'),
+    },
     body: `Burnette, apresentada como The Scorched Shield, está prevista para chegar a Rivals of Aether II em 1º de dezembro. Aether Studios descreve a personagem como a oitava atualização gratuita de lutador desde o lançamento. Gematsu confirma a data e o modelo de distribuição: a adição não é anunciada como um novo personagem pago.
 
 Gratuito, neste caso, descreve a atualização para o jogo. Não significa que Rivals of Aether II inteiro passou a ser distribuído sem custo, nem que todos os cosméticos futuros estejam incluídos. O anúncio também cita evento, nova temporada ranqueada e cosméticos, mas esses elementos não devem ser confundidos com o acesso à lutadora.
@@ -103,6 +133,10 @@ A versão mencionada na cobertura é de PC via Steam. Para o leitor brasileiro, 
     scores: [0, 0, 18, 11, 7], relevanceReason: 'Franquia ampla e anúncio coberto por imprensa especializada; vídeo primário não pôde ser lido integralmente.',
     alts: ['Dois lutadores originais de anime diante de uma balança de energia, em conceito de IA sobre equilíbrio competitivo.', 'Caderno de treino, comandos abstratos e cronômetro ilustram preparação para patch de luta, em arte de IA.'],
     product: 'Dragon Ball FighterZ com edição e plataforma exatas verificadas', query: 'site:amazon.com.br Dragon Ball FighterZ PS4',
+    offer: {
+      query: 'Dragon Ball FighterZ jogo PS5 Xbox Series Amazon Brasil', productName: 'Dragon Ball FighterZ — buscar edições na Amazon',
+      productPitch: 'Busca pelo jogo desta matéria. Confira se a oferta é para PS5, Xbox Series, PS4, Xbox One, Switch ou PC e verifique edição e região antes de comprar.',
+    },
     body: `Bandai Namco e Arc System Works anunciaram uma nova atualização de balanceamento para Dragon Ball FighterZ. A informação foi registrada por Gematsu em 15 de novembro e retomada por PlayStation Universe no dia seguinte. Até o material consultado, não há data de lançamento nem uma lista de mudanças para examinar.
 
 Essa ausência limita o que podemos concluir. Um teaser de balanceamento confirma a intenção de alterar o jogo, mas não informa quais personagens ganharão ou perderão recursos. Também não permite prever que um combo conhecido vai deixar de funcionar ou que determinada equipe passará a dominar o competitivo.
@@ -122,6 +156,10 @@ Nossa avaliação editorial é que vale acompanhar o anúncio sem reorganizar co
     scores: [0, 0, 7, 13, 7], relevanceReason: 'Anúncio confirmado por Steam e Gematsu, com utilidade de idioma; alcance conservador para projeto independente.',
     alts: ['Espadachins originais duelam num espaço digital com trilhas temporais, em conceito de IA sobre rollback.', 'Arena virtual vista de cima com dois combatentes e balcões de espectadores, em conceito de IA.'],
     product: 'Controle compatível com a plataforma escolhida, com modelo validado', query: 'site:amazon.com.br Netcode Warriors controle DualSense',
+    offer: {
+      query: 'console PlayStation 5 Amazon Brasil', productName: 'Console PlayStation 5',
+      productPitch: 'Netcode Warriors foi anunciado para PS5 em 2027. Esta busca leva ao console da plataforma confirmada; o jogo não vem incluído e sua edição final ainda pode ter requisitos próprios.',
+    },
     body: `Netcode Warriors está previsto para PS5 e PC via Steam em 2027, segundo anúncio da Son Studios coberto por Gematsu. A novidade é a confirmação do PlayStation 5; a página de PC já apresenta o projeto como um jogo de luta em arena com duelos entre dois participantes. Não foi divulgado um dia de lançamento nessa cobertura.
 
 O foco online aparece na descrição oficial da Steam. O estúdio menciona rollback, partidas ranqueadas, encontros casuais e salas personalizadas com espectadores. São recursos anunciados para o produto, não resultados de um teste de conexão feito pelo Bits, Please. Ainda não há como avaliar a qualidade de partidas entre regiões a partir dessa lista.
@@ -158,6 +196,11 @@ Para montar uma sessão com amigos, confira na loja da plataforma os modos dispo
     scores: [0, 0, 18, 15, 6], relevanceReason: 'Lista primária completa confirmada por dois veículos especializados; indicações divulgadas em 16/11.',
     alts: ['Cinco estantes de partituras com motivos de espionagem, floresta, Japão e espaço ilustram trilhas indicadas, em arte de IA.', 'Mãos de maestro sobre partitura que se transforma em ambientes sonoros de jogo, em conceito de IA.'],
     product: 'Edição de um dos jogos indicados ou gravação da trilha exata, após validar pertinência e destino', query: 'site:amazon.com.br Grammy Ghost Yotei PS5',
+    offer: {
+      query: 'Avatar Frontiers of Pandora From the Ashes PS5 007 First Light PS5 Ghost of Yotei PS5 Marvels Wolverine PS5 Star Wars Zero Company PS5',
+      productName: 'Jogos indicados ao Grammy 2027 — busca na Amazon',
+      productPitch: 'Busca pelos jogos indicados citados na matéria, sem imagens de produto. A indicação é para a trilha; os resultados podem não incluir todos os títulos ou edições. Confirme jogo, plataforma e conteúdo antes de comprar.',
+    },
     body: `A Recording Academy relaciona cinco trabalhos na disputa de trilha original para videogames e outras mídias interativas do Grammy 2027. Estão indicados Avatar: Frontiers of Pandora — From the Ashes, 007: First Light, Ghost of Yōtei, Marvel’s Wolverine e Star Wars: Zero Company. A lista oficial é confirmada pelas coberturas de Game Informer e VGC de 16 de novembro.
 
 Os créditos merecem o mesmo espaço que os jogos. Avatar é associado a John Paesano; 007, a Joe Henson e Alexis Leon Smith; Ghost of Yōtei, a Toma Otowa; Wolverine, a David Fleming; e Star Wars: Zero Company, a Gordy Haab. A indicação reconhece o trabalho musical apresentado na categoria, não estabelece qual desses jogos é o melhor como experiência completa.
@@ -194,6 +237,10 @@ Nossa leitura editorial é que o anúncio deve ser acompanhado como direção de
     scores: [0, 0, 17, 14, 10], relevanceReason: 'Data prevista para hoje em anúncio primário de outubro e cobertura especializada; evento hoje não equivale a notícia publicada hoje.',
     alts: ['Cavaleira e dragão originais atravessam ponte diante de portais abstratos com a mesma rota, em conceito de IA sobre continuidade de progresso.', 'Ovo de dragão e diário diante de três portais ligados por fita ilustram continuidade de progresso, em arte de IA.'],
     product: 'Edição digital Xbox elegível para Play Anywhere, com licença explicitamente confirmada', query: 'site:amazon.com.br Monster Hunter Stories 3 Xbox',
+    offer: {
+      query: 'console Xbox Series X Amazon Brasil', productName: 'Console Xbox Series X',
+      productPitch: 'Monster Hunter Stories 3 tem versão anunciada para Xbox Series X|S. Esta busca leva a um console compatível; confirme a edição do jogo e a disponibilidade do benefício Play Anywhere na oferta. O jogo não vem incluído no console.',
+    },
     body: `Monster Hunter Stories 3: Twisted Reflection tem lançamento no Xbox no PC previsto para 18 de novembro de 2026. A data foi anunciada por Toshiaki Matsuda, da equipe de relações públicas da Capcom, no Xbox Wire de 7 de outubro. Windows Central também cobriu a inclusão de Xbox Play Anywhere. Não confirmamos nesta checagem o horário de liberação da loja brasileira.
 
 O benefício anunciado permite continuar entre Xbox Series X|S, PCs com Windows 11 e dispositivos portáteis compatíveis, com progresso, conteúdo adicional e conquistas compartilhados. A utilidade está em trocar de aparelho mantendo a mesma jornada. Isso descreve a edição elegível no ecossistema Xbox; não transforma uma compra no Steam ou em outra plataforma numa licença Xbox.

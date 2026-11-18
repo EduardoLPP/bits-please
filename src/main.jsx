@@ -229,6 +229,35 @@ function readPosts(){
    localStorage.setItem('bitsplease_affiliate_daily_20261117_v2','1');
    needsSave=true;
   }
+  if(!localStorage.getItem('bitsplease_affiliate_daily_20261118_v1')){
+   const dailyAffiliateIds=new Set([
+    'game-pass-novembro-wave-2-planos-saidas',
+    'mega-man-dual-override-cleanser-man-concurso',
+    'rivals-aether-ii-burnette-gratuita-dezembro',
+    'dragon-ball-fighterz-balanceamento-anunciado-sem-data',
+    'netcode-warriors-ps5-pc-2027-rollback',
+    'grammy-2027-cinco-trilhas-jogos-indicadas',
+    'monster-hunter-stories-3-xbox-pc-play-anywhere',
+   ]);
+   clean=clean.map(post=>{
+    if(!dailyAffiliateIds.has(post.id))return post;
+    const seed=seeds.get(post.id);
+    if(!seed?.affiliate)return post;
+    const productSource=(seed.sources||[]).filter(source=>source.label==='Amazon Brasil — produto recomendado');
+    const mergedSources=[...(post.sources||[]).filter(source=>source.label!=='Amazon Brasil — produto recomendado'),...productSource];
+    const draftNotes=(post.draftNotes||seed.draftNotes||'').replace(
+     'Falta oferta Amazon pertinente com destino verificado.',
+     'Busca Amazon pertinente adicionada com tag do portal; conferir edição e disponibilidade.'
+    );
+    if(post.affiliate===seed.affiliate&&post.draftNotes===draftNotes&&post.productName===seed.productName&&post.affiliateResearch?.checkedAt===seed.affiliateResearch?.checkedAt&&!post.productImage)return post;
+    needsSave=true;
+    const updated={...post,affiliate:seed.affiliate,productName:seed.productName,productPitch:seed.productPitch,affiliateLinkType:seed.affiliateLinkType,affiliateResearch:seed.affiliateResearch,sources:mergedSources,draftNotes};
+    delete updated.productImage;
+    return updated;
+   });
+   localStorage.setItem('bitsplease_affiliate_daily_20261118_v1','1');
+   needsSave=true;
+  }
   clean=clean.map(post=>{const updated=completeGeneratedMedia20261117(post);if(updated!==post)needsSave=true;return updated});
   if(!localStorage.getItem('bitsplease_publish_daily_seo_20261117_v1')){
    const publishSeeds=allEditorialPosts.filter(post=>post.relevanceDate==='2026-11-17'&&post.status==='published'&&post.publicationApproval?.explicitUserAuthorization===true);
