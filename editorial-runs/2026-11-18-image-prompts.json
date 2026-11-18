@@ -120,6 +120,30 @@
       "prompt": "Um ovo de dragão e diário de viagem diante de três portais ligados por uma fita contínua, representando saves, conteúdo e conquistas no Play Anywhere. Personagens originais, sem logotipos ou arte oficial.",
       "tool": "OpenAI ImageGen",
       "generatedOriginal": "exec-df8615b5-5128-4443-963a-31c8d7bd7c8c.png"
+    },
+    {
+      "name": "gta-review-cover",
+      "prompt": "Pintura editorial original de uma cidade costeira fictícia inspirada no sul da Flórida ao pôr do sol, vista de um mirante, duas figuras anônimas em silhueta, atmosfera cinematográfica e urbana. Sem personagens conhecidos, sem logotipos, sem interface e sem texto; ilustração conceitual, não é arte oficial nem captura do jogo.",
+      "tool": "OpenAI ImageGen",
+      "generatedOriginal": "exec-373e767b-0399-4f13-95a2-657535688a19.png"
+    },
+    {
+      "name": "gta-review-body",
+      "prompt": "Cena editorial original vista do interior de um carro genérico parado numa avenida costeira ao entardecer, reflexos no vidro, cidade fictícia ao fundo e um celular sem marca em primeiro plano. Sem personagens, sem interface legível, sem logotipos; não é captura de GTA VI nem arte oficial.",
+      "tool": "OpenAI ImageGen",
+      "generatedOriginal": "exec-7efc558a-460b-4b9d-b237-cde51f7ba207.png"
+    },
+    {
+      "name": "gta-metacritic-cover",
+      "prompt": "Instalação artística conceitual original com cartões de crítica abstratos formando esculturalmente o número 99, diante de uma cidade costeira fictícia ao entardecer. Paleta verde e carvão, sem texto, logos ou interface reconhecível; não representar o site real do Metacritic.",
+      "tool": "OpenAI ImageGen",
+      "generatedOriginal": "exec-d2f24e79-9431-4ad1-84b9-d269982163ee.png"
+    },
+    {
+      "name": "gta-metacritic-body",
+      "prompt": "Mesa editorial conceitual vista de cima, cartões de crítica em branco, um indicador circular verde abstrato e um cartão vazio separado para representar nota de usuários indisponível. Sem números, texto legível, logos ou interface de site; arte original, não captura do Metacritic.",
+      "tool": "OpenAI ImageGen",
+      "generatedOriginal": "exec-71eb18de-99d9-4b24-b6bd-74d428115311.png"
     }
   ]
 }

@@ -290,6 +290,47 @@ function readPosts(){
    }
    localStorage.setItem('bitsplease_publish_candy_crush_20261117_v1','1');
   }
+  if(!localStorage.getItem('bitsplease_publish_gta_vi_20261118_v1')){
+   const gtaIds=['gta-vi-review-reviews-terceiros-20261118','gta-vi-metacritic-99-132-reviews-20261118'];
+   for(const id of gtaIds){
+    const seed=seeds.get(id);
+    if(!seed?.publicationApproval)continue;
+    const existingIndex=clean.findIndex(post=>post.id===id);
+    const existing=existingIndex>=0?clean[existingIndex]:{};
+    const published={...existing,...seed,status:'published'};
+    delete published.draftNotes;
+    if(existingIndex>=0)clean[existingIndex]=published;else clean.push(published);
+    needsSave=true;
+   }
+   localStorage.setItem('bitsplease_publish_gta_vi_20261118_v1','1');
+   needsSave=true;
+  }
+  if(!localStorage.getItem('bitsplease_editorial_seo_20261118_v1')){
+   const dailySeoIds=new Set([
+    'review-enshrouded-10-construcao-pesquisa',
+    'game-pass-novembro-wave-2-planos-saidas',
+    'mega-man-dual-override-cleanser-man-concurso',
+    'rivals-aether-ii-burnette-gratuita-dezembro',
+    'dragon-ball-fighterz-balanceamento-anunciado-sem-data',
+    'netcode-warriors-ps5-pc-2027-rollback',
+    'machine-party-consoles-26-novembro',
+    'grammy-2027-cinco-trilhas-jogos-indicadas',
+    'tarkov-nova-ia-primeiro-semestre-2027',
+    'monster-hunter-stories-3-xbox-pc-play-anywhere',
+    'gta-vi-review-reviews-terceiros-20261118',
+    'gta-vi-metacritic-99-132-reviews-20261118',
+   ]);
+   clean=clean.map(post=>{
+    if(!dailySeoIds.has(post.id))return post;
+    const seed=seeds.get(post.id);
+    if(!seed?.seoTitle||!seed?.seoDescription)return post;
+    if(post.seoTitle===seed.seoTitle&&post.seoDescription===seed.seoDescription)return post;
+    needsSave=true;
+    return {...post,seoTitle:seed.seoTitle,seoDescription:seed.seoDescription};
+   });
+   localStorage.setItem('bitsplease_editorial_seo_20261118_v1','1');
+   needsSave=true;
+  }
   const ids=new Set(clean.map(p=>p.id));
   const posts=[...allEditorialPosts.filter(p=>!ids.has(p.id)),...clean].map(preparePublicationStatus);
   if(needsSave)localStorage.setItem('orbita_posts',JSON.stringify(posts));

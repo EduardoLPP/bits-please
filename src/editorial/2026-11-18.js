@@ -4,38 +4,64 @@ const credit = 'Ilustração conceitual original gerada por IA com OpenAI ImageG
 const license = 'Output gerado conforme os Termos de Uso da OpenAI; titularidade sujeita à lei aplicável.';
 const source = (label, url) => ({ label, url });
 const amazonSearch = query => `https://www.amazon.com.br/s?k=${encodeURIComponent(query)}&tag=bitsplease-20`;
-function draft({ visual, alts, scores, product, query, offer, ...post }) {
-  const image = `/images/editorial-conceitual/2026-11-18/${visual}-cover.jpg`;
-  const bodyImage = `/images/editorial-conceitual/2026-11-18/${visual}-body.jpg`;
+const seoById = {
+  'review-enshrouded-10-construcao-pesquisa': ['Enshrouded 1.0: review da construção e exploração | Bits, Please', 'Review de Enshrouded 1.0 baseada em pesquisa, sem teste próprio ou nota. Veja como terreno modificável e ferramentas de criação se conectam à exploração.'],
+  'game-pass-novembro-wave-2-planos-saidas': ['Game Pass: segunda leva de novembro | Bits, Please', 'Veja os jogos da segunda leva do Game Pass em novembro de 2026, as diferenças entre planos e as saídas previstas para o fim do mês.'],
+  'mega-man-dual-override-cleanser-man-concurso': ['Mega Man: Cleanser Man é revelado | Bits, Please', 'Capcom apresenta Cleanser Man, Robot Master criado por fã para Mega Man: Dual Override. Veja o conceito e a janela prevista para 2027.'],
+  'rivals-aether-ii-burnette-gratuita-dezembro': ['Rivals of Aether II: Burnette chega em dezembro | Bits, Please', 'Burnette será adicionada gratuitamente a Rivals of Aether II em 1º de dezembro, junto da nova temporada ranqueada e de um evento.'],
+  'dragon-ball-fighterz-balanceamento-anunciado-sem-data': ['Dragon Ball FighterZ terá novo balanceamento | Bits, Please', 'Teaser confirma uma atualização de balanceamento para Dragon Ball FighterZ, mas mudanças específicas e data do patch ainda não foram anunciadas.'],
+  'netcode-warriors-ps5-pc-2027-rollback': ['Netcode Warriors no PS5 e PC em 2027 | Bits, Please', 'Netcode Warriors foi confirmado para PS5 e PC em 2027. Veja o que o estúdio informou sobre rollback, arenas e idiomas.'],
+  'machine-party-consoles-26-novembro': ['Machine Party chega aos consoles em novembro | Bits, Please', 'Machine Party será lançado para PS5, Xbox Series e Switch em 26 de novembro, com minijogos para até quatro pessoas.'],
+  'grammy-2027-cinco-trilhas-jogos-indicadas': ['Grammy 2027: trilhas de games indicadas | Bits, Please', 'Cinco trilhas de jogos concorrem ao Grammy 2027, incluindo 007 First Light e Marvel’s Wolverine. Confira a lista e a categoria.'],
+  'tarkov-nova-ia-primeiro-semestre-2027': ['Tarkov planeja nova IA para 2027 | Bits, Please', 'Battlestate Games prevê reformular a inteligência artificial dos inimigos de Escape from Tarkov no primeiro semestre de 2027.'],
+  'monster-hunter-stories-3-xbox-pc-play-anywhere': ['Monster Hunter Stories 3 no Xbox para PC | Bits, Please', 'Monster Hunter Stories 3 tem versão para PC no ecossistema Xbox prevista para 18 de novembro, com suporte anunciado a Play Anywhere.'],
+  'gta-vi-review-reviews-terceiros-20261118': ['GTA VI: review e impressões da crítica | Bits, Please', 'Review editorial de GTA VI baseada em análises de terceiros, sem teste próprio. Veja elogios à história e ao mundo e as diferenças nos relatos de desempenho.'],
+  'gta-vi-metacritic-99-132-reviews-20261118': ['GTA VI no Metacritic: 99/100 em 132 reviews | Bits, Please', 'GTA VI aparece com 99/100 no Metacritic, com 132 reviews da crítica consultadas às 8h36 de 18 de novembro. Nota de usuários ainda indisponível.'],
+};
+function draft({ visual, imageExtension = 'jpg', alts, scores, product, query, offer, sameDaySourceUrls = [], publishNow = false, postCheckedAt = checkedAt, affiliateResearchOverride, ...post }) {
+  const image = `/images/editorial-conceitual/2026-11-18/${visual}-cover.${imageExtension}`;
+  const bodyImage = `/images/editorial-conceitual/2026-11-18/${visual}-body.${imageExtension}`;
   const affiliate = offer ? amazonSearch(offer.query) : undefined;
   const sources = offer
     ? [...post.sources, source('Amazon Brasil — produto recomendado', affiliate), ...(offer.source ? [offer.source] : [])]
     : post.sources;
+  const seo = seoById[post.id];
+  const sameDaySourceSet = new Set(sameDaySourceUrls);
+  const relevanceReason = publishNow
+    ? post.relevanceReason
+    : post.relevanceReason + ' Nenhum sinal publicado em 18/11 no fuso America/Sao_Paulo confirmado; componentes de atualidade e interesse do dia zerados.';
+  const approval = publishNow ? {
+    mode: 'direct-user-publication', explicitUserAuthorization: true, authorizationDate: '2026-11-18',
+    basis: 'O usuário pediu estas matérias de GTA VI publicadas e em destaque no site hoje.',
+    coverImage: image, bodyImage,
+  } : undefined;
   return {
-    ...post, category: 'GAMES', section: post.section || 'NOTÍCIAS', status: 'draft',
+    ...post, category: 'GAMES', section: post.section || 'NOTÍCIAS', status: publishNow ? 'published' : 'draft',
+    ...(seo ? { seoTitle: seo[0], seoDescription: seo[1] } : {}),
+    ...(approval ? { publicationApproval: approval, publishedAt: '2026-11-18' } : {}),
     ...(offer ? { affiliate, productName: offer.productName, productPitch: offer.productPitch, affiliateLinkType: 'search' } : {}),
     sources,
     date: '18 nov 2026', read: `${Math.max(2, Math.ceil(post.body.split(/\s+/).length / 180))} min`,
-    relevanceDate: '2026-11-18', relevanceUpdatedAt: checkedAt,
+    relevanceDate: '2026-11-18', relevanceUpdatedAt: postCheckedAt,
     relevanceScore: scores.reduce((a, b) => a + b, 0),
     relevanceBreakdown: Object.fromEntries(['timeliness', 'publicInterest', 'reach', 'sourceReliability', 'brazilUtility'].map((key, i) => [key, scores[i]])),
-    relevanceReason: post.relevanceReason + ' Nenhum sinal publicado em 18/11 no fuso America/Sao_Paulo confirmado; componentes de atualidade e interesse do dia zerados.',
-    relevanceSignals: post.sources.map(item => ({ ...item, sameDayVerified: false })),
+    relevanceReason,
+    relevanceSignals: post.sources.map(item => ({ ...item, sameDayVerified: sameDaySourceSet.has(item.url) })),
     image, imageAlt: alts[0], imageSource: credit, imageSourceUrl: terms, imageLicense: license, imageLicenseUrl: terms,
     inlineImage: { image: bodyImage, alt: alts[1], credit, sourceUrl: terms, license, licenseUrl: terms },
-    imageResearch: { query: `${post.tag} official press screenshots commercial use`, checkedAt, status: 'generated-contextual-ai-reviewed', generator: 'OpenAI ImageGen', sources: post.sources, assets: [image, bodyImage], notes: 'Busca individual sem par real com permissão comercial confirmado. Duas composições originais contextualizadas; prompts e revisão no relatório de 18/11.' },
-    affiliateResearch: {
+    imageResearch: { query: `${post.tag} official press screenshots commercial use`, checkedAt: postCheckedAt, status: 'generated-contextual-ai-reviewed', generator: 'OpenAI ImageGen', sources: post.sources, assets: [image, bodyImage], notes: 'Busca individual sem par real com permissão comercial confirmado. Duas composições originais contextualizadas; prompts e revisão no relatório de 18/11.' },
+    affiliateResearch: affiliateResearchOverride || {
       product: offer?.productName || product,
       query: offer?.query || query,
-      tag: 'bitsplease-20', checkedAt,
+      tag: 'bitsplease-20', checkedAt: postCheckedAt,
       status: offer ? 'tagged-amazon-search' : 'destination-unverified',
       notes: offer
         ? 'Busca Amazon Brasil com tag do portal; confirme plataforma, edição, preço e disponibilidade na página da loja. Nenhuma foto de produto foi adicionada.'
         : 'Busca realizada; destino exato Amazon Brasil não confirmado. Sem CTA nem preço presumido. Foto de produto é opcional.',
     },
-    draftNotes: 'Duas artes conceituais de IA identificadas. ' + (offer
+    ...(!publishNow ? { draftNotes: 'Duas artes conceituais de IA identificadas. ' + (offer
       ? 'Busca Amazon pertinente adicionada com tag do portal; conferir edição e disponibilidade.'
-      : 'Falta oferta Amazon pertinente com destino verificado.') + ' ' + (post.draftNotes || ''),
+      : post.affiliate ? 'Link direto Amazon Brasil associado ao produto citado.' : 'Falta oferta Amazon pertinente com destino verificado.') + ' ' + (post.draftNotes || '') } : {}),
   };
 }
 
@@ -252,5 +278,90 @@ Para quem conhece apenas a série principal, Stories segue outra proposta: é um
 Antes de comprar, confira a marca Play Anywhere na oferta exata e o que a edição inclui. Um disco ou código descrito apenas como Xbox não deve ser tratado por esta matéria como confirmação de todos os benefícios. Também não convertemos preços em dólar do comunicado em valores brasileiros. O anúncio dá a data e o recurso; licença, região e disponibilidade precisam estar claros na página de compra.`,
     sources: [source('Capcom no Xbox Wire — anúncio, data e benefícios', 'https://news.xbox.com/en-us/2026/10/07/monster-hunter-stories-3-xbox-px-xbox-play-anywhere-announce/'), source('Windows Central — cobertura do Play Anywhere', 'https://www.windowscentral.com/gaming/xbox/monster-hunter-stories-3-xbox-play-anywhere')],
     draftNotes: 'Conferir liberação efetiva e disponibilidade no Brasil antes de publicar como já disponível.',
+  }),
+  draft({
+    id: 'gta-vi-review-reviews-terceiros-20261118', visual: 'gta-review', imageExtension: 'png',
+    tag: 'GTA VI · review · críticas · PS5 · Xbox Series X|S', section: 'REVIEWS', publishNow: true,
+    postCheckedAt: '2026-11-18T08:36:00-03:00',
+    title: 'Review de GTA VI: o que a crítica encontrou em Leonida',
+    excerpt: 'Síntese editorial das análises publicadas em 18 de novembro. A equipe do Bits, Please não jogou GTA VI nem atribui nota própria.',
+    scores: [30, 25, 20, 15, 10],
+    relevanceReason: 'Reviews publicadas em 18/11 antes do lançamento oficial de 19/11; destaque solicitado pelo usuário, com síntese baseada em veículos identificados e ressalva sobre ausência de teste próprio.',
+    sameDaySourceUrls: [
+      'https://www.videogameschronicle.com/review/grand-theft-auto-6/',
+      'https://www.theverge.com/games/1035801/grand-theft-auto-6-review',
+      'https://gameinformer.com/review/grand-theft-auto-vi/outrageous-fortune',
+    ],
+    alts: [
+      'Arte conceitual de uma cidade costeira fictícia ao entardecer, vista de um mirante com duas figuras anônimas; não representa imagem de GTA VI.',
+      'Arte conceitual de uma avenida costeira vista de dentro de um carro, com cidade e celular genérico; não é captura de GTA VI.',
+    ],
+    product: 'Grand Theft Auto VI para PlayStation 5', query: 'Grand Theft Auto VI PlayStation 5',
+    affiliate: 'https://www.amazon.com.br/dp/B0H6KT2RWH?tag=bitsplease-20',
+    affiliateLinkType: 'product', productName: 'Grand Theft Auto VI — edição para PlayStation 5',
+    productPitch: 'Link para a edição de Grand Theft Auto VI para PlayStation 5. Confira formato, preço, região e disponibilidade diretamente na página da loja.',
+    affiliateResearchOverride: {
+      product: 'Grand Theft Auto VI — edição para PlayStation 5', asin: 'B0H6KT2RWH',
+      query: 'https://www.amazon.com.br/dp/B0H6KT2RWH?tag=bitsplease-20', tag: 'bitsplease-20',
+      checkedAt: '2026-11-18T08:36:00-03:00', status: 'amazon-brazil-product-link',
+      notes: 'Destino direto para o produto PS5 localizado previamente na Amazon Brasil; preço, estoque e formato da oferta não são afirmados nesta matéria.',
+    },
+    body: `Esta é uma review editorial de GTA VI baseada nas análises publicadas por outros veículos em 18 de novembro de 2026. A equipe do Bits, Please não jogou o título, não fez benchmark e não atribui uma nota própria. A síntese abaixo identifica o que os críticos observaram e onde suas experiências diferem.
+
+O lançamento oficial está marcado para 19 de novembro no PlayStation 5 e no Xbox Series X|S. As análises saíram um dia antes, e as primeiras leituras destacam a força do mundo aberto e da dupla de protagonistas, Lucia e Jason. O escopo das reviews também pede cuidado: os relatos disponíveis aqui são de versões de console e de sessões conduzidas por cada equipe.
+
+Jordan Middler deu 5/5 na Video Games Chronicle e descreveu Leonida como um mundo aberto de detalhe incomum, com a história de Lucia e Jason no centro da experiência. A análise também chama atenção para o alvo de 30 quadros por segundo no PS5 e relata quedas ocasionais nas áreas mais densas. É uma observação daquele teste, não uma medição independente feita pelo Bits, Please.
+
+Na The Verge, a jornalista Victoria Song conta que jogou por mais de 70 horas numa versão de lançamento para PS5 e que o jogo rodou bem durante sua experiência. A publicação elogia a riqueza do cenário, a narrativa e as interações. A Game Informer, também analisando a versão de PS5 e Xbox Series X|S, destaca como atividades e detalhes ajudam a sustentar a sensação de imersão.
+
+Os relatos sobre desempenho não são idênticos: a Video Games Chronicle aponta o limite de 30 fps e pequenas quedas em trechos carregados, enquanto a The Verge descreve uma experiência estável em seu percurso. Sem teste próprio e sem medições comparáveis entre consoles, não dá para transformar essas observações em garantia universal de desempenho. Elas indicam o que cada veículo encontrou, não substituem uma análise técnica independente.
+
+Como leitura crítica, o material publicado sugere que a principal aposta de GTA VI está na combinação entre personagens, história e um ambiente que recompensa a exploração de seus detalhes. A recepção é muito favorável nos textos consultados, mas este portal não transforma as notas de terceiros numa nota nossa. Para quem decide pela experiência e pela narrativa, as reviews oferecem motivos fortes para prestar atenção; quem prioriza desempenho específico deve aguardar análises técnicas comparáveis após o lançamento.` ,
+    sources: [
+      source('Video Games Chronicle — review 5/5', 'https://www.videogameschronicle.com/review/grand-theft-auto-6/'),
+      source('The Verge — review de PS5', 'https://www.theverge.com/games/1035801/grand-theft-auto-6-review'),
+      source('Game Informer — review de PS5 e Xbox Series X|S', 'https://gameinformer.com/review/grand-theft-auto-vi/outrageous-fortune'),
+      source('Rockstar Games — site oficial e data de lançamento', 'https://www.rockstargames.com/VI'),
+      source('Amazon Brasil — produto recomendado', 'https://www.amazon.com.br/dp/B0H6KT2RWH?tag=bitsplease-20'),
+    ],
+  }),
+  draft({
+    id: 'gta-vi-metacritic-99-132-reviews-20261118', visual: 'gta-metacritic', imageExtension: 'png',
+    tag: 'GTA VI · Metacritic · Metascore · reviews', section: 'NOTÍCIAS', publishNow: true,
+    postCheckedAt: '2026-11-18T08:36:00-03:00',
+    title: 'GTA VI chega ao Metacritic com 99/100 antes do lançamento',
+    excerpt: 'Consulta às 8h36 de 18 de novembro encontrou 99/100 em 132 reviews da crítica. A nota de usuários ainda não estava disponível.',
+    scores: [30, 25, 19, 15, 10],
+    relevanceReason: 'Metascore alto e volátil conferido em 18/11 antes do lançamento oficial de 19/11; destaque solicitado pelo usuário e número registrado com horário e volume de reviews.',
+    sameDaySourceUrls: ['https://www.metacritic.com/game/grand-theft-auto-vi/'],
+    alts: [
+      'Arte conceitual de cartões de crítica formando o número 99 diante de uma cidade costeira; composição original, sem interface do Metacritic.',
+      'Arte conceitual de mesa editorial com cartões de crítica sem texto e indicador verde; não representa a página real do Metacritic.',
+    ],
+    product: 'Grand Theft Auto VI para PlayStation 5', query: 'Grand Theft Auto VI PlayStation 5',
+    affiliate: 'https://www.amazon.com.br/dp/B0H6KT2RWH?tag=bitsplease-20',
+    affiliateLinkType: 'product', productName: 'Grand Theft Auto VI — edição para PlayStation 5',
+    productPitch: 'Link para a edição de Grand Theft Auto VI para PlayStation 5. Confira formato, preço, região e disponibilidade diretamente na página da loja.',
+    affiliateResearchOverride: {
+      product: 'Grand Theft Auto VI — edição para PlayStation 5', asin: 'B0H6KT2RWH',
+      query: 'https://www.amazon.com.br/dp/B0H6KT2RWH?tag=bitsplease-20', tag: 'bitsplease-20',
+      checkedAt: '2026-11-18T08:36:00-03:00', status: 'amazon-brazil-product-link',
+      notes: 'Destino direto para o produto PS5 localizado previamente na Amazon Brasil; preço, estoque e formato da oferta não são afirmados nesta matéria.',
+    },
+    body: `Às 8h36 de 18 de novembro de 2026, a página de GTA VI no Metacritic mostrava Metascore 99/100, calculado a partir de 132 reviews da crítica. Naquele momento, as 132 avaliações listadas apareciam como positivas, e a nota de usuários continuava indisponível. É um retrato da consulta: a pontuação e o total podem mudar conforme novas análises sejam incorporadas.
+
+O número é uma média editorial agregada pelo Metacritic, não uma nota atribuída pelo Bits, Please nem uma avaliação do público. Também não representa consenso sobre todas as plataformas em testes equivalentes: cada veículo analisa sua própria versão e aplica seus critérios. A matéria registra a nota como publicada na página, sem projetar que ela ficará estável.
+
+O calendário importa: as reviews chegaram em 18 de novembro, enquanto a Rockstar marca o lançamento oficial para 19 de novembro no PS5 e Xbox Series X|S. Assim, a nota aparece antes de o jogo chegar oficialmente às lojas. Quando houver volume de avaliações de usuários, a classificação do público será exibida separadamente da média da crítica.
+
+Para contexto, a Video Games Chronicle publicou uma review 5/5 e observou alvo de 30 fps com quedas ocasionais em áreas mais densas no seu teste. Esse comentário não contradiz nem explica por si só o Metascore: a média reúne critérios e veículos diferentes. O dado mais útil por enquanto é combinar o valor com o tamanho da amostra e a hora em que foi consultado.
+
+Quem acompanhar a nota deve observar tanto eventuais mudanças no 99/100 quanto o crescimento do número de reviews. A página de usuários ainda estava marcada como indisponível nesta checagem; portanto, não há uma nota de jogadores a comparar neste momento.` ,
+    sources: [
+      source('Metacritic — GTA VI e nota da crítica', 'https://www.metacritic.com/game/grand-theft-auto-vi/'),
+      source('Rockstar Games — site oficial e data de lançamento', 'https://www.rockstargames.com/VI'),
+      source('Video Games Chronicle — review 5/5', 'https://www.videogameschronicle.com/review/grand-theft-auto-6/'),
+      source('Amazon Brasil — produto recomendado', 'https://www.amazon.com.br/dp/B0H6KT2RWH?tag=bitsplease-20'),
+    ],
   }),
 ];
