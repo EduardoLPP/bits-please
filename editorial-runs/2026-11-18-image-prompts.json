@@ -1,0 +1,125 @@
+{
+  "style": "Ilustração editorial horizontal simples, formas grandes, paleta contida, poucos elementos, sem texto/logos/interface oficial. Não é captura nem foto de produto.",
+  "images": [
+    {
+      "name": "enshrouded-cover",
+      "prompt": "Um construtor medieval escava uma passagem na encosta de uma montanha de blocos naturais, com casa de pedra e névoa azul distante. Foco na liberdade de transformar terreno em Enshrouded.",
+      "tool": "OpenAI ImageGen",
+      "generatedOriginal": "exec-67cd6215-7d84-492d-ba71-b4f42fe94ab2.png"
+    },
+    {
+      "name": "enshrouded-body",
+      "prompt": "Vista isométrica de uma sala medieval com alavanca, placa de pressão e porta ligadas por uma trilha luminosa, ilustrando circuitos Sparkworks e construção em Enshrouded.",
+      "tool": "OpenAI ImageGen",
+      "generatedOriginal": "exec-7e3f71ab-d01d-479d-9774-89ee2c0933fb.png"
+    },
+    {
+      "name": "gamepass-cover",
+      "prompt": "Um pequeno rato aventureiro com mochila encara uma floresta sueca de plantas enormes, ao lado de uma folha-calendário sem números. Conceito editorial da chegada de Hela ao catálogo de assinatura.",
+      "tool": "OpenAI ImageGen",
+      "generatedOriginal": "exec-c60585b0-37a8-4148-8a72-04feb5898b15.png"
+    },
+    {
+      "name": "gamepass-body",
+      "prompt": "Três portões de acesso com chaves de formatos diferentes organizam uma biblioteca; em primeiro plano um caminhão de mudança e caixas evocam saída de jogos do catálogo. Conceito de planos e rotatividade Game Pass, sem logotipos.",
+      "tool": "OpenAI ImageGen",
+      "generatedOriginal": "exec-c5670556-b75a-4c52-9463-03f8a259d305.png"
+    },
+    {
+      "name": "megaman-cover",
+      "prompt": "Um robô original de limpeza com grande escova circular tenta limpar uma praça e acaba desgastando uma estátua. Conceito editorial sobre obsessão por limpeza do novo chefe de Mega Man, sem reproduzir o desenho oficial.",
+      "tool": "OpenAI ImageGen",
+      "generatedOriginal": "exec-e8422e00-6991-430c-977c-e036c38a6d9b.png"
+    },
+    {
+      "name": "megaman-body",
+      "prompt": "Mesa de artista com lápis, folhas de projetos de robôs originais e uma pequena maquete de estação de reciclagem. Tema concurso de fãs para chefe de jogo de plataforma.",
+      "tool": "OpenAI ImageGen",
+      "generatedOriginal": "exec-3e7c4e46-f31e-4695-9eaf-aca095082a3b.png"
+    },
+    {
+      "name": "rivals-cover",
+      "prompt": "Escudo metálico incandescente apoiado numa arena de plataformas flutuantes; faíscas em arco indicam defesa e calor. Conceito da chegada de Burnette, sem representar visual oficial de personagem.",
+      "tool": "OpenAI ImageGen",
+      "generatedOriginal": "exec-571ee42c-0fba-4d99-82ec-c8bc46883acc.png"
+    },
+    {
+      "name": "rivals-body",
+      "prompt": "Chave de torneio feita com oito placas de pedra, uma medalha em brasa e uma bandeira de temporada nova. Visão frontal gráfica, tema atualização gratuita de personagem em Rivals of Aether II.",
+      "tool": "OpenAI ImageGen",
+      "generatedOriginal": "exec-9021c3db-0249-42c4-90e8-b70a45000a7a.png"
+    },
+    {
+      "name": "fighterz-cover",
+      "prompt": "Dois lutadores originais de anime, silhuetas em laranja e roxo, param antes de colidir numa arena rochosa. Uma balança de energia no centro evoca ajuste competitivo de Dragon Ball FighterZ sem fingir imagem oficial.",
+      "tool": "OpenAI ImageGen",
+      "generatedOriginal": "exec-e66adaee-58ae-4e1f-b028-358740705fbe.png"
+    },
+    {
+      "name": "fighterz-body",
+      "prompt": "Natureza morta sem pessoas e sem personagens: um caderno aberto de treinamento de jogo de luta, com sequências de botões abstratos e cronômetro, numa sala com saco de treino e arena rochosa desfocada. Tema esperar notas de atualização de Dragon Ball FighterZ, sem números de dano, sem lutadores, sem referências a Street Fighter.",
+      "tool": "OpenAI ImageGen",
+      "generatedOriginal": "exec-1f4e97d4-a932-4b51-96eb-6750b2f17060.png"
+    },
+    {
+      "name": "netcode-cover",
+      "prompt": "Dois espadachins originais estilo anime duelam num espaço digital geométrico azul-magenta; trilhas temporais sobrepostas ilustram rollback em jogo de arena. Não usar personagens oficiais.",
+      "tool": "OpenAI ImageGen",
+      "generatedOriginal": "exec-b17f7544-bb8c-41cd-8da2-bf6c2ad38ec5.png"
+    },
+    {
+      "name": "netcode-body",
+      "prompt": "Visão superior de uma arena virtual com dois pontos de combate, plateia em pequenos balcões e um quadro de treino. Conceito de modos espectador, treino e duelo 1 contra 1.",
+      "tool": "OpenAI ImageGen",
+      "generatedOriginal": "exec-5239f034-983b-4c4f-8fc3-a5cc5cee7029.png"
+    },
+    {
+      "name": "machine-cover",
+      "prompt": "Quatro HUMANOS adultos de rostos simples em macacões cinza numerados sem texto legível atravessam uma plataforma industrial com engrenagens ameaçadoras. Sujeitos de teste humanos, NÃO roedores e NÃO animais. Humor sombrio inspirado na proposta dos minijogos de Machine Party, não captura oficial. Sem ferimentos ou sangue.",
+      "tool": "OpenAI ImageGen",
+      "generatedOriginal": "exec-abdae897-6039-4553-8e1e-a8e199cdc1c5.png"
+    },
+    {
+      "name": "machine-body",
+      "prompt": "Mesa industrial vista de cima com quinze pequenas peças de desafios e quatro peões, iluminação âmbar; bandejas com ervilhas, botões e engrenagens evocam minijogos de Machine Party sem parecer captura.",
+      "tool": "OpenAI ImageGen",
+      "generatedOriginal": "exec-a22b3ea6-babd-4d84-b8ec-1a27927a6136.png"
+    },
+    {
+      "name": "grammy-cover",
+      "prompt": "Cinco estantes de partituras diante de uma orquestra vazia, com motivos discretos de espionagem, floresta alienígena, Japão, garras abstratas e ficção espacial. Tema cinco trilhas de jogos indicadas ao Grammy 2027. Sem troféu oficial.",
+      "tool": "OpenAI ImageGen",
+      "generatedOriginal": "exec-115b4688-c917-4f2d-80a1-259390f46361.png"
+    },
+    {
+      "name": "grammy-body",
+      "prompt": "Close de mãos de maestro sobre partitura que se transforma em mapa de ambientes sonoros de jogo, com cordas, metais e ondas musicais. Tema composição interativa, sem nomes nem logotipos.",
+      "tool": "OpenAI ImageGen",
+      "generatedOriginal": "exec-96f7107f-62e8-4971-8da1-355f5450c186.png"
+    },
+    {
+      "name": "tarkov-cover",
+      "prompt": "Três patrulheiros originais em fábrica abandonada, um procura cobertura e outro observa uma rota alternativa, linhas sutis de decisão sugerem IA de inimigos de Tarkov. Sem sangue nem interface.",
+      "tool": "OpenAI ImageGen",
+      "generatedOriginal": "exec-b0a80048-1ee0-4321-994c-d20cf59b0480.png"
+    },
+    {
+      "name": "tarkov-body",
+      "prompt": "Natureza morta isométrica: maquete de armazém abandonado com quatro pequenas miniaturas de SOLDADOS HUMANOS de madeira sem marcas, cobertura de caixas, rotas pontilhadas alternativas e cones de visão translúcidos. Tema planejamento do comportamento de inimigos em Escape from Tarkov. NÃO robôs, NÃO veículos, NÃO fábrica automatizada. Sem telas nem dados quantitativos.",
+      "tool": "OpenAI ImageGen",
+      "generatedOriginal": "exec-043826e6-1e59-470a-98cb-002a58e98f9f.png"
+    },
+    {
+      "name": "stories-cover",
+      "prompt": "Cavaleira original e dragão vermelho original caminham sobre ponte de pedra entre florestas. Atrás deles DOIS PORTAIS ABSTRATOS RETANGULARES LUMINOSOS mostram o mesmo mapa com um único caminho contínuo. Conceito editorial de continuidade da aventura de Monster Hunter Stories 3 via Play Anywhere. PROIBIDO desenhar hardware: sem consoles, sem portáteis, sem Switch, sem controles, sem telas físicas. Sem logos.",
+      "tool": "OpenAI ImageGen",
+      "generatedOriginal": "exec-e64fddea-2b09-421d-af31-b7dd59323ab4.png"
+    },
+    {
+      "name": "stories-body",
+      "prompt": "Um ovo de dragão e diário de viagem diante de três portais ligados por uma fita contínua, representando saves, conteúdo e conquistas no Play Anywhere. Personagens originais, sem logotipos ou arte oficial.",
+      "tool": "OpenAI ImageGen",
+      "generatedOriginal": "exec-df8615b5-5128-4443-963a-31c8d7bd7c8c.png"
+    }
+  ]
+}
