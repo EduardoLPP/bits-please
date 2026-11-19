@@ -61,3 +61,19 @@
 .metrics-grid-audience{grid-template-columns:repeat(5,minmax(0,1fr))}
 @media(max-width:1100px){.metrics-grid-audience{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:880px){.metrics-grid-audience{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.featured-manager{margin-top:30px;padding:22px;background:#0e101b;border:1px solid #292b42}
+.featured-manager-header{display:flex;align-items:flex-start;justify-content:space-between;gap:22px}
+.featured-manager-header h2{margin:8px 0 7px;color:#f2f3ff;font:700 22px Manrope;letter-spacing:-.5px}
+.featured-manager-header p{max-width:520px;margin:0;color:#9da5bd;font-size:12px;line-height:1.7}
+.featured-manager-header .kicker{color:#ff66d9}
+.featured-manager-actions{display:flex;align-items:center;justify-content:flex-end;gap:9px;flex-wrap:wrap}
+.featured-manager-state{color:#50e0f5;font:700 9px 'DM Mono',monospace;letter-spacing:.6px;white-space:nowrap}
+.featured-manager-current{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:19px}
+.featured-manager-item{display:flex;align-items:flex-start;gap:11px;min-height:62px;padding:13px;border:1px solid #292b42;background:#101322;color:#dfe4f6;font:600 11px/1.5 Manrope}
+.featured-manager-item strong{color:#4ce2ff;font:700 11px 'DM Mono',monospace}
+.featured-manager-current>p{grid-column:1/-1;margin:0;padding:13px;border:1px dashed #383a54;color:#9da5bd;font-size:11px}
+.featured-manager-note{display:block;margin-top:13px;color:#8189a4;font:10px/1.6 'DM Sans',sans-serif}
+.featured-toggle.is-featured{color:#080a14;background:linear-gradient(100deg,#ff4fd8,#8c73ff 53%,#4ce2ff);box-shadow:0 0 14px #a644c633}
+.featured-toggle:disabled{opacity:.48;cursor:not-allowed}
+@media(max-width:900px){.featured-manager-header{flex-direction:column}.featured-manager-actions{justify-content:flex-start}}
+@media(max-width:700px){.featured-manager{padding:16px 12px}.featured-manager-header h2{font-size:19px}.featured-manager-actions{align-items:stretch;width:100%}.featured-manager-actions .button{flex:1 1 100%;justify-content:center}.featured-manager-current{grid-template-columns:1fr}.admin-dashboard .manage-row .featured-toggle{flex:1 1 100%;justify-content:center}}
