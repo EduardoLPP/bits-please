@@ -9,7 +9,8 @@ export default function AmazonOffer({ article }) {
   if (!article.affiliate) return null;
   const photo = hasProductPhoto(article.productImage) ? article.productImage : null;
   const isSearch = article.affiliateLinkType === 'search';
-  return <aside className={`amazon-offer ${photo ? 'has-photo' : 'without-photo'}`} aria-label="Produto na Amazon">
+  const relatedOffers = Array.isArray(article.relatedOffers) ? article.relatedOffers : [];
+  return <aside className={`amazon-offer ${photo ? 'has-photo' : 'without-photo'}`} aria-label="Oferta e jogos relacionados">
     {photo && <figure className="amazon-offer-photo">
       <img src={photo.image} alt={photo.alt} loading="lazy" />
       <figcaption><a href={photo.sourceUrl} target="_blank" rel="noreferrer">{photo.credit} ↗</a> · <a href={photo.licenseUrl} target="_blank" rel="noreferrer">{photo.license}</a></figcaption>
@@ -22,6 +23,19 @@ export default function AmazonOffer({ article }) {
         {isSearch ? 'Ver opções na Amazon' : 'Ver na Amazon'} <span aria-hidden="true">↗</span>
       </a>
       <small className="amazon-offer-disclosure">Como participante do Programa de Associados da Amazon, sou remunerado pelas compras qualificadas efetuadas.</small>
+      {relatedOffers.length > 0 && <div className="amazon-offer-related">
+        <h3>Jogos relacionados</h3>
+        <ul>{relatedOffers.map((offer, index) => <li key={`${offer.productName}-${index}`}>
+          <div>
+            <strong>{offer.productName}</strong>
+            {offer.productPitch && <p>{offer.productPitch}</p>}
+          </div>
+          <a className="amazon-offer-related-link" href={offer.external ? offer.href : offer.affiliate} target="_blank" rel={offer.external ? 'noreferrer noopener' : 'noreferrer sponsored noopener'}>
+            {offer.linkLabel || (offer.external ? 'Abrir página do jogo' : 'Ver opções na Amazon')} <span aria-hidden="true">↗</span>
+          </a>
+        </li>)}</ul>
+        {relatedOffers.some(offer => offer.affiliate) && <small className="amazon-offer-disclosure">Os links da Amazon acima podem gerar comissão para o Bits, Please, sem custo adicional para você.</small>}
+      </div>}
     </div>
   </aside>;
 }

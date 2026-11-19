@@ -14,11 +14,11 @@ const seoById = {
   'machine-party-consoles-26-novembro': ['Machine Party chega aos consoles em novembro | Bits, Please', 'Machine Party será lançado para PS5, Xbox Series e Switch em 26 de novembro, com minijogos para até quatro pessoas.'],
   'grammy-2027-cinco-trilhas-jogos-indicadas': ['Grammy 2027: trilhas de games indicadas | Bits, Please', 'Cinco trilhas de jogos concorrem ao Grammy 2027, incluindo 007 First Light e Marvel’s Wolverine. Confira a lista e a categoria.'],
   'tarkov-nova-ia-primeiro-semestre-2027': ['Tarkov planeja nova IA para 2027 | Bits, Please', 'Battlestate Games prevê reformular a inteligência artificial dos inimigos de Escape from Tarkov no primeiro semestre de 2027.'],
-  'monster-hunter-stories-3-xbox-pc-play-anywhere': ['Monster Hunter Stories 3 no Xbox para PC | Bits, Please', 'Monster Hunter Stories 3 tem versão para PC no ecossistema Xbox prevista para 18 de novembro, com suporte anunciado a Play Anywhere.'],
+  'monster-hunter-stories-3-xbox-pc-play-anywhere': ['Monster Hunter Stories 3 chega ao Xbox PC | Bits, Please', 'A versão para PC via Xbox chegou em 18 de novembro com suporte a Play Anywhere. O benefício não se estende automaticamente a cópias de outras lojas.'],
   'gta-vi-review-reviews-terceiros-20261118': ['GTA VI: review e impressões da crítica | Bits, Please', 'Review editorial de GTA VI baseada em análises de terceiros, sem teste próprio. Veja elogios à história e ao mundo e as diferenças nos relatos de desempenho.'],
   'gta-vi-metacritic-99-132-reviews-20261118': ['GTA VI no Metacritic: 99/100 em 132 reviews | Bits, Please', 'GTA VI aparece com 99/100 no Metacritic, com 132 reviews da crítica consultadas às 8h36 de 18 de novembro. Nota de usuários ainda indisponível.'],
 };
-function draft({ visual, imageExtension = 'jpg', alts, scores, product, query, offer, sameDaySourceUrls = [], publishNow = false, postCheckedAt = checkedAt, affiliateResearchOverride, ...post }) {
+function draft({ visual, imageExtension = 'jpg', alts, scores, product, query, offer, sameDaySourceUrls = [], publishNow = true, postCheckedAt = checkedAt, affiliateResearchOverride, ...post }) {
   const image = `/images/editorial-conceitual/2026-11-18/${visual}-cover.${imageExtension}`;
   const bodyImage = `/images/editorial-conceitual/2026-11-18/${visual}-body.${imageExtension}`;
   const affiliate = offer ? amazonSearch(offer.query) : undefined;
@@ -30,18 +30,21 @@ function draft({ visual, imageExtension = 'jpg', alts, scores, product, query, o
   const relevanceReason = publishNow
     ? post.relevanceReason
     : post.relevanceReason + ' Nenhum sinal publicado em 18/11 no fuso America/Sao_Paulo confirmado; componentes de atualidade e interesse do dia zerados.';
+  const publicationDate = post.id.startsWith('gta-vi-') ? '2026-11-18' : '2026-11-19';
   const approval = publishNow ? {
-    mode: 'direct-user-publication', explicitUserAuthorization: true, authorizationDate: '2026-11-18',
-    basis: 'O usuário pediu estas matérias de GTA VI publicadas e em destaque no site hoje.',
+    mode: 'direct-user-publication', explicitUserAuthorization: true, authorizationDate: publicationDate,
+    basis: post.id.startsWith('gta-vi-')
+      ? 'O usuário pediu estas matérias de GTA VI publicadas e em destaque no site em 18/11.'
+      : 'O usuário autorizou a publicação dos rascunhos atuais em 19/11.',
     coverImage: image, bodyImage,
   } : undefined;
   return {
     ...post, category: 'GAMES', section: post.section || 'NOTÍCIAS', status: publishNow ? 'published' : 'draft',
     ...(seo ? { seoTitle: seo[0], seoDescription: seo[1] } : {}),
-    ...(approval ? { publicationApproval: approval, publishedAt: '2026-11-18' } : {}),
+    ...(approval ? { publicationApproval: approval, publishedAt: publicationDate } : {}),
     ...(offer ? { affiliate, productName: offer.productName, productPitch: offer.productPitch, affiliateLinkType: 'search' } : {}),
     sources,
-    date: '18 nov 2026', read: `${Math.max(2, Math.ceil(post.body.split(/\s+/).length / 180))} min`,
+    date: publicationDate === '2026-11-18' ? '18 nov 2026' : '19 nov 2026', read: `${Math.max(2, Math.ceil(post.body.split(/\s+/).length / 180))} min`,
     relevanceDate: '2026-11-18', relevanceUpdatedAt: postCheckedAt,
     relevanceScore: scores.reduce((a, b) => a + b, 0),
     relevanceBreakdown: Object.fromEntries(['timeliness', 'publicInterest', 'reach', 'sourceReliability', 'brazilUtility'].map((key, i) => [key, scores[i]])),
@@ -72,7 +75,11 @@ export const dailyPosts20261118 = [
     excerpt: 'Terreno modificável e circuitos para criações próprias dão personalidade ao RPG. Análise editorial baseada em pesquisa, sem teste próprio ou nota.',
     scores: [0, 0, 15, 14, 8], relevanceReason: 'Versão 1.0 recente e review especializada de novembro oferecem vitrine editorial verificável, sem números de popularidade presumidos.',
     alts: ['Construtor abre uma passagem em montanha junto de uma casa e névoa azul, em conceito de IA sobre Enshrouded.', 'Sala medieval com alavanca, placa de pressão e porta conectadas por luz, em conceito de IA sobre Sparkworks.'],
-    product: 'Edição PC de Enshrouded ou controle compatível após confirmar suporte e oferta', query: 'site:amazon.com.br Enshrouded PC controle Xbox',
+    product: 'Steam Deck OLED — portátil para jogos Steam', query: 'Steam Deck OLED Amazon Brasil',
+    offer: {
+      query: 'Steam Deck OLED console portátil Amazon Brasil', productName: 'Steam Deck OLED — PC portátil para jogos Steam',
+      productPitch: 'Enshrouded tem compatibilidade Steam Deck Verified. Esta busca é pelo portátil, não inclui o jogo; confirme a capacidade, a condição e a oferta antes de comprar.',
+    },
     body: `Esta análise de Enshrouded 1.0 é baseada em pesquisa; o Bits, Please não testou o jogo e não atribui nota. A Keen Games anunciou a versão completa em 15 de outubro de 2026. A review de PC Gamer publicada em 2 de novembro oferece um ponto de observação posterior ao lançamento, mais útil aqui do que impressões antigas do acesso antecipado.
 
 O argumento mais forte é a relação entre construir e viajar. A crítica especializada descreve um mundo de voxels que permite modificar o terreno: abrir caminho também pode ser uma intervenção no cenário. Isso aproxima a construção da exploração, em vez de tratá-la apenas como uma pausa para decorar a base. É a liberdade mais interessante da proposta para quem gosta de resolver obstáculos criando algo.
@@ -95,6 +102,7 @@ Para quem já comprou o acesso antecipado no PC, a FAQ oficial confirma que não
       query: 'console Xbox Series X Amazon Brasil', productName: 'Console Xbox Series X',
       productPitch: 'Um Xbox Series X permite acessar jogos do catálogo Game Pass anunciados para console, com uma assinatura elegível. Catálogo, plano e disponibilidade variam por região; confira as condições do jogo e da assinatura antes de comprar.',
     },
+    relatedOffers: [{ productName: 'The Outlast Trials — jogo da franquia Outlast', affiliate: amazonSearch('The Outlast Trials PS5 Xbox PC'), affiliateLinkType: 'search', productPitch: 'Jogo da franquia citada na matéria; confira plataforma e edição.' }],
     body: `A segunda leva de novembro do Game Pass, anunciada no Xbox Wire em 17 de novembro, inclui jogos até 1º de dezembro. A informação mais útil não é a quantidade de nomes: é a distinção entre os planos e entre uma estreia e a ampliação de acesso a um jogo já disponível.
 
 High on Life 2, Call of the Elder Gods e Roadside Research têm entrada no Premium marcada para 18 de novembro, somando-se ao acesso de Ultimate e PC Game Pass. Roadside Research continua identificado como Game Preview. A inclusão na assinatura não encerra esse estágio de desenvolvimento nem funciona como garantia de uma versão final.
@@ -118,6 +126,7 @@ O comunicado é um calendário, não uma verificação do catálogo brasileiro e
       query: 'console Xbox Series X Amazon Brasil', productName: 'Console Xbox Series X',
       productPitch: 'Mega Man: Dual Override foi anunciado para Xbox Series X|S. Esta busca leva a um console da família compatível; o jogo não vem incluído e o anúncio ainda não confirma preço ou data exata.',
     },
+    relatedOffers: [{ productName: 'Mega Man Legacy Collection', affiliate: amazonSearch('Mega Man Legacy Collection Nintendo Switch PlayStation Xbox'), affiliateLinkType: 'search', productPitch: 'Coletânea de jogos anteriores da franquia; confira plataforma e edição.' }],
     body: `A Capcom revelou Cleanser Man como vencedor do concurso de criação de chefes de Mega Man: Dual Override. O comunicado distribuído em 15 de novembro situa a apresentação no painel da empresa na TwitchCon de San Diego; Gematsu também registrou a revelação. O personagem será um dos Robot Masters enfrentados no novo jogo.
 
 A ideia parte de uma contradição simples. Cleanser Man é obcecado por limpeza, mas sua intervenção causa danos a monumentos e obras de arte. Ao ser tratado como ameaça, toma uma instalação de processamento de resíduos e passa a poluir o ambiente. Essa é a descrição oficial do personagem, não um resumo de uma fase que tenhamos jogado.
@@ -141,6 +150,7 @@ Ainda é cedo para dizer como o chefe vai funcionar em combate ou medir dificuld
       productPitch: 'Rivals of Aether II está disponível no Steam e aparece como Steam Deck Verified. Esta busca é pelo portátil compatível com a versão Steam; o jogo é vendido separadamente. Confirme modelo, armazenamento e vendedor.',
       source: source('SteamDB — status Steam Deck Verified', 'https://steamdb.info/app/2217000/config/'),
     },
+    relatedOffers: [{ productName: 'Rivals of Aether — primeiro jogo da série', affiliate: amazonSearch('Rivals of Aether jogo Steam'), affiliateLinkType: 'search', productPitch: 'Busca por outro jogo da franquia; confira se o resultado é jogo ou conteúdo complementar.' }],
     body: `Burnette, apresentada como The Scorched Shield, está prevista para chegar a Rivals of Aether II em 1º de dezembro. Aether Studios descreve a personagem como a oitava atualização gratuita de lutador desde o lançamento. Gematsu confirma a data e o modelo de distribuição: a adição não é anunciada como um novo personagem pago.
 
 Gratuito, neste caso, descreve a atualização para o jogo. Não significa que Rivals of Aether II inteiro passou a ser distribuído sem custo, nem que todos os cosméticos futuros estejam incluídos. O anúncio também cita evento, nova temporada ranqueada e cosméticos, mas esses elementos não devem ser confundidos com o acesso à lutadora.
@@ -158,11 +168,15 @@ A versão mencionada na cobertura é de PC via Steam. Para o leitor brasileiro, 
     excerpt: 'Teaser confirma continuidade do suporte, mas ainda não sustenta previsões sobre personagens ou combos.',
     scores: [0, 0, 18, 11, 7], relevanceReason: 'Franquia ampla e anúncio coberto por imprensa especializada; vídeo primário não pôde ser lido integralmente.',
     alts: ['Dois lutadores originais de anime diante de uma balança de energia, em conceito de IA sobre equilíbrio competitivo.', 'Caderno de treino, comandos abstratos e cronômetro ilustram preparação para patch de luta, em arte de IA.'],
-    product: 'Dragon Ball FighterZ com edição e plataforma exatas verificadas', query: 'site:amazon.com.br Dragon Ball FighterZ PS4',
+    product: 'Console PlayStation 5 compatível com Dragon Ball FighterZ', query: 'console PlayStation 5 Amazon Brasil',
     offer: {
-      query: 'Dragon Ball FighterZ jogo PS5 Xbox Series Amazon Brasil', productName: 'Dragon Ball FighterZ — buscar edições na Amazon',
-      productPitch: 'Busca pelo jogo desta matéria. Confira se a oferta é para PS5, Xbox Series, PS4, Xbox One, Switch ou PC e verifique edição e região antes de comprar.',
+      query: 'console PlayStation 5 Amazon Brasil', productName: 'Console PlayStation 5',
+      productPitch: 'Dragon Ball FighterZ tem versão para PlayStation compatível com PS5. Esta busca é pelo console, não inclui o jogo; confirme modelo e oferta antes de comprar.',
     },
+    relatedOffers: [
+      { productName: 'Dragon Ball FighterZ', affiliate: amazonSearch('Dragon Ball FighterZ PS4 Nintendo Switch Xbox'), affiliateLinkType: 'search', productPitch: 'Busca pelo jogo desta matéria; confira plataforma, edição e disponibilidade.' },
+      { productName: 'Dragon Ball Z: Kakarot', affiliate: amazonSearch('Dragon Ball Z Kakarot PlayStation Xbox Switch'), affiliateLinkType: 'search', productPitch: 'Outro jogo da franquia Dragon Ball; confira plataforma e edição.' },
+    ],
     body: `Bandai Namco e Arc System Works anunciaram uma nova atualização de balanceamento para Dragon Ball FighterZ. A informação foi registrada por Gematsu em 15 de novembro e retomada por PlayStation Universe no dia seguinte. Até o material consultado, não há data de lançamento nem uma lista de mudanças para examinar.
 
 Essa ausência limita o que podemos concluir. Um teaser de balanceamento confirma a intenção de alterar o jogo, mas não informa quais personagens ganharão ou perderão recursos. Também não permite prever que um combo conhecido vai deixar de funcionar ou que determinada equipe passará a dominar o competitivo.
@@ -203,7 +217,11 @@ O material divulgado sustenta interesse na proposta de arena e nas ferramentas p
     excerpt: 'A coleção de minijogos de humor violento ganha versões de PS5, Xbox Series e Switch; não é uma estreia inédita no PC.',
     scores: [0, 0, 11, 14, 7], relevanceReason: 'Novo lançamento em consoles confirmado por publicadora e Gematsu; vendas só entram como declaração atribuída.',
     alts: ['Quatro figuras estilizadas atravessam plataforma industrial com engrenagens, em conceito de IA sobre Machine Party.', 'Quinze peças de desafios e quatro peões numa mesa industrial ilustram os minijogos, em arte de IA.'],
-    product: 'Controle adicional compatível, após verificar modo local da versão comprada', query: 'site:amazon.com.br Machine Party controle Xbox',
+    product: 'Console Nintendo Switch — compatível com a versão anunciada', query: 'Nintendo Switch console Amazon Brasil',
+    offer: {
+      query: 'Nintendo Switch console Amazon Brasil', productName: 'Console Nintendo Switch',
+      productPitch: 'Machine Party foi anunciado para Nintendo Switch, PS5 e Xbox Series. Esta busca é pelo console Switch, não inclui o jogo; confira o modelo e a edição antes de comprar.',
+    },
     body: `Machine Party tem chegada anunciada para PS5, Xbox Series X|S, Nintendo Switch e Xbox no PC em 26 de novembro. O comunicado da Oro Interactive, distribuído em 16 de novembro, também foi coberto por Gematsu. O jogo já estava no PC via Steam: essas versões ampliam as plataformas, sem representar uma primeira estreia de toda a produção.
 
 A proposta reúne quinze minijogos para dois a quatro participantes. O tom é de humor sombrio e violência estilizada, com situações que transformam competição de festa em ameaça industrial. O texto da publicadora descreve desafios de reação e decisão, com opção de percorrer a coleção ou selecionar favoritos. Não se trata de uma recomendação para crianças só porque o formato lembra jogos de festa.
@@ -221,12 +239,18 @@ Para montar uma sessão com amigos, confira na loja da plataforma os modos dispo
     excerpt: 'Categoria reconhece composição musical, com janela de elegibilidade própria. A seleção inclui Ghost of Yōtei e uma expansão de Avatar.',
     scores: [0, 0, 18, 15, 6], relevanceReason: 'Lista primária completa confirmada por dois veículos especializados; indicações divulgadas em 16/11.',
     alts: ['Cinco estantes de partituras com motivos de espionagem, floresta, Japão e espaço ilustram trilhas indicadas, em arte de IA.', 'Mãos de maestro sobre partitura que se transforma em ambientes sonoros de jogo, em conceito de IA.'],
-    product: 'Edição de um dos jogos indicados ou gravação da trilha exata, após validar pertinência e destino', query: 'site:amazon.com.br Grammy Ghost Yotei PS5',
+    product: 'Console PlayStation 5 para os títulos compatíveis da lista', query: 'console PlayStation 5 Amazon Brasil',
     offer: {
-      query: 'Avatar Frontiers of Pandora From the Ashes PS5 007 First Light PS5 Ghost of Yotei PS5 Marvels Wolverine PS5 Star Wars Zero Company PS5',
-      productName: 'Jogos indicados ao Grammy 2027 — busca na Amazon',
-      productPitch: 'Busca pelos jogos indicados citados na matéria, sem imagens de produto. A indicação é para a trilha; os resultados podem não incluir todos os títulos ou edições. Confirme jogo, plataforma e conteúdo antes de comprar.',
+      query: 'console PlayStation 5 Amazon Brasil',
+      productName: 'Console PlayStation 5',
+      productPitch: 'Alguns jogos e franquias citados têm versões para PS5. Esta busca é pelo console, não inclui nenhum jogo; confirme a compatibilidade de cada título antes de comprar.',
     },
+    relatedOffers: [
+      { productName: 'Avatar: Frontiers of Pandora — jogo base', affiliate: amazonSearch('Avatar Frontiers of Pandora PS5'), affiliateLinkType: 'search', productPitch: 'Jogo da franquia cuja expansão aparece entre as trilhas indicadas; confira plataforma e conteúdo.' },
+      { productName: 'Ghost of Tsushima Director’s Cut', affiliate: amazonSearch('Ghost of Tsushima Directors Cut PS5'), affiliateLinkType: 'search', productPitch: 'Jogo anterior da franquia Ghost; confira a edição e a plataforma.' },
+      { productName: 'Star Wars Outlaws', affiliate: amazonSearch('Star Wars Outlaws PS5'), affiliateLinkType: 'search', productPitch: 'Outro jogo da franquia Star Wars; confira plataforma e edição.' },
+      { productName: 'Jogos da franquia 007', affiliate: amazonSearch('jogo 007 James Bond videogame'), affiliateLinkType: 'search', productPitch: 'Busca por outros jogos de James Bond; confirme o título, formato e plataforma de cada resultado.' },
+    ],
     body: `A Recording Academy relaciona cinco trabalhos na disputa de trilha original para videogames e outras mídias interativas do Grammy 2027. Estão indicados Avatar: Frontiers of Pandora — From the Ashes, 007: First Light, Ghost of Yōtei, Marvel’s Wolverine e Star Wars: Zero Company. A lista oficial é confirmada pelas coberturas de Game Informer e VGC de 16 de novembro.
 
 Os créditos merecem o mesmo espaço que os jogos. Avatar é associado a John Paesano; 007, a Joe Henson e Alexis Leon Smith; Ghost of Yōtei, a Toma Otowa; Wolverine, a David Fleming; e Star Wars: Zero Company, a Gordy Haab. A indicação reconhece o trabalho musical apresentado na categoria, não estabelece qual desses jogos é o melhor como experiência completa.
@@ -244,7 +268,12 @@ Para o leitor, a lista pode funcionar como roteiro de escuta: procurar os álbun
     excerpt: 'Nikita Buyanov fala em sistema reformulado. Janela é uma previsão do estúdio, sem data ou resultado técnico demonstrado.',
     scores: [0, 0, 14, 12, 7], relevanceReason: 'Entrevista direta de 16/11 com responsável do estúdio; segunda cobertura deriva da mesma fala, sem confirmação autônoma.',
     alts: ['Patrulheiros em fábrica abandonada procuram cobertura por rotas diferentes, em conceito de IA sobre bots de Tarkov.', 'Maquete de armazém com rotas e cones de visão ilustra avaliação de comportamento de inimigos, em arte de IA.'],
-    product: 'Headset PC pertinente à percepção de áudio, sem prometer vantagem', query: 'site:amazon.com.br Escape Tarkov headset PC',
+    product: 'PC gamer para jogos de PC', query: 'PC gamer desktop Windows Amazon Brasil',
+    offer: {
+      query: 'PC gamer desktop Windows Amazon Brasil', productName: 'PC gamer desktop',
+      productPitch: 'Escape from Tarkov é um jogo para PC. Esta busca é por computadores, não inclui o jogo e não garante desempenho em qualquer configuração; compare os requisitos oficiais, componentes e sistema operacional antes de comprar.',
+    },
+    relatedOffers: [{ productName: 'Escape from Tarkov — página oficial na Steam', href: 'https://store.steampowered.com/app/3932890/Escape_from_Tarkov/', linkLabel: 'Abrir página do jogo na Steam', external: true }],
     body: `Escape from Tarkov deve receber um sistema de inteligência artificial reformulado no começo de 2027, segundo Nikita Buyanov. Em entrevista a Insider Gaming, publicada em 16 de novembro, o responsável da Battlestate Games situou o plano entre o primeiro e o segundo trimestre. Isso cobre o primeiro semestre, sem estabelecer um mês ou dia de lançamento.
 
 A fala trata do comportamento de personagens controlados pelo jogo. Não é um anúncio sobre geração de imagens ou ferramentas de produção. O interesse para quem joga está em como esses inimigos podem perceber ameaças e agir durante uma incursão, mas a entrevista não oferece especificações suficientes para antecipar cada mudança.
@@ -254,30 +283,31 @@ Insider Gaming apresenta a declaração como parte de uma conversa direta com Bu
 Essa distinção importa na hora de avaliar promessas. Um sistema refeito pode mudar decisões, rotas e combates; só uma versão disponível e testada poderá mostrar se o efeito torna os encontros mais convincentes ou mais justos. Não há fundamento nessa fala para prometer redução de precisão dos bots, novos tipos de loot ou um ganho de desempenho no PC.
 
 Nossa leitura editorial é que o anúncio deve ser acompanhado como direção de desenvolvimento. Quem está decidindo voltar a Tarkov não precisa tratar uma mudança de 2027 como recurso presente. Antes de gastar com edição ou equipamento por causa dela, vale esperar notas oficiais, escopo por modo e testes da versão efetivamente distribuída. Esta matéria não testou a nova IA e não declara resolvidos problemas relatados por jogadores.`,
-    sources: [source('Insider Gaming — entrevista direta com Nikita Buyanov', 'https://insider-gaming.com/exclusive-escape-from-tarkov-new-ai-system-coming-2027/'), source('iXBT — cobertura derivada da entrevista', 'https://ixbt.games/en/news/2026/11/16/nikita-buianov-anonsiroval-soversenno-novyi-ii-dlia-escape-from-tarkov.html')],
+    sources: [source('Insider Gaming — entrevista direta com Nikita Buyanov', 'https://insider-gaming.com/exclusive-escape-from-tarkov-new-ai-system-coming-2027/'), source('iXBT — cobertura derivada da entrevista', 'https://ixbt.games/en/news/2026/11/16/nikita-buianov-anonsiroval-soversenno-novyi-ii-dlia-escape-from-tarkov.html'), source('Steam — página oficial de Escape from Tarkov', 'https://store.steampowered.com/app/3932890/Escape_from_Tarkov/')],
   }),
   draft({
     id: 'monster-hunter-stories-3-xbox-pc-play-anywhere', visual: 'stories', tag: 'Monster Hunter Stories 3 · Xbox no PC · Play Anywhere',
-    title: 'Monster Hunter Stories 3 tem chegada ao Xbox no PC marcada para hoje',
-    excerpt: 'Anúncio da Capcom prevê Play Anywhere em 18 de novembro. Benefício não deve ser estendido a cópias de outras lojas.',
-    scores: [0, 0, 17, 14, 10], relevanceReason: 'Data prevista para hoje em anúncio primário de outubro e cobertura especializada; evento hoje não equivale a notícia publicada hoje.',
+    title: 'Versão Xbox PC de Monster Hunter Stories 3 saiu em 18 de novembro',
+    excerpt: 'A versão de PC chegou em 18/11 com Play Anywhere. O benefício não vale automaticamente para cópias de outras lojas.',
+    scores: [0, 0, 17, 14, 10], relevanceReason: 'Data anunciada em comunicado primário e disponibilidade noticiada em 18/11 por veículo especializado; o lançamento original ocorreu em março.',
+    sameDaySourceUrls: ['https://www.rpgsite.net/news/21785-monster-hunter-stories-3-xbox-play-anywhere-release-series-console-pc-cloud-gaming-handheld'],
     alts: ['Cavaleira e dragão originais atravessam ponte diante de portais abstratos com a mesma rota, em conceito de IA sobre continuidade de progresso.', 'Ovo de dragão e diário diante de três portais ligados por fita ilustram continuidade de progresso, em arte de IA.'],
     product: 'Edição digital Xbox elegível para Play Anywhere, com licença explicitamente confirmada', query: 'site:amazon.com.br Monster Hunter Stories 3 Xbox',
     offer: {
       query: 'console Xbox Series X Amazon Brasil', productName: 'Console Xbox Series X',
       productPitch: 'Monster Hunter Stories 3 tem versão anunciada para Xbox Series X|S. Esta busca leva a um console compatível; confirme a edição do jogo e a disponibilidade do benefício Play Anywhere na oferta. O jogo não vem incluído no console.',
     },
-    body: `Monster Hunter Stories 3: Twisted Reflection tem lançamento no Xbox no PC previsto para 18 de novembro de 2026. A data foi anunciada por Toshiaki Matsuda, da equipe de relações públicas da Capcom, no Xbox Wire de 7 de outubro. Windows Central também cobriu a inclusão de Xbox Play Anywhere. Não confirmamos nesta checagem o horário de liberação da loja brasileira.
+    body: `Monster Hunter Stories 3: Twisted Reflection teve a versão de PC via Xbox lançada em 18 de novembro de 2026, segundo a data anunciada por Toshiaki Matsuda, da equipe de relações públicas da Capcom, no Xbox Wire de 7 de outubro. Windows Central também cobriu a inclusão de Xbox Play Anywhere. A disponibilidade regional e a oferta brasileira podem variar.
 
 O benefício anunciado permite continuar entre Xbox Series X|S, PCs com Windows 11 e dispositivos portáteis compatíveis, com progresso, conteúdo adicional e conquistas compartilhados. A utilidade está em trocar de aparelho mantendo a mesma jornada. Isso descreve a edição elegível no ecossistema Xbox; não transforma uma compra no Steam ou em outra plataforma numa licença Xbox.
 
-Também não é a primeira estreia do terceiro jogo. O comunicado já o descrevia como disponível no Xbox Series X|S quando anunciou a versão de PC da loja. A novidade de hoje é essa ampliação de distribuição e de continuidade entre dispositivos, não o lançamento mundial original de Twisted Reflection.
+Essa não foi a estreia mundial do terceiro jogo. O comunicado já o descrevia como disponível no Xbox Series X|S quando anunciou a versão de PC da loja. A novidade de 18 de novembro foi a ampliação de distribuição e de continuidade entre dispositivos, não o lançamento original de Twisted Reflection.
 
 Para quem conhece apenas a série principal, Stories segue outra proposta: é um RPG por turnos centrado no vínculo entre Riders e monstros. O texto oficial situa Twisted Reflection como terceiro título, depois de Monster Hunter Stories e Monster Hunter Stories 2: Wings of Ruin. Essa relação ajuda a reconhecer o formato sem presumir uma continuidade narrativa obrigatória entre todas as aventuras.
 
 Antes de comprar, confira a marca Play Anywhere na oferta exata e o que a edição inclui. Um disco ou código descrito apenas como Xbox não deve ser tratado por esta matéria como confirmação de todos os benefícios. Também não convertemos preços em dólar do comunicado em valores brasileiros. O anúncio dá a data e o recurso; licença, região e disponibilidade precisam estar claros na página de compra.`,
-    sources: [source('Capcom no Xbox Wire — anúncio, data e benefícios', 'https://news.xbox.com/en-us/2026/10/07/monster-hunter-stories-3-xbox-px-xbox-play-anywhere-announce/'), source('Windows Central — cobertura do Play Anywhere', 'https://www.windowscentral.com/gaming/xbox/monster-hunter-stories-3-xbox-play-anywhere')],
-    draftNotes: 'Conferir liberação efetiva e disponibilidade no Brasil antes de publicar como já disponível.',
+    relatedOffers: [{ productName: 'Monster Hunter Stories 2: Wings of Ruin', affiliate: amazonSearch('Monster Hunter Stories 2 Wings of Ruin Nintendo Switch'), affiliateLinkType: 'search', productPitch: 'Segundo jogo da série Stories mencionado nesta matéria; confira plataforma e edição.' }],
+    sources: [source('Capcom no Xbox Wire — data e benefícios anunciados', 'https://news.xbox.com/en-us/2026/10/07/monster-hunter-stories-3-xbox-px-xbox-play-anywhere-announce/'), source('RPG Site — disponibilidade de Xbox PC em 18/11', 'https://www.rpgsite.net/news/21785-monster-hunter-stories-3-xbox-play-anywhere-release-series-console-pc-cloud-gaming-handheld'), source('Windows Central — contexto do Play Anywhere', 'https://www.windowscentral.com/gaming/xbox/monster-hunter-stories-3-xbox-play-anywhere')],
   }),
   draft({
     id: 'gta-vi-review-reviews-terceiros-20261118', visual: 'gta-review', imageExtension: 'png',

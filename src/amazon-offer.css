@@ -8,8 +8,18 @@
 .amazon-offer .amazon-offer-button:hover{background:#ffdcaa;border-color:#ffdcaa;transform:translateY(-1px);color:#211305}
 .amazon-offer .amazon-offer-button:focus-visible{outline:3px solid #fff;outline-offset:5px}
 .amazon-offer .amazon-offer-disclosure{display:block;margin-top:17px;color:#c9c1b8;font:12px/1.6 'DM Sans',sans-serif}
+.amazon-offer-related{margin-top:26px;padding-top:20px;border-top:1px solid #765026}
+.amazon-offer-related h3{margin:0 0 12px;color:#ffcf8e;font:700 14px/1.4 Manrope,sans-serif}
+.amazon-offer-related ul{display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.amazon-offer-related li{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 16px;border:1px solid #55402b;border-radius:6px;background:#17151a}
+.amazon-offer-related li strong{color:#fff;font:700 14px/1.4 Manrope,sans-serif}
+.amazon-offer-related li p{margin:5px 0 0;color:#c9c1b8;font:13px/1.5 'DM Sans',sans-serif}
+.amazon-offer .amazon-offer-related-link{flex:0 0 auto;color:#ffcf8e;font:700 13px/1.4 'DM Sans',sans-serif;text-decoration:underline;text-underline-offset:3px}
+.amazon-offer .amazon-offer-related-link:hover{color:#fff}
+.amazon-offer .amazon-offer-related-link:focus-visible{outline:3px solid #fff;outline-offset:4px}
+.amazon-offer .amazon-offer-related .amazon-offer-disclosure{margin-top:12px}
 .amazon-offer-photo{margin:0;min-width:0}
 .amazon-offer-photo img{display:block;width:100%;max-height:220px;object-fit:contain;border-radius:5px;background:#fff}
 .amazon-offer-photo figcaption{margin-top:8px;color:#c9c1b8;font:10px/1.5 'DM Sans',sans-serif}
 .amazon-offer-photo a{color:inherit}
-@media(max-width:600px){.amazon-offer{padding:22px 18px}.amazon-offer.has-photo{grid-template-columns:1fr}.amazon-offer-photo{max-width:180px;margin:0 auto}.amazon-offer .amazon-offer-copy h2{font-size:20px}.amazon-offer .amazon-offer-button{display:flex;width:100%;box-sizing:border-box}}
+@media(max-width:600px){.amazon-offer{padding:22px 18px}.amazon-offer.has-photo{grid-template-columns:1fr}.amazon-offer-photo{max-width:180px;margin:0 auto}.amazon-offer .amazon-offer-copy h2{font-size:20px}.amazon-offer .amazon-offer-button{display:flex;width:100%;box-sizing:border-box}.amazon-offer-related li{align-items:flex-start;flex-direction:column;gap:8px}}

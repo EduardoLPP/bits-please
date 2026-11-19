@@ -48,9 +48,9 @@ const affiliateCatalog = {
     'A busca é pelo jogo analisado. A edição física de PS5 foi anunciada para 2027 e pode ainda não estar à venda; confira formato, edição e disponibilidade antes de comprar.'
   ),
   'black-forest-games-independente-third-signal-2026': search(
-    'Destroy All Humans 2 Reprobed PlayStation 5 Xbox PC',
-    'Destroy All Humans! 2 – Reprobed, da Black Forest Games',
-    'Para conhecer um projeto recente da Black Forest Games, esta busca leva a Destroy All Humans! 2 – Reprobed. Confira a plataforma e a edição disponíveis.'
+    'console PlayStation 5 Amazon Brasil',
+    'Console PlayStation 5 compatível com Destroy All Humans! 2 – Reprobed',
+    'O jogo da Black Forest Games tem versão para PS5. Esta busca é pelo console, não inclui o jogo; confira modelo, vendedor e disponibilidade antes de comprar.'
   ),
   'review-modern-warfare-4-pesquisa-2026': search(
     'Call of Duty Modern Warfare 4 PlayStation 5',

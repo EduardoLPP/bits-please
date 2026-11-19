@@ -117,6 +117,37 @@ function readPosts(){
     localStorage.setItem('bitsplease_editorial_20261119_v1','1');
     needsSave=true;
    }
+  if(!localStorage.getItem('bitsplease_publish_all_drafts_20261119_v1')){
+   const publishIds=new Set([
+    'review-binding-of-isaac-repentance-plus-20261119',
+    'review-enshrouded-10-construcao-pesquisa',
+    'game-pass-novembro-wave-2-planos-saidas',
+    'mega-man-dual-override-cleanser-man-concurso',
+    'rivals-aether-ii-burnette-gratuita-dezembro',
+    'dragon-ball-fighterz-balanceamento-anunciado-sem-data',
+    'netcode-warriors-ps5-pc-2027-rollback',
+    'machine-party-consoles-26-novembro',
+    'grammy-2027-cinco-trilhas-jogos-indicadas',
+    'tarkov-nova-ia-primeiro-semestre-2027',
+    'monster-hunter-stories-3-xbox-pc-play-anywhere',
+    'black-forest-games-independente-third-signal-2026',
+   ]);
+   const fields=['title','category','section','tag','excerpt','body','status','date','publishedAt','seoTitle','seoDescription','publicationApproval','image','imageAlt','imageSource','imageSourceUrl','imageLicense','imageLicenseUrl','inlineImage','additionalImages','imageResearch','affiliate','productName','productPitch','affiliateLinkType','affiliateResearch','relatedOffers','sources'];
+   for(const id of publishIds){
+    const seed=seeds.get(id);
+    if(!seed)continue;
+    const existingIndex=clean.findIndex(post=>post.id===id);
+    const existing=existingIndex>=0?clean[existingIndex]:{};
+    const updated={...existing,...Object.fromEntries(fields.filter(field=>seed[field]!==undefined).map(field=>[field,seed[field]])),status:'published',date:seed.date||'19 nov 2026',publishedAt:seed.publishedAt||'2026-11-19'};
+    delete updated.draftNotes;
+    const issues=publicationIssues(updated);
+    if(issues.length){updated.status='draft';updated.draftNotes=`Falta: ${issues.join('; ')}.`}
+    if(existingIndex>=0)clean[existingIndex]=updated;else clean.push(updated);
+    needsSave=true;
+   }
+   localStorage.setItem('bitsplease_publish_all_drafts_20261119_v1','1');
+   needsSave=true;
+  }
   if(!localStorage.getItem('bitsplease_publish_daily_20261112_v1')){
    clean=clean.map(p=>{
     const seed=seeds.get(p.id),approval=seed?.publicationApproval;
@@ -251,13 +282,14 @@ function readPosts(){
     if(!seed?.affiliate)return post;
     const productSource=(seed.sources||[]).filter(source=>source.label==='Amazon Brasil — produto recomendado');
     const mergedSources=[...(post.sources||[]).filter(source=>source.label!=='Amazon Brasil — produto recomendado'),...productSource];
-    const draftNotes=(post.draftNotes||seed.draftNotes||'').replace(
+    const draftNotes=post.status==='published'?'':(post.draftNotes||seed.draftNotes||'').replace(
      'Falta oferta Amazon pertinente com destino verificado.',
      'Busca Amazon pertinente adicionada com tag do portal; conferir edição e disponibilidade.'
     );
-    if(post.affiliate===seed.affiliate&&post.draftNotes===draftNotes&&post.productName===seed.productName&&post.affiliateResearch?.checkedAt===seed.affiliateResearch?.checkedAt&&!post.productImage)return post;
+    if(post.affiliate===seed.affiliate&&post.draftNotes===(draftNotes||undefined)&&post.productName===seed.productName&&post.affiliateResearch?.checkedAt===seed.affiliateResearch?.checkedAt&&!post.productImage)return post;
     needsSave=true;
     const updated={...post,affiliate:seed.affiliate,productName:seed.productName,productPitch:seed.productPitch,affiliateLinkType:seed.affiliateLinkType,affiliateResearch:seed.affiliateResearch,sources:mergedSources,draftNotes};
+    if(!draftNotes)delete updated.draftNotes;
     delete updated.productImage;
     return updated;
    });

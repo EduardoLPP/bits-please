@@ -4,6 +4,7 @@ const imageTerms = 'https://openai.com/policies/terms-of-use/';
 const artCredit = 'Ilustração conceitual original gerada por IA; não é captura de jogo nem arte oficial.';
 const artLicense = 'Output gerado conforme os Termos de Uso da OpenAI; titularidade sujeita à lei aplicável.';
 const src = (label, url) => ({ label, url });
+const amazonSearch = query => `https://www.amazon.com.br/s?k=${encodeURIComponent(query)}&tag=bitsplease-20`;
 
 const visuals = {
   gta: ['week-release-cover.png', 'Calendário de lançamentos de jogos com cartões de controle, um controle de console e um portátil retrô sobre uma mesa.', 'week-release-body.png', 'Composição gráfica de calendário semanal e mundos pixelados distintos, sem reproduzir artes oficiais de GTA VI.'],
@@ -18,13 +19,13 @@ const visuals = {
   studio: ['black-forest-buyout-cover.png', 'Pequena equipe de desenvolvimento independente reunida em torno de uma mesa de trabalho em um estúdio de jogos.', 'black-forest-buyout-body.png', 'Estúdio independente representado como uma casa entre árvores, com trilhas que levam a projetos de jogos.'],
 };
 
-function makePost({ id, title, excerpt, tag, section = 'NOTÍCIAS', body, sources, visual, imageQuery, imageSources, imageNotes, product, affiliateQuery, affiliate, productName, productPitch, scores, reason, sameDaySourceUrls = [], draftNotes }) {
+function makePost({ id, title, excerpt, tag, section = 'NOTÍCIAS', body, sources, visual, imageQuery, imageSources, imageNotes, product, affiliateQuery, affiliate, productName, productPitch, relatedOffers, directPublish = false, publicationDate, scores, reason, sameDaySourceUrls = [], draftNotes }) {
   const art = visuals[visual];
   const isPublic = Boolean(affiliate && productName);
   const scoreKeys = ['timeliness', 'publicInterest', 'reach', 'sourceReliability', 'brazilUtility'];
   return {
     id, category: 'GAMES', section, tag, title, excerpt,
-    date: '16 nov 2026', publishedAt: isPublic ? '2026-11-16' : undefined, read: `${Math.max(3, Math.ceil(body.split(/\s+/).length / 180))} min`,
+    date: publicationDate || '16 nov 2026', publishedAt: isPublic ? '2026-11-16' : publicationDate === '19 nov 2026' ? '2026-11-19' : undefined, read: `${Math.max(3, Math.ceil(body.split(/\s+/).length / 180))} min`,
     body, sources,
     image: `${imageBase}${art[0]}`, imageAlt: art[1], imageSource: artCredit, imageSourceUrl: imageTerms, imageLicense: artLicense, imageLicenseUrl: imageTerms,
     inlineImage: { image: `${imageBase}${art[2]}`, alt: art[3], credit: artCredit, sourceUrl: imageTerms, license: artLicense, licenseUrl: imageTerms },
@@ -34,14 +35,14 @@ function makePost({ id, title, excerpt, tag, section = 'NOTÍCIAS', body, source
       assets: [`${imageBase}${art[0]}`, `${imageBase}${art[2]}`],
       notes: `${imageNotes} A busca visual foi feita para esta pauta. As duas artes finais têm arquivos, enquadramentos e composições próprios; estão identificadas como ilustrações de IA e não imitam capturas ou artes oficiais.`,
     },
-    affiliate: affiliate || undefined, productName: productName || undefined, productPitch: productPitch || undefined,
+    affiliate: affiliate || undefined, productName: productName || undefined, productPitch: productPitch || undefined, relatedOffers,
     affiliateResearch: {
       product: product || 'Nenhum item pertinente confirmado', query: affiliateQuery, tag: 'bitsplease-20', checkedAt,
       status: isPublic ? 'destination-verified' : 'no-relevant-verified-offer',
       notes: isPublic ? 'Página exata da Amazon Brasil e correspondência do produto conferidas. Busca por imagem exata também foi feita, mas os resultados visuais não confirmaram uma fonte autorizada pelo programa; o CTA fica com nome e botão, sem foto inventada.' : 'Busca por oferta e imagem realizada sem oferta Amazon Brasil pertinente confirmada; não inserir produto genérico nem link de outro mercado.',
     },
-    status: isPublic ? 'published' : 'draft',
-    ...(isPublic ? {} : { draftNotes: draftNotes || 'Sem uma oferta Amazon Brasil pertinente verificada, este texto fica em rascunho.' }),
+    status: isPublic || directPublish ? 'published' : 'draft',
+    ...(isPublic || directPublish ? {} : { draftNotes: draftNotes || 'Sem uma oferta Amazon Brasil pertinente verificada, este texto fica em rascunho.' }),
     relevanceDate: '2026-11-16', relevanceUpdatedAt: checkedAt,
     relevanceScore: scores.reduce((sum, value) => sum + value, 0),
     relevanceBreakdown: Object.fromEntries(scoreKeys.map((key, index) => [key, scores[index]])),
@@ -284,6 +285,7 @@ O jogo tem suporte a controle e a equipe recomenda configurações específicas 
   }),
   makePost({
     id: 'black-forest-games-independente-third-signal-2026', tag: 'Indústria · Black Forest Games · Third Signal', visual: 'studio',
+    directPublish: true, publicationDate: '19 nov 2026',
     title: 'Black Forest Games volta a ser independente e cofunda a Third Signal',
     excerpt: 'O estúdio alemão saiu da estrutura da THQ Nordic por meio de uma aquisição pela própria gestão. A parceria com a antiga controladora continua, segundo o anúncio.',
     body: `A Black Forest Games anunciou em 11 de novembro que está deixando a estrutura da THQ Nordic por meio de uma aquisição pela equipe de gestão. O estúdio passa a integrar a Third Signal, um grupo independente de desenvolvedoras. O comunicado diz que a operação foi acordada com a antiga controladora e que as duas partes manterão uma parceria de publicação e distribuição.
@@ -292,9 +294,7 @@ A mudança altera a estrutura empresarial, mas não significa que o estúdio ten
 
 A Black Forest Games é conhecida por trabalhos como Giana Sisters: Twisted Dreams e os remakes de Destroy All Humans. A trajetória ajuda a entender por que uma separação pode ter significado para a equipe: ela passa a operar como estúdio independente, com um novo grupo ao redor, em vez de fazer parte de uma grande estrutura corporativa.
 
-Isso ainda não nos diz quais jogos estão em produção, quais contratos futuros já existem ou como a mudança afetará cronogramas. O anúncio não promete um novo título nem revela uma janela de lançamento. Por isso, a consequência imediata é organizacional: novo grupo, liderança e relação de publicação, com continuidade comercial anunciada.
-
-Esta matéria fica em rascunho por enquanto. A busca não encontrou uma oferta Amazon Brasil confirmada de um jogo do catálogo da desenvolvedora que possa servir como recomendação de compra sem inventar disponibilidade ou associar um item genérico à notícia.`,
+Isso ainda não nos diz quais jogos estão em produção, quais contratos futuros já existem ou como a mudança afetará cronogramas. O anúncio não promete um novo título nem revela uma janela de lançamento. Por isso, a consequência imediata é organizacional: novo grupo, liderança e relação de publicação, com continuidade comercial anunciada. A trajetória anterior pode ser revisitada em Destroy All Humans! e em sua sequência, mas esses jogos não antecipam o que a equipe independente fará a seguir.`,
     sources: [
       src('Third Signal / Games Press — anúncio de independência e aquisição pela gestão', 'https://www.gamespress.com/de/Black-Forest-Games-spins-out-of-THQ-Nordic-to-co-found-Third-Signal'),
       src('PC Gamer — contexto da saída e histórico do estúdio', 'https://www.pcgamer.com/gaming-industry/giana-sisters-developer-black-forest-games-buys-itself-out-of-embracer-some-of-the-best-games-of-the-last-decade-came-from-teams-of-fifty-not-five-hundred/'),
@@ -304,7 +304,10 @@ Esta matéria fica em rascunho por enquanto. A busca não encontrou uma oferta A
     imageSources: ['https://www.gamespress.com/de/Black-Forest-Games-spins-out-of-THQ-Nordic-to-co-found-Third-Signal', 'https://black-forest-games.com/games/'],
     imageNotes: 'Busca visual pelo estúdio, comunicado e catálogo. As imagens corporativas localizadas não indicavam autorização aberta de uso comercial; a capa e a imagem interna representam uma equipe independente e uma casa de estúdio em ambientes diferentes.',
     affiliateQuery: 'Amazon Brasil jogos Black Forest Games Destroy All Humans Giana Sisters',
+    relatedOffers: [
+      { productName: 'Destroy All Humans! 2 – Reprobed', affiliate: amazonSearch('Destroy All Humans 2 Reprobed PS5 Xbox PC'), affiliateLinkType: 'search', productPitch: 'Jogo da Black Forest Games; confira plataforma, edição e disponibilidade.' },
+      { productName: 'Destroy All Humans! (2020)', affiliate: amazonSearch('Destroy All Humans 2020 PS4 Xbox PC'), affiliateLinkType: 'search', productPitch: 'O remake anterior da franquia mencionada na matéria; confira plataforma e edição.' },
+    ],
     scores: [20, 15, 13, 14, 7], reason: 'Mudança corporativa confirmada por comunicado do novo grupo e contextualizada por cobertura especializada; impacto em jogos futuros ainda não foi anunciado.',
-    draftNotes: 'Rascunho editorial completo. Falta confirmar uma oferta Amazon Brasil pertinente de jogo da Black Forest Games com a tag do portal; não foi incluído produto genérico. As duas artes são conceituais e distintas.',
   }),
 ];
