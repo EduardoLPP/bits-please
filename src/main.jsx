@@ -111,6 +111,12 @@ function readPosts(){
    localStorage.setItem('bitsplease_metaphor_supplied_images_v1','1');
   }
   clean=clean.map(p=>{const seed=seeds.get(p.id);if(!seed?.relevanceDate)return p;const newerDay=!p.relevanceDate||seed.relevanceDate>p.relevanceDate;const newerAssessment=seed.relevanceDate===p.relevanceDate&&seed.relevanceUpdatedAt&&(!p.relevanceUpdatedAt||seed.relevanceUpdatedAt>p.relevanceUpdatedAt);if(!newerDay&&!newerAssessment)return p;needsSave=true;return {...p,relevanceDate:seed.relevanceDate,relevanceScore:seed.relevanceScore,relevanceReason:seed.relevanceReason,relevanceSignals:seed.relevanceSignals,relevanceUpdatedAt:seed.relevanceUpdatedAt}});
+   if(!localStorage.getItem('bitsplease_editorial_20261119_v1')){
+    const launchReview=seeds.get('review-binding-of-isaac-repentance-plus-20261119');
+    if(launchReview&&!clean.some(post=>post.id===launchReview.id)){clean.push(preparePublicationStatus(launchReview));needsSave=true}
+    localStorage.setItem('bitsplease_editorial_20261119_v1','1');
+    needsSave=true;
+   }
   if(!localStorage.getItem('bitsplease_publish_daily_20261112_v1')){
    clean=clean.map(p=>{
     const seed=seeds.get(p.id),approval=seed?.publicationApproval;

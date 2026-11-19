@@ -4,9 +4,45 @@ import { dailyPosts20261115 } from './editorial/2026-11-15.js';
 import { dailyPosts20261116 } from './editorial/2026-11-16.js';
 import { dailyPosts20261117 } from './editorial/2026-11-17.js';
 import { dailyPosts20261118 } from './editorial/2026-11-18.js';
+import { dailyPosts20261119 } from './editorial/2026-11-19.js';
+
+const launchDay = '2026-11-19';
+const launchDayCheckedAt = '2026-11-19T08:02:00-03:00';
+const launchDaySignals = [
+  { label: 'Rockstar Games — data e plataformas oficiais de GTA VI', url: 'https://www.rockstargames.com/VI' },
+  { label: 'ABC News — cobertura publicada no dia do lançamento', url: 'https://www.abc.net.au/news/2026-11-19/gta-vi-smashes-expectations-after-overnight-launch/107401924' },
+];
+const refreshLaunchDayHighlight = post => {
+  if (post.id === 'gta-vi-review-reviews-terceiros-20261118') {
+    return {
+      ...post,
+      sources: [...post.sources, ...launchDaySignals.filter(signal => !post.sources.some(source => source.url === signal.url))],
+      relevanceDate: launchDay,
+      relevanceUpdatedAt: launchDayCheckedAt,
+      relevanceScore: 98,
+      relevanceBreakdown: { timeliness: 30, publicInterest: 25, reach: 20, sourceReliability: 13, brazilUtility: 10 },
+      relevanceReason: 'GTA VI iniciou o lançamento global em 19/11, sinal de interesse público confirmado pela Rockstar e por cobertura independente do mesmo dia. A síntese de reviews permanece identificada como pesquisa, sem teste próprio.',
+      relevanceSignals: [...post.relevanceSignals, ...launchDaySignals.map(signal => ({ ...signal, sameDayVerified: true }))],
+    };
+  }
+  if (post.id === 'gta-vi-metacritic-99-132-reviews-20261118') {
+    return {
+      ...post,
+      sources: [...post.sources, ...launchDaySignals.filter(signal => !post.sources.some(source => source.url === signal.url))],
+      relevanceDate: launchDay,
+      relevanceUpdatedAt: launchDayCheckedAt,
+      relevanceScore: 82,
+      relevanceBreakdown: { timeliness: 24, publicInterest: 21, reach: 19, sourceReliability: 11, brazilUtility: 7 },
+      relevanceReason: 'Registro histórico da consulta de 18/11 ao Metacritic, recontextualizado no lançamento de GTA VI em 19/11. A pontuação e a amostra permanecem explicitamente datadas; a relevância do dia é sustentada pela Rockstar e por cobertura independente publicada no lançamento.',
+      relevanceSignals: [...post.relevanceSignals.filter(signal => !signal.sameDayVerified), ...launchDaySignals.map(signal => ({ ...signal, sameDayVerified: true }))],
+    };
+  }
+  return post;
+};
 
 export const editorialUpdates = [
-  ...dailyPosts20261118,
+  ...dailyPosts20261119,
+  ...dailyPosts20261118.map(refreshLaunchDayHighlight),
   ...dailyPosts20261117,
   ...dailyPosts20261116,
   ...dailyPosts20261115,
