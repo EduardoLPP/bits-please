@@ -134,6 +134,14 @@ function readPosts(){
     localStorage.setItem('bitsplease_editorial_20261119_v1','1');
     needsSave=true;
    }
+  if(!localStorage.getItem('bitsplease_editorial_20261121_v1')){
+   for(const seed of allEditorialPosts.filter(post=>post.relevanceDate==='2026-11-21'&&post.publishedAt==='2026-11-21')){
+    if(clean.some(post=>post.id===seed.id))continue;
+    clean.push(preparePublicationStatus(seed));needsSave=true;
+   }
+   localStorage.setItem('bitsplease_editorial_20261121_v1','1');
+   needsSave=true;
+  }
   if(!localStorage.getItem('bitsplease_publish_all_drafts_20261119_v1')){
    const publishIds=new Set([
     'review-binding-of-isaac-repentance-plus-20261119',
