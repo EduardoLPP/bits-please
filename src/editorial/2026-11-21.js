@@ -1,17 +1,18 @@
-const checkedAt = '2026-11-21T13:00:00-03:00';
+const checkedAt = '2026-11-21T13:22:11-03:00';
 const terms = 'https://openai.com/policies/terms-of-use/';
 const credit = 'Ilustração conceitual original gerada por IA com OpenAI ImageGen; não é captura de jogo nem arte oficial.';
 const license = 'Output gerado conforme os Termos de Uso da OpenAI; titularidade sujeita à lei aplicável.';
 const amazonSearch = query => `https://www.amazon.com.br/s?k=${encodeURIComponent(query)}&tag=bitsplease-20`;
 const source = (label, url) => ({ label, url });
 
-function article({ id, tag, title, excerpt, body, imageSet, imageFolder = '2026-11-20', alts, prompts, scores, reason, signals, product, query, pitch, section = 'NOTÍCIAS', seoTitle, seoDescription, sources }) {
+function article({ id, tag, title, excerpt, body, imageSet, imageFolder = '2026-11-21', alts, prompts, scores, reason, signals, product, query, pitch, affiliateUrl, affiliateSourceLabel, status = 'published', draftNotes, section = 'NOTÍCIAS', seoTitle, seoDescription, sources }) {
   const image = `/images/editorial-conceitual/${imageFolder}/${imageSet}-cover.png`;
   const bodyImage = `/images/editorial-conceitual/${imageFolder}/${imageSet}-body.png`;
-  const affiliate = amazonSearch(query);
+  const affiliate = query ? (affiliateUrl || amazonSearch(query)) : null;
   const relevanceScore = scores.reduce((sum, value) => sum + value, 0);
   return {
-    id, category: 'GAMES', section, status: 'published', tag, title, excerpt, body,
+    id, category: 'GAMES', section, status, tag, title, excerpt, body,
+    ...(draftNotes ? { draftNotes } : {}),
     date: '21 nov 2026', publishedAt: '2026-11-21', read: `${Math.max(3, Math.ceil(body.split(/\s+/).length / 175))} min`,
     seoTitle, seoDescription,
     relevanceDate: '2026-11-21', relevanceScore,
@@ -25,12 +26,16 @@ function article({ id, tag, title, excerpt, body, imageSet, imageFolder = '2026-
       status: 'generated-contextual-ai-reviewed', generator: 'OpenAI ImageGen', assets: [image, bodyImage], prompts,
       notes: 'Pesquisa não encontrou duas imagens reais com permissão comercial de republicação confirmada. Foram usadas duas ilustrações conceituais originais, visualmente distintas e identificadas como IA; não representam capturas nem artes oficiais.',
     },
-    affiliate, affiliateLinkType: 'search', productName: product, productPitch: pitch,
-    affiliateResearch: {
-      product, query, tag: 'bitsplease-20', checkedAt, status: 'tagged-amazon-search',
-      notes: 'Busca pertinente na Amazon Brasil com tag do portal; a busca não confirma um anúncio específico, preço ou disponibilidade. Confira edição e compatibilidade no destino.',
-    },
-    sources: [...sources, source('Amazon Brasil — busca do produto relacionado', affiliate)],
+    ...(affiliate ? {
+      affiliate, affiliateLinkType: affiliateUrl ? 'direct' : 'search', productName: product, productPitch: pitch,
+      affiliateResearch: {
+        product, query, tag: 'bitsplease-20', checkedAt, status: affiliateUrl ? 'direct-amazon-destination-verified' : 'tagged-amazon-search',
+        notes: affiliateUrl ? 'Página Amazon Brasil do produto e tag bitsplease-20 conferidas; preço e estoque podem mudar.' : 'Busca pertinente na Amazon Brasil com tag do portal; a busca não confirma um anúncio específico, preço ou disponibilidade. Confira edição e compatibilidade no destino.',
+      },
+    } : {
+      affiliateResearch: { product: null, query: null, tag: 'bitsplease-20', checkedAt, status: 'no-suitable-offer-verified', notes: draftNotes || 'Nenhuma oferta Amazon Brasil diretamente pertinente foi confirmada; não incluir CTA.' },
+    }),
+    sources: [...sources, ...(affiliate ? [source(affiliateSourceLabel || 'Amazon Brasil — busca do produto relacionado', affiliate)] : [])],
   };
 }
 
@@ -57,7 +62,9 @@ export const dailyPosts20261121 = [
       { label: 'CNN Brasil — reportagem publicada em 21/11', url: 'https://www.cnnbrasil.com.br/pop/gta-6-bate-recorde-e-se-torna-o-maior-lancamento-da-historia/', sameDayVerified: true },
     ],
     product: 'Grand Theft Auto VI para PlayStation 5', query: 'Grand Theft Auto VI PS5',
-    pitch: 'Busca pela edição de PS5 mencionada no comunicado de lançamento. Confira versão, vendedor e disponibilidade na Amazon Brasil.',
+    affiliateUrl: 'https://www.amazon.com.br/dp/B0H6KT2RWH?tag=bitsplease-20',
+    affiliateSourceLabel: 'Amazon Brasil — edição de PS5, ASIN B0H6KT2RWH',
+    pitch: 'Edição para PS5 do jogo citado na matéria. Confira vendedor, formato e disponibilidade na Amazon Brasil.',
     seoTitle: 'GTA VI: Rockstar estima US$ 3,79 bi em vendas no 1º dia',
     seoDescription: 'Take-Two atribui a GTA VI US$ 3,79 bilhões em vendas de varejo estimadas no primeiro dia e 32,5 milhões de unidades pré-lançamento.',
     body: `A Rockstar Games informou na sexta-feira, 20 de novembro, que Grand Theft Auto VI alcançou US$ 3,79 bilhões em vendas de varejo no primeiro dia. O comunicado foi protocolado pela controladora Take-Two junto à SEC e define o valor como estimativa da companhia até o fim de 19 de novembro, no mundo todo. A empresa descreveu o lançamento como o maior da história do entretenimento.
@@ -116,12 +123,12 @@ Não há anúncio de lançamento de Melee em um catálogo atual da Nintendo asso
     excerpt: 'A quinta edição dos Horror Game Awards, realizada em Londres em 20 de novembro, premiou também Tenebris Somnia, Silent Hill: Townfall e REANIMAL.',
     imageSet: 'horror-awards',
     alts: [
-      'Palco conceitual de premiação de jogos de terror com troféu iluminado e silhuetas abstratas, sem personagens reconhecíveis.',
-      'Cerimônia de terror vista de uma plateia diante de um palco roxo, com troféus e luzes abstratas.',
+      'Troféu metálico em forma de chama diante de cortinas de veludo escuro, em uma ilustração conceitual de premiação de jogos de terror.',
+      'Quatro troféus originais sobre uma mesa de veludo vermelho em um teatro gótico, representando categorias de uma premiação de terror.',
     ],
     prompts: [
-      'Palco de uma premiação de jogos de terror com troféu central em forma abstrata, névoa baixa e luzes violeta, vermelho e azul. Silhuetas genéricas, sem logos, sem texto, sem personagens ou monstros reconhecíveis.',
-      'Visão lateral de uma cerimônia de premiação de jogos de terror, plateia em silhueta e vários troféus geométricos sob iluminação violeta. Composição editorial, sem marcas ou texto legível.',
+      'Original editorial illustration, wide 16:9. A dark theatrical stage after a horror game awards ceremony, an original antique silver trophy shaped like a candle flame under one warm spotlight, shadowy velvet curtains, elegant and eerie, no text, no logos, no recognizable real award design.',
+      'Original editorial illustration, wide 16:9. Four distinct small game-inspired trophies on a black table with a red velvet runner, a dramatic gothic theater blurred behind, editorial still life celebrating horror games, no legible text, no logos, no real award likeness.',
     ],
     scores: [27, 21, 17, 13, 6],
     reason: 'A cerimônia ocorreu ontem e o resultado ganhou cobertura independente publicada hoje; a relação completa foi conferida em duas publicações especializadas.',
@@ -131,7 +138,9 @@ Não há anúncio de lançamento de Melee em um catálogo atual da Nintendo asso
       { label: 'Horror Game Awards — data e indicados da edição', url: 'https://www.thehorrorgameawards.com/news/one-week-to-go' },
     ],
     product: 'Resident Evil Requiem para Xbox Series X', query: 'Resident Evil Requiem Xbox Series X',
-    pitch: 'Busca pela edição de Xbox do jogo premiado em quatro categorias; confirme a plataforma e a edição antes de comprar.',
+    affiliateUrl: 'https://www.amazon.com.br/dp/B0G1MGRFYT?tag=bitsplease-20',
+    affiliateSourceLabel: 'Amazon Brasil — edição Xbox Series X, ASIN B0G1MGRFYT',
+    pitch: 'Edição de Xbox Series X do jogo que venceu quatro categorias na cerimônia; confirme a plataforma e o vendedor.',
     seoTitle: 'Horror Game Awards 2026: Hellraiser ganha jogo do ano',
     seoDescription: 'Veja os vencedores dos Horror Game Awards 2026: Hellraiser: Revival levou jogo do ano, enquanto Resident Evil Requiem venceu quatro categorias.',
     body: `Clive Barker’s Hellraiser: Revival ganhou o prêmio de jogo do ano na quinta edição do The Horror Game Awards, realizada em Londres em 20 de novembro. O resultado põe o título da Saber Interactive à frente de Resident Evil Requiem, que terminou a noite com o maior número de troféus. As listas foram publicadas por Bloody Disgusting e The Escapist.
@@ -154,12 +163,12 @@ Os resultados mostram como a premiação distribuiu reconhecimento entre lançam
     excerpt: 'A versão 3.0.0 já está disponível. No Switch original, a Nintendo informa que não há mudanças; a edição de Switch 2 chega em 3 de dezembro.',
     imageSet: 'xenoblade',
     alts: [
-      'Paisagem de fantasia com uma espada monumental sobre montanhas e um vale luminoso, arte conceitual de Xenoblade Chronicles 3.',
-      'Duas pessoas transferem dados entre consoles diante de um cenário de fantasia abstrato, ilustração sobre compatibilidade e continuidade do jogo salvo.',
+      'Viajante com uma espada mecânica luminosa observa um vale de fantasia e uma estrutura colossal coberta de vegetação.',
+      'Console portátil genérico ao lado de um mapa cristalino iluminado, ilustração conceitual sobre atualização e nova edição do RPG.',
     ],
     prompts: [
-      'Paisagem de fantasia com uma espada colossal cravada numa montanha, nuvens e um vale iluminado ao fundo; composição original de RPG, sem personagens, sem logotipos ou texto.',
-      'Dois consoles genéricos vistos de frente, uma linha luminosa conecta os aparelhos e um ícone abstrato de arquivo salvo passa entre eles; fundo de fantasia inspirado em RPG, sem marcas nem interface oficial.',
+      'Original editorial illustration, wide 16:9. A lone traveler holding a luminous mechanical sword on a cliff above a vast green science-fantasy world, colossal ancient machine silhouette across the valley, painterly adventure game concept art, no logos, no text, no known characters.',
+      'Original editorial illustration, wide 16:9. A detailed handheld game console beside a glowing blue-green crystalline map and a small expansion cartridge, suggesting a software update and a new enhanced edition, clean editorial technology still life, no brand logos, no text.',
     ],
     scores: [24, 19, 15, 13, 8],
     reason: 'A atualização entrou no ar em 19/11 e a próxima edição tem data marcada para 3/12; a nota oficial esclarece compatibilidade, ausência de mudanças no Switch e preservação de dados salvos.',
@@ -190,12 +199,12 @@ Para quem já tem o jogo, a ação prática é instalar a atualização normalme
     excerpt: 'A atualização também estreia Sunbringer e inicia o crossover com Honkai: Star Rail. Kafka entra na busca limitada em 1º de janeiro.',
     imageSet: 'zzz',
     alts: [
-      'Cidade noturna estilizada com arranha-céus e luzes rosa e azuis, ilustração conceitual para a próxima versão de Zenless Zone Zero.',
-      'Vista aérea de uma rua urbana com cartazes abstratos, bilhetes luminosos e cruzamento colorido em arte conceitual de ação urbana.',
+      'Entregador solitário observa um rasgo luminoso sobre um cruzamento futurista, refletido no asfalto molhado entre luzes azuis e magenta.',
+      'Sala de operações futurista com uma equipe diante de um painel holográfico abstrato e um portal visível pelas janelas.',
     ],
     prompts: [
-      'Ilustração horizontal de anime urbana noturna com arranha-céus estilizados, reflexos de neon rosa e azul e uma silhueta pequena ao longe; cenário original, sem personagens, logotipos ou texto.',
-      'Vista superior de uma rua movimentada de cidade futurista, cruzamentos, bilhetes e sinais luminosos abstratos, paleta violeta e azul, sem texto legível, personagens ou interface oficial.',
+      'Original editorial illustration, wide 16:9. A stylish nocturnal future city intersection with an enormous luminous rift reflected in wet pavement, a lone courier in a sleek jacket looking upward, cinematic anime-inspired urban sci-fi, saturated cyan and magenta, no text, no logos, original character design.',
+      'Original editorial illustration, wide 16:9. Interior of a futuristic subway operations room with a holographic timetable showing abstract blank glyphs, a bright portal visible through the windows and a small team preparing for a mission, polished anime-inspired sci-fi art, no legible text, no logos, original design.',
     ],
     scores: [24, 20, 14, 11, 8],
     reason: 'A HoYoverse divulgou ontem a data e o conteúdo da versão, que inclui personagem de colaboração gratuita e estreia em menos de duas semanas; serve a jogadores brasileiros em várias plataformas.',
@@ -203,8 +212,8 @@ Para quem já tem o jogo, a ação prática é instalar a atualização normalme
       { label: 'Zenless Zone Zero — comunicado oficial da versão 3.4', url: 'https://zenless.hoyoverse.com/en-us/news/167400?catchSpider=1' },
       { label: 'Gematsu — resumo da atualização e plataformas', url: 'https://www.gematsu.com/2026/11/zenless-zone-zero-version-3-4-update-the-finality-of-the-day-launches-december-2' },
     ],
-    product: 'Controle sem fio DualSense para PS5', query: 'Controle DualSense PS5',
-    pitch: 'Acessório para jogar a versão de PS5. Zenless Zone Zero é gratuito e também está disponível em outras plataformas; o controle não inclui o jogo.',
+    status: 'draft',
+    draftNotes: 'A pauta está pesquisada e ilustrada, mas não encontrei uma oferta Amazon Brasil de jogo ou item diretamente ligado à versão 3.4. Um controle DualSense seria um periférico geral e não foi tratado como oferta suficiente; sem CTA, manter em rascunho.',
     seoTitle: 'Zenless Zone Zero 3.4: Robin grátis e data de lançamento',
     seoDescription: 'A versão 3.4 de Zenless Zone Zero chega em 2 de dezembro: Robin será obtida por login, Sunbringer estreia e Kafka chega em janeiro.',
     body: `A HoYoverse marcou a versão 3.4 de Zenless Zone Zero, “The Finality of the Day”, para 2 de dezembro. O destaque de acesso é Robin, personagem de colaboração com Honkai: Star Rail, que poderá ser resgatada ao entrar no jogo durante o período do evento. A produtora também confirmou Sunbringer, uma nova agente Void Hunter e a primeira agente da classe Enchainer.
@@ -227,12 +236,12 @@ A data de 2 de dezembro é global e não veio acompanhada de uma mudança region
     excerpt: 'O produtor Kazuhisa Wada descreveu mudanças internas de produção e compartilhamento de conhecimento. A entrevista não anunciou data para Persona 6 nem para outro jogo.',
     imageSet: 'persona',
     alts: [
-      'Livros e cadernos organizados em uma linha do tempo sobre uma mesa, ilustração editorial sobre a continuidade da série Persona.',
-      'Relógios de estação e plataformas se conectam por trilhos em uma cidade estilizada, metáfora visual para intervalos entre lançamentos.',
+      'Pessoa observa os telhados de Tóquio ao entardecer diante de um grande relógio e páginas de calendário levadas pelo vento.',
+      'Controle de videogame e planners coloridos sobre uma mesa diante das luzes noturnas de Tóquio, com um relógio ao centro.',
     ],
     prompts: [
-      'Still life editorial de cadernos e livros de arte originais organizados sobre uma linha do tempo abstrata, paleta azul escura e vermelha, sem capas reconhecíveis, texto ou logotipos.',
-      'Estação ferroviária noturna estilizada com relógios sem números e trilhos convergindo em várias plataformas, metáfora para reduzir intervalos de produção; sem marcas ou texto.',
+      'Original editorial illustration, wide 16:9. A young urban commuter on a rooftop looking across a Japanese city at dusk, a large analog clock and several blank calendar pages fluttering in the wind, reflective anime-inspired editorial art about long waits between role-playing game releases, no logos, no recognizable characters, no text.',
+      'Original editorial illustration, wide 16:9. Close-up of a desk with a role-playing game controller, a stack of blank planners labeled only by abstract color blocks and a small clock, Tokyo city lights through the window, polished Japanese game magazine illustration, no readable text, no logos.',
     ],
     scores: [22, 18, 14, 13, 8],
     reason: 'Entrevista de 20/11 publicada pelo canal oficial de relações com investidores da Sega Sammy e repercutida por veículo especializado; a ausência de data foi preservada para evitar especulação.',
@@ -263,12 +272,12 @@ A repercussão de Noisy Pixel destaca que Wada falou sobre o horizonte posterior
     excerpt: 'O site carregou código malicioso durante uma falha no serviço Web Experimentation da Optimizely em 16/11. A investigação continua e a empresa diz que avisará usuários se alguma ação for necessária.',
     imageSet: 'dnd',
     alts: [
-      'Notebook com página abstrata de jogo de fantasia protegido por um escudo luminoso, ilustração sobre segurança do D&D Beyond.',
-      'Mesa de RPG vista de cima com um laptop, dados e miniaturas, enquanto um escudo abstrato destaca proteção de conta e pagamentos.',
+      'Notebook sobre uma mesa de RPG com dados poliédricos e fichas, refletindo um ícone de escudo na tela.',
+      'Laptop com ícone de cadeado ao lado de um dado de vinte faces em uma mesa de RPG iluminada.',
     ],
     prompts: [
-      'Ilustração editorial horizontal de um notebook em uma mesa de RPG com página abstrata de fantasia e escudo de segurança luminoso sobre a tela; sem texto legível, marcas ou dados pessoais.',
-      'Mesa de RPG vista de cima com dados poliédricos, miniaturas genéricas, laptop aberto com interface abstrata e um símbolo de escudo; conceito de proteção de dados, sem logos nem texto.',
+      'Original editorial illustration, wide 16:9. A laptop on a wooden tabletop beside polyhedral dice, character sheets and a closed rulebook, a translucent shield icon reflected on the screen, tabletop role-playing and digital account security theme, no legible text, no logos.',
+      'Original editorial illustration, wide 16:9. A careful digital security scene: a laptop with a blank account page and a small lock icon, a hand holding a twenty-sided die nearby, warm gaming table light, restrained editorial art, no legible text, no logos.',
     ],
     scores: [18, 20, 14, 12, 8],
     reason: 'A pauta é de segurança de conta com declaração do produtor executivo e relatório técnico da Optimizely; a exposição ocorreu em 16/11, então a atualidade fica abaixo das notícias de hoje.',
@@ -277,8 +286,8 @@ A repercussão de Noisy Pixel destaca que Wada falou sobre o horizonte posterior
       { label: 'Optimizely — relatório técnico corrigido do incidente', url: 'https://pages.optimizely.com/rs/947-RKE-048/images/Security%20Incident%20Report%20-%20Optimizely%20Web%20Experimentation%20-%20Nov%2017%202026.pdf' },
       { label: 'God is a Geek — declaração de D&D Beyond e limite de dados de pagamento', url: 'https://godisageek.com/2026/11/dnd-beyond-optimizely-breach/' },
     ],
-    product: 'Dungeons & Dragons Player’s Handbook', query: 'Dungeons Dragons Player Handbook 2024',
-    pitch: 'Livro de regras para jogar Dungeons & Dragons presencialmente; a busca não é pelo serviço digital D&D Beyond.',
+    status: 'draft',
+    draftNotes: 'A matéria está pesquisada e ilustrada, mas o Player’s Handbook é apenas um livro relacionado à franquia e não resolve o incidente de segurança do D&D Beyond. Sem uma oferta Amazon diretamente útil ao tema, não incluir CTA e manter em rascunho.',
     seoTitle: 'D&D Beyond: pagamentos não afetados por incidente da Optimizely',
     seoDescription: 'D&D Beyond diz que pagamentos ficaram fora do incidente de script malicioso da Optimizely; investigação e possíveis notificações continuam.',
     body: `D&D Beyond confirmou que seu site carregou código malicioso durante o incidente de segurança da Optimizely em 16 de novembro. O produtor executivo Brian Perry disse que os pagamentos eram processados por um provedor externo que não foi alcançado pelo ataque. A equipe removeu a integração da Optimizely e segue revisando a situação.
@@ -301,12 +310,12 @@ O ponto confirmado para usuários de D&D Beyond é restrito: o site foi afetado 
     excerpt: 'O projeto descrito como aventura aconchegante ajudará uma campanha de adoção e resgate animal. Bethesda promete apresentar mais detalhes, mas ainda não informou plataformas ou lançamento.',
     imageSet: 'wasteland-cats',
     alts: [
-      'Gato alaranjado em um abrigo improvisado dentro de uma paisagem pós-apocalíptica, ilustração conceitual de Fallout sem personagens ou elementos oficiais.',
-      'Dois gatos resgatados sob uma estrutura de metal em meio a ruínas cobertas de plantas, cena conceitual de exploração pós-apocalíptica.',
+      'Gato alaranjado com uma pequena mochila e um scanner portátil explora um telhado com flores diante de uma cidade pós-apocalíptica tomada por plantas.',
+      'Voluntários deixam cobertores e comida para gatos resgatados em uma estação de trem abandonada, com ruínas cobertas de vegetação ao fundo.',
     ],
     prompts: [
-      'Ilustração horizontal original de um gato laranja em uma pequena área segura dentro de ruínas pós-apocalípticas, objetos antigos e vegetação, tom acolhedor e lúdico; sem símbolos, logos ou personagens de Fallout.',
-      'Dois gatinhos encontram abrigo sob uma estrutura metálica entre ruínas e plantas que voltam a crescer, arte editorial aconchegante, sem armas, texto, marcas ou elementos oficiais.',
+      'Original editorial illustration, wide 16:9. A curious orange cat standing on a rooftop above a reclaimed post-apocalyptic city, vines and wildflowers growing among old concrete buildings, a tiny hand-held scanner glowing in one paw, hopeful cozy adventure-game concept art, no text, no logos, no recognizable franchise symbols.',
+      'Original editorial illustration, wide 16:9. Two rescued cats curled safely inside a converted old train station while volunteers leave food and blankets, distant overgrown city ruins visible through a broken window, warm humane editorial illustration, no weapons, no text, no logos.',
     ],
     scores: [19, 15, 13, 13, 10],
     reason: 'Bethesda confirmou a colaboração em 19/11 e a notícia ganhou cobertura em veículos especializados; sem data, plataformas ou preço confirmados, o texto fica limitado ao que foi anunciado.',
@@ -335,7 +344,7 @@ O encontro entre uma franquia de ficção pós-apocalíptica e um jogo de busca 
     tag: 'God of War: Sons of Sparta · PS4 · review baseada em pesquisa',
     title: 'God of War: Sons of Sparta chegou ao PS4; o que dizem as reviews',
     excerpt: 'A edição de PS4 saiu em 16/11. Esta análise reúne avaliações da versão de PS5 publicadas por GameSpot e Game Informer; o Bits, Please não testou a versão de PS4.',
-    section: 'REVIEWS', imageSet: 'god-of-war',
+    section: 'REVIEWS', imageSet: 'sons',
     alts: [
       'Dois jovens guerreiros espartanos em uma plataforma lateral diante de uma paisagem antiga, ilustração conceitual sem personagens oficiais.',
       'Guerreiro adolescente solitário observa um desfiladeiro e uma trilha entre montanhas, cena conceitual de aventura 2D.',
@@ -375,12 +384,12 @@ Como as análises consultadas foram feitas no PS5, elas não permitem concluir c
     excerpt: 'O diretor Kim Hyung-tae afirma que a equipe ainda usa IA em tarefas intermediárias, mas revisa o resultado final com artistas humanos. A fala veio após críticas a um vídeo promocional.',
     imageSet: 'stellar-blade',
     alts: [
-      'Artista humano desenha um personagem em uma mesa digitalizadora diante de modelos e anotações, ilustração editorial sobre autoria em jogos.',
-      'Sequência de quadros e modelos tridimensionais em uma bancada de produção, representando etapas de criação e revisão humana.',
+      'Artista de jogos desenha uma heroína original em uma mesa digitalizadora, com maquete de argila e amostras de cor ao lado.',
+      'Artista revisa um modelo de personagem em telas e tablet, sob iluminação azul e vermelha em um estúdio de produção.',
     ],
     prompts: [
-      'Ilustração editorial horizontal de uma artista humana trabalhando em design de personagem num monitor, ao lado de folhas e miniaturas originais, estúdio de jogo contemporâneo, sem interface legível, logos ou personagens existentes.',
-      'Painel de produção com quadros de storyboard abstratos, malha 3D e amostras de textura em uma mesa de artistas, enfatizando revisão humana, sem texto, marca ou personagem reconhecível.',
+      'Original editorial illustration, wide 16:9. A game artist\'s hand sketching an original armored heroine on a large drawing tablet, a sculpted clay maquette and color swatches nearby, bright modern studio light, editorial art about human craft in game development, no text, no logos, no recognizable characters.',
+      'Original editorial illustration, wide 16:9. A game production workbench showing an original 3D character model, a stylus, lighting notes and a human artist reviewing a screen, split blue and crimson studio lighting, contemporary editorial art about AI-assisted workflows and human review, no legible text, no logos.',
     ],
     scores: [18, 15, 12, 12, 11],
     reason: 'A entrevista foi publicada durante a cobertura da G-CON em 19/11 e repercutida em 20/11; a pauta distingue a frase sobre o processo criativo do uso de IA em tarefas intermediárias.',
