@@ -6,6 +6,7 @@ import { dailyPosts20261117 } from './editorial/2026-11-17.js';
 import { dailyPosts20261118 } from './editorial/2026-11-18.js';
 import { dailyPosts20261119 } from './editorial/2026-11-19.js';
 import { dailyPosts20261121 } from './editorial/2026-11-21.js';
+import { dailyPosts20261123 } from './editorial/2026-11-23.js';
 
 const launchDay = '2026-11-19';
 const launchDayCheckedAt = '2026-11-19T08:02:00-03:00';
@@ -42,6 +43,7 @@ const refreshLaunchDayHighlight = post => {
 };
 
 export const editorialUpdates = [
+  ...dailyPosts20261123,
   ...dailyPosts20261121,
   ...dailyPosts20261119,
   ...dailyPosts20261118.map(refreshLaunchDayHighlight),
