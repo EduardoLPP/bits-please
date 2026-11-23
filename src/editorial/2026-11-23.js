@@ -1,6 +1,95 @@
 const checkedAt = '2026-11-23T10:39:46-03:00';
+const generatedAt = '2026-11-23T17:32:19-03:00';
+const imageTerms = 'https://openai.com/policies/terms-of-use/';
+const imageCredit = 'Ilustração conceitual original gerada por IA com OpenAI ImageGen; não é captura de jogo nem arte oficial.';
+const imageLicense = 'Output gerado conforme os Termos de Uso da OpenAI; titularidade sujeita à lei aplicável.';
+const mediaById = {
+  'the-finals-grand-major-dreamhack-2026': {
+    files: ['the-finals-cover.png', 'the-finals-body.png'],
+    alts: ['Arena de esports iluminada em magenta e dourado, com silhuetas de jogadores em um cenário de combate destrutível.', 'Troféu abstrato de três coroas no palco de uma final de esports, diante de duas equipes e público iluminado.'],
+    prompts: [
+      'Create a wide editorial illustration for a monetized Brazilian gaming news site, cover image for a report about a major esports tournament in Stockholm for a destructible arena shooter. Scene: a dramatic futuristic esports arena, central glass-and-steel arena with a few abstract combatant silhouettes and bright overhead spotlights, a subtle Nordic city skyline visible beyond the venue. Compose as a clean magazine illustration, distinct strong silhouettes, restrained palette of magenta, charcoal, and warm gold, professional, readable at thumbnail size. Entirely original concept art, not a game screenshot, no recognizable characters, no game or event logos, no text, no watermark.',
+      'Create a wide original editorial illustration for the body of a gaming news article about a major arena shooter esports final. Close, dynamic view of a tournament trophy shaped as an abstract three-crown structure on a stage, two opposing team silhouettes reflected in glass, luminous magenta-and-gold crowd lights. Magazine illustration, clean bold shapes, legible at thumbnail scale. No text, no logos, no recognizable game characters, not a screenshot, no watermark.',
+    ],
+  },
+  'sea-of-thieves-update-392-arquivos-menores': {
+    files: ['sea-of-thieves-cover.png', 'sea-of-thieves-body.png'],
+    alts: ['Fortaleza de pedra em uma ilha tropical ao amanhecer, vista do convés de um navio pirata.', 'Mapa náutico e bússola sobre mesa de navio, junto a carga reorganizada e um objeto abstrato que remete a armazenamento digital.'],
+    prompts: [
+      'Create a wide editorial cover illustration for a monetized gaming news site about a pirate game\'s update restoring a legendary sea fort. A weathered stone fort on a small tropical island at early dawn, viewed from a low wooden ship deck, calm blue-green sea, warm lanterns and a single small sail in the distance. Painterly but crisp game-editorial art, distinctive composition, inviting rather than generic. No text, no logos, no recognizable characters, not a screenshot, no watermark.',
+      'Create a wide original editorial illustration for the body of a news article about a pirate game\'s storage update. A nautical chart and compass on a ship\'s table beside a compact external drive-like abstract object, with a miniature sea route and a clearly smaller stack of cargo crates after a tidy reorganization. Warm lantern light, teal water visible through a porthole, restrained, elegant magazine art. No brand marks, no text, not a product photo, not a screenshot, no watermark.',
+    ],
+  },
+  'phasmophobia-resonance-update-novembro-2026': {
+    files: ['phasmophobia-cover.png', 'phasmophobia-body.png'],
+    alts: ['Investigadores usam uma vara de radiestesia em um corredor de casa antiga, atraídos por um brilho espectral.', 'Uma xícara desliza sobre uma mesa de cozinha vazia enquanto fachos de lanterna convergem para uma porta escura.'],
+    prompts: [
+      'Create a wide original editorial illustration for a monetized Brazilian gaming news site about a cooperative ghost-hunting game\'s upcoming update. Three investigators in a decaying farmhouse corridor use a forked dowsing rod that gently bends toward a faint spectral glow near the floor; old wallpaper, flashlight beams, tense but readable scene, cool gray-blue palette with one amber light. Concept art, distinct silhouettes. No text, no logo, no gore, not a game screenshot, no watermark.',
+      'Create a wide editorial illustration for the body of an article about a cooperative ghost-hunting update. An empty farmhouse kitchen where a ceramic cup has just slid across a scarred wooden table toward a dark doorway, three flashlight beams converge from off-frame, tiny spectral dust in the air, unsettling quiet and readable focal point, cold green-gray palette with a small warm highlight. Original concept art, no humans needed, no text, no logo, no gore, not a screenshot, no watermark.',
+    ],
+  },
+  'darkest-dungeon-2-butcher-asylum-dlc-2027': {
+    files: ['darkest-dungeon-ii-cover.png', 'darkest-dungeon-ii-body.png'],
+    alts: ['Ringmaster em silhueta acima de uma arena gótica circular, onde pequenos aventureiros enfrentam monstros sob cortinas vermelhas.', 'Roleta ornamentada com amuletos e fichas diante de uma arena escura e de espectadores em silhueta.'],
+    prompts: [
+      'Create a wide cover illustration for a monetized gaming news site about an upcoming gothic roguelike arena expansion. A theatrical ringmaster silhouette stands high above a circular stone arena while tiny adventurers face a wave of shadowy monsters below; torn crimson curtains, candlelight, dramatic central staging, stylized ink-and-paint game editorial art, strong simple shapes. Do not depict any known game character or copy official art. No text, no logos, no gore, not a screenshot, no watermark.',
+      'Create a wide editorial illustration for the body of an article about a tactical gothic arena DLC. Close view of an ornate prize wheel with abstract charms and tokens beside a battered round arena floor, blurred spectators in balcony shadows and one small hero silhouette preparing for the next bout. Restrained oxblood, parchment, charcoal palette, clean visual hierarchy. Original art, no words, no logos, no recognizable characters, not a screenshot, no watermark.',
+    ],
+  },
+  'review-goat-simulator-3-ticket-dizzyworld-pesquisa': {
+    files: ['goat-simulator-3-cover.png', 'goat-simulator-3-body.png'],
+    alts: ['Cabra brincalhona atravessa um parque de diversões colorido com roda-gigante, montanha-russa e balões.', 'Cabra em carrinho de choque derrapa em um parque, com visitantes surpresos e montanha-russa ao fundo.'],
+    prompts: [
+      'Create a wide cover illustration for a review of a newly released comedic goat-themed amusement-park expansion. A mischievous ordinary goat in a bright but slightly chaotic coastal funfair, tilted teacups, roller coaster rails and colorful balloon clusters, lively physics-comedy energy, playful editorial illustration with polished shapes and readable thumbnail composition. Not the game\'s named character, no text, no logos, not a screenshot, no watermark.',
+      'Create a wide editorial illustration for the body of a review based on research of a goat-themed amusement park expansion. A small goat rides a bumper car through a whimsical carnival, loose balloons, popcorn cart, coaster track overhead, a few surprised visitors at a safe distance. Dynamic playful movement, bright aqua and orange palette, polished graphic illustration, not the game\'s named character or game screenshot. No words, logos, watermark.',
+    ],
+  },
+  'xbox-lancamentos-semana-23-27-novembro-2026': {
+    files: ['xbox-week-cover.png', 'xbox-week-body.png'],
+    alts: ['Portal luminoso se abre para quatro pequenos mundos de jogos: ilhas-fábrica, posto no deserto, quebra-cabeças com gatos e torre assombrada.', 'Mão organiza cartões de jogos sem texto sobre uma mesa digital, cada cartão com um gênero visual diferente.'],
+    prompts: [
+      'Create a wide editorial cover illustration for a Brazilian service article about this week\'s Xbox game releases. An illuminated console-shaped portal at center opens onto four clearly different miniature worlds—cozy floating factory islands, desert survival outpost, puzzle cats and a haunted tower—like a curated launch calendar, sophisticated gaming-magazine art, deep teal and lime accents. Avoid brand logos, text, numbers, product photography, screenshots, watermark.',
+      'Create a wide editorial illustration for the body of a weekly game-release roundup. A hand arranging small blank game cards across a glowing calendar-like table, each card showing a different visual genre miniature (factory gears, desert dig site, cat puzzle, fantasy tower), warm desk light and cool digital reflections. Original editorial concept art, no legible text, no logos, no brand marks, not a screenshot, no watermark.',
+    ],
+  },
+  'xbox-black-friday-ofertas-regiao-novembro-2026': {
+    files: ['xbox-black-friday-cover.png', 'xbox-black-friday-body.png'],
+    alts: ['Duas vitrines de jogos separadas por uma rota no Atlântico mostram que promoções digitais variam entre mercados.', 'Vitrines de jogos com seleções e iluminação diferentes representam ofertas regionais distintas, sem valores ou marcas.'],
+    prompts: [
+      'Create a wide cover illustration for an article about Xbox Black Friday deals and regional price differences. A game-shopping scene with a console controller in foreground and two contrasting storefront windows across a subtle Atlantic map: one bright with sale-colored light, one calm and without price tags, suggesting different markets. Elegant editorial infographic-like art without words, numbers, flags, logos or readable prices; no product brand, no watermark.',
+      'Create a wide editorial illustration for the body of a Brazilian gaming article comparing regional Black Friday offers. A close view of two open storefront windows separated by an ocean route on a globe: one window has a festive game shelf and generic colorful discount stickers with no readable symbols, the other has a different assortment and neutral lighting. Communicate market-by-market variation without text, numbers, flags or brands. Sophisticated editorial art, no watermark.',
+    ],
+  },
+  'gothic-3-classic-lancamento-plataformas-novembro-2026': {
+    files: ['gothic-3-classic-cover.png', 'gothic-3-classic-body.png'],
+    alts: ['Viajante medieval observa um vale amplo com cidade murada, ruínas, montanhas e tempestade distante.', 'Mapa de pergaminho com estradas de pedra reparadas ligando povoados medievais, junto à silhueta abstrata de um controle moderno.'],
+    prompts: [
+      'Create a wide cover illustration for an article about a classic open-world fantasy RPG arriving on modern consoles. A lone armored wanderer stands at the edge of a high mountain pass, looking down into a vast rugged medieval valley with a distant stone city and storm-lit peaks, grounded old-school European fantasy art, earthy greens and slate blue, atmospheric but clean silhouette. Original concept, not from any existing game, no text, no logos, no watermark.',
+      'Create a wide editorial illustration for the body of an article about a classic RPG being reissued on consoles. A weathered parchment world map partly overlaid by a modern game controller silhouette and a repaired stone road leading between three medieval settlements; subtle contrast between old paper texture and modern light. Elegant editorial illustration, no recognizable map, no words, logos, or product branding, no watermark.',
+    ],
+  },
+  'wuthering-waves-versao-4-0-data-dezembro-2026': {
+    files: ['wuthering-waves-4-cover.png', 'wuthering-waves-4-body.png'],
+    alts: ['Viajante solitário contempla costa de fantasia ao entardecer, com árvores incandescentes e rochedos flutuantes ao longe.', 'Sino de bronze e ondas sonoras luminosas transformam-se em brasas diante de um observatório costeiro em ruínas.'],
+    prompts: [
+      'Create a wide original editorial cover illustration for an article about Wuthering Waves version 4.0 and its new chapter. A lone traveler seen from behind on a windswept fantasy coastline at dusk, glowing ember-like trees and distant floating rock formations across the water, atmospheric wave patterns in sky, refined anime-inspired editorial painting without recognizable characters or copied designs. No text, no logos, no watermark.',
+      'Create a wide editorial illustration for the body of an article about Wuthering Waves version 4.0 and its story chapter. Close view of a resonant bronze bell-like structure beside a luminous futuristic coastline; concentric sound-wave patterns become glowing embers and drift toward a distant ruined observatory, expressive anime-inspired editorial painting, original design, no recognizable characters, no text, no logos, no watermark.',
+    ],
+  },
+  'review-007-first-light-pesquisa-2026': {
+    files: ['007-first-light-cover.png', '007-first-light-body.png'],
+    alts: ['Agente de inteligência anônimo observa uma cidade europeia chuvosa do telhado, com estação ferroviária iluminada ao fundo.', 'Corredor de museu oferece duas rotas discretas ao agente que estuda uma câmera de segurança.'],
+    prompts: [
+      'Create a wide cover illustration for a review of a modern cinematic spy-action game. A young anonymous intelligence agent in a dark tailored suit stands on a rain-slick European rooftop at blue hour, city lights and a train station below, one discreet earpiece and a small reflective gadget in hand, poised between observation and action. Sophisticated espionage magazine art, no resemblance to any known actor or franchise character, no gun aimed at viewer, no text, logos or watermark.',
+      'Create a wide editorial illustration for the body of a research-based review of a stealth action game. A modern museum corridor with two possible routes around a security camera: a softly lit public hall and a narrow service passage, a tiny anonymous agent silhouette studying the choice from behind a stone sculpture. Elegant cinematic lighting, clean geometry, refined spy-thriller magazine illustration. No named character, no franchise marks, no text, no weapon emphasis, no screenshot, no watermark.',
+    ],
+  },
+};
 
 function draft({ id, title, tag, excerpt, body, scores, reason, signals, sources, section = 'NOTÍCIAS', imageQuery, imageCandidates = [], searchDate = '2026-11-23' }) {
+  const media = mediaById[id];
+  const image = `/images/editorial-conceitual/2026-11-23/${media.files[0]}`;
+  const inlineImage = `/images/editorial-conceitual/2026-11-23/${media.files[1]}`;
   return {
     id, category: 'GAMES', section, status: 'draft', tag, title, excerpt,
     date: '23 nov 2026', publishedAt: '2026-11-23', read: `${Math.max(3, Math.ceil(body.split(/\s+/).length / 175))} min`,
@@ -8,12 +97,13 @@ function draft({ id, title, tag, excerpt, body, scores, reason, signals, sources
     relevanceBreakdown: { timeliness: scores[0], publicInterest: scores[1], reach: scores[2], sourceReliability: scores[3], brazilUtility: scores[4] },
     relevanceReason: reason, relevanceUpdatedAt: checkedAt,
     relevanceSignals: signals.map(({ label, url, sameDayVerified = false }) => ({ label, url, sameDayVerified })),
-    image: '', imageAlt: '', imageSource: '', imageSourceUrl: '', imageLicense: '', imageLicenseUrl: '',
-    inlineImage: { image: '', alt: '', credit: '', sourceUrl: '', license: '', licenseUrl: '' },
-    imageResearch: { query: imageQuery, checkedAt: `${searchDate}T10:39:46-03:00`, status: 'searched-rights-not-cleared', candidates: imageCandidates,
-      notes: 'Busca visual realizada. Os resultados encontrados não trazem autorização comercial inequívoca para republicação pelo portal. A matéria fica em rascunho até confirmar permissão e selecionar duas imagens reais, distintas e específicas.' },
+    image, imageAlt: media.alts[0], imageSource: imageCredit, imageSourceUrl: imageTerms, imageLicense, imageLicenseUrl: imageTerms,
+    inlineImage: { image: inlineImage, alt: media.alts[1], credit: imageCredit, sourceUrl: imageTerms, license: imageLicense, licenseUrl: imageTerms },
+    imageResearch: { query: imageQuery, imageSearchCheckedAt: `${searchDate}T10:39:46-03:00`, checkedAt: generatedAt, generatedAt, status: 'generated-contextual-ai-reviewed', generator: 'OpenAI ImageGen', assets: [image, inlineImage], prompts: media.prompts,
+      referenceSources: sources.map(source => source.url), searchCandidates: imageCandidates,
+      notes: 'A busca visual não encontrou um par real com permissão comercial confirmada. A pedido do usuário, foram geradas duas ilustrações conceituais originais para esta pauta, em composições distintas, sem reproduzir arte oficial ou capturas. Crédito e texto alternativo identificam a origem como IA.' },
     affiliateResearch: { product: null, query: null, tag: 'bitsplease-20', checkedAt, status: 'not-verified', notes: 'Ainda não foi confirmada uma oferta Amazon Brasil diretamente pertinente e um destino/tag válidos. Não inserir CTA antes dessa conferência.' },
-    draftNotes: 'Texto pesquisado, mas não publicar: faltam duas imagens reais distintas com autorização comercial confirmada e oferta Amazon Brasil diretamente pertinente verificada.',
+    draftNotes: 'Imagens conceituais originais geradas por IA e identificadas como tais; não são fotos, capturas nem artes oficiais. Oferta Amazon Brasil diretamente pertinente e destino/tag ainda precisam de validação antes de publicar.',
     body, sources,
   };
 }

@@ -52,6 +52,17 @@ function readPosts(){
   let needsSave=false;
   if(clean.some(p=>p.id==='review-supertuxkart-1-5')){clean=clean.filter(p=>p.id!=='review-supertuxkart-1-5');needsSave=true}
   const seeds=new Map(allEditorialPosts.map(p=>[p.id,p]));
+  if(!localStorage.getItem('bitsplease_editorial_images_20261123_v1')){
+   const fields=['image','imageAlt','imageSource','imageSourceUrl','imageLicense','imageLicenseUrl','inlineImage','additionalImages','imageResearch','draftNotes'];
+   clean=clean.map(p=>{
+    const seed=seeds.get(p.id);
+    if(seed?.relevanceDate!=='2026-11-23'||!seed.imageResearch?.assets?.length)return p;
+    needsSave=true;
+    return {...p,...Object.fromEntries(fields.filter(field=>seed[field]!==undefined).map(field=>[field,seed[field]]))};
+   });
+   localStorage.setItem('bitsplease_editorial_images_20261123_v1','1');
+   needsSave=true;
+  }
   if(!localStorage.getItem('bitsplease_affiliate_migration_v1')){
    clean=clean.map(p=>{const seed=seeds.get(p.id);return seed&&!p.affiliate&&seed.affiliate?{...p,affiliate:seed.affiliate,productName:seed.productName}:p});
    localStorage.setItem('bitsplease_affiliate_migration_v1','1');
