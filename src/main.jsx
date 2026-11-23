@@ -37,7 +37,8 @@ function featuredIdsForDay(posts,selection,today=saoPauloDate()){
  return topStoriesForDay(posts,today).map(post=>post.id);
 }
 function hasDirectPublicationApproval(post){const approval=post.publicationApproval,authorized=approval?.explicitUserAuthorization===true||(approval?.imageRightsUnverified===true&&approval?.affiliateOfferUnverified===true);return approval?.mode==='direct-user-publication'&&authorized&&approval.coverImage===post.image&&approval.bodyImage===post.inlineImage?.image}
-function publicationIssues(post){const issues=[],approved=hasDirectPublicationApproval(post);if(!/^https:\/\/www\.amazon\.com\.br\//.test(post.affiliate||'')||!/[?&]tag=bitsplease-20(?:&|$)/.test(post.affiliate||''))issues.push('link de compra Amazon com a tag do portal');if(!post.image||!post.imageAlt||!post.imageSource||(!approved&&(!post.imageSourceUrl||!post.imageLicense||!post.imageLicenseUrl)))issues.push('capa relacionada com crédito e licença confirmados');if(!post.inlineImage?.image||!post.inlineImage?.alt||!post.inlineImage?.credit||(!approved&&(!post.inlineImage?.sourceUrl||!post.inlineImage?.license||!post.inlineImage?.licenseUrl)))issues.push('segunda imagem relacionada com crédito e licença confirmados');if(!approved&&(post.additionalImages||[]).some(image=>!image?.image||!image?.alt||!image?.credit||!image?.sourceUrl||!image?.license||!image?.licenseUrl))issues.push('crédito e licença confirmados para todas as imagens adicionais');if(!post.productName)issues.push('nome do produto exato para o botão de compra');return issues}
+function hasDirectNoAffiliatePublicationAuthorization(post){const approval=post.publicationApproval;return approval?.mode==='direct-user-publication'&&approval?.explicitUserAuthorization===true&&approval?.allowWithoutAffiliate===true}
+function publicationIssues(post){const issues=[],approved=hasDirectPublicationApproval(post),directNoAffiliate=hasDirectNoAffiliatePublicationAuthorization(post);if(!directNoAffiliate&&(!/^https:\/\/www\.amazon\.com\.br\//.test(post.affiliate||'')||!/[?&]tag=bitsplease-20(?:&|$)/.test(post.affiliate||'')))issues.push('link de compra Amazon com a tag do portal');if(!post.image||!post.imageAlt||!post.imageSource||(!approved&&(!post.imageSourceUrl||!post.imageLicense||!post.imageLicenseUrl)))issues.push('capa relacionada com crédito e licença confirmados');if(!post.inlineImage?.image||!post.inlineImage?.alt||!post.inlineImage?.credit||(!approved&&(!post.inlineImage?.sourceUrl||!post.inlineImage?.license||!post.inlineImage?.licenseUrl)))issues.push('segunda imagem relacionada com crédito e licença confirmados');if(!approved&&(post.additionalImages||[]).some(image=>!image?.image||!image?.alt||!image?.credit||!image?.sourceUrl||!image?.license||!image?.licenseUrl))issues.push('crédito e licença confirmados para todas as imagens adicionais');if(!directNoAffiliate&&!post.productName)issues.push('nome do produto exato para o botão de compra');return issues}
 function preparePublicationStatus(post){if(legacyPostIds.has(post.id)){const {draftNotes,...legacy}=post;return {...legacy,status:'published'}}const issues=publicationIssues(post);if(issues.length)return {...post,status:'draft',draftNotes:post.draftNotes||`Falta: ${issues.join('; ')}.`};if(hasDirectPublicationApproval(post)){const {draftNotes,...approved}=post;return {...approved,status:'published'}}return {...post,status:post.status||'published'}}
 function readPosts(){
  try{
@@ -61,6 +62,19 @@ function readPosts(){
     return {...p,...Object.fromEntries(fields.filter(field=>seed[field]!==undefined).map(field=>[field,seed[field]]))};
    });
    localStorage.setItem('bitsplease_editorial_images_20261123_v1','1');
+   needsSave=true;
+  }
+  if(!localStorage.getItem('bitsplease_publish_daily_20261123_v1')){
+   const publishFields=['title','category','section','tag','excerpt','body','status','date','publishedAt','seoTitle','seoDescription','publicationApproval','image','imageAlt','imageSource','imageSourceUrl','imageLicense','imageLicenseUrl','inlineImage','additionalImages','imageResearch','affiliateResearch','editorialPendingNotes','sources','relevanceDate','relevanceScore','relevanceBreakdown','relevanceReason','relevanceSignals','relevanceUpdatedAt'];
+   const publishSeeds=allEditorialPosts.filter(post=>post.relevanceDate==='2026-11-23'&&post.publicationApproval?.allowWithoutAffiliate===true);
+   for(const seed of publishSeeds){
+    const existingIndex=clean.findIndex(post=>post.id===seed.id),existing=existingIndex>=0?clean[existingIndex]:{};
+    const published={...existing,...Object.fromEntries(publishFields.filter(field=>seed[field]!==undefined).map(field=>[field,seed[field]]))};
+    delete published.draftNotes;
+    if(existingIndex>=0)clean[existingIndex]=published;else clean.push(published);
+    needsSave=true;
+   }
+   localStorage.setItem('bitsplease_publish_daily_20261123_v1','1');
    needsSave=true;
   }
   if(!localStorage.getItem('bitsplease_affiliate_migration_v1')){
