@@ -77,6 +77,28 @@ function readPosts(){
    localStorage.setItem('bitsplease_publish_daily_20261123_v1','1');
    needsSave=true;
   }
+  if(!localStorage.getItem('bitsplease_affiliate_links_20261123_v1')){
+   const offerIds=new Set([
+    'darkest-dungeon-2-butcher-asylum-dlc-2027',
+    'sea-of-thieves-update-392-arquivos-menores',
+    'review-goat-simulator-3-ticket-dizzyworld-pesquisa',
+    'review-007-first-light-pesquisa-2026',
+   ]);
+   clean=clean.map(post=>{
+    if(!offerIds.has(post.id))return post;
+    const seed=seeds.get(post.id);
+    if(!seed?.affiliate)return post;
+    const source=seed.sources?.find(item=>item.label==='Amazon Brasil — produto recomendado');
+    const sources=[...(post.sources||[]).filter(item=>item.label!=='Amazon Brasil — produto recomendado'),...(source?[source]:[])];
+    const publishFields=['title','category','section','tag','excerpt','body','date','publishedAt','seoTitle','seoDescription','image','imageAlt','imageSource','imageSourceUrl','imageLicense','imageLicenseUrl','inlineImage','additionalImages','imageResearch','relevanceDate','relevanceScore','relevanceBreakdown','relevanceReason','relevanceSignals','relevanceUpdatedAt','affiliate','productName','productPitch','affiliateLinkType','affiliateResearch','publicationApproval','editorialPendingNotes'];
+    const updated={...post,...Object.fromEntries(publishFields.filter(field=>seed[field]!==undefined).map(field=>[field,seed[field]])),sources,status:'published'};
+    delete updated.draftNotes;
+    needsSave=true;
+    return updated;
+   });
+   localStorage.setItem('bitsplease_affiliate_links_20261123_v1','1');
+   needsSave=true;
+  }
   if(!localStorage.getItem('bitsplease_affiliate_migration_v1')){
    clean=clean.map(p=>{const seed=seeds.get(p.id);return seed&&!p.affiliate&&seed.affiliate?{...p,affiliate:seed.affiliate,productName:seed.productName}:p});
    localStorage.setItem('bitsplease_affiliate_migration_v1','1');

@@ -3,6 +3,37 @@ const generatedAt = '2026-11-23T17:32:19-03:00';
 const imageTerms = 'https://openai.com/policies/terms-of-use/';
 const imageCredit = 'Ilustração conceitual original gerada por IA com OpenAI ImageGen; não é captura de jogo nem arte oficial.';
 const imageLicense = 'Output gerado conforme os Termos de Uso da OpenAI; titularidade sujeita à lei aplicável.';
+const amazonTag = 'bitsplease-20';
+const affiliateOffersById = {
+  'darkest-dungeon-2-butcher-asylum-dlc-2027': {
+    affiliate: `https://www.amazon.com.br/dp/B0DBMP595K?tag=${amazonTag}`,
+    productName: 'Darkest Dungeon II — mídia física para Xbox One / Xbox Series X',
+    productPitch: 'O jogo-base em mídia física; The Butcher’s Asylum é um DLC separado. A página consultada indica compatibilidade com Xbox One e Xbox Series X. Confira preço e estoque antes da compra.',
+    affiliateLinkType: 'direct',
+    affiliateResearch: { product: 'Darkest Dungeon II — Xbox One / Xbox Series X', query: 'Darkest Dungeon II game Amazon Brasil', tag: amazonTag, checkedAt: '2026-11-23T18:05:00-03:00', status: 'amazon-brazil-product-link', notes: 'Página de produto Amazon Brasil aberta; título, mídia física, compatibilidade Xbox One / Xbox Series X e oferta em estoque conferidos. Preço e disponibilidade podem mudar.' },
+  },
+  'sea-of-thieves-update-392-arquivos-menores': {
+    affiliate: `https://www.amazon.com.br/dp/B00ZPT59YS?tag=${amazonTag}`,
+    productName: 'Sea of Thieves — mídia física para Xbox One',
+    productPitch: 'Edição física para Xbox One do jogo tratado na matéria. Confira a plataforma, requisitos online, preço e estoque antes da compra.',
+    affiliateLinkType: 'direct',
+    affiliateResearch: { product: 'Sea of Thieves — Xbox One', query: 'Sea of Thieves Xbox One Amazon Brasil', tag: amazonTag, checkedAt: '2026-11-23T18:05:00-03:00', status: 'amazon-brazil-product-link', notes: 'Página de produto Amazon Brasil aberta; título, plataforma Xbox One, oferta e estoque conferidos. A compatibilidade com outras plataformas não foi presumida. Preço e disponibilidade podem mudar.' },
+  },
+  'review-goat-simulator-3-ticket-dizzyworld-pesquisa': {
+    affiliate: `https://www.amazon.com.br/dp/B0B3RGDG6W?tag=${amazonTag}`,
+    productName: 'Goat Simulator 3 Pre-Udder Edition — PS5',
+    productPitch: 'Edição física do jogo-base para PS5. Ticket to Dizzyworld é uma expansão e exige o jogo-base; confira preço e estoque antes da compra.',
+    affiliateLinkType: 'direct',
+    affiliateResearch: { product: 'Goat Simulator 3 Pre-Udder Edition — PS5', query: 'Goat Simulator 3 PS5 Amazon Brasil', tag: amazonTag, checkedAt: '2026-11-23T18:05:00-03:00', status: 'amazon-brazil-product-link', notes: 'Página de produto Amazon Brasil aberta; título, plataforma PS5, edição física e oferta em estoque conferidos. Preço e disponibilidade podem mudar.' },
+  },
+  'review-007-first-light-pesquisa-2026': {
+    affiliate: `https://www.amazon.com.br/dp/B0FQ5QBMGB?tag=${amazonTag}`,
+    productName: '007 First Light — Standard Edition para PS5',
+    productPitch: 'Edição física Standard para PS5 do jogo analisado. Confira preço, estoque e plataforma antes da compra.',
+    affiliateLinkType: 'direct',
+    affiliateResearch: { product: '007 First Light — Standard Edition — PS5', query: '007 First Light PS5 Amazon Brasil', tag: amazonTag, checkedAt: '2026-11-23T18:05:00-03:00', status: 'amazon-brazil-product-link', notes: 'Página de produto Amazon Brasil aberta; edição Standard, plataforma PS5 e oferta em estoque conferidos. Preço e disponibilidade podem mudar.' },
+  },
+};
 const mediaById = {
   'the-finals-grand-major-dreamhack-2026': {
     files: ['the-finals-cover.png', 'the-finals-body.png'],
@@ -88,6 +119,7 @@ const mediaById = {
 
 function draft({ id, title, tag, excerpt, body, scores, reason, signals, sources, section = 'NOTÍCIAS', imageQuery, imageCandidates = [], searchDate = '2026-11-23' }) {
   const media = mediaById[id];
+  const offer = affiliateOffersById[id];
   const image = `/images/editorial-conceitual/2026-11-23/${media.files[0]}`;
   const inlineImage = `/images/editorial-conceitual/2026-11-23/${media.files[1]}`;
   return {
@@ -99,14 +131,15 @@ function draft({ id, title, tag, excerpt, body, scores, reason, signals, sources
     relevanceSignals: signals.map(({ label, url, sameDayVerified = false }) => ({ label, url, sameDayVerified })),
     image, imageAlt: media.alts[0], imageSource: imageCredit, imageSourceUrl: imageTerms, imageLicense, imageLicenseUrl: imageTerms,
     inlineImage: { image: inlineImage, alt: media.alts[1], credit: imageCredit, sourceUrl: imageTerms, license: imageLicense, licenseUrl: imageTerms },
-    publicationApproval: { mode: 'direct-user-publication', explicitUserAuthorization: true, authorizationDate: '2026-11-23', authorizationBasis: 'O usuário autorizou explicitamente: “Publique os dez agora”. Publicação sem produto ou CTA afiliado enquanto ofertas pertinentes não forem verificadas.', coverImage: image, bodyImage: inlineImage, affiliateOfferUnverified: true, allowWithoutAffiliate: true },
-    editorialPendingNotes: 'Publicada por autorização explícita do usuário em 23/11/2026. Nenhum produto ou CTA afiliado foi inserido porque a oferta Amazon Brasil pertinente não foi confirmada. As artes conceituais geradas por IA estão identificadas na matéria.',
+    publicationApproval: { mode: 'direct-user-publication', explicitUserAuthorization: true, authorizationDate: '2026-11-23', authorizationBasis: 'O usuário autorizou explicitamente: “Publique os dez agora”. As ofertas de compra pertinentes foram verificadas na Amazon Brasil onde disponíveis.', coverImage: image, bodyImage: inlineImage, affiliateOfferUnverified: !offer, allowWithoutAffiliate: !offer },
+    editorialPendingNotes: offer ? 'Publicada por autorização explícita do usuário em 23/11/2026. CTA afiliado para produto diretamente relacionado, conferido na Amazon Brasil; preço e estoque podem mudar. As artes conceituais geradas por IA estão identificadas na matéria.' : 'Publicada por autorização explícita do usuário em 23/11/2026. Não foi confirmado produto de compra diretamente pertinente na Amazon Brasil para esta pauta. As artes conceituais geradas por IA estão identificadas na matéria.',
     imageResearch: { query: imageQuery, imageSearchCheckedAt: `${searchDate}T10:39:46-03:00`, checkedAt: generatedAt, generatedAt, status: 'generated-contextual-ai-reviewed', generator: 'OpenAI ImageGen', assets: [image, inlineImage], prompts: media.prompts,
       referenceSources: sources.map(source => source.url), searchCandidates: imageCandidates,
       notes: 'A busca visual não encontrou um par real com permissão comercial confirmada. A pedido do usuário, foram geradas duas ilustrações conceituais originais para esta pauta, em composições distintas, sem reproduzir arte oficial ou capturas. Crédito e texto alternativo identificam a origem como IA.' },
-    affiliateResearch: { product: null, query: null, tag: 'bitsplease-20', checkedAt, status: 'user-authorized-no-cta', notes: 'Oferta Amazon Brasil diretamente pertinente não verificada. Por autorização explícita, a matéria foi publicada sem CTA afiliado e sem produto inventado.' },
+    affiliateResearch: offer?.affiliateResearch || { product: null, query: null, tag: amazonTag, checkedAt, status: 'user-authorized-no-cta', notes: 'Oferta Amazon Brasil diretamente pertinente não verificada. Por autorização explícita, a matéria foi publicada sem CTA afiliado e sem produto inventado.' },
+    ...(offer ? { affiliate: offer.affiliate, productName: offer.productName, productPitch: offer.productPitch, affiliateLinkType: offer.affiliateLinkType } : {}),
     draftNotes: undefined,
-    body, sources,
+    body, sources: offer ? [...sources, { label: 'Amazon Brasil — produto recomendado', url: offer.affiliate }] : sources,
   };
 }
 
