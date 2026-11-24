@@ -1,6 +1,6 @@
 const today = '2026-11-24';
 const checkedAt = '2026-11-24T07:04:00-03:00';
-const pending = 'Rascunho: faltam duas imagens reais distintas com licença comercial verificável e link/tag Amazon pertinente confirmado. Não publicar até resolver esses itens.';
+const pending = 'Rascunho atualizado a pedido do usuário com duas ilustrações conceituais distintas e CTA Amazon. Mantido em rascunho; revisar o destino/oferta na Amazon antes de qualquer publicação.';
 const entry = (id, section, tag, title, excerpt, body, sources, relevanceScore = 0, relevanceReason = '', relevanceBreakdown = null) => ({
   id, category: 'GAMES', section, tag, title, excerpt,
   date: '24 nov 2026', publishedAt: today, read: '5 min',
@@ -76,3 +76,132 @@ export const dailyPosts20261124 = [
     [['King Art Games — anúncio no Steam', 'https://store.steampowered.com/news/app/2272360/view/696530069632321137'], ['THQ Nordic — notícias oficiais', 'https://thqnordic.com/news']],
     0)
 ];
+
+const imageTerms = 'https://openai.com/policies/terms-of-use/';
+const imageCredit = 'Ilustração conceitual original gerada com OpenAI ImageGen — 24/11/2026';
+const makeImage = (file, alt, prompt) => ({
+  image: `/images/editorial/2026-11-24/${file}`,
+  alt: `Ilustração conceitual: ${alt}`,
+  credit: imageCredit,
+  sourceUrl: imageTerms,
+  license: 'Saída gerada; titularidade do usuário conforme os Termos de Uso da OpenAI, sujeita à lei e a direitos de terceiros',
+  licenseUrl: imageTerms,
+  prompt
+});
+const enhancements = {
+  'gothic-3-classic-review-20261124': {
+    cover: makeImage('gothic-3-classic-cover.png', 'Viajante solitário observa uma cidade medieval sitiada e exércitos em lados opostos do vale.', 'Arte editorial conceitual de RPG de fantasia em mundo aberto: continente medieval em guerra, cidade sitiada distante, viajante sem nome visto de costas numa bifurcação, bandeiras de facções e silhuetas orcs, amanhecer nublado, composição horizontal. Não é captura nem arte oficial; sem personagens, logotipos, interface, texto ou marca-d’água.'),
+    body: makeImage('gothic-3-classic-road-map.png', 'Mapa antigo, espada e bússola em primeiro plano apontam para estradas que atravessam um reino em conflito.', 'Ilustração conceitual editorial: mapa gasto, espada e bússola sobre marco de pedra, estradas ramificadas para uma região medieval contestada, fitas de facções, luz nublada, composição horizontal. Não é captura nem arte oficial; sem logotipos, interface, texto ou marca-d’água.'),
+    affiliate: 'https://www.amazon.com.br/dp/B0FPGF9J2J?tag=bitsplease-20', affiliateLinkType: 'product',
+    productName: 'PlayStation 5 Slim Digital 825 GB — pacote ASTRO BOT e Gran Turismo 7',
+    productPitch: 'O PS5 roda Gothic 3 Classic. Este link é para o console digital de 825 GB listado pela Amazon com ASTRO BOT e Gran Turismo 7; não é para Gothic 3. Confira a composição do pacote, o vendedor e a disponibilidade antes de comprar.',
+    affiliateResearch: { checkedAt: '2026-11-24T07:32:14-03:00', source: 'Amazon Brasil', asin: 'B0FPGF9J2J', verified: 'Página identifica PS5 Slim Digital 825 GB e pacote com ASTRO BOT e Gran Turismo 7.' }
+  },
+  'phasmophobia-resonance-update-20261124': {
+    cover: makeImage('phasmophobia-resonance-cover.png', 'Casa rural abandonada à noite, com uma janela acesa em meio à chuva e neblina.', 'Ilustração conceitual editorial para notícia de atualização de investigação paranormal cooperativa: casa rural abandonada à meia-noite vista de um jardim chuvoso, janela acesa e neblina no gramado, paleta azul-cinza. Não é captura nem arte oficial; sem fantasma reconhecível, logotipo, interface, texto ou marca-d’água.'),
+    body: makeImage('phasmophobia-tools.png', 'Investigadores usam uma haste de radiestesia e um sensor de áudio num corredor escuro.', 'Ilustração conceitual editorial de ferramentas de investigação paranormal: mãos com luvas seguram uma haste de radiestesia num corredor antigo, sensor de áudio sobre uma mesa lateral e poeira num feixe estreito de luz, composição horizontal. Não é captura nem arte oficial; sem interface, logotipo, texto ou marca-d’água.'),
+    affiliate: 'https://www.amazon.com.br/dp/B0FPGF9J2J?tag=bitsplease-20', affiliateLinkType: 'product',
+    productName: 'PlayStation 5 Slim Digital 825 GB — pacote ASTRO BOT e Gran Turismo 7',
+    productPitch: 'Phasmophobia tem versão para PS5. O CTA é para o console compatível, não para o jogo; confira o pacote de 825 GB, o vendedor e a oferta na Amazon.',
+    affiliateResearch: { checkedAt: '2026-11-24T07:32:14-03:00', source: 'Amazon Brasil', asin: 'B0FPGF9J2J', verified: 'Página identifica PS5 Slim Digital 825 GB.' }
+  },
+  'gta-vi-playstation-launch-record-20261124': {
+    cover: makeImage('gta-vi-launch-record-cover.png', 'Grupo de amigos acompanha numa televisão uma cidade costeira neon, enquanto linhas abstratas conectam jogadores.', 'Ilustração editorial original sobre recorde de lançamento de jogo de mundo aberto no PlayStation: amigos reunidos diante de uma televisão com uma cidade costeira neon fictícia e linhas abstratas conectando silhuetas de jogadores, composição horizontal. Não é captura de GTA VI nem arte oficial; sem logos, personagens, interface, texto ou marca-d’água.'),
+    body: makeImage('gta-vi-launch-record-detail.png', 'Mesa de análise com mapa urbano costeiro e linhas de atividade que convergem para a cidade ao anoitecer.', 'Ilustração conceitual editorial para análise de métricas de lançamento: mesa de redação com mapa de uma metrópole costeira refletido no vidro, silhuetas abstratas de jogadores e linhas de atividade, sem números ou rótulos, cidade iluminada à noite. Não é captura nem arte oficial; sem logos, interface, texto ou marca-d’água.'),
+    affiliate: 'https://www.amazon.com.br/dp/B0H6KT2RWH?tag=bitsplease-20', affiliateLinkType: 'product',
+    productName: 'Grand Theft Auto VI — PlayStation 5 (código para download em caixa)',
+    productPitch: 'A matéria discute a estreia de GTA VI no PS5. A página Amazon é para a edição PS5 em formato de código para download, sem disco; confirme formato e disponibilidade antes de comprar.',
+    affiliateResearch: { checkedAt: '2026-11-24T08:35:00-03:00', source: 'Amazon Brasil', asin: 'B0H6KT2RWH', verified: 'Página identifica Grand Theft Auto VI para PS5; informa código em caixa, sem disco.' }
+  },
+  'gta-vi-xbox-cloud-guide-20261124': {
+    cover: makeImage('gta-vi-cloud-cover.png', 'Jogador usa controle diante de uma televisão com uma cidade costeira fictícia e símbolo abstrato de nuvem.', 'Ilustração conceitual editorial para guia de Xbox Cloud Gaming: sala aconchegante, jogador com controle, televisão exibindo uma cidade costeira neon genérica e nuvem luminosa sugerindo streaming. Não é captura de GTA VI nem arte oficial; sem marca de console, logotipo, interface, texto ou marca-d’água.'),
+    body: makeImage('gta-vi-cloud-guide.png', 'Composição compara um fluxo de servidores em nuvem para uma tela portátil e Remote Play transmitido por um console doméstico.', 'Ilustração conceitual editorial que distingue cloud gaming de Remote Play: de um lado, ondas vindas de servidores alcançam uma tela portátil; do outro, um console doméstico transmite para laptop em outro cômodo, ambos com uma cidade costeira genérica. Sem marcas, interface real, texto ou marca-d’água.'),
+    affiliate: 'https://www.amazon.com.br/s?k=console+Xbox+Series+S&tag=bitsplease-20', affiliateLinkType: 'search',
+    productName: 'Xbox Series S — opções na Amazon Brasil',
+    productPitch: 'O Series S roda GTA VI nativamente e oferece Xbox Cloud Gaming; esta busca é pelo console, não por uma cópia do jogo. Compare vendedor, estado, região, garantia e disponibilidade antes de comprar.',
+    affiliateResearch: { checkedAt: '2026-11-24T07:32:14-03:00', source: 'Amazon Brasil', verified: 'Busca etiquetada por console Xbox Series S; nenhuma oferta individual foi fixada.' },
+    sourcesExtra: [['Amazon Brasil — busca por console Xbox Series S', 'https://www.amazon.com.br/s?k=console+Xbox+Series+S&tag=bitsplease-20']]
+  },
+  'gta-vi-first-patch-context-20261124': {
+    cover: makeImage('gta-vi-patch-cover.png', 'Notebook mostra um símbolo abstrato de atualização entre duas imagens de uma cidade costeira, uma ensolarada e outra chuvosa.', 'Ilustração editorial conceitual sobre avaliação de atualização de jogo: duas cenas de uma cidade costeira fictícia, tempo claro e tempestade, ferramentas de manutenção e um símbolo abstrato de atualização numa tela. Não é captura de GTA VI nem arte oficial; sem texto legível, logotipos, interface ou marca-d’água.'),
+    body: makeImage('gta-vi-patch-detail.png', 'Pessoa revisa uma atualização de jogo num monitor enquanto uma cidade costeira chuvosa aparece refletida na tela.', 'Ilustração editorial original sobre primeiro patch de jogo: mãos de desenvolvedor revisam barra abstrata de atualização num monitor, reflexo de cidade costeira chuvosa e formas simples sugerindo correção de bugs, composição horizontal. Sem texto legível, marcas, interface real ou marca-d’água.'),
+    affiliate: 'https://www.amazon.com.br/dp/B0H6KT2RWH?tag=bitsplease-20', affiliateLinkType: 'product',
+    productName: 'Grand Theft Auto VI — PlayStation 5 (código para download em caixa)',
+    productPitch: 'A oferta encontrada é GTA VI para PS5 em formato de código para download, sem disco. Confira o formato, plataforma e disponibilidade antes de comprar.',
+    affiliateResearch: { checkedAt: '2026-11-24T08:35:00-03:00', source: 'Amazon Brasil', asin: 'B0H6KT2RWH', verified: 'Página identifica Grand Theft Auto VI para PS5; informa código em caixa, sem disco.' }
+  },
+  'diablo-iv-developer-stream-20261124': {
+    cover: makeImage('diablo-iv-stream-cover.png', 'Adaga sobre um pedestal de pedra numa sala de transmissão, com um portal para um covil de fantasia sombria ao fundo.', 'Ilustração conceitual editorial para notícia de transmissão de desenvolvedores de RPG de fantasia sombria: adaga prateada sobre pedestal, covil demoníaco abstrato ao fundo e luzes discretas de estúdio ao vivo. Não é arte oficial de Diablo IV; sem personagens reconhecíveis, logotipos, texto, interface ou marca-d’água.'),
+    body: makeImage('diablo-iv-two-bosses.png', 'Dois chefes sombrios ocupam lados opostos de uma arena circular com artefatos mágicos no chão.', 'Ilustração conceitual editorial de arena de fantasia sombria com duas silhuetas de chefes frente a frente e aventureiros ao longe, artefatos mágicos brilhando no piso circular, composição horizontal. Não é captura nem arte oficial de Diablo IV; sem personagens identificáveis, logo, interface, texto ou marca-d’água.'),
+    affiliate: 'https://www.amazon.com.br/dp/B0FPGF9J2J?tag=bitsplease-20', affiliateLinkType: 'product',
+    productName: 'PlayStation 5 Slim Digital 825 GB — pacote ASTRO BOT e Gran Turismo 7',
+    productPitch: 'Diablo IV está disponível para PS5. O link leva ao console, não ao jogo; confira o pacote, o vendedor e a disponibilidade na Amazon.',
+    affiliateResearch: { checkedAt: '2026-11-24T07:32:14-03:00', source: 'Amazon Brasil', asin: 'B0FPGF9J2J', verified: 'Página identifica PS5 Slim Digital 825 GB.' }
+  },
+  'steam-awards-2026-nominations-20261124': {
+    cover: makeImage('steam-awards-cover.png', 'Jogadores avaliam pequenos mundos de jogos numa mesa comunitária de indicações, com troféu abstrato ao centro.', 'Ilustração editorial original sobre indicações comunitárias a prêmio de jogos para PC: mesa iluminada, pessoas considerando pequenos dioramas de mundos de jogo e cartões de votação sem texto, composição horizontal. Sem marca Steam ou Valve, sem personagens conhecidos, sem watermark.'),
+    body: makeImage('steam-awards-voting.png', 'Grupo de jogadores posiciona fichas em mundos de jogos em miniatura, simbolizando indicações e votação final.', 'Ilustração editorial conceitual sobre diferença entre indicar e votar num prêmio de jogos: grupo diverso escolhe fichas ao lado de dioramas de jogos abstratos, ambiente acolhedor, composição horizontal. Sem texto, marcas, personagens conhecidos ou watermark.'),
+    affiliate: 'https://www.amazon.com.br/s?k=Steam+Deck+console+portatil&tag=bitsplease-20', affiliateLinkType: 'search',
+    productName: 'Steam Deck — busca por console portátil para jogos Steam',
+    productPitch: 'O Steam Deck é um PC portátil projetado para a biblioteca Steam. Esta busca é por hardware para jogar títulos da plataforma; a compatibilidade de cada jogo varia e deve ser conferida antes da compra.',
+    affiliateResearch: { checkedAt: '2026-11-24T07:32:14-03:00', source: 'Amazon Brasil', verified: 'Busca etiquetada por Steam Deck/console portátil; produto importado pode variar por vendedor.' },
+    sourcesExtra: [['Amazon Brasil — busca por Steam Deck', 'https://www.amazon.com.br/s?k=Steam+Deck+console+portatil&tag=bitsplease-20']]
+  },
+  'aion2-season2-roadmap-20261124': {
+    cover: makeImage('aion2-brawler-cover.png', 'Lutadora de fantasia com manoplas observa uma cidade elevada entre nuvens ao nascer do sol.', 'Ilustração conceitual editorial sobre classe Brawler em MMORPG: lutadora com manoplas simples numa varanda de pedra, cidade fantástica elevada entre nuvens ao amanhecer, composição horizontal. Não é arte oficial de AION 2; sem personagens, símbolos, logotipos, interface, texto ou marca-d’água.'),
+    body: makeImage('aion2-housing-roadmap.png', 'Pequena casa com jardim numa ilha flutuante acima das nuvens, com cidade fantástica ao longe.', 'Ilustração conceitual editorial sobre sistema de moradia em MMORPG: ilha flutuante com casa de madeira, jardim e canal de água, cidade fantástica e montanhas distantes, clima sereno, composição horizontal. Não é arte oficial de AION 2; sem logos, símbolos, interface, texto ou marca-d’água.'),
+    affiliate: 'https://www.amazon.com.br/s?k=notebook+gamer+Windows&tag=bitsplease-20', affiliateLinkType: 'search',
+    productName: 'Notebook gamer com Windows — opções na Amazon Brasil',
+    productPitch: 'O roteiro global de AION 2 é para PC Windows; este CTA busca notebooks para jogos nessa plataforma, não o jogo. Confira os requisitos oficiais e as especificações do modelo antes de comprar.',
+    affiliateResearch: { checkedAt: '2026-11-24T07:32:14-03:00', source: 'Amazon Brasil', verified: 'Busca etiquetada por notebook gamer Windows; não foi fixado um modelo sem requisitos confirmados.' },
+    sourcesExtra: [['Amazon Brasil — busca por notebook gamer Windows', 'https://www.amazon.com.br/s?k=notebook+gamer+Windows&tag=bitsplease-20']]
+  },
+  'sea-of-remnants-xbox-beta-20261124': {
+    cover: makeImage('sea-of-remnants-cover.png', 'Navio à vela cruza entre ilhas enevoadas ao amanhecer, visto da costa.', 'Ilustração conceitual editorial para beta de jogo roguelike naval por turnos: navio à vela envelhecido navega entre ilhas enevoadas ao amanhecer, tripulação em silhuetas pequenas, composição horizontal. Não é arte oficial de Sea of Remnants; sem personagens, logos, texto, interface ou marca-d’água.'),
+    body: makeImage('sea-of-remnants-beta-detail.png', 'Navegadora estuda um mapa de ilhas e marcadores de rota no convés de um navio.', 'Ilustração conceitual editorial sobre beta de jogo naval: navegadora observa mapa com ilhas e marcadores de rota sobre mesa no convés, mar agitado e porto ao longe, luz de tempestade se abrindo, composição horizontal. Não é arte oficial; sem interface, logotipos, texto ou marca-d’água.'),
+    affiliate: 'https://www.amazon.com.br/s?k=console+Xbox+Series+X&tag=bitsplease-20', affiliateLinkType: 'search',
+    productName: 'Xbox Series X — opções na Amazon Brasil',
+    productPitch: 'O teste Dawnbreaker anunciado é para Xbox Series X; esta busca é pelo console compatível, não pelo jogo. Confirme vendedor, região, garantia e se o modelo atende à fase beta antes de comprar.',
+    affiliateResearch: { checkedAt: '2026-11-24T07:32:14-03:00', source: 'Amazon Brasil', verified: 'Busca etiquetada por console Xbox Series X; nenhuma oferta individual foi fixada.' },
+    sourcesExtra: [['Amazon Brasil — busca por console Xbox Series X', 'https://www.amazon.com.br/s?k=console+Xbox+Series+X&tag=bitsplease-20']]
+  },
+  'dawn-of-war-iv-commander-edition-20261124': {
+    cover: makeImage('dawn-of-war-iv-cover.png', 'Tropas futuristas de armadura avançam em direção a uma catedral em ruínas sob céu alaranjado.', 'Ilustração conceitual editorial para estratégia de ficção científica sombria: soldados futuristas em armaduras vermelho e dourado avançam contra catedral gótica destruída sob céu enfumaçado, silhueta de máquina de guerra ao longe. Não é arte oficial de Warhammer 40,000; sem insígnias reconhecíveis, personagens, logotipo, texto, interface ou marca-d’água.'),
+    body: makeImage('dawn-of-war-iv-editions.png', 'Mapa de campanha concluído ao lado de duas caixas lacradas com símbolos abstratos e uma ampulheta.', 'Ilustração editorial conceitual sobre edições de jogo e expansão futura: mapa de campanha de estratégia sci-fi, duas caixas lacradas com símbolos abstratos e ampulheta, ambiente de batalha em tons escuros. Não reproduz iconografia protegida, personagens, logos, interface, texto ou watermark.'),
+    affiliate: 'https://www.amazon.com.br/s?k=notebook+gamer+Windows&tag=bitsplease-20', affiliateLinkType: 'search',
+    productName: 'Notebook gamer com Windows — opções na Amazon Brasil',
+    productPitch: 'Dawn of War IV foi anunciado para PC Windows via Steam; não há console anunciado. Esta busca é por hardware PC compatível, não pelo jogo; compare os requisitos oficiais com cada modelo antes de comprar.',
+    affiliateResearch: { checkedAt: '2026-11-24T07:32:14-03:00', source: 'Amazon Brasil', verified: 'Busca etiquetada por notebook gamer Windows; nenhum modelo foi recomendado sem comparar requisitos.' },
+    sourcesExtra: [['Amazon Brasil — busca por notebook gamer Windows', 'https://www.amazon.com.br/s?k=notebook+gamer+Windows&tag=bitsplease-20']]
+  }
+};
+
+export const dailyPosts20261124WithMedia = dailyPosts20261124.map(post => {
+  const data = enhancements[post.id];
+  if (!data) return post;
+  const { cover, body, sourcesExtra = [], ...offer } = data;
+  const { prompt: coverPrompt, ...coverImage } = cover;
+  const { prompt: bodyPrompt, ...inlineImage } = body;
+  return {
+    ...post,
+    image: coverImage.image,
+    imageAlt: coverImage.alt,
+    imageSource: coverImage.credit,
+    imageSourceUrl: coverImage.sourceUrl,
+    imageLicense: coverImage.license,
+    imageLicenseUrl: coverImage.licenseUrl,
+    inlineImage,
+    imageResearch: {
+      checkedAt: '2026-11-24T07:20:00-03:00',
+      method: 'Ilustrações conceituais originais geradas individualmente com OpenAI ImageGen; não são capturas, fotos reais ou artes oficiais. Arquivos distintos, com prompts registrados.',
+      assets: [
+        { file: cover.image, tool: 'OpenAI ImageGen', prompt: coverPrompt },
+        { file: body.image, tool: 'OpenAI ImageGen', prompt: bodyPrompt }
+      ]
+    },
+    ...offer,
+    sources: [...post.sources, { label: 'OpenAI — Termos de Uso para saída gerada', url: imageTerms }, ...sourcesExtra.map(([label, url]) => ({ label, url })), { label: `Amazon Brasil — ${offer.productName}`, url: offer.affiliate }]
+  };
+});
+
+// Keep the exported name imported by the editorial pipeline, with media and offer data applied.

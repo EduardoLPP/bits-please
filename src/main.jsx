@@ -53,6 +53,18 @@ function readPosts(){
   let needsSave=false;
   if(clean.some(p=>p.id==='review-supertuxkart-1-5')){clean=clean.filter(p=>p.id!=='review-supertuxkart-1-5');needsSave=true}
   const seeds=new Map(allEditorialPosts.map(p=>[p.id,p]));
+  if(!localStorage.getItem('bitsplease_media_affiliate_20261124_v1')){
+   const fields=['image','imageAlt','imageSource','imageSourceUrl','imageLicense','imageLicenseUrl','inlineImage','imageResearch','affiliate','affiliateLinkType','affiliateResearch','productName','productPitch','draftNotes'];
+   clean=clean.map(post=>{
+    const seed=seeds.get(post.id);
+    if(!seed?.imageResearch?.assets?.length||post.status==='published')return post;
+    const sources=[...(post.sources||[]).filter(source=>!(seed.sources||[]).some(item=>item.url===source.url)),...(seed.sources||[])];
+    needsSave=true;
+    return {...post,...Object.fromEntries(fields.filter(field=>seed[field]!==undefined).map(field=>[field,seed[field]])),sources,status:post.status||'draft'};
+   });
+   localStorage.setItem('bitsplease_media_affiliate_20261124_v1','1');
+   needsSave=true;
+  }
   if(!localStorage.getItem('bitsplease_editorial_images_20261123_v1')){
    const fields=['image','imageAlt','imageSource','imageSourceUrl','imageLicense','imageLicenseUrl','inlineImage','additionalImages','imageResearch','draftNotes'];
    clean=clean.map(p=>{
