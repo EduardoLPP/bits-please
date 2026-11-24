@@ -65,6 +65,21 @@ function readPosts(){
    localStorage.setItem('bitsplease_media_affiliate_20261124_v1','1');
    needsSave=true;
   }
+  if(!localStorage.getItem('bitsplease_publish_daily_20261124_v1')){
+   const publishFields=['title','category','section','tag','excerpt','body','status','date','publishedAt','seoTitle','seoDescription','image','imageAlt','imageSource','imageSourceUrl','imageLicense','imageLicenseUrl','inlineImage','additionalImages','imageResearch','affiliate','affiliateLinkType','affiliateResearch','productName','productPitch','editorialPendingNotes','sources','relevanceDate','relevanceScore','relevanceBreakdown','relevanceReason','relevanceSignals','relevanceUpdatedAt'];
+   const publishSeeds=allEditorialPosts.filter(post=>post.publishedAt==='2026-11-24'&&post.id.endsWith('-20261124')&&post.imageResearch?.assets?.length===2&&post.affiliate);
+   for(const seed of publishSeeds){
+    const existingIndex=clean.findIndex(post=>post.id===seed.id),existing=existingIndex>=0?clean[existingIndex]:{};
+    const merged={...existing,...Object.fromEntries(publishFields.filter(field=>seed[field]!==undefined).map(field=>[field,seed[field]]))};
+    const issues=publicationIssues(merged);
+    const next=issues.length?{...merged,status:'draft',draftNotes:`Não publicado: ${issues.join('; ')}.`}:{...merged,status:'published'};
+    if(!issues.length)delete next.draftNotes;
+    if(existingIndex>=0)clean[existingIndex]=next;else clean.push(next);
+    needsSave=true;
+   }
+   localStorage.setItem('bitsplease_publish_daily_20261124_v1','1');
+   needsSave=true;
+  }
   if(!localStorage.getItem('bitsplease_editorial_images_20261123_v1')){
    const fields=['image','imageAlt','imageSource','imageSourceUrl','imageLicense','imageLicenseUrl','inlineImage','additionalImages','imageResearch','draftNotes'];
    clean=clean.map(p=>{

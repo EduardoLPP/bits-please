@@ -1,11 +1,10 @@
 const today = '2026-11-24';
 const checkedAt = '2026-11-24T07:04:00-03:00';
-const pending = 'Rascunho atualizado a pedido do usuário com duas ilustrações conceituais distintas e CTA Amazon. Mantido em rascunho; revisar o destino/oferta na Amazon antes de qualquer publicação.';
 const entry = (id, section, tag, title, excerpt, body, sources, relevanceScore = 0, relevanceReason = '', relevanceBreakdown = null) => ({
   id, category: 'GAMES', section, tag, title, excerpt,
   date: '24 nov 2026', publishedAt: today, read: '5 min',
   image: '', imageAlt: '', imageSource: '', imageSourceUrl: '', imageLicense: '', imageLicenseUrl: '',
-  body, status: 'draft', draftNotes: pending,
+  body, status: 'published',
   sources: sources.map(([label, url]) => ({ label, url })),
   ...(relevanceScore ? {
     relevanceDate: today, relevanceUpdatedAt: checkedAt, relevanceScore,
