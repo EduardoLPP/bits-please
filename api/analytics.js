@@ -23,6 +23,12 @@ function dateWindow(days) {
   return { startDate: iso(start), endDate: iso(end) };
 }
 
+function isIsoDate(value) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value || '')) return false;
+  const parsed = new Date(`${value}T00:00:00Z`);
+  return !Number.isNaN(parsed.getTime()) && parsed.toISOString().slice(0, 10) === value;
+}
+
 async function accessToken(credentials) {
   const now = Math.floor(Date.now() / 1000);
   const header = b64url(JSON.stringify({ alg: 'RS256', typ: 'JWT' }));
@@ -61,15 +67,16 @@ function gaMetrics(report) {
   return { sessions: values[0] || 0, views: values[1] || 0, users: values[2] || 0, engagedSessions: values[3] || 0, engagementRate: values[4] || 0 };
 }
 
-async function getAnalytics(token, propertyId, window) {
+async function getAnalytics(token, propertyId, window, selectedDay = '') {
   const base = `${GA_BASE}/properties/${encodeURIComponent(propertyId)}:runReport`;
   const period = { dateRanges: [window] };
+  const articlePeriod = selectedDay ? { dateRanges: [{ startDate: selectedDay, endDate: selectedDay }] } : period;
   const metrics = [{ name: 'sessions' }, { name: 'screenPageViews' }, { name: 'totalUsers' }, { name: 'engagedSessions' }, { name: 'engagementRate' }];
   const [overallReport, organicReport, dailyReport, articleReport] = await Promise.all([
     googlePost(base, token, { ...period, metrics }),
     googlePost(base, token, { ...period, dimensions: [{ name: 'sessionDefaultChannelGroup' }], metrics, dimensionFilter: { filter: { fieldName: 'sessionDefaultChannelGroup', stringFilter: { matchType: 'EXACT', value: 'Organic Search' } } } }),
     googlePost(base, token, { ...period, dimensions: [{ name: 'date' }], metrics: [{ name: 'sessions' }], dimensionFilter: { filter: { fieldName: 'sessionDefaultChannelGroup', stringFilter: { matchType: 'EXACT', value: 'Organic Search' } } }, orderBys: [{ dimension: { dimensionName: 'date' } }] }),
-    googlePost(base, token, { ...period, dimensions: [{ name: 'pagePathPlusQueryString' }, { name: 'pageTitle' }], metrics: [{ name: 'screenPageViews' }, { name: 'sessions' }, { name: 'activeUsers' }], dimensionFilter: { filter: { fieldName: 'pagePath', stringFilter: { matchType: 'BEGINS_WITH', value: '/artigo/' } } }, orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }], limit: 10 })
+    googlePost(base, token, { ...articlePeriod, dimensions: [{ name: 'pagePath' }, { name: 'pageTitle' }], metrics: [{ name: 'screenPageViews' }, { name: 'sessions' }, { name: 'activeUsers' }], dimensionFilter: { filter: { fieldName: 'pagePath', stringFilter: { matchType: 'BEGINS_WITH', value: '/artigo/' } } }, orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }], limit: 10 })
   ]);
   return {
     status: 'connected',
@@ -110,8 +117,13 @@ export default async function handler(req, res) {
   const authenticated = req.adminAuthenticated === true || verifySession(cookieValue(req, 'bits_session'), process.env.SESSION_SECRET);
   if (!authenticated) return json(res, 401, { error: 'Acesso não autorizado.' });
 
-  const days = [7, 28, 90].includes(Number(new URL(req.url, 'https://site.invalid').searchParams.get('days'))) ? Number(new URL(req.url, 'https://site.invalid').searchParams.get('days')) : 28;
+  const params = new URL(req.url, 'https://site.invalid').searchParams;
+  const days = [7, 28, 90].includes(Number(params.get('days'))) ? Number(params.get('days')) : 28;
   const window = dateWindow(days);
+  const selectedDay = params.get('date') || '';
+  if (selectedDay && (!isIsoDate(selectedDay) || selectedDay < window.startDate || selectedDay > window.endDate)) {
+    return json(res, 400, { error: 'Escolha um dia dentro do intervalo selecionado.' });
+  }
   let credentials;
   try { credentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON || 'null'); } catch {}
   const required = ['GOOGLE_SERVICE_ACCOUNT_JSON'];
@@ -137,7 +149,7 @@ export default async function handler(req, res) {
   catch { return json(res, 200, { configured: true, days, window, services: { ga4: { status: 'error', message: 'Não foi possível autenticar no Google. Confira as credenciais do serviço.' }, searchConsole: { status: 'error', message: 'Não foi possível autenticar no Google. Confira as credenciais do serviço.' } } }); }
 
   const [ga4, searchConsole] = await Promise.all([
-    getAnalytics(token, GA4_PROPERTY_ID, window).catch(() => ({ status: 'error', message: 'Confira a propriedade do GA4 e dê acesso de leitor à conta técnica.' })),
+    getAnalytics(token, GA4_PROPERTY_ID, window, selectedDay).catch(() => ({ status: 'error', message: 'Confira a propriedade do GA4 e dê acesso de leitor à conta técnica.' })),
     getSearchConsole(token, GSC_SITE_URL, window).catch(() => ({ status: 'error', message: 'Confira o acesso de leitura da conta técnica no Search Console.' }))
   ]);
   return json(res, 200, { configured: true, days, window, trackingConfigured: Boolean(GA4_MEASUREMENT_ID), missing, services: { ga4, searchConsole } });
