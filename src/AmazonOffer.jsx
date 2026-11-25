@@ -6,7 +6,20 @@ export function hasProductPhoto(photo) {
 }
 
 export default function AmazonOffer({ article }) {
-  if (!article.affiliate) return null;
+  if (!article.affiliate) {
+    if (!article.officialLink) return null;
+    return <aside className="amazon-offer official-link without-photo" aria-label="Link oficial sem comissão">
+      <div className="amazon-offer-copy">
+        <span className="amazon-offer-label">LINK OFICIAL · SEM COMISSÃO</span>
+        <h2>{article.officialLinkTitle || 'Página oficial relacionada à matéria'}</h2>
+        {article.officialLinkPitch && <p>{article.officialLinkPitch}</p>}
+        <a className="amazon-offer-button" href={article.officialLink} target="_blank" rel="noreferrer noopener">
+          {article.officialLinkLabel || 'Abrir página oficial'}
+        </a>
+        <small className="amazon-offer-disclosure">Este link leva a uma página oficial e não gera comissão para o Bits, Please.</small>
+      </div>
+    </aside>;
+  }
   const photo = hasProductPhoto(article.productImage) ? article.productImage : null;
   const isSearch = article.affiliateLinkType === 'search';
   const relatedOffers = Array.isArray(article.relatedOffers) ? article.relatedOffers : [];

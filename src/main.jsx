@@ -482,6 +482,20 @@ function readPosts(){
    localStorage.setItem('bitsplease_editorial_seo_20261118_v1','1');
    needsSave=true;
   }
+  if(!localStorage.getItem('bitsplease_publish_official_links_20261125_v1')){
+   const idsToPublish=['cs2-pgl-major-singapore-day2-guide-20261125','darktide-sisters-novitiate-december-20261125','professor-layton-daily-puzzles-20261125','roblox-existing-games-conversion-program-20261125','surviving-mars-machine-utopia-date-20261125','exoprimal-end-service-date-guide-20261125'];
+   for(const id of idsToPublish){
+    const seed=seeds.get(id);
+    if(!seed?.publicationApproval||!seed.officialLink)continue;
+    const existingIndex=clean.findIndex(post=>post.id===id),existing=existingIndex>=0?clean[existingIndex]:{};
+    const published={...existing,...seed,status:'published'};
+    for(const field of ['affiliate','affiliateLinkType','affiliateResearch','productName','productPitch','productImage','draftNotes'])delete published[field];
+    if(existingIndex>=0)clean[existingIndex]=published;else clean.push(published);
+    needsSave=true;
+   }
+   localStorage.setItem('bitsplease_publish_official_links_20261125_v1','1');
+   needsSave=true;
+  }
   const ids=new Set(clean.map(p=>p.id));
   const posts=[...allEditorialPosts.filter(p=>!ids.has(p.id)),...clean].map(preparePublicationStatus);
   if(needsSave)localStorage.setItem('orbita_posts',JSON.stringify(posts));
