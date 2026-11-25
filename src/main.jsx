@@ -80,6 +80,20 @@ function readPosts(){
    localStorage.setItem('bitsplease_publish_daily_20261124_v1','1');
    needsSave=true;
   }
+  if(!localStorage.getItem('bitsplease_publish_nioh_game_amazon_20261125_v1')){
+   const seed=seeds.get('nioh-3-review-research-20261125'),existingIndex=clean.findIndex(post=>post.id===seed?.id);
+   if(seed&&existingIndex>=0){
+    const existing=clean[existingIndex],fields=['affiliate','affiliateLinkType','affiliateResearch','productName','productPitch'];
+    const sources=[...(existing.sources||[]).filter(source=>!source.label?.startsWith('Amazon Brasil —')),...(seed.sources||[]).filter(source=>source.label?.startsWith('Amazon Brasil —'))];
+    const merged={...existing,...Object.fromEntries(fields.filter(field=>seed[field]!==undefined).map(field=>[field,seed[field]])),sources,status:seed.status};
+    const issues=publicationIssues(merged);
+    const next=issues.length?{...merged,status:'draft',draftNotes:`Não publicado: ${issues.join('; ')}.`}:{...merged,status:'published'};
+    if(!issues.length)delete next.draftNotes;
+    clean[existingIndex]=next;needsSave=true;
+   }
+   localStorage.setItem('bitsplease_publish_nioh_game_amazon_20261125_v1','1');
+   needsSave=true;
+  }
   if(!localStorage.getItem('bitsplease_editorial_images_20261123_v1')){
    const fields=['image','imageAlt','imageSource','imageSourceUrl','imageLicense','imageLicenseUrl','inlineImage','additionalImages','imageResearch','draftNotes'];
    clean=clean.map(p=>{
