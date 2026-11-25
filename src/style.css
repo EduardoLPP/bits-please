@@ -46,6 +46,9 @@
 .product-box-featured.text-only .product-details{gap:14px}
 .product-box-featured .product-details b{font:700 16px/1.35 Manrope;color:#f3f4ff}
 .product-box-featured .product-buy{min-height:48px;padding:15px 23px;font-size:12px;letter-spacing:.15px;box-shadow:0 0 20px #a644c655}
+.product-box-featured.official-link{border-color:transparent;background:linear-gradient(#101322,#101322) padding-box,linear-gradient(110deg,#38cfa8,#4ce2ff) border-box;box-shadow:0 0 24px #38cfa822,0 12px 28px #0003}
+.official-link-kicker{font:700 11px/1.5 'DM Mono',monospace;letter-spacing:.12em;color:#82e4c2}
+.product-box-featured.official-link .product-buy{background:linear-gradient(100deg,#62d5ad,#4ce2ff);color:#0a0b15;box-shadow:0 0 20px #38cfa833}
 .product-box-featured .product-buy:hover{filter:brightness(1.17);transform:translateY(-1px)}
 @media(max-width:700px){.product-box-featured{align-items:stretch;gap:14px;padding:17px;margin:15px 0}.product-box-featured.has-image{align-items:center}.product-box-featured .product-details b{font-size:14px}.product-box-featured .product-buy{min-height:46px;padding:13px 17px}.product-box-featured.text-only .product-details{width:100%}}
 
