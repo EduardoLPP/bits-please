@@ -7,6 +7,9 @@
     { "source": "/admin", "destination": "/api/admin" },
     { "source": "/admin/:path*", "destination": "/api/admin" },
     { "source": "/login", "destination": "/api/login-page" },
+    { "source": "/sobre", "destination": "/sobre.html" },
+    { "source": "/privacidade", "destination": "/privacidade.html" },
+    { "source": "/contato", "destination": "/contato.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

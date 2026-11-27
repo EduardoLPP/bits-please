@@ -92,7 +92,11 @@ Há ainda uma separação que costuma passar despercebida: dados de salvamento f
 
 Antes de comprar, confira o padrão escrito na embalagem — “microSD Express” — e confirme a capacidade que pretende usar. A Nintendo informa que o cartão precisa ser compatível com esse padrão; espaço livre e compatibilidade são questões diferentes. Se você já tem um Switch, preserve o cartão antigo até terminar a migração de capturas e dados que deseja levar.
 
-A regra simples é esta: cartão velho para importar mídia; cartão microSD Express para expandir o armazenamento de software do Switch 2. E, para saves, use as ferramentas de transferência ou nuvem compatíveis com o jogo e a conta. Assim você evita confundir três tarefas que o console trata de formas distintas.`,
+A regra simples é esta: cartão velho para importar mídia; cartão microSD Express para expandir o armazenamento de software do Switch 2. E, para saves, use as ferramentas de transferência ou nuvem compatíveis com o jogo e a conta. Assim você evita confundir três tarefas que o console trata de formas distintas.
+
+A Nintendo informa suporte a cartões microSD Express de até 2 TB e diz que é necessária uma atualização do sistema pela internet na primeira utilização do cartão. Antes da compra, leia o padrão na embalagem e confira a capacidade. Um microSDXC convencional de 1 TB, por exemplo, não vira microSD Express por ter mais espaço.
+
+Use esta decisão rápida: se você costuma deixar muitos jogos digitais instalados ao mesmo tempo, a expansão pode evitar apagar e baixar títulos com frequência; se joga poucos downloads ou usa mais cartões físicos, pode acompanhar o espaço livre antes de comprar. Isso é uma escolha de conveniência, não um requisito para começar a jogar. Salve os dados de jogo na memória do console e confirme as opções oficiais de transferência ou nuvem para cada título.`,
     sources: [
       { label: "Nintendo Support — compatibilidade de microSD e microSD Express", url: "https://en-americas-support.nintendo.com/app/answers/detail/a_id/68425/~/microsd-card-and-microsd-express-card-compatibility-with-nintendo-switch" },
       { label: "Nintendo UK — perguntas sobre gerenciamento de dados no Switch 2", url: "https://www.nintendo.com/en-gb/Support/Nintendo-Switch-2/Nintendo-Switch-2-Data-Management-FAQ-2842540.html" },
@@ -133,7 +137,11 @@ O resfriamento é requisito, não acessório decorativo. A Sony pede uma estrutu
 
 Depois de instalar, o console solicita a formatação inicial do drive, que apaga os dados que estiverem nele. Só então o SSD pode ser escolhido como destino de instalação e usado para jogar. Já um disco USB externo resolve outro problema: guarda jogos de PS5, mas é preciso copiá-los de volta para o armazenamento interno ou M.2 para jogar; títulos de PS4 podem ser executados do USB.
 
-Antes do checkout, confira interface, capacidade, comprimento e medidas do dissipador na ficha técnica do modelo exato. Guarde também a embalagem e a nota. A Sony não garante todo SSD de terceiros que pareça cumprir os números da tabela; em caso de dúvida, confirme a compatibilidade com o fabricante do drive.`,
+Antes do checkout, confira interface, capacidade, comprimento e medidas do dissipador na ficha técnica do modelo exato. Guarde também a embalagem e a nota. A Sony não garante todo SSD de terceiros que pareça cumprir os números da tabela; em caso de dúvida, confirme a compatibilidade com o fabricante do drive.
+
+Na instalação, desligue o console, desconecte os cabos e espere o aparelho esfriar. A posição da tampa e alguns passos mudam entre famílias de PS5, então identifique o número do modelo e siga as instruções correspondentes da Sony. Em linhas gerais, abre-se o compartimento de expansão, ajusta-se o espaçador ao comprimento do drive, encaixa-se o SSD inclinado até o fim do conector e prende-se a unidade antes de fechar a tampa. Não ligue o console com a cobertura removida.
+
+Na primeira inicialização, o PS5 mostra a formatação do SSD. Ela apaga tudo o que já estiver no drive; faça cópia dos arquivos importantes antes de começar e não interrompa a formatação. Depois, em Configurações > Armazenamento, você pode escolher o local padrão de instalação e mover jogos já instalados. Se a ficha do anúncio não esclarecer dissipador, medidas totais ou modelo exato, é mais seguro pedir confirmação ao fabricante antes da compra.`,
     affiliate: "https://www.amazon.com.br/dp/B0B7CPSN2K?tag=bitsplease-20",
     productName: "WD_BLACK SN850X NVMe M.2 de 1 TB com dissipador",
     productPitch: "Exemplo de SSD PCIe 4.0 com dissipador listado para PS5. Antes de comprar, confirme o espaço interno disponível, a exigência de dissipador e a versão atual do console; compatibilidade não substitui a comparação de capacidade e preço.",
@@ -176,9 +184,11 @@ Antes do checkout, confira interface, capacidade, comprimento e medidas do dissi
 
 “Unsupported” indica que o jogo não é considerado jogável no Deck naquele momento. “Unknown” é diferente: a Valve ainda não o testou, então não há informação oficial de compatibilidade. Em especial, Unknown não é sinônimo de incompatível. Jogadores podem testar por conta própria, mas devem tratar relatos da comunidade como evidência informal, não como garantia.
 
-O processo também olha para coisas que uma lista de especificações não resolve sozinha: se o texto é legível na tela, se os controles funcionam, se os avisos aparecem corretamente e se a experiência pede teclado ou mouse. Isso explica por que um selo pode ser útil mesmo quando você já sabe que o jogo abre em um PC Linux.
+O processo confere quatro áreas: entrada (controles e teclado na tela), tela (resolução padrão e legibilidade), facilidade de uso (avisos e launchers) e suporte do sistema (incluindo compatibilidade do Proton e de anti-cheat). Por isso, um jogo pode abrir em um PC Linux e ainda receber Playable ou Unsupported no portátil: o teste também considera o uso com a tela e os controles do Deck.
 
-Antes de comprar um jogo para jogar só no portátil, veja o rótulo na página da loja e leia o motivo quando ele for Playable ou Unsupported. Depois, procure relatos recentes para o título específico, porque atualizações do jogo, do sistema ou do Proton podem mudar a experiência. O selo é um bom ponto de partida; não promete taxa de quadros, duração de bateria ou configurações gráficas ideais para cada pessoa.`,
+Antes de comprar um jogo para jogar só no portátil, veja o rótulo na loja ou na biblioteca do próprio Deck. Quando o jogo já foi avaliado, abra os detalhes de compatibilidade para entender o motivo do selo, em especial no caso de Playable. A primeira aba da loja no Deck destaca títulos que funcionam bem; as outras permitem pesquisar o catálogo completo.
+
+As avaliações valem tanto para os modelos LCD quanto OLED, segundo a Valve, mas isso não transforma o selo em teste de desempenho para cada preferência. Ele não promete taxa de quadros, duração de bateria ou configuração gráfica ideal. Se o título recebeu Unknown, a Valve ainda não o conferiu: relatos recentes da comunidade podem ajudar, mas não são uma garantia oficial.`,
     sources: [
       { label: "Steam Support — categorias Deck Verified e solução de problemas", url: "https://help.steampowered.com/en/faqs/view/7DD4-C618-182E-0E49" },
       { label: "Steam Deck — página oficial do programa Deck Verified", url: "https://www.steamdeck.com/en/verified" },

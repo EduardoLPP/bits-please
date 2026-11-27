@@ -133,13 +133,17 @@ function renderStoryCard(post) {
   return `<a class="story" href="${url}"><span class="story-img"><img src="${escapeHtml(absoluteUrl(post.image))}" alt="${escapeHtml(post.imageAlt || post.title)}" loading="lazy" decoding="async"/></span><span class="story-copy"><small>${escapeHtml(post.section || post.category || 'GAMES')} · ${escapeHtml(post.date || '')}</small><b>${escapeHtml(post.title)}</b><em>${escapeHtml(post.excerpt || '')}</em></span></a>`;
 }
 
+function renderInfoFooter() {
+  return `<footer><a class="brand bits-logo" href="/"><span class="bits-pink">&lt;bits,</span><span class="bits-blue">please/&gt;</span></a><p>Games, consoles e PC gamer para quem vive jogando.</p><div class="footer-links"><a href="/sobre">Sobre</a><a href="/privacidade">Privacidade</a><a href="/contato">Contato</a></div><small>© 2026 Bits, Please.</small></footer>`;
+}
+
 function renderHomeFallback(posts) {
   const cards = posts.slice(0, 15).map(renderStoryCard).join('');
-  return `<main id="inicio"><section class="about"><span class="kicker">GAMES · HARDWARE · CULTURA</span><h1>Bits, Please — notícias de games, consoles e PC gamer</h1><p>Notícias, reviews e guias com contexto e fontes para quem vive jogando.</p></section><section class="latest"><div class="section-heading"><div><span class="kicker">ATUALIZAÇÃO CONSTANTE</span><h2>Últimas notícias do universo gamer</h2></div></div><div class="latest-grid"><div class="latest-list">${cards}</div></div></section><nav class="category-strip" aria-label="Editorias">${categories.map(([slug, name]) => `<a href="/categoria/${slug}">${escapeHtml(name)}</a>`).join('')}</nav></main>`;
+  return `<main id="inicio"><section class="about"><span class="kicker">GAMES · HARDWARE · CULTURA</span><h1>Bits, Please — notícias de games, consoles e PC gamer</h1><p>Notícias, reviews e guias com contexto e fontes para quem vive jogando.</p></section><section class="latest"><div class="section-heading"><div><span class="kicker">ATUALIZAÇÃO CONSTANTE</span><h2>Últimas notícias do universo gamer</h2></div></div><div class="latest-grid"><div class="latest-list">${cards}</div></div></section><nav class="category-strip" aria-label="Editorias">${categories.map(([slug, name]) => `<a href="/categoria/${slug}">${escapeHtml(name)}</a>`).join('')}</nav></main>${renderInfoFooter()}`;
 }
 
 function renderCategoryFallback(name, description, posts) {
-  return `<main class="latest"><header class="section-heading"><div><span class="kicker">EDITORIA</span><h1>${escapeHtml(name)}</h1><p>${escapeHtml(description)}</p></div></header><section class="latest-list" aria-label="Matérias de ${escapeHtml(name)}">${posts.map(renderStoryCard).join('')}</section></main>`;
+  return `<main class="latest"><header class="section-heading"><div><span class="kicker">EDITORIA</span><h1>${escapeHtml(name)}</h1><p>${escapeHtml(description)}</p></div></header><section class="latest-list" aria-label="Matérias de ${escapeHtml(name)}">${posts.map(renderStoryCard).join('')}</section></main>${renderInfoFooter()}`;
 }
 
 function renderArticleFallback(post) {
@@ -174,7 +178,7 @@ function renderArticleFallback(post) {
   const category = escapeHtml(post.section || post.category || 'GAMES');
   const readTime = escapeHtml(post.read || '');
   const publishedTime = published ? `<time datetime="${escapeHtml(published)}">${dateLabel}</time>` : dateLabel;
-  return `<main class="article-page"><a class="back" href="/">← Voltar ao portal</a><article><header class="article-head"><span class="kicker">${category} · ${publishedTime}${readTime ? ` · ${readTime}` : ''}</span><h1>${title}</h1><p>${escapeHtml(post.excerpt || post.title)}</p></header><img class="article-cover" src="${escapeHtml(absoluteUrl(post.image))}" alt="${escapeHtml(post.imageAlt || post.title)}" fetchpriority="high" decoding="async"/>${post.imageSource ? `<p class="image-credit">Imagem: ${safeExternalLink(post.imageSource, post.imageSourceUrl)}${post.imageLicense ? ` · ${safeExternalLink(post.imageLicense, post.imageLicenseUrl)}` : ''}</p>` : ''}<div class="article-content">${body.join('')}${sources}</div></article></main>`;
+  return `<main class="article-page"><a class="back" href="/">← Voltar ao portal</a><article><header class="article-head"><span class="kicker">${category} · ${publishedTime}${readTime ? ` · ${readTime}` : ''}</span><h1>${title}</h1><p>${escapeHtml(post.excerpt || post.title)}</p></header><img class="article-cover" src="${escapeHtml(absoluteUrl(post.image))}" alt="${escapeHtml(post.imageAlt || post.title)}" fetchpriority="high" decoding="async"/>${post.imageSource ? `<p class="image-credit">Imagem: ${safeExternalLink(post.imageSource, post.imageSourceUrl)}${post.imageLicense ? ` · ${safeExternalLink(post.imageLicense, post.imageLicenseUrl)}` : ''}</p>` : ''}<div class="article-content">${body.join('')}${sources}</div></article></main>${renderInfoFooter()}`;
 }
 
 const publishedPosts = [...new Map(allPosts
@@ -198,7 +202,12 @@ const homepage = withRootContent(applySeo(template, {
 }), renderHomeFallback(publishedPosts));
 await writeFile(resolve(distDir, 'index.html'), homepage);
 
-const sitemapUrls = [{ loc: `${siteUrl}/` }];
+const sitemapUrls = [
+  { loc: `${siteUrl}/` },
+  { loc: `${siteUrl}/sobre` },
+  { loc: `${siteUrl}/privacidade` },
+  { loc: `${siteUrl}/contato` },
+];
 
 for (const [slug, name, description] of categories) {
   const matching = publishedPosts.filter(post => (post.section || post.category) === name);
@@ -236,8 +245,8 @@ for (const post of publishedPosts) {
     image: images.length ? images : [image],
     ...(published ? { datePublished: published } : {}),
     ...(modified ? { dateModified: modified } : {}),
-    author: { '@type': 'Organization', name: 'Bits, Please', url: `${siteUrl}/#sobre` },
-    publisher: { '@type': 'Organization', name: 'Bits, Please', url: `${siteUrl}/#sobre` },
+    author: { '@type': 'Organization', name: 'Bits, Please', url: `${siteUrl}/sobre` },
+    publisher: { '@type': 'Organization', name: 'Bits, Please', url: `${siteUrl}/sobre` },
     articleSection: post.section || post.category,
     inLanguage: 'pt-BR',
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },

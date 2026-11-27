@@ -246,12 +246,45 @@ const publishWithoutProductPhoto = new Set([
   'retrocompatibilidade-preservacao-games',
 ]);
 
+const affiliateIntentIds = new Set([
+  'switch-2-microsd-express-guia',
+  'ps5-ssd-m2-escolha-instalacao',
+  'monitor-gamer-hz-vrr-guia',
+  'pc-gamer-equilibrar-cpu-gpu',
+  'pc-portatil-escolher-sistema',
+  'gta-vi-ps5-pre-vendas',
+]);
+
+function hasAffiliateIntent(post) {
+  return post.section === 'REVIEWS' || post.category === 'REVIEWS' || affiliateIntentIds.has(post.id);
+}
+
+function removeAffiliateCallout(body = '') {
+  const paragraphs = String(body).trim().split(/\n\s*\n/);
+  const finalParagraph = paragraphs.at(-1) || '';
+  const isPurchaseCallout = /(?:bot[aã]o(?: abaixo| de compra)|busca abaixo|p[aá]gina da Amazon abaixo|Amazon abaixo|edi[cç][aã]o abaixo|oferta indicada)/i.test(finalParagraph);
+  if (isPurchaseCallout) paragraphs.pop();
+  return paragraphs.join('\n\n');
+}
+
 export function applyAffiliateCatalog(posts) {
   return posts.map(post => {
-    const offer = affiliateCatalog[post.id];
+    const eligible = hasAffiliateIntent(post);
+    const hadAffiliateOffer = Boolean(affiliateCatalog[post.id] || post.affiliate);
+    const sourceOffer = post.affiliate ? {
+      affiliate: post.affiliate,
+      productName: post.productName,
+      productPitch: post.productPitch,
+      affiliateLinkType: post.affiliateLinkType,
+      productImage: post.productImage,
+      affiliateResearch: post.affiliateResearch,
+    } : null;
+    const offer = eligible ? affiliateCatalog[post.id] || sourceOffer : null;
     const sources = offer
-      ? [...(post.sources || []).filter(entry => !/Amazon Brasil — produto recomendado/.test(entry.label)), source('Amazon Brasil — produto recomendado', offer.affiliate)]
-      : post.sources;
+      ? [...(post.sources || []).filter(entry => !/Amazon(?: Brasil|\.com\.br)/i.test(entry.label || '')), source('Amazon Brasil — produto recomendado', offer.affiliate)]
+      : hadAffiliateOffer
+        ? (post.sources || []).filter(entry => !/Amazon(?: Brasil|\.com\.br)/i.test(entry.label || ''))
+        : post.sources;
     const approval = post.id === 'review-red-dead-redemption-2-2026'
       ? {
           mode: 'direct-user-publication',
@@ -264,8 +297,16 @@ export function applyAffiliateCatalog(posts) {
         }
       : post.publicationApproval;
 
+    const nextPost = { ...post };
+    if (!offer) {
+      for (const key of ['affiliate', 'productName', 'productPitch', 'affiliateLinkType', 'productImage', 'affiliateResearch']) {
+        delete nextPost[key];
+      }
+    }
+    if (!eligible && hadAffiliateOffer) nextPost.body = removeAffiliateCallout(post.body);
+
     const next = {
-      ...post,
+      ...nextPost,
       ...(offer || {}),
       ...(offer ? { affiliateResearch: {
         ...(post.affiliateResearch || {}),
