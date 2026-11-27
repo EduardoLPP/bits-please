@@ -10,6 +10,7 @@ import { dailyPosts20261124WithMedia as dailyPosts20261124 } from './editorial/2
 import { dailyPosts20261125 } from './editorial/2026-11-25.js';
 import { dailyPosts20261126 } from './editorial/2026-11-26.js';
 import { dailyPosts20261127 } from './editorial/2026-11-27.js';
+import { dailyPosts20261127Additional } from './editorial/2026-11-27-additional.js';
 import { dailyPosts20261123 } from './editorial/2026-11-23.js';
 
 const launchDay = '2026-11-19';
@@ -48,6 +49,7 @@ const refreshLaunchDayHighlight = post => {
 
 export const editorialUpdates = [
   ...dailyPosts20261127,
+  ...dailyPosts20261127Additional,
   ...dailyPosts20261126,
   ...dailyPosts20261125,
   ...dailyPosts20261124,

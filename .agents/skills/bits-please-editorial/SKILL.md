@@ -46,6 +46,15 @@ Escolha pautas dentro destes eixos e deixe claro o que cada matéria entrega ao 
 
 - Em cada lote diário de dez matérias, inclua obrigatoriamente pelo menos uma review de jogo e escolha a pauta nesta ordem: primeiro, um lançamento recente que seja adequado para análise; se não houver um lançamento adequado, escolha um jogo com público comprovado ou com boa vitrine editorial — por exemplo, por grande interesse de busca, presença em evento importante ou destaque atual da indústria. Não escolha títulos obscuros sem um desses sinais de relevância. Priorize um teste próprio; se ele não estiver disponível, identifique a matéria como análise editorial baseada em pesquisa, cite cobertura especializada e não invente experiência nem nota.
 
+### Conclusão integral do lote — orientação explícita do usuário em 27/11/2026
+
+- Prepare exatamente dez matérias novas por lote. Não encerre o trabalho com um lote parcial apenas porque o noticiário do dia está fraco, há poucas pautas de manchete ou os temas iniciais não rendem dez matérias.
+- Continue pesquisando e use os demais eixos editoriais do portal para completar o total: guias práticos, comparativos, compatibilidade, análises de jogos com público comprovado, retrospectivas, contexto de indústria e calendário. Priorize perguntas úteis ao leitor brasileiro, variedade de assunto e evidência suficiente; não preencha vagas com títulos obscuros ou pautas duplicadas.
+- “Concluir” exige que cada uma das dez matérias tenha texto completo, fontes diretas adequadas, campos editoriais e de relevância, duas imagens editoriais pertinentes, e CTA de compra relacionado com link/tag preparados conforme as regras desta skill. Rascunho com apenas título, pauta ou bloqueio não conta como matéria concluída.
+- Pesquise as dez pautas; dificuldade de confirmação em uma não encerra a rodada. Substitua essa pauta por outra publicável ou deixe a matéria completa em rascunho com o bloqueio concreto e prossiga até fechar dez matérias concluídas.
+- Esta regra exige persistência e total de dez matérias concluídas; ela não autoriza inventar fatos, fontes, experiência, métricas, licença, produto, destino ou tag, nem publicar conteúdo que falhe os critérios de publicação. Se uma confirmação externa indispensável estiver indisponível, finalize a matéria como rascunho, registre o que foi verificado e o bloqueio específico, e continue o lote até dez.
+- No relatório final, contabilize separadamente matérias concluídas, publicadas e em rascunho; não chame de “concluídas” pautas que não chegaram a texto completo com os elementos editoriais exigidos.
+
 Em toda matéria, relacione a recomendação afiliada ao conteúdo e priorize a utilidade para o leitor. Em pautas de compra, comparativo e review, explique por que aquele produto se encaixa; em notícias, esports e cultura, procure um item que ajude o leitor a acompanhar, jogar ou aplicar o que a matéria discute. Nunca omita a busca por produto e link só porque o formato é noticioso. Se não houver encaixe honesto, não publique até ajustar a pauta.
 
 ## Privacidade
