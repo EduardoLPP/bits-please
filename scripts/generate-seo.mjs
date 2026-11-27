@@ -4,16 +4,19 @@ import { initialPosts, mockPostIds } from '../src/articles.js';
 import { editorialUpdates } from '../src/editorialUpdates.js';
 import { applyPublicationMedia } from '../src/editorial/publicationMedia.js';
 import { applyAffiliateCatalog } from '../src/editorial/affiliateCatalog.js';
+import { retiredEditorialPostIds } from '../src/editorial/curation.js';
+import { labelResearchReview } from '../src/editorial/reviewMethod.js';
 
 const siteUrl = (process.env.SITE_URL || 'https://bits-please.vercel.app').replace(/\/$/, '');
 const distDir = resolve('dist');
 const template = await readFile(resolve(distDir, 'index.html'), 'utf8');
 const legacyPostIds = new Set(initialPosts.map(post => post.id));
 const allPosts = applyAffiliateCatalog(applyPublicationMedia([...editorialUpdates, ...initialPosts]))
-  .map(post => legacyPostIds.has(post.id) ? { ...post, status: 'published' } : post);
+  .filter(post => !retiredEditorialPostIds.has(post.id))
+  .map(post => labelResearchReview(legacyPostIds.has(post.id) ? { ...post, status: 'published' } : post));
 const categories = [
   ['noticias', 'NOTÍCIAS', 'Notícias de games, consoles e PC gamer: lançamentos, atualizações e bastidores.'],
-  ['reviews', 'REVIEWS', 'Reviews de jogos com contexto, fontes e impressões editoriais.'],
+  ['reviews', 'REVIEWS', 'Reviews e sínteses de avaliações independentes, com a metodologia indicada em cada matéria.'],
   ['games', 'GAMES', 'Lançamentos, atualizações e histórias dos jogos que movimentam a comunidade.'],
   ['esports', 'ESPORTS', 'Notícias e contexto sobre competições, equipes e a cena competitiva.'],
   ['cultura-pop', 'CULTURA POP', 'Games, adaptações e cultura pop em diálogo.'],
@@ -134,12 +137,12 @@ function renderStoryCard(post) {
 }
 
 function renderInfoFooter() {
-  return `<footer><a class="brand bits-logo" href="/"><span class="bits-pink">&lt;bits,</span><span class="bits-blue">please/&gt;</span></a><p>Games, consoles e PC gamer para quem vive jogando.</p><div class="footer-links"><a href="/sobre">Sobre</a><a href="/ferramentas/compatibilidade-microsd-switch-2/">Verificador microSD</a><a href="/privacidade">Privacidade</a><a href="/contato">Contato</a></div><small>© 2026 Bits, Please.</small></footer>`;
+  return `<footer><a class="brand bits-logo" href="/"><span class="bits-pink">&lt;bits,</span><span class="bits-blue">please/&gt;</span></a><p>Games, consoles e PC gamer para quem vive jogando.</p><div class="footer-links"><a href="/sobre">Sobre</a><a href="/ferramentas/compatibilidade-microsd-switch-2/">Verificador microSD</a><a href="/ferramentas/verificador-ssd-m2-ps5/">Verificador SSD PS5</a><a href="/privacidade">Privacidade</a><a href="/contato">Contato</a></div><small>© 2026 Bits, Please.</small></footer>`;
 }
 
 function renderHomeFallback(posts) {
   const cards = posts.slice(0, 15).map(renderStoryCard).join('');
-  return `<main id="inicio"><section class="about"><span class="kicker">GAMES · HARDWARE · CULTURA</span><h1>Bits, Please — notícias de games, consoles e PC gamer</h1><p>Notícias, reviews e guias com contexto e fontes para quem vive jogando.</p></section><section class="latest"><div class="section-heading"><div><span class="kicker">ATUALIZAÇÃO CONSTANTE</span><h2>Últimas notícias do universo gamer</h2></div></div><div class="latest-grid"><div class="latest-list">${cards}</div></div></section><nav class="category-strip" aria-label="Editorias">${categories.map(([slug, name]) => `<a href="/categoria/${slug}">${escapeHtml(name)}</a>`).join('')}</nav><section class="useful-tool" aria-labelledby="switch2-tool-title"><div class="useful-tool-inner"><div><span class="kicker">FERRAMENTA GRATUITA</span><h2 id="switch2-tool-title">Seu microSD funciona no Switch 2?</h2><p>Confira se o cartão serve para jogos, capturas ou apenas para importar arquivos do Switch original.</p></div><a class="useful-tool-link" href="/ferramentas/compatibilidade-microsd-switch-2/">Verificar compatibilidade</a></div></section></main>${renderInfoFooter()}`;
+  return `<main id="inicio"><section class="about"><span class="kicker">GAMES · HARDWARE · CULTURA</span><h1>Bits, Please — notícias de games, consoles e PC gamer</h1><p>Notícias, reviews e guias com contexto e fontes para quem vive jogando.</p></section><section class="latest"><div class="section-heading"><div><span class="kicker">ATUALIZAÇÃO CONSTANTE</span><h2>Últimas notícias do universo gamer</h2></div></div><div class="latest-grid"><div class="latest-list">${cards}</div></div></section><nav class="category-strip" aria-label="Editorias">${categories.map(([slug, name]) => `<a href="/categoria/${slug}">${escapeHtml(name)}</a>`).join('')}</nav><section class="useful-tool" aria-labelledby="switch2-tool-title"><div class="useful-tool-inner"><div><span class="kicker">FERRAMENTA GRATUITA</span><h2 id="switch2-tool-title">Seu microSD funciona no Switch 2?</h2><p>Confira se o cartão serve para jogos, capturas ou apenas para importar arquivos do Switch original.</p></div><a class="useful-tool-link" href="/ferramentas/compatibilidade-microsd-switch-2/">Verificar compatibilidade</a></div></section><section class="useful-tool" aria-labelledby="ps5-tool-title"><div class="useful-tool-inner"><div><span class="kicker">CHECKLIST INTERATIVO</span><h2 id="ps5-tool-title">Este SSD M.2 cabe no PS5?</h2><p>Compare interface, capacidade, medidas e dissipação de calor com os requisitos publicados pela Sony.</p></div><a class="useful-tool-link" href="/ferramentas/verificador-ssd-m2-ps5/">Conferir meu SSD</a></div></section></main>${renderInfoFooter()}`;
 }
 
 function renderCategoryFallback(name, description, posts) {
@@ -182,7 +185,7 @@ function renderArticleFallback(post) {
 }
 
 const publishedPosts = [...new Map(allPosts
-  .filter(post => post?.id && post.status !== 'draft' && post.public !== false && !mockPostIds.has(post.id))
+  .filter(post => post?.id && post.status !== 'draft' && post.public !== false && !mockPostIds.has(post.id) && !retiredEditorialPostIds.has(post.id))
   .map(post => [post.id, post])).values()];
 
 const websiteSchema = {
@@ -208,6 +211,7 @@ const sitemapUrls = [
   { loc: `${siteUrl}/privacidade` },
   { loc: `${siteUrl}/contato` },
   { loc: `${siteUrl}/ferramentas/compatibilidade-microsd-switch-2/` },
+  { loc: `${siteUrl}/ferramentas/verificador-ssd-m2-ps5/` },
 ];
 
 for (const [slug, name, description] of categories) {

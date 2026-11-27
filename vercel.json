@@ -1,5 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    { "source": "/artigo/xbox-black-friday-2026-calendario-regiao", "destination": "/artigo/xbox-black-friday-ofertas-regiao-novembro-2026", "permanent": true },
+    { "source": "/artigo/doom-slaughter-mode-revelations-requisitos", "destination": "/artigo/doom-dark-ages-slaughter-mode-acesso-2026", "permanent": true },
+    { "source": "/artigo/gothic-3-classic-lancamento-plataformas-novembro-2026", "destination": "/artigo/gothic-3-classic-review-pesquisa-20261126", "permanent": true },
+    { "source": "/artigo/gothic-3-classic-review-20261124", "destination": "/artigo/gothic-3-classic-review-pesquisa-20261126", "permanent": true },
+    { "source": "/artigo/gta-vi-review-reviews-terceiros-20261118", "destination": "/artigo/gta-vi-review-research-20261125", "permanent": true },
+    { "source": "/artigo/phasmophobia-resonance-update-novembro-2026", "destination": "/artigo/phasmophobia-resonance-update-20261124", "permanent": true }
+  ],
   "functions": {
     "api/admin.js": { "includeFiles": "dist/index.html" }
   },

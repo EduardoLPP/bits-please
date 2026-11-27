@@ -4,8 +4,8 @@
 .checker h2,.comparison h2,.explanation h2,.sources h2{margin-top:0}
 .checker form{display:grid;gap:11px}
 .checker label{margin-top:8px;color:#30382e;font-size:15px;font-weight:700}
-.checker select{width:100%;min-height:50px;padding:11px 42px 11px 14px;border:1px solid #cdd5c5;border-radius:10px;background:#fff;color:#242b24;font:inherit}
-.checker select:focus-visible,.checker button:focus-visible{outline:3px solid #789b36;outline-offset:3px}
+.checker select,.checker input{width:100%;min-height:50px;padding:11px 14px;border:1px solid #cdd5c5;border-radius:10px;background:#fff;color:#242b24;font:inherit}
+.checker select:focus-visible,.checker input:focus-visible,.checker button:focus-visible{outline:3px solid #789b36;outline-offset:3px}
 .field-hint{margin:0;color:#65705d;font-size:14px}
 .checker button{justify-self:start;margin-top:10px;padding:13px 20px;border:0;border-radius:10px;background:#293822;color:white;font:700 15px/1.3 'DM Sans',sans-serif;cursor:pointer}
 .checker button:hover{background:#40592e}

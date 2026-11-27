@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Compare interface, capacidade, formato, medidas e dissipação de calor do SSD M.2 com os requisitos publicados pela Sony para PS5.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://bits-please.vercel.app/ferramentas/verificador-ssd-m2-ps5/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/site-info.css">
+  <link rel="stylesheet" href="/tool-pages.css">
+  <title>Verificador de SSD M.2 para PS5 | Bits, Please</title>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6368280629957536" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D5M18Q7VTR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', 'G-D5M18Q7VTR', { send_page_view: false });
+    window.gtag('event', 'page_view', {
+      page_title: 'Verificador de SSD M.2 para PS5',
+      page_location: window.location.href,
+      page_path: window.location.pathname + window.location.search,
+      send_to: 'G-D5M18Q7VTR'
+    });
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="brand" href="/"><span>&lt;bits,</span> <span>please/&gt;</span></a>
+      <nav class="site-nav" aria-label="Navegação"><a href="/">Início</a><a href="/sobre">Sobre</a><a href="/contato">Contato</a></nav>
+    </div>
+  </header>
+
+  <main class="site-main tool-main">
+    <p class="eyebrow">Ferramenta gratuita · PlayStation 5</p>
+    <h1>Este SSD M.2 atende aos requisitos do PS5?</h1>
+    <p class="intro">Informe as especificações do SSD e compare-as com os limites publicados pela Sony. O resultado aponta incompatibilidades e dados que você ainda precisa confirmar antes de comprar.</p>
+
+    <section class="checker" aria-labelledby="checker-title">
+      <h2 id="checker-title">Confira a ficha técnica</h2>
+      <form id="ssd-form">
+        <label for="capacity">Capacidade (GB)</label>
+        <input id="capacity" name="capacity" type="number" min="0" step="any" inputmode="decimal" placeholder="Ex.: 1000 para 1 TB">
+
+        <label for="interface">Interface do SSD</label>
+        <select id="interface" name="interface">
+          <option value="unknown">Não sei</option>
+          <option value="gen4">NVMe PCIe Gen4 x4, chave M</option>
+          <option value="other">Outra interface, SATA ou PCIe diferente</option>
+        </select>
+
+        <label for="form-factor">Fator de forma</label>
+        <select id="form-factor" name="formFactor">
+          <option value="unknown">Não sei</option>
+          <option value="2230">2230</option>
+          <option value="2242">2242</option>
+          <option value="2260">2260</option>
+          <option value="2280">2280</option>
+          <option value="22110">22110</option>
+          <option value="other">Outro fator de forma</option>
+        </select>
+
+        <label for="width">Largura total com dissipador (mm)</label>
+        <input id="width" name="width" type="number" min="0" step="any" inputmode="decimal" placeholder="Máximo: 25 mm">
+
+        <label for="thickness">Espessura total com dissipador (mm)</label>
+        <input id="thickness" name="thickness" type="number" min="0" step="any" inputmode="decimal" placeholder="Máximo: 11,25 mm">
+
+        <label for="top-thickness">Espessura acima da placa (mm)</label>
+        <input id="top-thickness" name="topThickness" type="number" min="0" step="any" inputmode="decimal" placeholder="Máximo: 8 mm">
+
+        <label for="bottom-thickness">Espessura abaixo da placa (mm)</label>
+        <input id="bottom-thickness" name="bottomThickness" type="number" min="0" step="any" inputmode="decimal" placeholder="Máximo: 2,45 mm">
+
+        <label for="read-speed">Velocidade de leitura sequencial (MB/s)</label>
+        <input id="read-speed" name="readSpeed" type="number" min="0" step="any" inputmode="numeric" placeholder="A Sony recomenda 5.500 MB/s ou mais">
+
+        <label for="cooling">O SSD terá um mecanismo de dissipação de calor?</label>
+        <select id="cooling" name="cooling">
+          <option value="unknown">Não sei</option>
+          <option value="yes">Sim, integrado ou instalado separadamente</option>
+          <option value="no">Não</option>
+        </select>
+        <p class="field-hint">Use as medidas do conjunto completo, incluindo dissipador. Se a ficha não informar as dimensões acima e abaixo da placa, deixe os campos vazios.</p>
+        <button type="submit">Comparar com os requisitos</button>
+      </form>
+
+      <div id="result" class="result" role="status" aria-live="polite" aria-atomic="true" tabindex="-1">
+        <h3>Preencha as informações que encontrar</h3>
+        <p>Você pode conferir os campos na ficha técnica do fabricante ou perguntar ao vendedor.</p>
+      </div>
+    </section>
+
+    <section class="comparison" aria-labelledby="requirements-title">
+      <h2 id="requirements-title">Requisitos publicados pela Sony</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Característica</th><th>Orientação da Sony</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Interface</th><td>SSD M.2 NVMe PCIe Gen4 x4, chave M. SSDs M.2 SATA não são compatíveis.</td></tr>
+            <tr><th scope="row">Capacidade</th><td>De 250 GB a 8 TB.</td></tr>
+            <tr><th scope="row">Fator de forma</th><td>2230, 2242, 2260, 2280 ou 22110.</td></tr>
+            <tr><th scope="row">Largura total</th><td>Até 25 mm, incluindo a estrutura de dissipação.</td></tr>
+            <tr><th scope="row">Espessura total</th><td>Até 11,25 mm; no máximo 8 mm acima e 2,45 mm abaixo da placa.</td></tr>
+            <tr><th scope="row">Leitura sequencial</th><td>5.500 MB/s ou mais é recomendado pela Sony; a página classifica isso como recomendação.</td></tr>
+            <tr><th scope="row">Dissipação de calor</th><td>É necessário um mecanismo eficaz de dissipação, como dissipador e placa de transferência de calor.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>O verificador compara os números que você informa, mas não identifica o modelo do console nem testa o SSD. A Sony informa que não pode garantir o funcionamento e o desempenho de todas as unidades de terceiros que atendam às medidas.</p>
+    </section>
+
+    <section class="explanation">
+      <h2>O que o resultado confirma — e o que não confirma</h2>
+      <p>Um SSD pode ter a capacidade certa e ainda não caber no compartimento se o dissipador exceder a largura ou a espessura permitida. Por isso, confira as medidas do conjunto instalado, não apenas as dimensões do módulo sem dissipador.</p>
+      <p>A velocidade de 5.500 MB/s é uma recomendação da Sony, não uma garantia de que todos os jogos terão o mesmo desempenho do SSD interno. A Sony também recomenda instalar o software de sistema mais recente e usar a tela de formatação do console na primeira instalação.</p>
+      <p>Antes de comprar, confira a ficha técnica completa do modelo e do dissipador, a compatibilidade indicada pelo fabricante e as instruções de instalação para o seu modelo de PS5.</p>
+    </section>
+
+    <section class="sources" aria-labelledby="sources-title">
+      <h2 id="sources-title">Fonte oficial e atualização</h2>
+      <ul>
+        <li><a href="https://www.playstation.com/pt-br/support/hardware/ps5-install-m2-ssd/" target="_blank" rel="noopener noreferrer">PlayStation Support — requisitos e instalação de SSD M.2 no PS5</a></li>
+      </ul>
+      <p class="updated">Revisado em 27 de novembro de 2026. A ferramenta calcula com os dados informados pelo leitor; ela não testa produtos nem substitui as especificações do fabricante.</p>
+      <p><a href="/artigo/ps5-ssd-m2-escolha-instalacao">Leia também: SSD M.2 no PS5 — o que conferir antes de comprar</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <nav aria-label="Links do portal"><a href="/">Início</a><a href="/sobre">Sobre</a><a href="/ferramentas/compatibilidade-microsd-switch-2/">Verificador microSD</a><a href="/ferramentas/verificador-ssd-m2-ps5/">Verificador SSD PS5</a><a href="/privacidade">Privacidade</a><a href="/contato">Contato</a></nav>
+    <span>© 2026 Bits, Please.</span>
+  </footer>
+
+  <script>
+    const form = document.querySelector('#ssd-form');
+    const result = document.querySelector('#result');
+    const getNumber = id => {
+      const raw = document.querySelector(id).value.trim();
+      return raw === '' ? null : Number(raw);
+    };
+    const addLine = (list, text) => list.push(text);
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      const failures = [];
+      const unknowns = [];
+      const notes = [];
+      const capacity = getNumber('#capacity');
+      const interfaceType = document.querySelector('#interface').value;
+      const formFactor = document.querySelector('#form-factor').value;
+      const width = getNumber('#width');
+      const thickness = getNumber('#thickness');
+      const topThickness = getNumber('#top-thickness');
+      const bottomThickness = getNumber('#bottom-thickness');
+      const readSpeed = getNumber('#read-speed');
+      const cooling = document.querySelector('#cooling').value;
+
+      if (capacity === null) addLine(unknowns, 'Informe a capacidade em GB (1 TB equivale a 1.000 GB).');
+      else if (capacity < 250 || capacity > 8000) addLine(failures, 'A capacidade está fora da faixa publicada: 250 GB a 8 TB.');
+      if (interfaceType === 'other') addLine(failures, 'A interface selecionada não corresponde a NVMe PCIe Gen4 x4, chave M.');
+      else if (interfaceType === 'unknown') addLine(unknowns, 'Confirme na ficha técnica se a interface é NVMe PCIe Gen4 x4, chave M.');
+      if (formFactor === 'other') addLine(failures, 'O fator de forma selecionado não está entre os formatos listados pela Sony.');
+      else if (formFactor === 'unknown') addLine(unknowns, 'Confirme se o fator de forma é 2230, 2242, 2260, 2280 ou 22110.');
+      if (width === null) addLine(unknowns, 'Confirme a largura total do SSD com o dissipador.');
+      else if (width > 25) addLine(failures, 'A largura informada excede 25 mm, incluindo a dissipação de calor.');
+      if (thickness === null) addLine(unknowns, 'Confirme a espessura total com o dissipador.');
+      else if (thickness > 11.25) addLine(failures, 'A espessura total informada excede 11,25 mm.');
+      if (topThickness === null) addLine(unknowns, 'Confirme a espessura acima da placa.');
+      else if (topThickness > 8) addLine(failures, 'A espessura acima da placa excede 8 mm.');
+      if (bottomThickness === null) addLine(unknowns, 'Confirme a espessura abaixo da placa.');
+      else if (bottomThickness > 2.45) addLine(failures, 'A espessura abaixo da placa excede 2,45 mm.');
+      if (readSpeed === null) addLine(unknowns, 'Confirme a velocidade de leitura sequencial na ficha técnica.');
+      else if (readSpeed < 5500) addLine(notes, 'A leitura informada fica abaixo dos 5.500 MB/s recomendados pela Sony. A página trata essa velocidade como recomendação, não como garantia de compatibilidade ou desempenho.');
+      if (cooling === 'no') addLine(failures, 'A Sony exige dissipação de calor eficaz para o SSD M.2 instalado no PS5.');
+      else if (cooling === 'unknown') addLine(unknowns, 'Confirme se há dissipador ou outro mecanismo eficaz de dissipação de calor.');
+
+      result.replaceChildren();
+      const heading = document.createElement('h3');
+      if (failures.length) heading.textContent = 'Há requisito que não confere';
+      else if (unknowns.length) heading.textContent = 'Ainda não dá para confirmar';
+      else if (notes.length) heading.textContent = 'Confira a recomendação de velocidade';
+      else heading.textContent = 'Os dados informados atendem aos critérios listados';
+      result.append(heading);
+
+      const items = [...failures, ...unknowns, ...notes];
+      if (items.length) {
+        const list = document.createElement('ul');
+        items.forEach(text => {
+          const item = document.createElement('li');
+          item.textContent = text;
+          list.append(item);
+        });
+        result.append(list);
+      } else {
+        const paragraph = document.createElement('p');
+        paragraph.textContent = 'Interface, capacidade, medidas e dissipação informadas estão dentro das especificações publicadas. Ainda assim, a Sony não garante o funcionamento ou o desempenho de toda unidade de terceiros.';
+        result.append(paragraph);
+      }
+      const source = document.createElement('a');
+      source.href = 'https://www.playstation.com/pt-br/support/hardware/ps5-install-m2-ssd/';
+      source.target = '_blank';
+      source.rel = 'noopener noreferrer';
+      source.textContent = 'Conferir os requisitos completos da Sony';
+      result.append(source);
+      result.focus();
+    });
+  </script>
+</body>
+</html>

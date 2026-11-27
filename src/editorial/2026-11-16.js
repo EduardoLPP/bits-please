@@ -54,21 +54,24 @@ function makePost({ id, title, excerpt, tag, section = 'NOTÍCIAS', body, source
 export const dailyPosts20261116 = [
   makePost({
     id: 'gta-vi-estreia-semana-preload-2026', section: 'GAMES', tag: 'GTA VI · lançamento · PS5 · Xbox Series', visual: 'gta',
-    title: 'GTA VI chega nesta semana: pré-download já está disponível e estreia é dia 19',
-    excerpt: 'A poucos dias do lançamento, veja o que a Rockstar e a PlayStation confirmaram sobre pré-carga, horário e plataformas — e o que ainda não foi anunciado.',
-    body: `Grand Theft Auto VI chega em 19 de novembro, e a semana de estreia já começou para quem fez a pré-compra digital. A PlayStation informa que o pré-download está disponível na PS Store desde 10 de novembro. A Rockstar também orienta os compradores digitais de PS5 e Xbox Series X|S a baixar o jogo antes da abertura, mas o horário varia de acordo com a plataforma e a região; confira a página de suporte da sua conta antes de deixar a instalação para a última hora.
+    title: 'GTA VI: o que foi confirmado sobre o pré-download e a estreia de 19 de novembro',
+    excerpt: 'Um registro das orientações oficiais de pré-carga, das plataformas anunciadas e do limite dos dados de pré-venda divulgados pela PlayStation.',
+    body: `Esta matéria foi publicada em 16 de novembro, antes do lançamento de GTA VI, e reúne orientações divulgadas para a estreia de 19 de novembro de 2026. A janela de pré-download já terminou; os dados abaixo ajudam a entender o que foi informado pelas plataformas naquela semana.
 
-Na publicação da PlayStation, o jogo aparece como o título mais pré-encomendado da história da PlayStation Store. Esse dado é da própria plataforma: não revela o total de unidades, não representa vendas de Xbox e não permite calcular participação percentual por console. Evitamos transformar o recorde de uma loja em comparação de pré-vendas entre plataformas.
+A PlayStation anunciou que o pré-download ficaria disponível na PS Store a partir de 10 de novembro. A Rockstar também orientou compradores digitais de PS5 e Xbox Series X|S a baixar o jogo antes da abertura; o horário de liberação variava por plataforma e região.
 
-A mesma publicação detalha recursos de PS5, como áudio 3D, SSD e funções do DualSense, e afirma que o jogo aproveita o PS5. É uma descrição oficial da fabricante, não um teste comparativo independente. A Rockstar lista PS5 e Xbox Series X|S no lançamento; não há data oficial para PC nas fontes consultadas.
+Na publicação, a PlayStation chamou GTA VI de título mais pré-encomendado da história da PS Store. Esse dado é da própria plataforma: não revela o total de unidades, não representa vendas de Xbox e não permite calcular participação percentual por console. Um recorde em uma loja não equivale a uma comparação de pré-vendas entre plataformas.
 
-Se você comprou uma edição com código na caixa, a PlayStation informa que é possível resgatá-lo assim que receber o código para iniciar o download. Antes de apagar jogos ou comprar armazenamento, confira o espaço exigido na página da sua plataforma e o conteúdo já instalado: números de tamanho que circulam em sites de terceiros não substituem a informação oficial da loja.
+A mesma publicação detalhou recursos de PS5, como áudio 3D, SSD e funções do DualSense. Essa é uma descrição oficial da fabricante, não um teste comparativo independente. Para o lançamento, a Rockstar listou PS5 e Xbox Series X|S; nas fontes consultadas à época, não havia data oficial para PC.
 
-Para quem ainda está decidindo a compra, a página da Amazon abaixo corresponde à edição de PS5. Compare a plataforma, a edição e as condições do anúncio; esta matéria não sugere que a versão de PS5 tenha desempenho superior à de Xbox sem um teste equivalente.`,
+Para códigos de edições físicas, a PlayStation orientou que o resgate poderia ser feito assim que o código estivesse disponível. Antes de liberar espaço ou comprar armazenamento, a orientação continua a mesma: conferir o tamanho na página da plataforma, porque estimativas de terceiros não substituem os dados oficiais da loja.
+
+Para números divulgados depois da estreia, consulte também a matéria do Bits, Please sobre os dados de jogadores únicos e horas jogadas informados pela PlayStation. A página da Amazon abaixo corresponde à edição de PS5; confira plataforma, edição e condições do anúncio. Esta matéria não compara o desempenho entre consoles.`,
     sources: [
       src('PlayStation Blog — pré-download, recorde da PS Store e recursos de PS5', 'https://blog.playstation.com/2026/11/10/pre-load-grand-theft-auto-vi-on-ps5-starting-today/'),
       src('Rockstar Support — perguntas sobre pré-download de GTA VI', 'https://support.rockstargames.com/articles/7nPqOA2uCbpEQHXx7KVrYd/grand-theft-auto-vi-pre-load-faq'),
       src('Rockstar Games — anúncio de pré-venda e plataformas', 'https://www.rockstargames.com/newswire/article/5171972o3ak5oa/pre-order-grand-theft-auto-vi-on-june-25'),
+      src('Bits, Please — números oficiais divulgados após a estreia', '/artigo/gta-vi-playstation-launch-record-20261124'),
     ],
     imageQuery: 'GTA VI launch PS5 Rockstar official artwork and pre-load',
     imageSources: ['https://www.rockstargames.com/VI', 'https://blog.playstation.com/2026/11/10/pre-load-grand-theft-auto-vi-on-ps5-starting-today/'],
@@ -106,8 +109,8 @@ Veredito editorial: WoW Forever é uma recomendação de pesquisa para fãs de M
   }),
   makePost({
     id: 'doom-dark-ages-slaughter-mode-acesso-2026', tag: 'DOOM: The Dark Ages · Slaughter Mode · atualização', visual: 'doom',
-    title: 'DOOM: The Dark Ages recebe Slaughter Mode hoje; veja quem tem acesso',
-    excerpt: 'O modo de arenas com ondas aleatórias chega como atualização gratuita, mas exige a expansão Revelations ou uma edição/up­grade que a inclua.',
+    title: 'DOOM: The Dark Ages — como funciona o Slaughter Mode e quem tem acesso',
+    excerpt: 'O modo de arenas com ondas aleatórias foi incluído em uma atualização, mas o acesso exige Revelations, Premium Edition ou Premium Upgrade.',
     body: `Slaughter Mode entra em DOOM: The Dark Ages em 16 de novembro. A Bethesda descreve uma sequência sem fim de arenas e ondas aleatórias, com inimigos, chefes e pontos de controle. A cada checkpoint, o jogador pode proteger os crânios coletados ou arriscar a sequência em troca de um multiplicador maior.
 
 O conteúdo não é gratuito para qualquer pessoa que tenha o jogo-base. A atualização está incluída sem custo adicional para quem possui o DLC Revelations, a Premium Edition ou o Premium Upgrade. Se você comprou a edição padrão, confira a lista de conteúdo da sua biblioteca antes de procurar o modo; o anúncio da Bethesda vincula o acesso à propriedade de uma dessas opções.
@@ -234,11 +237,11 @@ Se você ainda não tem PS5 e quer jogar Spider-Man 2, o pacote abaixo é uma op
   }),
   makePost({
     id: 'disney-dreamlight-keepsake-sea-lancamento-2026', tag: 'Disney Dreamlight Valley · The Keepsake Sea · expansão', visual: 'dreamlight',
-    title: 'The Keepsake Sea chega ao Disney Dreamlight Valley nesta quarta-feira',
-    excerpt: 'A expansão estreia em 18 de novembro e leva a aventura para o mar e para áreas submersas. O jogo-base é necessário; uma atualização gratuita de dezembro é outro conteúdo.',
-    body: `The Keepsake Sea, a próxima expansão de Disney Dreamlight Valley, será lançada em 18 de novembro. A página oficial descreve uma aventura para além da costa, com mergulhos em áreas submersas e a transformação do personagem em sereia ou tritão. A expansão exige o jogo-base e é vendida separadamente.
+    title: 'The Keepsake Sea: requisitos da expansão e diferença para a atualização grátis',
+    excerpt: 'A expansão de Disney Dreamlight Valley exige o jogo-base, salvo a inclusão na Arcade Edition, e não faz parte da atualização gratuita de dezembro.',
+    body: `The Keepsake Sea, expansão de Disney Dreamlight Valley lançada em 18 de novembro, leva a aventura para além da costa, com áreas submersas e a possibilidade de transformar o personagem em sereia ou tritão. A expansão exige o jogo-base e é vendida separadamente.
 
-O anúncio oficial fala de uma estátua misteriosa na água e de um amigo perdido, que dá início à exploração. O estúdio apresenta edições padrão e Deluxe da expansão, com quantidades diferentes de Moonstones e recompensas cosméticas na edição mais cara. A exceção é o Disney Dreamlight Valley Arcade Edition: a Gameloft informa que seus donos terão o conteúdo da expansão no lançamento sem compra adicional. A expansão não deve ser confundida com a atualização gratuita de dezembro.
+O anúncio oficial fala de uma estátua misteriosa na água e de um amigo perdido, que dá início à exploração. As edições padrão e Deluxe da expansão incluem quantidades diferentes de Moonstones e recompensas cosméticas. A exceção é o Disney Dreamlight Valley Arcade Edition: a Gameloft informou que seus donos receberiam o conteúdo da expansão sem compra adicional. A expansão não deve ser confundida com a atualização gratuita de dezembro.
 
 No showcase de 2026, a Gameloft também anunciou uma atualização gratuita de Ohana para 9 de dezembro. Ela tem outro calendário e não é parte da compra de The Keepsake Sea. Separar essas datas ajuda a decidir se vale comprar a expansão agora ou esperar mais informações sobre as novidades gratuitas.
 
@@ -261,7 +264,7 @@ Se você joga no Switch 2 e costuma manter muitos jogos digitais instalados, um 
   makePost({
     id: 'nocturnal-2-hotfix-103-parry-mapa-2026', tag: 'Nocturnal 2 · hotfix 1.0.3 · PC', visual: 'nocturnal',
     title: 'Nocturnal 2 abre o mapa do capítulo final e ajusta a janela de parry',
-    excerpt: 'O resumo dos hotfixes publicado ontem confirma mapa e objetivos visíveis no capítulo final. A versão 1.0.2 também reduziu a invulnerabilidade do dash e melhorou a leitura de salas.',
+    excerpt: 'O resumo de hotfixes de 15 de novembro confirma mapa e objetivos visíveis no capítulo final. A versão 1.0.2 também reduziu a invulnerabilidade do dash e melhorou a leitura de salas.',
     body: `Nocturnal 2 recebeu uma rodada de hotfixes que inclui a versão 1.0.3. No resumo publicado pela equipe no Steam em 15 de novembro, o parry passa de uma janela de 0,1 para 0,2 segundo e o mapa fica disponível no capítulo final, com os objetivos novamente visíveis. A atualização também corrige um ícone de estátua atribuído ao nível errado.
 
 O resumo inclui alterações anteriores da versão 1.0.2: orientação e legibilidade melhores no capítulo final, menos vida para inimigos voadores e redução da invulnerabilidade do dash de 0,35 para 0,2 segundo. A equipe também corrigiu o mapa e outros problemas de travamento e login.
