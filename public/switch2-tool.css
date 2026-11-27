@@ -1,0 +1,27 @@
+.tool-main{max-width:900px}
+.tool-main h1{max-width:780px}
+.checker{margin:34px 0 54px;padding:clamp(22px,5vw,40px);background:#fff;border:1px solid #e0e5d9;border-radius:22px;box-shadow:0 16px 44px #26351a12}
+.checker h2,.comparison h2,.explanation h2,.sources h2{margin-top:0}
+.checker form{display:grid;gap:11px}
+.checker label{margin-top:8px;color:#30382e;font-size:15px;font-weight:700}
+.checker select{width:100%;min-height:50px;padding:11px 42px 11px 14px;border:1px solid #cdd5c5;border-radius:10px;background:#fff;color:#242b24;font:inherit}
+.checker select:focus-visible,.checker button:focus-visible{outline:3px solid #789b36;outline-offset:3px}
+.field-hint{margin:0;color:#65705d;font-size:14px}
+.checker button{justify-self:start;margin-top:10px;padding:13px 20px;border:0;border-radius:10px;background:#293822;color:white;font:700 15px/1.3 'DM Sans',sans-serif;cursor:pointer}
+.checker button:hover{background:#40592e}
+.result{margin-top:24px;padding:19px 21px;border:1px solid #dfe8d4;border-radius:14px;background:#f4f8ee;scroll-margin:18px}
+.result h3{margin:0 0 7px;color:#283623;font:700 19px/1.3 Manrope,sans-serif}
+.result p{margin:0 0 10px}
+.result a{font-weight:700}
+.comparison,.explanation,.sources{margin:46px 0}
+.table-wrap{overflow-x:auto;margin:18px 0 22px;border:1px solid #e0e5d9;border-radius:14px;background:#fff}
+.comparison table{width:100%;border-collapse:collapse;min-width:620px}
+.comparison th,.comparison td{padding:14px 16px;border-bottom:1px solid #e8ebe3;text-align:left;vertical-align:top;font-size:15px}
+.comparison thead th{background:#eef2e7;color:#30382e;font-weight:700}
+.comparison tbody th{width:35%;font-weight:600}
+.comparison tbody tr:last-child th,.comparison tbody tr:last-child td{border-bottom:0}
+.comparison>p,.explanation p,.sources p{line-height:1.75}
+.sources ul{padding-left:22px}
+.sources li{margin:11px 0;line-height:1.55}
+.updated{color:#6b7366;font-size:14px}
+@media(max-width:620px){.checker{padding:22px 18px;border-radius:16px}.checker button{width:100%}.comparison th,.comparison td{padding:12px}.tool-main{margin-top:40px}}

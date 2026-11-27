@@ -134,12 +134,12 @@ function renderStoryCard(post) {
 }
 
 function renderInfoFooter() {
-  return `<footer><a class="brand bits-logo" href="/"><span class="bits-pink">&lt;bits,</span><span class="bits-blue">please/&gt;</span></a><p>Games, consoles e PC gamer para quem vive jogando.</p><div class="footer-links"><a href="/sobre">Sobre</a><a href="/privacidade">Privacidade</a><a href="/contato">Contato</a></div><small>© 2026 Bits, Please.</small></footer>`;
+  return `<footer><a class="brand bits-logo" href="/"><span class="bits-pink">&lt;bits,</span><span class="bits-blue">please/&gt;</span></a><p>Games, consoles e PC gamer para quem vive jogando.</p><div class="footer-links"><a href="/sobre">Sobre</a><a href="/ferramentas/compatibilidade-microsd-switch-2/">Verificador microSD</a><a href="/privacidade">Privacidade</a><a href="/contato">Contato</a></div><small>© 2026 Bits, Please.</small></footer>`;
 }
 
 function renderHomeFallback(posts) {
   const cards = posts.slice(0, 15).map(renderStoryCard).join('');
-  return `<main id="inicio"><section class="about"><span class="kicker">GAMES · HARDWARE · CULTURA</span><h1>Bits, Please — notícias de games, consoles e PC gamer</h1><p>Notícias, reviews e guias com contexto e fontes para quem vive jogando.</p></section><section class="latest"><div class="section-heading"><div><span class="kicker">ATUALIZAÇÃO CONSTANTE</span><h2>Últimas notícias do universo gamer</h2></div></div><div class="latest-grid"><div class="latest-list">${cards}</div></div></section><nav class="category-strip" aria-label="Editorias">${categories.map(([slug, name]) => `<a href="/categoria/${slug}">${escapeHtml(name)}</a>`).join('')}</nav></main>${renderInfoFooter()}`;
+  return `<main id="inicio"><section class="about"><span class="kicker">GAMES · HARDWARE · CULTURA</span><h1>Bits, Please — notícias de games, consoles e PC gamer</h1><p>Notícias, reviews e guias com contexto e fontes para quem vive jogando.</p></section><section class="latest"><div class="section-heading"><div><span class="kicker">ATUALIZAÇÃO CONSTANTE</span><h2>Últimas notícias do universo gamer</h2></div></div><div class="latest-grid"><div class="latest-list">${cards}</div></div></section><nav class="category-strip" aria-label="Editorias">${categories.map(([slug, name]) => `<a href="/categoria/${slug}">${escapeHtml(name)}</a>`).join('')}</nav><section class="useful-tool" aria-labelledby="switch2-tool-title"><div class="useful-tool-inner"><div><span class="kicker">FERRAMENTA GRATUITA</span><h2 id="switch2-tool-title">Seu microSD funciona no Switch 2?</h2><p>Confira se o cartão serve para jogos, capturas ou apenas para importar arquivos do Switch original.</p></div><a class="useful-tool-link" href="/ferramentas/compatibilidade-microsd-switch-2/">Verificar compatibilidade</a></div></section></main>${renderInfoFooter()}`;
 }
 
 function renderCategoryFallback(name, description, posts) {
@@ -207,6 +207,7 @@ const sitemapUrls = [
   { loc: `${siteUrl}/sobre` },
   { loc: `${siteUrl}/privacidade` },
   { loc: `${siteUrl}/contato` },
+  { loc: `${siteUrl}/ferramentas/compatibilidade-microsd-switch-2/` },
 ];
 
 for (const [slug, name, description] of categories) {
