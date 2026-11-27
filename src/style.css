@@ -88,14 +88,14 @@
 .story-item:not(.compact)>.story{padding-right:54px}
 .story-item:not(.compact)>.whatsapp-share{position:absolute;top:16px;right:0;margin:0}
 .story-item.compact{padding:12px 0}
-.story-item.compact>.story.compact{padding:0}
-.whatsapp-share{display:inline-flex;align-items:center;justify-content:center;align-self:flex-start;width:44px;height:44px;flex:none;margin-top:10px;padding:0;border:1px solid #27a95d;border-radius:50%;background:#128c4a;color:#fff;transition:background-color .18s ease,border-color .18s ease,transform .18s ease}
+.story-item.compact>.story.compact{padding:0 42px 0 0}
+.whatsapp-share{display:inline-flex;align-items:center;justify-content:center;align-self:flex-start;width:36px;height:36px;flex:none;margin-top:10px;padding:0;border:1px solid #27a95d;border-radius:50%;background:#128c4a;color:#fff;transition:background-color .18s ease,border-color .18s ease,transform .18s ease}
 .whatsapp-share:hover{border-color:#178743;background:#0d7540;color:#fff;transform:translateY(-1px)}
 .whatsapp-share:focus-visible{outline:3px solid #5ce48b;outline-offset:3px}
-.whatsapp-share svg{width:23px;height:23px;flex:none}
-.story-item.compact>.whatsapp-share{margin-top:8px}
+.whatsapp-share svg{width:19px;height:19px;flex:none}
+.story-item.compact>.whatsapp-share{position:absolute;top:12px;right:0;margin:0}
 .article-share{position:relative;max-width:660px;margin:40px auto 0;padding:22px 78px 22px 22px;border:1px solid #303147;background:#111321;font-family:'DM Sans',sans-serif}
 .article-share h2{margin:0 0 7px;color:#f4f4ff;font:600 18px/1.3 Manrope,sans-serif}
 .article-share p{margin:0;color:#a6adc1;font:14px/1.6 'DM Sans',sans-serif}
 .article-share .whatsapp-share{position:absolute;top:18px;right:18px;margin:0}
-@media(max-width:620px){.article-share{margin-top:32px;padding:18px 66px 18px 18px}.article-share .whatsapp-share{top:16px;right:14px}.story-item:not(.compact)>.story{padding-right:48px}}
+@media(max-width:620px){.article-share{margin-top:32px;padding:18px 58px 18px 18px}.article-share .whatsapp-share{top:16px;right:14px}.story-item:not(.compact)>.story{padding-right:48px}}
